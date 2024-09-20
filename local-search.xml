@@ -21,7 +21,7 @@
     <link href="/2024/09/20/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/"/>
     <url>/2024/09/20/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/</url>
     
-    <content type="html"><![CDATA[<p>这是一篇测试文章</p><p><img src="/./%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/test.jpg" alt="test"></p><p>就当是没有图片了吧</p>]]></content>
+    <content type="html"><![CDATA[<p>这是一篇测试文章</p><p><img src="/2024/09/20/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/test.jpg" alt="test"></p><p>就当是没有图片了吧，在本地无法显示的图片，在博客中显示了。</p><p>感谢</p><p><a href="https://blog.csdn.net/yaorongke/article/details/119089190">GitHub Pages + Hexo搭建个人博客网站，史上最全教程_hexo博客-CSDN博客</a></p>]]></content>
     
     
     <categories>
