@@ -4,9 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="关于本地git通过ssh链接github时 time out问题的解决方法_github timeout-CSDN博客, 汤汁小白菜">
-    <meta name="description" content="
-问题描述我们如果想要用git ssh链接到远端github，进行repo的clone等操作时，会进行如下的操作：首先在ssh端命令生成rsa秘钥，命令如下： ssh-keygen -t rsa -C “你的git绑定的邮箱名字”然后在gi">
+    <meta name="keywords" content="汤汁小白菜">
+    <meta name="description" content="2025-02-20 ���� urn:x-pdf:5c31567e457a3f6d266f43607529655e2025-02-20 ���� https://blog.csdn.net/single_musketeer/article">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>关于本地git通过ssh链接github时 time out问题的解决方法_github timeout-CSDN博客 | 汤汁小白菜</title>
+    <title>汤汁小白菜</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -336,12 +335,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">关于本地git通过ssh链接github时 time out问题的解决方法_github timeout-CSDN博客</h1>
+                    <h1 class="description center-align post-title"></h1>
                 </div>
             </div>
         </div>
@@ -363,13 +362,9 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/hypothesis/">
-                                <span class="chip bg-color">hypothesis</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -381,17 +376,37 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2025-02-18
+                    2025-02-20
                 </div>
                 
 
                 
-
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2025-02-20
+                </div>
                 
 
                 
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    36
+                </div>
+                
 
                 
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    1 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
             </div>
         </div>
         <hr class="clearfix">
@@ -405,12 +420,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <ul>
-<li>问题描述<br>我们如果想要用git ssh链接到远端github，进行repo的clone等操作时，会进行如下的操作：<br>首先在ssh端命令生成rsa秘钥，命令如下： ssh-keygen -t rsa -C “你的git绑定的邮箱名字”然后在github端新建ssh key, 将生成的key写进去。然后对是否建立联系进行验证，通常运行ssh -T <a href="mailto:&#103;&#x69;&#116;&#x40;&#103;&#x69;&#x74;&#x68;&#117;&#98;&#46;&#99;&#111;&#x6d;">&#103;&#x69;&#116;&#x40;&#103;&#x69;&#x74;&#x68;&#117;&#98;&#46;&#99;&#111;&#x6d;</a>来验证我们是否连接上。<br>对于上述提到的第1,2步，csdn上就有很多的具体介绍，如以下这个blog： 具体ssh key产生和添加到github的流程<br>而在进行第三步的时候，可能会遇到以下ssh connect time out的问题：<br>$ ssh -T <a href="mailto:&#x67;&#105;&#116;&#x40;&#x67;&#105;&#116;&#x68;&#x75;&#x62;&#46;&#99;&#x6f;&#109;">&#x67;&#105;&#116;&#x40;&#x67;&#105;&#116;&#x68;&#x75;&#x62;&#46;&#99;&#x6f;&#109;</a><br>ssh: connect to host github.com port 22: Connection timed out <blockquote>
-<p>解决方法<br>解决的方法很简单，需要通过修改你所生成的rsa所在地址~&#x2F;.ssh下面的config文件所实现的<br><code>C:\Users\34999\.ssh</code><br>Host github.com<br>HostName ssh.github.com  # 这是最重要的部分<br>User git<br>Port 443<br>PreferredAuthentications publickey<br>IdentityFile ~&#x2F;.ssh&#x2F;id_rsa<br><img src="https://i-blog.csdnimg.cn/blog_migrate/cb273dcda06b0301b9fbc72b343081e1.png"></p>
-</blockquote>
-</li>
-</ul>
+                <p>2025-02-20 ���� urn:x-pdf:5c31567e457a3f6d266f43607529655e<br>2025-02-20 ���� <a target="_blank" rel="noopener" href="https://blog.csdn.net/single_musketeer/article/details/130309835">https://blog.csdn.net/single_musketeer/article/details/130309835</a><br>2025-02-20 ���� <a target="_blank" rel="noopener" href="https://zh.d2l.ai/chapter_introduction/index.html">https://zh.d2l.ai/chapter_introduction/index.html</a><br>2025-02-20 ���� <a target="_blank" rel="noopener" href="https://blog.csdn.net/the__future/article/details/130038818">https://blog.csdn.net/the__future/article/details/130038818</a></p>
 
                 
             </div>
@@ -437,7 +447,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://c3f15f6.github.io/2025/02/18/250218~%E5%85%B3%E4%BA%8E%E6%9C%AC%E5%9C%B0git%E9%80%9A%E8%BF%87ssh%E9%93%BE%E6%8E%A5github%E6%97%B6%20time%20out%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95_github%20timeout-CSDN%E5%8D%9A%E5%AE%A2/">https://c3f15f6.github.io/2025/02/18/250218~%E5%85%B3%E4%BA%8E%E6%9C%AC%E5%9C%B0git%E9%80%9A%E8%BF%87ssh%E9%93%BE%E6%8E%A5github%E6%97%B6%20time%20out%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95_github%20timeout-CSDN%E5%8D%9A%E5%AE%A2/</a>
+                    <a href="https://c3f15f6.github.io/2025/02/20/done_url/">https://c3f15f6.github.io/2025/02/20/done_url/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -474,11 +484,7 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/hypothesis/">
-                                    <span class="chip bg-color">hypothesis</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -516,7 +522,7 @@
                         <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
                     </div>
                     <div id="wechat">
-                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
                     </div>
                 </div>
             </div>
@@ -543,6 +549,273 @@
     
 
     
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'ypIvvy9QRua2Q0ztdf0tgeBp-gzGzoHsz',
+        appKey: '9nVDPQd67XNMLKXa2xogMJMm',
+        serverURLs: 'https://ypivvy9q.lc-cn-n1-shared.com',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'just go go'
+    });
+</script>
+
+<!--酷Q推送-->
+
+
+    
 
     
 
@@ -559,13 +832,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2025/02/19/markdown-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">
+                <a href="/2025/02/20/250211~1.%20%E5%89%8D%E8%A8%80%20%E2%80%94%20%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%202.0.0-beta0%20documentation/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="markdown_基础语法">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="1. 前言 — 动手学深度学习 2.0.0-beta0 documentation">
                         
-                        <span class="card-title">markdown_基础语法</span>
+                        <span class="card-title">1. 前言 — 动手学深度学习 2.0.0-beta0 documentation</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -576,16 +849,12 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2025-02-19
+                            <i class="far fa-clock fa-fw icon-date"></i>2025-02-20
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/hexo/" class="post-category">
-                                    hexo
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            小白菜
                             
                         </span>
                     </div>
@@ -593,16 +862,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E8%BD%AC%E8%BD%BD/">
-                        <span class="chip bg-color">转载</span>
-                    </a>
-                    
-                    <a href="/tags/hexo/">
-                        <span class="chip bg-color">hexo</span>
-                    </a>
-                    
-                    <a href="/tags/markdown/">
-                        <span class="chip bg-color">markdown</span>
+                    <a href="/tags/hypothesis/">
+                        <span class="chip bg-color">hypothesis</span>
                     </a>
                     
                 </div>
@@ -616,13 +877,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2025/02/18/250215~WSL%20Ubuntu22.04%E9%BB%98%E8%AE%A4%E7%94%A8%E6%88%B7%EF%BC%88default%E7%94%A8%E6%88%B7%EF%BC%89%E6%9B%B4%E6%94%B9_wsl%20ubuntu%E5%88%87%E6%8D%A2%E7%94%A8%E6%88%B7-CSDN%E5%8D%9A%E5%AE%A2/">
+                <a href="/2025/02/20/250218~%E5%85%B3%E4%BA%8E%E6%9C%AC%E5%9C%B0git%E9%80%9A%E8%BF%87ssh%E9%93%BE%E6%8E%A5github%E6%97%B6%20time%20out%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95_github%20timeout-CSDN%E5%8D%9A%E5%AE%A2/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="WSL Ubuntu22.04默认用户（default用户）更改_wsl ubuntu切换用户-CSDN博客">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="关于本地git通过ssh链接github时 time out问题的解决方法_github timeout-CSDN博客">
                         
-                        <span class="card-title">WSL Ubuntu22.04默认用户（default用户）更改_wsl ubuntu切换用户-CSDN博客</span>
+                        <span class="card-title">关于本地git通过ssh链接github时 time out问题的解决方法_github timeout-CSDN博客</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -633,7 +894,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-02-18
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-02-20
                             </span>
                         <span class="publish-author">
                             
@@ -812,14 +1073,14 @@
         <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
                    server="netease"
                    type="playlist"
-                   id="503838841"
+                   id="149297"
                    fixed='true'
-                   autoplay='false'
+                   autoplay='true'
                    theme='#42b983'
                    loop='all'
                    order='random'
                    preload='auto'
-                   volume='0.7'
+                   volume='0.4'
                    list-folded='true'
         >
         </meting-js>
@@ -836,13 +1097,16 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2019-2025</span>
+                <span id="year">2024-2025</span>
             
             <a href="/about" target="_blank">小白菜</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             
             <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">4.8k</span>
             
             
             
@@ -868,13 +1132,13 @@
             
         </div>
         <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <a href="https://github.com/c3f15f6" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
         <i class="fab fa-github"></i>
     </a>
 
 
 
-    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <a href="mailto:c3y15f6@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
         <i class="fas fa-envelope-open"></i>
     </a>
 
@@ -884,7 +1148,7 @@
 
 
 
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1181062873" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1181062873" data-position="top" data-delay="50">
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=3114429249" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 3114429249" data-position="top" data-delay="50">
         <i class="fab fa-qq"></i>
     </a>
 
@@ -1058,6 +1322,14 @@ $(function () {
     
 
     <!-- 鼠标星星特效 -->
+     
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/libs/others/star.js"><\/script>');
+            }
+        </script>
     
 
      
