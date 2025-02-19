@@ -5,8 +5,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="关于本地git通过ssh链接github时 time out问题的解决方法_github timeout-CSDN博客, 汤汁小白菜">
-    <meta name="description" content="
-问题描述  我们如果想要用git ssh链接到远端github，进行repo的clone等操作时，会进行如下的操作：  首先在ssh端命令生成rsa秘钥，命令如下： ssh-keygen -t rsa -C “你的git绑定的邮箱名字”然">
+    <meta name="description" content=" 问题描述 
+
+我们如果想要用git ssh链接到远端github，进行repo的clone等操作时，会进行如下的操作：首先在ssh端命令生成rsa秘钥，命令如下： ssh-keygen -t rsa -C “你的git绑定的邮箱名字”然后">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -405,12 +406,10 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <ul>
-<li>问题描述  我们如果想要用git ssh链接到远端github，进行repo的clone等操作时，会进行如下的操作：  首先在ssh端命令生成rsa秘钥，命令如下： ssh-keygen -t rsa -C “你的git绑定的邮箱名字”然后在github端新建ssh key, 将生成的key写进去。然后对是否建立联系进行验证，通常运行ssh -T <a href="mailto:&#103;&#x69;&#x74;&#x40;&#103;&#105;&#x74;&#x68;&#117;&#98;&#46;&#99;&#x6f;&#109;">&#103;&#x69;&#x74;&#x40;&#103;&#105;&#x74;&#x68;&#117;&#98;&#46;&#99;&#x6f;&#109;</a>来验证我们是否连接上。  对于上述提到的第1,2步，csdn上就有很多的具体介绍，如以下这个blog： 具体ssh key产生和添加到github的流程  而在进行第三步的时候，可能会遇到以下ssh connect time out的问题：  $ ssh -T <a href="mailto:&#x67;&#105;&#116;&#64;&#x67;&#x69;&#x74;&#x68;&#117;&#x62;&#x2e;&#99;&#x6f;&#x6d;">&#x67;&#105;&#116;&#64;&#x67;&#x69;&#x74;&#x68;&#117;&#x62;&#x2e;&#99;&#x6f;&#x6d;</a> ssh: connect to host github.com port 22: Connection timed out <blockquote>
-<p>解决方法<br>解决的方法很简单，需要通过修改你所生成的rsa所在地址~&#x2F;.ssh下面的config文件所实现的<br><code>C:\Users\34999\.ssh</code><br>Host github.com<br>HostName ssh.github.com  # 这是最重要的部分<br>User git<br>Port 443<br>PreferredAuthentications publickey<br>IdentityFile ~&#x2F;.ssh&#x2F;id_rsa<br><img src="https://i-blog.csdnimg.cn/blog_migrate/cb273dcda06b0301b9fbc72b343081e1.png"></p>
+                <p> 问题描述 </p>
+<blockquote>
+<p>我们如果想要用git ssh链接到远端github，进行repo的clone等操作时，会进行如下的操作：<br>首先在ssh端命令生成rsa秘钥，命令如下： ssh-keygen -t rsa -C “你的git绑定的邮箱名字”然后在github端新建ssh key, 将生成的key写进去。然后对是否建立联系进行验证，通常运行ssh -T <a href="mailto:&#103;&#105;&#116;&#x40;&#103;&#105;&#x74;&#104;&#x75;&#x62;&#46;&#99;&#x6f;&#x6d;">&#103;&#105;&#116;&#x40;&#103;&#105;&#x74;&#104;&#x75;&#x62;&#46;&#99;&#x6f;&#x6d;</a>来验证我们是否连接上。<br>对于上述提到的第1,2步，csdn上就有很多的具体介绍，如以下这个blog： 具体ssh key产生和添加到github的流程<br>而在进行第三步的时候，可能会遇到以下ssh connect time out的问题：<br>$ ssh -T <a href="mailto:&#103;&#x69;&#x74;&#64;&#103;&#105;&#x74;&#x68;&#117;&#98;&#46;&#x63;&#x6f;&#x6d;">&#103;&#x69;&#x74;&#64;&#103;&#105;&#x74;&#x68;&#117;&#98;&#46;&#x63;&#x6f;&#x6d;</a><br>ssh: connect to host github.com port 22: Connection timed out<br>  解决方法解决的方法很简单，需要通过修改你所生成的rsa所在地址~&#x2F;.ssh下面的config文件所实现的<code>C:\Users\34999\.ssh</code>Host github.comHostName ssh.github.com  # 这是最重要的部分User gitPort 443PreferredAuthentications publickeyIdentityFile ~&#x2F;.ssh&#x2F;id_rsa<img src="https://i-blog.csdnimg.cn/blog_migrate/cb273dcda06b0301b9fbc72b343081e1.png"> </p>
 </blockquote>
-</li>
-</ul>
 
                 
             </div>
