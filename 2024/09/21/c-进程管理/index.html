@@ -54,7 +54,8 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 7.3.0"></head>
+<meta name="generator" content="Hexo 7.3.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
 <body>
@@ -417,8 +418,9 @@
                 <p><a target="_blank" rel="noopener" href="https://immortalqx.github.io/2021/12/04/cpp-notes-3/">https://immortalqx.github.io/2021/12/04/cpp-notes-3/</a></p>
 <p>参考 <a target="_blank" rel="noopener" href="https://immortalqx.github.io/about">https://immortalqx.github.io/about</a></p>
 <h1 id="启动线程thread"><a href="#启动线程thread" class="headerlink" title="启动线程thread"></a>启动线程thread</h1><p>这里创建<code>std::thread</code>传入的函数，实际上其构造函数需要的是可调用（callable）类型，只要是有函数调用类型的实例都是可以的</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">do_task</span>();<br>std::<span class="hljs-built_in">thread</span>(do_task);<br></code></pre></td></tr></table></figure>
-
+<pre class="line-numbers language-c++"><code class="language-c++">do_task();
+std::thread(do_task);
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <ol>
 <li>函数</li>
 <li>lambda表达式</li>
@@ -432,14 +434,66 @@
 </ul>
 <h3 id="join"><a href="#join" class="headerlink" title="join()"></a>join()</h3><p>让主线程等待线程 <code>t</code> 完成。在 <code>t.join()</code> 之后，lambda 函数也自然结束，因为这时所有的代码已经执行完毕。</p>
 <p>保证主程序结束前，线程可以阻塞主线程继续执行。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">thread_guard</span><br>&#123;<br>	thread &amp;t;<br><span class="hljs-keyword">public</span> :<br>	<span class="hljs-function"><span class="hljs-keyword">explicit</span> <span class="hljs-title">thread_guard</span><span class="hljs-params">(thread&amp; <span class="hljs-type">_t</span>)</span> :</span><br><span class="hljs-function">		t(_t)&#123;</span>&#125;<br><br>	~<span class="hljs-built_in">thread_guard</span>()<br>	&#123;<br>		<span class="hljs-keyword">if</span> (t.<span class="hljs-built_in">joinable</span>())<br>			t.<span class="hljs-built_in">join</span>();<br>	&#125;<br><br>	<span class="hljs-built_in">thread_guard</span>(<span class="hljs-type">const</span> thread_guard&amp;) = <span class="hljs-keyword">delete</span>;<br>	thread_guard&amp; <span class="hljs-keyword">operator</span>=(<span class="hljs-type">const</span> thread_guard&amp;) = <span class="hljs-keyword">delete</span>;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">func</span><span class="hljs-params">()</span></span>&#123;<br><br>	<span class="hljs-function">thread <span class="hljs-title">t</span><span class="hljs-params">([]&#123;</span></span><br><span class="hljs-params"><span class="hljs-function">		cout &lt;&lt; <span class="hljs-string">&quot;Hello thread&quot;</span> &lt;&lt;endl ;</span></span><br><span class="hljs-params"><span class="hljs-function">	&#125;)</span></span>;<br><br>	<span class="hljs-function">thread_guard <span class="hljs-title">g</span><span class="hljs-params">(t)</span></span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<pre class="line-numbers language-c++"><code class="language-c++">class thread_guard
+{
+    thread &t;
+public :
+    explicit thread_guard(thread& _t) :
+        t(_t){}
 
+    ~thread_guard()
+    {
+        if (t.joinable())
+            t.join();
+    }
+
+    thread_guard(const thread_guard&) = delete;
+    thread_guard& operator=(const thread_guard&) = delete;
+};
+
+void func(){
+
+    thread t([]{
+        cout &lt;&lt; "Hello thread" &lt;&lt; endl ;
+    });
+
+    thread_guard g(t);
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>如果在线程中使用引用来更新对象时，就需要注意了。默认的是将对象拷贝到线程空间，其引用的是拷贝的线程空间的对象，而不是初始希望改变的对象。</p>
 <p>如果想要传递引用，需要在引用的参数前增加 std::ref(node)</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;thread&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">_tagNode</span><br>&#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-type">int</span> a;<br>    <span class="hljs-type">int</span> b;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">func</span><span class="hljs-params">(_tagNode &amp;node)</span></span><br><span class="hljs-function"></span>&#123;<br>    node.a = <span class="hljs-number">10</span>;<br>    node.b = <span class="hljs-number">20</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">f</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    _tagNode node;<br><br>    <span class="hljs-function">thread <span class="hljs-title">t</span><span class="hljs-params">(func, std::ref(node))</span></span>; <span class="hljs-comment">// 使用 std::ref 传递引用</span><br>    t.<span class="hljs-built_in">join</span>();<br><br>    cout &lt;&lt; node.a &lt;&lt; endl; <span class="hljs-comment">// 现在会输出 10</span><br>    cout &lt;&lt; node.b &lt;&lt; endl; <span class="hljs-comment">// 现在会输出 20</span><br>&#125;<br><br></code></pre></td></tr></table></figure>
+<pre class="line-numbers language-c++"><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;thread&gt;
 
-<h3 id="线程转移"><a href="#线程转移" class="headerlink" title="线程转移"></a>线程转移</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function">thread <span class="hljs-title">t1</span><span class="hljs-params">(f1)</span></span>;<br><span class="hljs-function">thread <span class="hljs-title">t3</span><span class="hljs-params">(move(t1))</span></span>;<br></code></pre></td></tr></table></figure>
+using namespace std;
 
+class _tagNode
+{
+public:
+    int a;
+    int b;
+};
+
+void func(_tagNode &node)
+{
+    node.a = 10;
+    node.b = 20;
+}
+
+void f()
+{
+    _tagNode node;
+
+    thread t(func, std::ref(node)); // 使用 std::ref 传递引用
+    t.join();
+
+    cout &lt;&lt; node.a &lt;&lt; endl; // 现在会输出 10
+    cout &lt;&lt; node.b &lt;&lt;endl; // 现在会输出 20
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="线程转移"><a href="#线程转移" class="headerlink" title="线程转移"></a>线程转移</h3><pre class="line-numbers language-c++"><code class="language-c++">thread t1(f1);
+thread t3(move(t1));
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>线程的标识类型为<code>std::thread::id</code>，有两种方式获得到线程的id。</p>
 <ul>
 <li>通过<code>thread</code>的实例调用<code>get_id()</code>直接获取</li>
@@ -447,42 +501,72 @@
 </ul>
 <h1 id="启动进程pthread-gcc"><a href="#启动进程pthread-gcc" class="headerlink" title="启动进程pthread(gcc)"></a>启动进程pthread(gcc)</h1><h2 id="启动线程"><a href="#启动线程" class="headerlink" title="启动线程"></a>启动线程</h2><ol>
 <li><p><strong>声明一个线程属性变量</strong>：使用 <code>pthread_attr_t</code> 数据类型来声明一个线程属性变量。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">pthread_attr_t</span> attr;<br></code></pre></td></tr></table></figure>
+<pre class="line-numbers language-c++"><code class="language-c++"> pthread_attr_t attr;
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 <li><p><strong>初始化属性变量</strong>：调用 <code>pthread_attr_init()</code> 函数来初始化该属性变量。这个步骤确保属性变量具有默认值。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">pthread_attr_init</span>(&amp;attr);<br></code></pre></td></tr></table></figure>
+<pre class="line-numbers language-c++"><code class="language-c++">pthread_attr_init(&attr);
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 <li><p><strong>设置属性的分离状态</strong>：使用 <code>pthread_attr_setdetachstate()</code> 函数来设置线程的分离状态。你可以选择将其设置为可连接（<code>PTHREAD_CREATE_JOINABLE</code>）或分离（<code>PTHREAD_CREATE_DETACHED</code>）状态。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">pthread_attr_setdetachstate</span>(&amp;attr, PTHREAD_CREATE_JOINABLE);<br><span class="hljs-comment">//设置为JOINABLE, 必须使用pthread,join(thread,NULL) 调用，否者成为僵尸线程</span><br></code></pre></td></tr></table></figure>
-
+<pre class="line-numbers language-c++"><code class="language-c++">pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_JOINABLE);
+//设置为JOINABLE, 必须使用pthread,join(thread,NULL) 调用，否者成为僵尸线程
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>可以设置栈空间对栈进行控制</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">pthread_attr_getstacksize</span> (attr, stacksize)<br><span class="hljs-built_in">pthread_attr_setstacksize</span> (attr, stacksize)<br><span class="hljs-built_in">pthread_attr_getstackaddr</span> (attr, stackaddr)<br><span class="hljs-built_in">pthread_attr_setstackaddr</span> (attr, stackaddr)<br></code></pre></td></tr></table></figure>
+<pre class="line-numbers language-c++"><code class="language-c++">pthread_attr_getstacksize (attr, stacksize)
+pthread_attr_setstacksize (attr, stacksize)
+pthread_attr_getstackaddr (attr, stackaddr)
+pthread_attr_setstackaddr (attr, stackaddr)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li><p><strong>创建线程</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">pthread_create</span><span class="hljs-params">(<span class="hljs-type">pthread_t</span> *thread, <span class="hljs-type">const</span> <span class="hljs-type">pthread_attr_t</span> *attr, <span class="hljs-type">void</span> *(*start_routine)(<span class="hljs-type">void</span>*), <span class="hljs-type">void</span> *arg)</span></span>;<br>params1:指向线程标识符的指针<br>params2: 线程的属性对象指针。通常设置为 <span class="hljs-literal">NULL</span><br>params3:指向线程函数的指针，这个函数将在线程中执行。函数的参数是 <span class="hljs-type">void</span>* 类型，可以接受任何类型的指针，并在函数内部将其转换为实际类型。线程函数的返回值也应该是 <span class="hljs-type">void</span>* 类型<br>params4:传递给线程函数的参数。这是一个 <span class="hljs-type">void</span>* 类型的指针，允许你传递任何类型的数据给线程函数<br>创建<br></code></pre></td></tr></table></figure>
-
+<pre class="line-numbers language-c++"><code class="language-c++">int pthread_create(pthread_t *thread, const pthread_attr_t *attr, void *(*start_routine)(void*), void *arg);
+params1:指向线程标识符的指针
+params2: 线程的属性对象指针。通常设置为 NULL
+params3:指向线程函数的指针，这个函数将在线程中执行。函数的参数是 void* 类型，可以接受任何类型的指针，并在函数内部将其转换为实际类型。线程函数的返回值也应该是 void* 类型
+params4:传递给线程函数的参数。这是一个 void* 类型的指针，允许你传递任何类型的数据给线程函数
+创建
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>你可以将参数封装到一个结构体中，然后将该结构体的指针作为 <code>void*</code> 传递。这样，你可以传递多个参数和不同类型的数据。在线程函数中，你再将 <code>void*</code> 转回到结构体指针，取出所需的数据。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++">rc = <span class="hljs-built_in">pthread_create</span>(&amp;thread[t], &amp;attr, BusyWork, (<span class="hljs-type">void</span> *) t);<br></code></pre></td></tr></table></figure>
+<pre class="line-numbers language-c++"><code class="language-c++">rc = pthread_create(&thread[t], &attr, BusyWork, (void *) t);
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 <li><p><strong>释放资源</strong>：在完成所有操作后，调用 <code>pthread_attr_destroy()</code> 函数来释放属性变量所使用的库资源。这是一个良好的实践，有助于防止内存泄漏。</p>
 </li>
 </ol>
-<h3 id="参数与返回"><a href="#参数与返回" class="headerlink" title="参数与返回"></a>参数与返回</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">pthread_create</span>(&amp;thread, <span class="hljs-literal">NULL</span>, threadFunction, (<span class="hljs-type">void</span>*)&amp;data);<br><span class="hljs-comment">//函数中可以对参数进行修改，注意</span><br></code></pre></td></tr></table></figure>
-
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">pthread_join</span>(thread, (<span class="hljs-type">void</span>**)&amp;result); <span class="hljs-comment">// 获取返回值</span><br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Thread result: %d\n&quot;</span>, result-&gt;result); <span class="hljs-comment">// 使用结果</span><br><span class="hljs-comment">// 获得参数中的返回值</span><br></code></pre></td></tr></table></figure>
-
-
-
-<h2 id="对线程增加线程锁"><a href="#对线程增加线程锁" class="headerlink" title="对线程增加线程锁"></a>对线程增加线程锁</h2><h3 id="初始化锁"><a href="#初始化锁" class="headerlink" title="初始化锁"></a><strong>初始化锁</strong></h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//使用自变量初始化</span><br><span class="hljs-type">pthread_mutex_t</span> mymutex = PTHREAD_MUTEX_INITIALIZER;<br><span class="hljs-comment">//使用init出啊实话</span><br><span class="hljs-type">pthread_mutex_t</span> mutexsum;<br><span class="hljs-built_in">pthread_mutex_init</span>(&amp;mutexsum, <span class="hljs-literal">NULL</span>);<br></code></pre></td></tr></table></figure>
-
-<h3 id="添加锁"><a href="#添加锁" class="headerlink" title="添加锁"></a>添加锁</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">phtread_mutex_lock</span>(<span class="hljs-type">pthread_mutex_t</span> *mutex);<span class="hljs-comment">//对失败的那些线程阻塞</span><br><span class="hljs-built_in">phtread_mutex_trylock</span>(<span class="hljs-type">pthread_mutex_t</span> *mutex);<span class="hljs-comment">//杀死失败线程</span><br></code></pre></td></tr></table></figure>
-
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">pthread_mutex_lock</span>(&amp;mutexsum);<br>dotstr.sum += mysum;<br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Thread %ld did %d to %d: mysum=%f global sum=%f\n&quot;</span>, offset, start,<br>       end, mysum, dotstr.sum);<br><span class="hljs-comment">//加锁和解锁之间是被锁区域</span><br><span class="hljs-built_in">pthread_mutex_unlock</span>(&amp;mutexsum);<br></code></pre></td></tr></table></figure>
-
-<h3 id="释放锁"><a href="#释放锁" class="headerlink" title="释放锁"></a>释放锁</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">pthread_mutex_destroy(&amp;mutexsum);<br></code></pre></td></tr></table></figure>
-
-<h3 id="其他函数"><a href="#其他函数" class="headerlink" title="其他函数"></a>其他函数</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">pthread_mutex_init</span> (mutex,attr);<br><span class="hljs-built_in">pthread_mutex_destroy</span> (<span class="hljs-type">pthread_mutex_t</span> *mutex);<br><span class="hljs-built_in">pthread_mutexattr_init</span> (attr);<br><span class="hljs-built_in">pthread_mutexattr_destroy</span> (attr);<br><span class="hljs-built_in">phtread_mutex_lock</span>(<span class="hljs-type">pthread_mutex_t</span> *mutex);<br><span class="hljs-built_in">phtread_mutex_trylock</span>(<span class="hljs-type">pthread_mutex_t</span> *mutex);<br><span class="hljs-built_in">phtread_mutex_unlock</span>(<span class="hljs-type">pthread_mutex_t</span> *mutex);<br></code></pre></td></tr></table></figure>
-
+<h3 id="参数与返回"><a href="#参数与返回" class="headerlink" title="参数与返回"></a>参数与返回</h3><pre class="line-numbers language-c++"><code class="language-c++">pthread_create(&thread, NULL, threadFunction, (void*)&data);
+//函数中可以对参数进行修改，注意
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-c++"><code class="language-c++">pthread_join(thread, (void**)&result); // 获取返回值
+printf("Thread result: %d\n", result-&gt;result); // 使用结果
+// 获得参数中的返回值
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="对线程增加线程锁"><a href="#对线程增加线程锁" class="headerlink" title="对线程增加线程锁"></a>对线程增加线程锁</h2><h3 id="初始化锁"><a href="#初始化锁" class="headerlink" title="初始化锁"></a><strong>初始化锁</strong></h3><pre class="line-numbers language-c++"><code class="language-c++">//使用自变量初始化
+pthread_mutex_t mymutex = PTHREAD_MUTEX_INITIALIZER;
+//使用init出啊实话
+pthread_mutex_t mutexsum;
+pthread_mutex_init(&mutexsum, NULL);
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="添加锁"><a href="#添加锁" class="headerlink" title="添加锁"></a>添加锁</h3><pre class="line-numbers language-c++"><code class="language-c++">phtread_mutex_lock(pthread_mutex_t *mutex);//对失败的那些线程阻塞
+phtread_mutex_trylock(pthread_mutex_t *mutex);//杀死失败线程
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-c++"><code class="language-c++">pthread_mutex_lock(&mutexsum);
+dotstr.sum += mysum;
+printf("Thread %ld did %d to %d: mysum=%f global sum=%f\n", offset, start,
+       end, mysum, dotstr.sum);
+//加锁和解锁之间是被锁区域
+pthread_mutex_unlock(&mutexsum);
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="释放锁"><a href="#释放锁" class="headerlink" title="释放锁"></a>释放锁</h3><pre class="line-numbers language-c"><code class="language-c"> <span class="token function">pthread_mutex_destroy</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>mutexsum<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="其他函数"><a href="#其他函数" class="headerlink" title="其他函数"></a>其他函数</h3><pre class="line-numbers language-c++"><code class="language-c++">pthread_mutex_init (mutex,attr);
+pthread_mutex_destroy (pthread_mutex_t *mutex);
+pthread_mutexattr_init (attr);
+pthread_mutexattr_destroy (attr);
+phtread_mutex_lock(pthread_mutex_t *mutex);
+phtread_mutex_trylock(pthread_mutex_t *mutex);
+phtread_mutex_unlock(pthread_mutex_t *mutex);
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="/2024/09/21/c-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/cin,scanf%E9%80%9F%E5%BA%A6.png" alt="cin/scanf"></p>
 
                 
