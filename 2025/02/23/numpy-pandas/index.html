@@ -408,7 +408,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    916
+                    908
                 </div>
                 
 
@@ -569,18 +569,18 @@ pd<span class="token punctuation">.</span>get_dummies<span class="token punctuat
 <li>dummy_na: 布尔值，默认为 False。如果为 True，那么将生成一个额外的列，用于指示缺失值（NaN）的存在。这一列会在原始数据中出现 NaN（缺失值）的地方标记为 1，其余为 0。</li>
 </ul>
 <h2 id="使用-NumPy-数组作为-DataFrame-的数据">1.3. 使用 NumPy 数组作为 DataFrame 的数据</h2><p>您还可以使用 NumPy 数组作为 DataFrame 的数据并指定索引和列名：</p>
-<pre><code>python复制代码# 创建 NumPy 数组
-data = np.array([[1, 2], [3, 4]])
+<pre class="line-numbers language-python"><code class="language-python">python复制代码<span class="token comment" spellcheck="true"># 创建 NumPy 数组</span>
+data <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 
-# 将 NumPy 数组转换为 DataFrame，并指定索引和列名
-df = pd.DataFrame(data, index=[&#39;row1&#39;, &#39;row2&#39;], columns=[&#39;A&#39;, &#39;B&#39;])
-print(df)
-</code></pre>
+<span class="token comment" spellcheck="true"># 将 NumPy 数组转换为 DataFrame，并指定索引和列名</span>
+df <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>data<span class="token punctuation">,</span> index<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'row1'</span><span class="token punctuation">,</span> <span class="token string">'row2'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> columns<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'A'</span><span class="token punctuation">,</span> <span class="token string">'B'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>df<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="tensorflow">1.4. tensorflow</h2><ol>
 <li>转换为tensors，不能改变</li>
 </ol>
-<pre><code>tf.constant([[2, 1, 4, 3], [1, 2, 3, 4], [4, 3, 2, 1]])
-</code></pre>
+<pre class="line-numbers language-python"><code class="language-python">tf<span class="token punctuation">.</span>constant<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="2">
 <li>转换为variable</li>
 </ol>
