@@ -408,7 +408,7 @@ kill -9 进程id  ">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    543
+                    559
                 </div>
                 
 
@@ -445,22 +445,19 @@ kill -9 进程id  ">
 <li><p>之后在<code>mlcs.sh</code>文件中输入要运行的命令：</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">kill</span> -9 进程id  <span class="token comment" spellcheck="true"># 提前杀死进程，只限于咱们自己用户下的进程</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><code>&gt;</code> 将内容输出到文件里面，如果原文件存在，则直接覆盖。</p>
+<p><code>&gt;&gt;</code> 将内容输出到文件里，如果原文件存在则直接追加到原文件中。</p>
 </li>
 </ol>
-<pre><code>
-   `&gt;` 将内容输出到文件里面，如果原文件存在，则直接覆盖。
-
-   `&gt;&gt;` 将内容输出到文件里，如果原文件存在则直接追加到原文件中。
-
-   ## 内存监控命令
-
-   ```bash
-   top -b -c -d 2 | grep &quot;你想监控程序的那个名字，能唯一识别就行&quot; &gt; &quot;输出到的文件名字&quot;
-</code></pre>
+<h2 id="内存监控命令">2.1. 内存监控命令</h2><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">top</span> -b -c -d 2 <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">"你想监控程序的那个名字，能唯一识别就行"</span> <span class="token operator">&amp;</span>gt<span class="token punctuation">;</span> <span class="token string">"输出到的文件名字"</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>   例如，我要监控名字里面包括<code>mlcs.exe</code>的这个进程，将信息输出到同级目录下的<code>memory.txt</code>这个文件里面：</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">top</span> -b -c -d 2 <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">"mlcs.exe"</span> <span class="token operator">&amp;</span>gt<span class="token punctuation">;</span> <span class="token string">"memory.txt"</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>   其中<code>-d</code>参数代表几秒监控一下内存，这里设置每2秒监控一次。</p>
+<p>删除所有包名称包括mlsc.exe的进程</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">pkill</span> -f me_test.sh
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>   断开终端也可运行某程序的命令：</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">nohup</span> 要执行的命令 <span class="token operator">&amp;</span>gt<span class="token punctuation">;</span> output.log 2<span class="token operator">&amp;</span>gt<span class="token punctuation">;</span><span class="token operator">&amp;</span>1 <span class="token operator">&amp;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
