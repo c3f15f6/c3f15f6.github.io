@@ -430,14 +430,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-03-10
+                    2025-03-18
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    575
+                    632
                 </div>
                 
 
@@ -501,6 +501,19 @@
 <li>std::unordered_set</li>
 </ul>
 <p>std::set和std::multiset底层实现都是红黑树，std::unordered_set的底层实现是哈希表， 使用unordered_set 读写效率是最高的，并不需要对数据进行排序，而且还不要让数据重复，所以选择unordered_set。</p>
+<h2 id="回溯算法">1.5. 回溯算法</h2><p>算法的模板</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">backtracking</span><span class="token punctuation">(</span>参数<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>终止条件）<span class="token punctuation">{</span>
+        存放结果<span class="token punctuation">;</span>
+           <span class="token keyword">return</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span>选择<span class="token operator">:</span>本层集合中的元素<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        处理节点<span class="token punctuation">;</span>
+        <span class="token function">backtracking</span><span class="token punctuation">(</span>路径， 选择列表<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//递归</span>
+        回溯，撤销处理结果<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1 id="感谢">2. 感谢</h1><p><a target="_blank" rel="noopener" href="https://programmercarl.com/">代码随想录</a></p>
 
                 
