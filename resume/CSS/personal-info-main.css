@@ -201,11 +201,9 @@ html {
     margin-bottom: 25px;
     font-weight: 500 !important;
 }
-
 .card {
     border: 0;
     border-radius: 0.1875rem;
-    display: inline-block;
     position: relative;
     overflow: hidden;
     width: 100%;
@@ -217,73 +215,78 @@ html {
     transition: all .3s ease-out;
     border-radius: 1%;
     text-align: left;
-}
-
-.about-section .card:hover,
-.skill-section .card:hover,
-.experience-section .card:hover,
-.portfolio-section .card:hover {
+ }
+ 
+ .about-section .card:hover,
+ .skill-section .card:hover,
+ .experience-section .card:hover,
+ .portfolio-section .card:hover {
     transform: scale(1.02, 1.02) !important;
-}
-.about-row {
-    flex-direction: row; /* 默认竖向排列 */
-}
-
-/* 可以调整小屏幕下的卡片样式，如果需要的话 */
-.about-col-left, .about-col-right {
-    width: 100%; /* 占据全部宽度 */
-    margin-bottom: 15px; /* 可以添加一些底部间距 */
-}
-
-.basic-info-container {
+ }
+ .about-row {
+    display: flex; /* 设置为 flex 容器，即使在默认情况下也开启，方便管理 */
+    flex-direction: column; /* 默认垂直排列 */
+    gap: 0; /* 默认 gap 为 0 */
+ }
+ 
+ .about-col-left, .about-col-right {
+    width: 100%; /* 默认占据全部宽度 */
+    margin-bottom: 15px;
+ }
+ 
+ .basic-info-container {
     display: flex;
     flex-direction: column;
-}
-
-.info-item {
+ }
+ 
+ .info-item {
     display: flex;
     align-items: baseline;
-}
-
-.info-item strong {
+ }
+ 
+ .info-item strong {
     flex-shrink: 0;
     width: auto;
     margin-right: 0.5rem;
-}
-
-.skill-row-vertical {
-    display: flex;
-    flex-direction: row; /* 强制竖向排列 */
-}
-
-.skill-row-vertical > .col-lg-6,
-.skill-row-vertical > .col-md-12 {
-    width: 100%; /* 确保每个列占据全部宽度 */
-}
-/* 大屏幕样式 (横向排列) - 使用媒体查询 */
-@media (min-width: 992px) { /* 例如，当屏幕宽度大于或等于 992px 时应用横向布局 */
+ }
+ 
+ /* 大屏幕样式 (横向排列) */
+ @media (min-width: 992px) {
     .about-row {
-        flex-direction: row; /* 大屏幕上横向排列 */
+        flex-direction: row;
+        gap: 20px; /* 设置大屏幕上的左右间距为 20px (可调整) */
     }
-
-    .about-col-left, .about-col-right {
-        width: 50%; /* 各占一半宽度 */
-        margin-bottom: 0; /* 移除底部间距 */
-    }
-}
-
-/* 中等屏幕尺寸也可以根据需要进行调整 */
-@media (min-width: 768px) and (max-width: 991px) {
-    /* 可以选择在中等屏幕上也横向排列，或者保持竖向，并调整宽度等 */
-    .about-row {
-        flex-direction: row; /* 可以尝试在中等屏幕也横向排列 */
-    }
-
+ 
     .about-col-left, .about-col-right {
         width: 50%;
         margin-bottom: 0;
     }
-}
+ }
+ 
+ /* 中等屏幕尺寸 */
+ @media (min-width: 768px) and (max-width: 991px) {
+    .about-row {
+        flex-direction: row;
+        gap: 15px; /* 设置中等屏幕上的左右间距为 15px (可调整) */
+    }
+ 
+    .about-col-left, .about-col-right {
+        width: 50%;
+        margin-bottom: 0;
+    }
+ }
+ 
+ /* 小屏幕尺寸 */
+ @media (max-width: 767px) {
+    .about-row {
+        flex-direction: row; /* 恢复垂直排列 */
+        gap: -0px; /* 移除 gap，因为是垂直排列 */
+    }
+    .about-col-left, .about-col-right {
+        width: 50%;
+        margin-bottom: 15px;
+    }
+ }
 .h4 {
     font-size: 1.714em;
     line-height: 1.45em;
