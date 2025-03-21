@@ -3,10 +3,10 @@ var config = {
     name: "陈宇帆",
     sex: "男",
     age: "21",
-    phone: "10086",
-    email: "202212701@163.com",
+    phone: "0335-8062660",
+    email: "xsxzzl@neuq.edu.cn",
     college: "东北大学秦皇岛分校",
-    qq: "12234214321",
+    qq: "2429185119",
     log: "汤汁小白菜",
     excpect_work: "硕士",
 
