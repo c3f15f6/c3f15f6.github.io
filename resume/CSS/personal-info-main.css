@@ -205,7 +205,7 @@ html {
     border: 0;
     border-radius: 0.1875rem;
     position: relative;
-    overflow: hidden;
+    overflow: hiddente;
     width: 100%;
     margin-bottom: 20px;
     -webkit-box-shadow: -1px 5px 25px 0px rgb(0 0 0 / 20%);
@@ -225,36 +225,42 @@ html {
  }
  .about-row {
     display: flex; /* 设置为 flex 容器，即使在默认情况下也开启，方便管理 */
-    flex-direction: column; /* 默认垂直排列 */
+    flex-direction: row; /* 默认垂直排列 */
     gap: 0; /* 默认 gap 为 0 */
  }
  
  .about-col-left, .about-col-right {
     width: 100%; /* 默认占据全部宽度 */
     margin-bottom: 15px;
+    text-align: left;
  }
- 
  .basic-info-container {
     display: flex;
-    flex-direction: column;
- }
- 
- .info-item {
-    display: flex;
-    align-items: baseline;
- }
- 
- .info-item strong {
-    flex-shrink: 0;
-    width: auto;
-    margin-right: 0.5rem;
- }
+    flex-direction: column; /* 默认垂直排列每一项 */
+}
+
+.info-item {
+    display: flex; /* 让标签和值横向排列 */
+    align-items: baseline; /* 可以根据需要调整对齐方式 */
+}
+
+.info-item strong {
+    flex-shrink: 0; /* 标签不缩小 */
+    width: 80px; /* 设置标签的固定宽度，根据你的内容调整 */
+    margin-right: 10px; /* 标签和值之间的间距 */
+    text-align: left; /* 确保标签文本左对齐 */
+}
+
+.info-item > div {
+    flex-grow: 1; /* 值占据剩余空间 */
+    text-align: left; /* 确保值文本左对齐 */
+}
  
  /* 大屏幕样式 (横向排列) */
  @media (min-width: 992px) {
     .about-row {
         flex-direction: row;
-        gap: 20px; /* 设置大屏幕上的左右间距为 20px (可调整) */
+        gap: 0px; /* 设置大屏幕上的左右间距为 20px (可调整) */
     }
  
     .about-col-left, .about-col-right {
@@ -267,7 +273,7 @@ html {
  @media (min-width: 768px) and (max-width: 991px) {
     .about-row {
         flex-direction: row;
-        gap: 15px; /* 设置中等屏幕上的左右间距为 15px (可调整) */
+        gap: 0px; /* 设置中等屏幕上的左右间距为 15px (可调整) */
     }
  
     .about-col-left, .about-col-right {
@@ -278,13 +284,19 @@ html {
  
  /* 小屏幕尺寸 */
  @media (max-width: 767px) {
-    .about-row {
-        flex-direction: row; /* 恢复垂直排列 */
-        gap: -0px; /* 移除 gap，因为是垂直排列 */
+    .about-col-left {
+        display: none; /* 在小屏幕上隐藏左边的列 */
     }
-    .about-col-left, .about-col-right {
-        width: 50%;
-        margin-bottom: 15px;
+ 
+    .about-col-right {
+        width: 100%; /* 让右边的列在左边列隐藏后占据全部宽度 */
+        margin-bottom: 15px; /* 保留或调整底部间距 */
+    }
+    
+ 
+    .about-row {
+        flex-direction: row; /* 确保是垂直排列，虽然左边已经隐藏，但保持逻辑一致 */
+        gap: 0; /* 移除 gap，因为只有一个可见列 */
     }
  }
 .h4 {
