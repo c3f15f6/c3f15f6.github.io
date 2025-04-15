@@ -6,12 +6,10 @@
     <meta charset="utf-8">
     <meta name="keywords" content="代码随想录, 汤汁小白菜">
     <meta name="description" content="本文转载自https://programmercarl.com/
-1. 数组1.1. 滑动窗口不断调整起始位置和终止位置，处理一块区间内的数据。
-在本题中实现滑动窗口，主要确定如下三点：
+1. 数据结构问题1.1. map  unordered_map&amp;lt; , &amp;gt;  底层结构哈希
 
-窗口内是什么？
-如何移动窗口的起始位置？
-如何移动">
+map[ ]插入节点
+map.find() !&amp;#x3D; map.">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -430,21 +428,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-03-24
+                    2025-04-14
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    782
+                    1.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    4 分
                 </div>
                 
 
@@ -468,7 +466,36 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>本文转载自<a target="_blank" rel="noopener" href="https://programmercarl.com/">https://programmercarl.com/</a></p>
-<h1 id="数组">1. 数组</h1><h2 id="滑动窗口">1.1. 滑动窗口</h2><p>不断调整起始位置和终止位置，处理一块区间内的数据。</p>
+<h1 id="数据结构问题">1. 数据结构问题</h1><h2 id="map">1.1. map</h2><p><unordered_map>  unordered_map&lt; , &gt;  底层结构哈希</unordered_map></p>
+<ol>
+<li>map[ ]插入节点</li>
+<li>map.find() !&#x3D; map.end() 查询到节点</li>
+</ol>
+<h2 id="unordered-set">1.2. unordered_set</h2><p>unordered_set 大致与unordered_map 用法相同</p>
+<ol>
+<li>set.insert()插入数据</li>
+</ol>
+<h2 id="vector">1.3. vector&lt;&gt;</h2><p><vector>  vector&lt;&gt; </vector></p>
+<ol>
+<li>插入数据 vector.insert(vector.begin() + insert_pos, valus)<ol>
+<li>插入一个数据，如上</li>
+<li>插入重复数据，vector.insert(vector.begin() , count ,value)</li>
+<li>插入一个迭代器， vector.insert(old.end(), new.begin() , new.end())，将新的vector插入在旧的vector的结尾</li>
+</ol>
+</li>
+<li>清除数据 <ol>
+<li>删除一个元素，vector.erase(vector.begin())， 返回被删除的元素</li>
+<li>删除方位内的元素， vector.erase(vector.begin, vector.end())</li>
+</ol>
+</li>
+</ol>
+<h2 id="queue队列">1.4. queue队列</h2><p>include <queue>  queue<int> </int></queue></p>
+<ol>
+<li>queue.front ，访问队首数据</li>
+<li>queue.pop , 弹出队首</li>
+<li>queue.push</li>
+</ol>
+<h1 id="数组">2. 数组</h1><h2 id="滑动窗口">2.1. 滑动窗口</h2><p>不断调整起始位置和终止位置，处理一块区间内的数据。</p>
 <p>在本题中实现滑动窗口，主要确定如下三点：</p>
 <ul>
 <li><strong>窗口内是什么？</strong></li>
@@ -480,12 +507,12 @@
 <img src="https://code-thinking-1253855093.file.myqcloud.com/pics/20210312160441942.png" alt="滑动窗口" style="zoom:67%;">
 
 <p>窗口的结束位置如何移动：窗口的结束位置就是遍历数组的指针，也就是for循环里的索引。</p>
-<h2 id="螺旋数组">1.2. 螺旋数组</h2><p><strong>确定边界处理的不变量，确保每个子问题的结构都是相同的</strong></p>
+<h2 id="螺旋数组">2.2. 螺旋数组</h2><p><strong>确定边界处理的不变量，确保每个子问题的结构都是相同的</strong></p>
 <p>每画一条边都要坚持一致的左闭右开，或者左开右闭的原则，这样这一圈才能按照统一的规则画下来。</p>
 <p>左闭右开后，每次处理n-1个数据，每减少一圈，处理数据-1</p>
 <img src="https://code-thinking-1253855093.file.myqcloud.com/pics/20220922102236.png" alt="左闭右开原则" style="zoom:50%;">
 
-<h2 id="前缀和">1.3. 前缀和</h2><p>将之间计算的结果累加保存在数据中，之后使用时使用结算完成的数组</p>
+<h2 id="前缀和">2.3. 前缀和</h2><p>将之间计算的结果累加保存在数据中，之后使用时使用结算完成的数组</p>
 <p><strong>需要更具题目要求，选择计算什么样的前缀数组</strong></p>
 <pre class="line-numbers language-cpp"><code class="language-cpp"> <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">~</span><span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d%d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>a<span class="token punctuation">,</span> <span class="token operator">&amp;</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//按位取反，如果结果是eof=-1,取反之后结果为0</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -494,14 +521,14 @@
 <p><img src="/2024/09/24/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/09/24/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/test.jpg" alt="test"></p>
 <p><img src="/2024/09/24/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/09/24/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/cin%EF%BC%8Cscanf%E9%80%9F%E5%BA%A6.jpg" alt="cin/scanf"></p>
 <p>就当是没有图片了吧，在本地无法显示的图片，在博客中显示了。</p>
-<h2 id="哈希表">1.4. 哈希表</h2><h3 id="数组作为哈希表">1.4.1. 数组作为哈希表</h3><h3 id="stl中的哈希表">1.4.2. stl中的哈希表</h3><p>此时就要使用另一种结构体了，set ，关于set，C++ 给提供了如下三种可用的数据结构：</p>
+<h2 id="哈希表">2.4. 哈希表</h2><h3 id="数组作为哈希表">2.4.1. 数组作为哈希表</h3><h3 id="stl中的哈希表">2.4.2. stl中的哈希表</h3><p>此时就要使用另一种结构体了，set ，关于set，C++ 给提供了如下三种可用的数据结构：</p>
 <ul>
 <li>std::set</li>
 <li>std::multiset</li>
 <li>std::unordered_set</li>
 </ul>
 <p>std::set和std::multiset底层实现都是红黑树，std::unordered_set的底层实现是哈希表， 使用unordered_set 读写效率是最高的，并不需要对数据进行排序，而且还不要让数据重复，所以选择unordered_set。</p>
-<h2 id="回溯算法">1.5. 回溯算法</h2><p>算法的模板</p>
+<h2 id="回溯算法">2.5. 回溯算法</h2><p>算法的模板</p>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">backtracking</span><span class="token punctuation">(</span>参数<span class="token punctuation">)</span><span class="token punctuation">{</span>
     <span class="token keyword">if</span><span class="token punctuation">(</span>终止条件）<span class="token punctuation">{</span>
         存放结果<span class="token punctuation">;</span>
@@ -521,12 +548,50 @@
 </blockquote>
 <p>使用切割时候，需要注意下一次开始为本次切割后的下一次位置，此处回溯时候不需要还原，其余元素均需要还原。还原时候注意还原的位置。</p>
 <p><a target="_blank" rel="noopener" href="https://programmercarl.com/0131.%E5%88%86%E5%89%B2%E5%9B%9E%E6%96%87%E4%B8%B2.html#%E7%AE%97%E6%B3%95%E5%85%AC%E5%BC%80%E8%AF%BE">回溯问题</a></p>
-<h3 id="分割字符串方法">1.5.1. 分割字符串方法</h3><ol>
+<h3 id="分割字符串方法">2.5.1. 分割字符串方法</h3><ol>
 <li>函数传递，参数<code>s + start + end</code></li>
 <li>使用string 切割，<code>string s = s.substr(start, end)</code></li>
 </ol>
-<h3 id="两阶vector初始化方法">1.5.2. 两阶vector初始化方法</h3><p><code> is_palind_rome.resize(s.size(), vector&lt;bool&gt;(s.size(), false));</code></p>
-<h1 id="感谢">2. 感谢</h1><p><a target="_blank" rel="noopener" href="https://programmercarl.com/">代码随想录</a></p>
+<h3 id="两阶vector初始化方法">2.5.2. 两阶vector初始化方法</h3><p><code> is_palind_rome.resize(s.size(), vector&lt;bool&gt;(s.size(), false));</code></p>
+<h2 id="图论">2.6. 图论</h2><h3 id="并查集的实现-并查集理论基础-代码随想录">2.6.1. 并查集的实现   并查集理论基础 | 代码随想录</h3><ol>
+<li>并查集，是将一个集合内所有数据放入一个连通图中，即为father[u]&#x3D; v；</li>
+<li>查询一个并查集，是查询根节点是否相同，find(u)&#x3D;&#x3D; find(v)</li>
+<li>初始化，所有的并查集都指向自身</li>
+<li>路径压缩，节点在find过程中都执行根节点</li>
+</ol>
+<pre class="line-numbers language-c++"><code class="language-c++">// 使用数据存放并查集
+
+vector&lt;int&gt; father(n, 0);
+void init(){
+    for(int i = 0;i&lt; father.size();i++){
+        father[i]= i;
+    }
+}
+
+int find(int u){
+    if(father[u]==u) return u;
+    else {
+        father[u]=find(father[u]);// 路径压缩，指向根节点
+    }
+    return father[u];
+}
+
+int is_same(int u, int v){
+    int a = find(u);
+    int b = find(v);
+    if(a == b) return 1;
+    else return 0;
+}
+
+void join(int u, int v){
+    int a = find(u);
+    int b = find(v);
+    if(a == b) return ;
+    father[u]= v;
+    return ;
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="感谢">3. 感谢</h1><p><a target="_blank" rel="noopener" href="https://programmercarl.com/">代码随想录</a></p>
 
                 
             </div>
@@ -1228,7 +1293,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">4.8k</span>
+                        class="white-color">5.2k</span>
             
             
             
