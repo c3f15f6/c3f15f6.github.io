@@ -63,10 +63,10 @@ var config = {
         "     <li>操作系统、计算机网络等编程基础知识良好。</li>" +
         "     <li>熟练掌握Java基础。</li>" +
         "     <li>熟悉C++、多线程、STL等基础框架。</li>" +
-        "     <li>了解JVM原理。</li>" +
-        "     <li>熟悉SQL语句编写以及调优。</li>" +
+        // "     <li>了解JVM原理。</li>" +
+        "     <li>熟悉SQL数据库设计。</li>" +
         "     <li>熟悉基本Linux命令操作。</li>" +
-        "     <li>熟悉Spring等框架的使用，了解其原理与机制。</li>" +
+        "     <li>熟悉Spring boot的使用。</li>" +
         "     <li>了解Hadoop分布式系统的设计与应用。</li>" +
         " </ul>",
 
@@ -77,11 +77,14 @@ var config = {
      * img表示您的作品图片链接，url表示您的项目地址，ProjectName表示您的仓库或作品名称，brief是一句简短的介绍
      * 通过查看实际效果以调整字题长度
      */
-    // portfolio: [
-    //     ["./images/pro-1.png", "https://cyfblogsite.xin/", "个人博客", "这里记录了我遇到的问题与解决方法"]
-    //     // ["./images/pro-2.png", "https://github.com/happysnaker/Gobang", "智能人机对战五子棋", "采用C++编写的智能五子棋人机对战<br>2021/7/23"],
-    //     // ["https://pic3.zhimg.com/80/v2-d9766956d5c85c2780e4c5008fd946ca_1440w.jpg", "https://github.com/happysnaker/StudentsManageSystem", "学生管理系统", "C语言+AVL树+多重双向表实现"]
-    // ],
+    portfolio: [
+        ["./images/pro-1.png", "https://cyfblogsite.xin/", "个人博客", "这里记录了我遇到的问题与解决方法"],
+        ["./images/M2M.png","https://github.com/BioLab310/M2M","M2M", "M2M: Subgraph Matching Based on Minimum Spanning Tree and Candidate Graph"],
+        ["./images/gTRFinder.png", "https://github.com/BioLab310/gTRFinder", "gTRFinder", "gTRFinder: A De Bruijn Graph Based Tandem Repeat Finder for Accurate Genomic Detection"]
+
+        // ["./images/pro-2.png", "https://github.com/happysnaker/Gobang", "智能人机对战五子棋", "采用C++编写的智能五子棋人机对战<br>2021/7/23"],
+        // ["https://pic3.zhimg.com/80/v2-d9766956d5c85c2780e4c5008fd946ca_1440w.jpg", "https://github.com/happysnaker/StudentsManageSystem", "学生管理系统", "C语言+AVL树+多重双向表实现"]
+    ],
 
 
     /**
