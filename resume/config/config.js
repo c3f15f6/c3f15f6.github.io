@@ -78,9 +78,9 @@ var config = {
      * 通过查看实际效果以调整字题长度
      */
     portfolio: [
-        ["./images/pro-1.png", "https://cyfblogsite.xin/", "个人博客", "这里记录了我遇到的问题与解决方法"],
-        ["./images/M2M.png","https://github.com/BioLab310/M2M","M2M", "M2M: Subgraph Matching Based on Minimum Spanning Tree and Candidate Graph"],
-        ["./images/gTRFinder.png", "https://github.com/BioLab310/gTRFinder", "gTRFinder", "gTRFinder: A De Bruijn Graph Based Tandem Repeat Finder for Accurate Genomic Detection"]
+        ["./images/pro-1.jpg", "https://cyfblogsite.xin/", "个人博客", "这里记录了我遇到的问题与解决方法"],
+        ["./images/M2M.jpg","https://github.com/BioLab310/M2M","M2M", "M2M: Subgraph Matching Based on Minimum Spanning Tree and Candidate Graph"],
+        ["./images/gTRFinder.jpg", "https://github.com/BioLab310/gTRFinder", "gTRFinder", "gTRFinder: A De Bruijn Graph Based Tandem Repeat Finder for Accurate Genomic Detection"]
 
         // ["./images/pro-2.png", "https://github.com/happysnaker/Gobang", "智能人机对战五子棋", "采用C++编写的智能五子棋人机对战<br>2021/7/23"],
         // ["https://pic3.zhimg.com/80/v2-d9766956d5c85c2780e4c5008fd946ca_1440w.jpg", "https://github.com/happysnaker/StudentsManageSystem", "学生管理系统", "C语言+AVL树+多重双向表实现"]
@@ -153,7 +153,7 @@ var config = {
         //背景图、头像、作品展示背景、其他经历背景
         "./images/intro-bg.jpg",
         "./images/2.jpg",
-        "./images/work-bk.png",
+        "./images/work-bk.jpg",
         "./images/4.jpg"
     ]
 
