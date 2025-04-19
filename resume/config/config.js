@@ -3,7 +3,7 @@ var config = {
     name: "陈宇帆",
     sex: "男",
     age: "21",
-    phone: "10086",
+    phone: "17362658676",
     email: "202212701@163.com",
     college: "东北大学秦皇岛分校",
     qq: "12234214321",
