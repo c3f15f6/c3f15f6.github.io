@@ -41,11 +41,12 @@
     overflow-y: auto;
 } */
 body {
-    background-color: #eaeaea;
-    background: linear-gradient(60deg, rgba(255, 165, 150, 0.5) 5%, rgba(0, 228, 255, 0.35)) 0% 0% / cover, url("https://ae01.alicdn.com/kf/H18a4b998752a4ae68b8e85d432a5aef0l.png"), url("https://ae01.alicdn.com/kf/H21b5f6b8496141a1979a33666e1074d9x.jpg") 0px 0px;
+    /* background-color: #eaeaea; */
+    background: linear-gradient(135deg, rgba(255, 0, 150, 0.3), rgba(0, 204, 255, 0.3)
+    ) 0% 0% / cover, url("https://ae01.alicdn.com/kf/H18a4b998752a4ae68b8e85d432a5aef0l.png"), url("https://ae01.alicdn.com/kf/H21b5f6b8496141a1979a33666e1074d9x.jpg") 0px 0px;
     background-attachment: fixed;
     margin: 0;
-    color: #0a0c11;
+    color:  rgb(9, 0, 7);
 }
 
 h1 {
@@ -242,13 +243,45 @@ mark {
     /* 修改文章列表图片填充样式为 cover 以覆盖整个区域而不会被缩放 */
     object-fit: cover;
 }
-
+.bg-cover.about-cover {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+.card .card-image .acrylic-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px) brightness(10%);
+    background-color: rgba(243, 136, 136, 0.434);
+    pointer-events: none;
+}
+.bg-cover::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(0px) brightness(0.7);
+    background: linear-gradient(135deg, rgba(255, 0, 150, 0.3), rgba(0, 204, 255, 0.3));
+    background-color: rgba(255, 255, 255, 0.2);
+    z-index: 1;
+    pointer-events: none;
+}
+.bg-cover .container {
+    position: relative;
+    z-index: 2;
+}
 .container .row {
     margin-bottom: 0;
 }
 
 .bg-color {
-    background-image: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%);
+    background: linear-gradient(135deg, rgba(255, 0, 150, 0.3), rgba(0, 204, 255, 0.3));
 }
 
 .text-color {
@@ -256,7 +289,7 @@ mark {
 }
 
 .white-color {
-    color: #fff;
+    color: #ff9494;
 }
 
 .progress-bar {
@@ -264,7 +297,7 @@ mark {
     position: fixed;
     bottom: 0;
     z-index: 300;
-    background: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%);
+    background: linear-gradient(to right, #56bc3ca4 0%, #0f9d58c1 100%);
     opacity: 0.8;
 }
 
@@ -1981,7 +2014,7 @@ p.search-result-summary{
 }
 
 .lg-sub-html .center-caption {
-    color: #fff !important;
+    color: #ef5e5e !important;
     border-bottom: none;
 }
 
