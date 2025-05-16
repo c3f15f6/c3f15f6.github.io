@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <meta name="keywords" content="transformer, 汤汁小白菜">
     <meta name="description" content="1. Transformer1.1. 模型基本框架
+
 1.2. 编码器
 通过嵌入层
 对位置进行编码
@@ -23,7 +24,7 @@
 
 
 
-class Transformer">
+class Transforme">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -446,21 +447,21 @@ class Transformer">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-05-08
+                    2025-05-16
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.6k
+                    2.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    7 分
+                    9 分
                 </div>
                 
 
@@ -484,6 +485,7 @@ class Transformer">
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="Transformer">1. Transformer</h1><h2 id="模型基本框架">1.1. 模型基本框架</h2><p><img src="/2025/04/25/Transformer/image-20250425173522602.png" alt="image-20250425173522602"></p>
+<p><img src="/2025/04/25/Transformer/image-20250516114212148.png" alt="image-20250516114212148"></p>
 <h2 id="编码器">1.2. 编码器</h2><ol>
 <li>通过嵌入层</li>
 <li>对位置进行编码</li>
@@ -598,8 +600,9 @@ class Transformer">
         output <span class="token operator">=</span> self<span class="token punctuation">.</span>attention<span class="token punctuation">(</span>query<span class="token punctuation">,</span> key <span class="token punctuation">,</span>value<span class="token punctuation">,</span> valid_len<span class="token punctuation">)</span>
         
         output_concat<span class="token operator">=</span>transpose_output<span class="token punctuation">(</span>output<span class="token punctuation">,</span> self<span class="token punctuation">.</span>num_heads<span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 输出为（batch_size, query_size, hidden_size)</span>
         <span class="token keyword">return</span> self<span class="token punctuation">.</span>W_o<span class="token punctuation">(</span>output_concat<span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="残差-规范化层">1.2.1.2. 残差+规范化层</h4><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">AddNorm</span><span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token triple-quoted-string string">"""残差连接后进行层规范化"""</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> normalized_shape<span class="token punctuation">,</span> dropout<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -631,7 +634,8 @@ class Transformer">
 <li><p>训练状态下使用小批次的样本均值与方差，测试状态使用的移动平均估算的均值与方差</p>
 </li>
 </ol>
-<h3 id="前馈网络层">1.2.2. 前馈网络层</h3><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">PositionWiseFFN</span><span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<h3 id="前馈网络层">1.2.2. 前馈网络层</h3><p>这里的线性层可以使用1*1cnn网络代替，代替结果</p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">PositionWiseFFN</span><span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token triple-quoted-string string">"""基于位置的前馈网络"""</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> ffn_num_input<span class="token punctuation">,</span> ffn_num_hiddens<span class="token punctuation">,</span> ffn_num_outputs<span class="token punctuation">,</span>
                  <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -649,7 +653,10 @@ class Transformer">
 <li>对位置进行编码</li>
 <li>经过解码器层<ol>
 <li>第一个注意力层 ， query ,key, value,都是解码器输入</li>
-<li>第二个注意力层， query 来自解码器输入 ， key, values来自编码器输入</li>
+<li>第二个注意力层， query 来自解码器输入 ， key, values来自编码器输入<ol>
+<li>交叉注意力机制中，<strong>key,value</strong>来源使用一致，这里key,values来自编码器输入</li>
+</ol>
+</li>
 <li>前馈神经网络</li>
 </ol>
 </li>
@@ -716,10 +723,12 @@ class Transformer">
         <span class="token comment" spellcheck="true"># 预测阶段，输出序列是通过词元一个接着一个解码的，</span>
         <span class="token comment" spellcheck="true"># 因此state[2][self.i]包含着直到当前时间步第i个块解码的输出表示</span>
         <span class="token keyword">if</span> state<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">[</span>self<span class="token punctuation">.</span>i<span class="token punctuation">]</span> <span class="token keyword">is</span> None<span class="token punctuation">:</span>
+            <span class="token comment" spellcheck="true"># 使用当前输入的数据进行预测</span>
             key_values <span class="token operator">=</span> X
         <span class="token keyword">else</span><span class="token punctuation">:</span>
             <span class="token triple-quoted-string string">'''
-            state[2] 中存放者上一个时间步，留下的已经计算好的key_value
+            state[2] 中存放者上一个时间步，留下的已经每个块之前计算好的key_value
+            # 加上y_t之前的数据一起预测
             '''</span>
             key_values <span class="token operator">=</span> torch<span class="token punctuation">.</span>cat<span class="token punctuation">(</span><span class="token punctuation">(</span>state<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">[</span>self<span class="token punctuation">.</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> X<span class="token punctuation">)</span><span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>
         state<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">[</span>self<span class="token punctuation">.</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> key_values
@@ -741,7 +750,57 @@ class Transformer">
         Z <span class="token operator">=</span> self<span class="token punctuation">.</span>addnorm2<span class="token punctuation">(</span>Y<span class="token punctuation">,</span> Y2<span class="token punctuation">)</span>
         <span class="token keyword">return</span> self<span class="token punctuation">.</span>addnorm3<span class="token punctuation">(</span>Z<span class="token punctuation">,</span> self<span class="token punctuation">.</span>ffn<span class="token punctuation">(</span>Z<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> state
         
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>在transformer结构中，query与key权重对values值进行查询，values值是编码器的输入，为什么就可以查询到解码器想要的结果呢？比如，编码器编码我是李华，解码器对I 查询 我，ji</p>
+<h2 id="优化">1.4. 优化</h2><p>Adam， 自动调整学习率</p>
+<p>warm up 和逆平方根衰减</p>
+<h2 id="BERT">1.5. BERT</h2><h3 id="预训练（无监督-自监督）">1.5.1. 预训练（无监督&#x2F;自监督）</h3><p>自监督</p>
+<ol>
+<li>完形填空</li>
+<li>预测下一句</li>
+</ol>
+<h3 id="微调（有监督）">1.5.2. 微调（有监督）</h3><p>需要根据下游任务添加输出层，添加的层需要重新训练</p>
+<ol>
+<li>两个句子分类</li>
+<li>单个句子的分类</li>
+<li>问答任务<ol>
+<li>找到答案正确的文本位置</li>
+</ol>
+</li>
+<li>命名实体位置标记<ol>
+<li>标记实体位置（begin ,inside ,O（非实体））</li>
+</ol>
+</li>
+</ol>
+<h2 id="Decoder-only">1.6. Decoder_only</h2><p><strong>优点</strong>：</p>
+<ol>
+<li>Decoder-only的注意力矩阵始终是满秩，表达能力更强</li>
+<li>不会浪费Encoder的参数，输入可以直接作用与decoder</li>
+</ol>
+<h3 id="预训练">1.6.1. 预训练</h3><p>test prediction 预测文本</p>
+<h3 id="微调">1.6.2. 微调</h3><p>test prediction + task classfication 的损失相加</p>
+<p><img src="/2025/04/25/Transformer/image-20250516123238590.png" alt="task"></p>
+<h2 id="GPT-2">1.7. GPT-2</h2><p><strong>无需微调，预训练的模型就可以解决下游任务</strong></p>
+<p><img src="/2025/04/25/Transformer/image-20250516123552285.png" alt="image-20250516123552285"></p>
+<p>Zero-shot, One-shot, Few-shot</p>
+<p>使用任务提示（prompt）和少量示例直接输入</p>
+<h3 id="lay-N放在模块前">1.7.1. lay N放在模块前</h3><ol>
+<li>尺度定律： 模型的大小与Loss线性拟合</li>
+<li>涌现能力： 大模型效果迅速提升</li>
+</ol>
+<h2 id="GPT">1.8. GPT</h2><p>参数数量增多，需要减少计算量。</p>
+<h3 id="sparse-attention">1.8.1. sparse attention</h3><p>减少attention的计算量，只关注临近部分和前面的部分权重</p>
+<p><img src="/2025/04/25/Transformer/image-20250516124911687.png" alt="image-20250516124911687"></p>
+<h3 id="chatgpt">1.8.2. chatgpt</h3><p>增加人类反馈强化学习（RLHF) ,与人互动</p>
+<h2 id="LLAMA">1.9. LLAMA</h2><h3 id="swiGLU">1.9.1. swiGLU</h3><p><img src="/2025/04/25/Transformer/image-20250516155254082.png" alt="image-20250516155254082"></p>
+<p>使用swi激活函数，同时使用门控机制（GLU)，选择性激活函数</p>
+<p>优点： swish激活函数更平滑，GLU实现选择性激活</p>
+<h3 id="GQA-grouped-query-attention">1.9.2. GQA-grouped-query attention</h3><p>减少k,v的head 数量，query共享重复的k,v，减少参数</p>
+<p><img src="/2025/04/25/Transformer/image-20250516155516226.png" alt="image-20250516155516226"></p>
+<h3 id="layer-norm-变体">1.9.3. layer norm 变体</h3><p>RMSNorm:均方根归一化</p>
+<p><strong>取出平移，只保留缩放</strong></p>
+<p>优点：计算简单</p>
+<p><img src="/2025/04/25/Transformer/image-20250516160128424.png" alt="image-20250516160128424"></p>
 
                 
             </div>
@@ -1455,7 +1514,7 @@ class Transformer">
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">14.3k</span>
+                        class="white-color">14.8k</span>
             
             
             
