@@ -430,14 +430,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-05-08
+                    2025-05-16
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.1k
+                    2.2k
                 </div>
                 
 
@@ -715,18 +715,23 @@
         
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="点积注意力">2.1.3. 点积注意力</h3><p>计算效率高，但是要求query, key具有相同的张量长度，权重函数：<br>$$<br>a(\mathbf q, \mathbf k) &#x3D; \mathbf{q}^\top \mathbf{k}  &#x2F;\sqrt{d}<br>$$</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">DotProductAttention</span><span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<p>方差缩放，防止梯度消失</p>
+<pre class="line-numbers language-python"><code class="language-python">
+<span class="token keyword">class</span> <span class="token class-name">DotProductAttention</span><span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> dropout<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
         super<span class="token punctuation">(</span>DotProductAttention<span class="token punctuation">,</span> self<span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
         self<span class="token punctuation">.</span>dropout <span class="token operator">=</span> nn<span class="token punctuation">.</span>Dropout<span class="token punctuation">(</span>dropout<span class="token punctuation">)</span>
         
    <span class="token keyword">def</span> <span class="token function">forward</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> query<span class="token punctuation">,</span> key<span class="token punctuation">,</span>values<span class="token punctuation">,</span> valid_lens<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        
+        <span class="token comment" spellcheck="true"># attention(batch_size, query_size, key_size)</span>
         attention <span class="token operator">=</span> torch<span class="token punctuation">.</span>bmm<span class="token punctuation">(</span>query<span class="token punctuation">,</span> key<span class="token punctuation">.</span>transpose<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">/</span> math<span class="token punctuation">.</span>sqrt<span class="token punctuation">(</span>d<span class="token punctuation">)</span>
         self<span class="token punctuation">.</span>attention_weight <span class="token operator">=</span> masked_softmax<span class="token punctuation">(</span>attention<span class="token punctuation">,</span> valid_len<span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 输出(batch_size, query_size, feature_size)</span>
         <span class="token keyword">return</span> torch<span class="token punctuation">.</span>bmm<span class="token punctuation">(</span>self<span class="token punctuation">.</span>dropout<span class="token punctuation">(</span>self<span class="token punctuation">.</span>attention_weight<span class="token punctuation">)</span><span class="token punctuation">,</span> values<span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="多头注意力">2.1.4. 多头注意力</h3><p>将键值对分为多个子空间，每个注意力机制学习一个子空间的特征，得到H组的注意力权重，然后将注意力权重通过线性层汇聚</p>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="多头注意力">2.1.4. 多头注意力</h3><p>使用多个结构一样，参数不一样的注意力去学习不同的知识</p>
+<p><img src="/2025/04/24/%E7%BC%96%E7%A0%81%E5%99%A8%20-%20%E8%A7%A3%E7%A0%81%E5%99%A8/image-20250516113430112.png" alt="image-20250516113430112"></p>
+<p>将键值对分为多个子空间，每个注意力机制学习一个子空间的特征，得到H组的注意力权重，然后将注意力权重通过线性层汇聚</p>
 <p><img src="/2025/04/24/%E7%BC%96%E7%A0%81%E5%99%A8%20-%20%E8%A7%A3%E7%A0%81%E5%99%A8/image-20250425155705305.png" alt="image-20250425155705305"></p>
 <p>常规思路：</p>
 <ol>
@@ -1476,7 +1481,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">14.8k</span>
+                        class="white-color">15.4k</span>
             
             
             

@@ -5,8 +5,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="汤汁小白菜">
-    <meta name="description" content="1. 大模型1.1. 预训练1.1.1. 词表化1.1.1.1. BBPE(byte-level BPE)单词量过大时，每一个单词一个token使用，词表空间较大
-单词使用字节标识，采用unicode 编码作为最小颗粒度，将单词切割为字节t">
+    <meta name="description" content="1. 大模型训练流程
+
+1.1. 预训练无监督学习，学习先验的背景知识
+大模型的输出总的概率与原数据比较，不需要$$L(u) &amp;#x3D;\sum_{i}{\log(p(u_i| u_0,…, u_{i-1})|\theta)}$$
+
+数据">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -412,21 +416,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-05-09
+                    2025-05-16
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    607
+                    1.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    3 分
                 </div>
                 
 
@@ -449,17 +453,79 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="大模型">1. 大模型</h1><h2 id="预训练">1.1. 预训练</h2><h3 id="词表化">1.1.1. 词表化</h3><h4 id="BBPE-byte-level-BPE">1.1.1.1. BBPE(byte-level BPE)</h4><p>单词量过大时，每一个单词一个token使用，词表空间较大</p>
+                <h1 id="大模型">1. 大模型</h1><p>训练流程</p>
+<p><img src="/2025/05/09/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250516165010562.png" alt="image-20250516165010562"></p>
+<h2 id="预训练">1.1. 预训练</h2><p>无监督学习，学习先验的背景知识</p>
+<p>大模型的输出总的概率与原数据比较，不需要<br>$$<br>L(u) &#x3D;\sum_{i}{\log(p(u_i| u_0,…, u_{i-1})|\theta)}<br>$$</p>
+<ol>
+<li><p>数据获取</p>
+<ol>
+<li>网页爬取，数据没有处理</li>
+<li>重复</li>
+<li>拼写错误</li>
+</ol>
+</li>
+<li><p>数据清洗</p>
+<ol>
+<li><p>转换文本格式</p>
+</li>
+<li><p>去重</p>
+<ol>
+<li>URL爬取的网站去重</li>
+<li>文档的相似度</li>
+<li>对文档分组30M， 超过6次重复， 删除其余5行</li>
+<li>启发式过滤，使用token级的KL散度去重</li>
+</ol>
+<p><img src="/2025/05/09/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250516172556394.png" alt="image-20250516172556394"></p>
+</li>
+<li><p>数据打包</p>
+<ol>
+<li><bos> <eos></eos></bos></li>
+<li>一行一行的训练，而不是一句一句的训练</li>
+</ol>
+</li>
+<li><p>观测模型，使用测试集对中间模型测试</p>
+</li>
+<li><p>数据比例，代码模型中平衡代码补全（中间填充）与代码编写（从前向后编写）的任务，两种数据集都需要</p>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="继续预训练">1.1.1. 继续预训练</h3><p>当前的base model 对于专业领域的效果很差，继续与训练补全知识。</p>
+<p>加入新的数据，调整学习率</p>
+<ol>
+<li>warmup 的步数不会影响最终的结果</li>
+<li>学习率较大，下游任务更好</li>
+<li>对原有模型继续warmup，效果更差</li>
+</ol>
+<p>使用梯形的学习率，保存拐点位置的学习率，继续预训练时候，使用拐点数据预训练，保持较高的搜索速度，拟合新增的数据集</p>
+<p><img src="/2025/05/09/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250516173720277.png" alt="image-20250516173720277"></p>
+<h3 id="scaling-up">1.1.2. scaling up</h3><p>扩大模型的参数和容量</p>
+<h3 id="尺度定律">1.1.3. 尺度定律</h3><p>模型的损失是可预测的，与模型的算力，大小，数据集有较大的关系</p>
+<ol>
+<li>模型的参数</li>
+<li>数据的大小</li>
+<li>算力</li>
+</ol>
+<p>与模型的形状没有什么影响</p>
+<ol start="4">
+<li>同等算力下，大模型学习的比小模型学习的更好</li>
+<li>模型的算力与能够训练模型的大小与数据量具有一定的关系</li>
+</ol>
+<p>增大了模型大小8倍，数据量需要响应的变化5倍</p>
+<p><img src="/2025/05/09/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250516175829139.png" alt="image-20250516175829139"></p>
+<p>queding</p>
+<h2 id="预训练-1">1.2. 预训练</h2><h3 id="词表化">1.2.1. 词表化</h3><h4 id="BBPE-byte-level-BPE">1.2.1.1. BBPE(byte-level BPE)</h4><p>单词量过大时，每一个单词一个token使用，词表空间较大</p>
 <p>单词使用字节标识，采用unicode 编码作为最小颗粒度，将单词切割为字节token</p>
 <p>例如，对于不存在的字节“待”，使用3个字节标识(中文在unicode编码中使用三个字节表示)</p>
 <p><img src="/2025/05/09/%E5%A4%A7%E6%A8%A1%E5%9E%8B/v2-4cd433a354233d03bc2aad15745a7285_1440w.jpg" alt="img"></p>
 <p><img src="/2025/05/09/%E5%A4%A7%E6%A8%A1%E5%9E%8B/v2-66a59222fb083b240eac861eb026c73c_r.jpg" alt="img"></p>
-<h3 id="模型预训练">1.1.2. 模型预训练</h3><p>采用无监督学习，学习输入文本的特征，学习语言语法</p>
+<h3 id="模型预训练">1.2.2. 模型预训练</h3><p>采用无监督学习，学习输入文本的特征，学习语言语法</p>
 <p>输入一堆文本，让模型做 Next Token Prediction 的任务，学习基础语法，初步学习。</p>
 <p>类似与transfomer论文中的对语言的输入学习输出。</p>
-<h2 id="指令微调">1.2. 指令微调</h2><p>GPT-3只能完成续写任务,InstructGPT可以根据指令回答问题</p>
+<h2 id="指令微调">1.3. 指令微调</h2><p>GPT-3只能完成续写任务,InstructGPT可以根据指令回答问题</p>
 <p><img src="/2025/05/09/%E5%A4%A7%E6%A8%A1%E5%9E%8B/v2-a7a8e7aed0750d189f792b19e8272dfe_r.jpg" alt="img"></p>
-<h3 id="监督学习">1.2.1. 监督学习</h3><p>给出指令问题，并给出答案，监督模型学习</p>
+<h3 id="监督学习">1.3.1. 监督学习</h3><p>给出指令问题，并给出答案，监督模型学习</p>
 <ol>
 <li><p>指令: 在面试中如何回答这个问题？</p>
 <ol>
@@ -475,14 +541,14 @@
 </li>
 </ol>
 <p>模型学习指令回答方式，准确的响应问题</p>
-<h2 id="奖励模型">1.3. 奖励模型</h2><p>之前，模型只是简单学习了语言学习的内容，但是并不知到语言中是否正确，或者错误，这将导致预训练模型中原先「错误」或「有害」的知识没能在 SFT 数据中被纠正。</p>
-<h3 id="利用偏序对训练奖励模型">1.3.1. 利用偏序对训练奖励模型</h3><p><img src="/2025/05/09/%E5%A4%A7%E6%A8%A1%E5%9E%8B/v2-29f8de16d921303fc6ee5c338fc68800_1440w.jpg" alt="img"></p>
+<h2 id="奖励模型">1.4. 奖励模型</h2><p>之前，模型只是简单学习了语言学习的内容，但是并不知到语言中是否正确，或者错误，这将导致预训练模型中原先「错误」或「有害」的知识没能在 SFT 数据中被纠正。</p>
+<h3 id="利用偏序对训练奖励模型">1.4.1. 利用偏序对训练奖励模型</h3><p><img src="/2025/05/09/%E5%A4%A7%E6%A8%A1%E5%9E%8B/v2-29f8de16d921303fc6ee5c338fc68800_1440w.jpg" alt="img"></p>
 <p>偏序对是指：不直接为每一个样本直接打分，而是标注这些样本的好坏顺序，标准A比B好多少，而不是具体的分数。</p>
 <blockquote>
 <p>直接打分：A句子（5分），B句子（3分）<br>偏序对标注：A &gt; B</p>
 </blockquote>
 <p>模型通过尝试最大化「好句子得分和坏句子得分之间的分差」，从而学会自动给每一个句子判分。</p>
-<h2 id="强化学习（Reinforcement-Learning，PPO）">1.4. 强化学习（Reinforcement Learning，PPO）</h2><p>进行Reward model之后，需要使用RM进化模型</p>
+<h2 id="强化学习（Reinforcement-Learning，PPO）">1.5. 强化学习（Reinforcement Learning，PPO）</h2><p>进行Reward model之后，需要使用RM进化模型</p>
 
                 
             </div>
@@ -1174,7 +1240,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">14.8k</span>
+                        class="white-color">15.4k</span>
             
             
             
