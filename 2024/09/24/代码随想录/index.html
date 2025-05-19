@@ -428,21 +428,21 @@ map.find() !&amp;#x3D; map.">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-05-10
+                    2025-05-18
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    1.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    6 分
                 </div>
                 
 
@@ -595,10 +595,68 @@ void join(int u, int v){
 <li>选择最小边e,v（e是树中，v是树外的数据）</li>
 <li>将节点v加入树中</li>
 <li>更新与v的节点的权重<ol>
-<li>此处记录树的连接关系</li>
+<li>此处记录树的连接关系，记录当前节点的父亲</li>
 </ol>
 </li>
 </ol>
+<h3 id="kruskal-算法">2.6.3. kruskal 算法</h3><ol>
+<li>完成并查集</li>
+<li>对边的权重排序</li>
+<li>选择最小边<ol>
+<li>如果在并查集中，跳过</li>
+<li>不在并查集中，加入节点树种</li>
+</ol>
+</li>
+</ol>
+<h3 id="拓扑排序">2.6.4. 拓扑排序</h3><ol>
+<li>计算节点入度</li>
+<li>选择入度为0 的节点，加入处理队列q, 并将入度替换为-1</li>
+<li>处理队列q<ol>
+<li>cur指向的所有节点，入度减1</li>
+<li>如果入度等于1，加入处理队列q, 并将入度替换为-1</li>
+<li>记录出队元素cur.</li>
+</ol>
+</li>
+</ol>
+<blockquote>
+<p>出队元素不等于总元素数量时， <strong>判断有向图中 存在环</strong></p>
+</blockquote>
+<h3 id="dijkstra算法">2.6.5. dijkstra算法</h3><p><strong><u>权值不能为负数，prim算法权值可以是负数，负数情况使用ford算法</u></strong></p>
+<ol>
+<li>选择最小边并且该节点没有被访问过</li>
+<li>标记该节点，已经被访问过</li>
+<li>更新非访问节点到源点的最小距离，同时当前节点的父亲</li>
+</ol>
+<h3 id="使用边权重的dijkstra算法">2.6.6. 使用边权重的dijkstra算法</h3><p>使用边的权值进行计算</p>
+<ol>
+<li>建立小顶堆</li>
+<li>从小顶堆中选择最小的边</li>
+<li>标记边连线的点已经被访问过了</li>
+<li>更新edge相连的顶点的权重</li>
+</ol>
+<h2 id="附录">2.7. 附录</h2><h3 id="建立小顶堆">2.7.1. 建立小顶堆</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> &amp;lt;queue&amp;gt;</span>
+<span class="token keyword">class</span> <span class="token class-name">mycomparison</span><span class="token punctuation">{</span>
+    <span class="token keyword">bool</span> <span class="token keyword">operator</span><span class="token punctuation">(</span><span class="token keyword">const</span> pair<span class="token operator">&amp;</span>lt<span class="token punctuation">;</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">&amp;</span>gt<span class="token punctuation">;</span><span class="token operator">&amp;</span> a<span class="token punctuation">,</span> <span class="token keyword">const</span> pair<span class="token operator">&amp;</span>lt<span class="token punctuation">;</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">&amp;</span>gt<span class="token punctuation">;</span><span class="token operator">&amp;</span> b<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> a<span class="token punctuation">.</span>second<span class="token operator">&amp;</span>gt<span class="token punctuation">;</span> b<span class="token punctuation">.</span>second<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+priority_queue<span class="token operator">&amp;</span>lt<span class="token punctuation">;</span>pair<span class="token operator">&amp;</span>lt<span class="token punctuation">;</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">&amp;</span>gt<span class="token punctuation">;</span><span class="token punctuation">,</span> vector<span class="token operator">&amp;</span>lt<span class="token punctuation">;</span>pair<span class="token operator">&amp;</span>lt<span class="token punctuation">;</span><span class="token keyword">int</span><span class="token punctuation">,</span><span class="token keyword">int</span><span class="token operator">&amp;</span>gt<span class="token punctuation">;</span><span class="token operator">&amp;</span>gt<span class="token punctuation">;</span> <span class="token punctuation">,</span> mycomparison<span class="token operator">&amp;</span>gt<span class="token punctuation">;</span> p<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">/*
+    a&amp;gt; b时 ，是小顶堆；
+    a&amp;lt; b时， 是大顶堆；
+*/</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="对vector数组进行排序">2.7.2. 对vector数组进行排序</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> &amp;lt;algorithm&amp;gt;</span>
+vector<span class="token operator">&amp;</span>lt<span class="token punctuation">;</span><span class="token keyword">int</span><span class="token operator">&amp;</span>gt<span class="token punctuation">;</span> edges<span class="token punctuation">;</span>
+<span class="token function">sort</span><span class="token punctuation">(</span>edges<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">,</span> edges<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token keyword">const</span> edge<span class="token operator">&amp;</span> a<span class="token punctuation">,</span> <span class="token keyword">const</span> edge<span class="token operator">&amp;</span> b<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">return</span> a<span class="token operator">&amp;</span>lt<span class="token punctuation">;</span> b<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">/*
+    a&amp;lt; b， 升序排序；
+    a&amp;gt; b， 降序排序；
+    默认情况是升序排序；
+*/</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1 id="感谢">3. 感谢</h1><p><a target="_blank" rel="noopener" href="https://programmercarl.com/">代码随想录</a></p>
 
                 
@@ -1301,7 +1359,7 @@ void join(int u, int v){
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">15.4k</span>
+                        class="white-color">15.8k</span>
             
             
             
