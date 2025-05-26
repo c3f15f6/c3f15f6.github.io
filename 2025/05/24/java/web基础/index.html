@@ -434,14 +434,14 @@ FILE类
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    1.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    8 分
                 </div>
                 
 
@@ -818,6 +818,115 @@ document<span class="token punctuation">.</span><span class="token function">que
 <span class="token keyword">let</span> hs <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span>#title<span class="token punctuation">)</span><span class="token punctuation">;</span>
 hs<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> <span class="token string">'修改后的内容'</span> <span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// innerHTML代表文本内容</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="时间监听">2.2.5. 时间监听</h3><p>语法： 事件源.addEvenListener(‘事件类型’, 事件触发执行的函数);</p>
+<ul>
+<li>事件源：document中对象</li>
+<li>事件类型： 点击click</li>
+<li>事件处理的函数：要做什么事</li>
+</ul>
+<h4 id="事件类型">2.2.5.1. 事件类型</h4><table>
+<thead>
+<tr>
+<th>鼠标</th>
+<th>click</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td>mouseenter</td>
+</tr>
+<tr>
+<td></td>
+<td>mouseleave</td>
+</tr>
+<tr>
+<td>键盘</td>
+<td>keydown 按键触发</td>
+</tr>
+<tr>
+<td></td>
+<td>keyup 按键抬起</td>
+</tr>
+<tr>
+<td>焦点</td>
+<td>focus 进入输入框</td>
+</tr>
+<tr>
+<td></td>
+<td>blur 离开输入框</td>
+</tr>
+<tr>
+<td>表单事件</td>
+<td>input 输入时触发</td>
+</tr>
+<tr>
+<td></td>
+<td>submit 提交时触发</td>
+</tr>
+</tbody></table>
+<pre class="line-numbers language-javascript"><code class="language-javascript"> <span class="token keyword">import</span> <span class="token punctuation">{</span>func1<span class="token punctuation">,</span> func2<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"./utils.js"</span> <span class="token comment" spellcheck="true">// js导入函数</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>utils.js中的内容</p>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">export</span> functtion <span class="token function">printLog</span><span class="token punctuation">(</span>msg<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">//使用export标记</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>html导入时候，需表明类型是模块化的js</p>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token entity" title="&lt;">&amp;lt;</span>script src="./js/1.js" type="module"<span class="token entity" title="&gt;">&amp;gt;</span><span class="token entity" title="&lt;">&amp;lt;</span>/script<span class="token entity" title="&gt;">&amp;gt;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="vue">2.3. vue</h2><p>Vue是一款构建用户界面的渐进式的JavaScript框架</p>
+<p>构建用户界面：针对数据构建</p>
+<p>渐进式：可以只使用一部分</p>
+<p><img src="/2025/05/24/java/web%E5%9F%BA%E7%A1%80/image-20250525174822695.png" alt="image-20250525174822695"></p>
+<ol>
+<li>准备<ol>
+<li>引入Vue模块 </li>
+<li>创建Vue程序的应用示例，控制视图的元素</li>
+<li>准备元素，被Vue控制</li>
+</ol>
+</li>
+<li>数据驱动<ol>
+<li>准备数据</li>
+<li>通过差值表达式渲染界面</li>
+</ol>
+</li>
+</ol>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token entity" title="&lt;">&amp;lt;</span>div id="app"<span class="token entity" title="&gt;">&amp;gt;</span>
+    <span class="token entity" title="&lt;">&amp;lt;</span>h1<span class="token entity" title="&gt;">&amp;gt;</span>
+        {{message}}
+    <span class="token entity" title="&lt;">&amp;lt;</span>/h1<span class="token entity" title="&gt;">&amp;gt;</span>
+<span class="token entity" title="&lt;">&amp;lt;</span>/div<span class="token entity" title="&gt;">&amp;gt;</span>
+
+<span class="token entity" title="&lt;">&amp;lt;</span>script type="module"<span class="token entity" title="&gt;">&amp;gt;</span>
+    import{ creatApp } from "https://unpkg.com/vue@3/dist/vue.esm-browser.js";
+    createApp({
+        data(){
+            return{
+                message: "hello vue";
+            }
+        }
+    }).mount("#app");// 使用mount接管app
+<span class="token entity" title="&lt;">&amp;lt;</span>/script<span class="token entity" title="&gt;">&amp;gt;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="vue指令">2.3.1. vue指令</h3><pre class="line-numbers language-html"><code class="language-html"><span class="token entity" title="&lt;">&amp;lt;</span>p v-xxx= ""<span class="token entity" title="&gt;">&amp;gt;</span> ...<span class="token entity" title="&lt;">&amp;lt;</span>/p<span class="token entity" title="&gt;">&amp;gt;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="v-for遍历">2.3.1.1. v-for遍历</h4><p>key的值避免复用</p>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token entity" title="&lt;">&amp;lt;</span>tr v-for="(item, index) in items" : key ="item.id"<span class="token entity" title="&gt;">&amp;gt;</span> {{item}}<span class="token entity" title="&lt;">&amp;lt;</span>/tr<span class="token entity" title="&gt;">&amp;gt;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>v-bind</strong>：动态为html绑定属性值，src, style,alt</p>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token entity" title="&lt;">&amp;lt;</span>td<span class="token entity" title="&gt;">&amp;gt;</span><span class="token entity" title="&lt;">&amp;lt;</span>img class= "avatar", v-bind:src="{{item.src}}" :alt ="{{item.alt}}"<span class="token entity" title="&gt;">&amp;gt;</span><span class="token entity" title="&lt;">&amp;lt;</span>/td<span class="token entity" title="&gt;">&amp;gt;</span>
+<span class="token entity" title="&lt;">&amp;lt;</span>!-- vlind:属性，然后对应v-for中的内容
+// : 简写形式 
+--<span class="token entity" title="&gt;">&amp;gt;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>v-if&#x2F;v-show</strong>:控制元素的显示&#x2F;隐藏</p>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token entity" title="&lt;">&amp;lt;</span>!--
+    v-if：根据条件判断结果，判断结果输出/隐藏，不一定创建
+    v-show: 根据条件结果，调用css 中display格式，分别用来显示和隐藏，会创建
+--<span class="token entity" title="&gt;">&amp;gt;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <h1 id="致谢">3. 致谢</h1><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1yGydYEE3H?spm_id_from=333.788.videopod.episodes&vd_source=8f246175d50731783a1ab3dafac1f6ab&p=2">02.Web前端开发初识_哔哩哔哩_bilibili</a></p>
 <p></p></li></ol></span>
                 
@@ -1524,7 +1633,7 @@ hs<span class="token punctuation">.</span>innerHTML <span class="token operator"
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">20.7k</span>
+                        class="white-color">21.2k</span>
             
             
             
