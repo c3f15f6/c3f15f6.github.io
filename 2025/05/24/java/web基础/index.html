@@ -427,14 +427,14 @@ FILE类
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-05-25
+                    2025-05-26
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.8k
+                    2k
                 </div>
                 
 
@@ -924,9 +924,38 @@ hs<span class="token punctuation">.</span>innerHTML <span class="token operator"
 <p><strong>v-if&#x2F;v-show</strong>:控制元素的显示&#x2F;隐藏</p>
 <pre class="line-numbers language-html"><code class="language-html"><span class="token entity" title="&lt;">&amp;lt;</span>!--
     v-if：根据条件判断结果，判断结果输出/隐藏，不一定创建
+        不频繁使用
+        紧跟v-else-if, v-else
     v-show: 根据条件结果，调用css 中display格式，分别用来显示和隐藏，会创建
+        频繁使用
+    “”之间的结果判断
 --<span class="token entity" title="&gt;">&amp;gt;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token entity" title="&lt;">&amp;lt;</span>span v-show="e.job==1"<span class="token entity" title="&gt;">&amp;gt;</span> 帮助人<span class="token entity" title="&lt;">&amp;lt;</span>/span<span class="token entity" title="&gt;">&amp;gt;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>v-model</strong>: 双向绑定元素与vue data，绑定输入的内容</p>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token entity" title="&lt;">&amp;lt;</span>input type="text" id="name" v-model="searchForm.name"<span class="token entity" title="&gt;">&amp;gt;</span> 
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>v-on</strong>： 为html绑定事件</p>
+<p>引号中绑定的是函数动作，可以简化为@click</p>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token entity" title="&lt;">&amp;lt;</span>button type="button" v-on:click="handle"<span class="token entity" title="&gt;">&amp;gt;</span>
+    点击
+<span class="token entity" title="&lt;">&amp;lt;</span>/button<span class="token entity" title="&gt;">&amp;gt;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>在vue中定义方法</p>
+<pre class="line-numbers language-vue"><code class="language-vue">const app = createApp({
+    data(){
+        return{
+
+        }
+    },
+    method:{
+        handle(){
+
+        }
+    }
+}).mount("#app")
+// 使用时需要将button的类型设置为button
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1 id="致谢">3. 致谢</h1><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1yGydYEE3H?spm_id_from=333.788.videopod.episodes&vd_source=8f246175d50731783a1ab3dafac1f6ab&p=2">02.Web前端开发初识_哔哩哔哩_bilibili</a></p>
 <p></p></li></ol></span>
                 
@@ -1633,7 +1662,7 @@ hs<span class="token punctuation">.</span>innerHTML <span class="token operator"
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">21.2k</span>
+                        class="white-color">21.3k</span>
             
             
             
