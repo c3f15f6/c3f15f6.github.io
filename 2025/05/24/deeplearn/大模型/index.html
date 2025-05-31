@@ -416,21 +416,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-05-24
+                    2025-05-31
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.9k
+                    3.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    11 分
+                    13 分
                 </div>
                 
 
@@ -579,7 +579,7 @@
 <h4 id="LoRAMoE">1.2.4.5. LoRAMoE</h4><p>微调插入专家模型中的LoRA适配器</p>
 <p><img src="/2025/05/24/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250523200928848.png" alt="image-20250523200928848"></p>
 <h2 id="强化学习">1.3. 强化学习</h2><p>最大化智能体获得的期望累计奖励</p>
-<h3 id="基本概念">1.3.1. 基本概念</h3><p>策略： 大模型生成句子的过程$\pi$</p>
+<h3 id="PPO函数">1.3.1. PPO函数</h3><p>策略： 大模型生成句子的过程$\pi$</p>
 <p>轨迹： 一系列的动作，大模型生成句子时候，的状态与动作<br>$$<br>\tau  &#x3D; s_1, a_1, ..s_n, a_n<br>$$<br>奖励：$R(\tau)$，一整条轨迹的奖励</p>
 <p>基于策略的强化学习的目标：找到一种策略，是在这个策略的轨迹上的奖励分数最大<br>$$<br>\begin{align}<br>\underset{\pi_\theta}{argmax} j({\pi_\theta}) &amp;&#x3D; \underset{\pi_\theta}{argmax}E_{\tau~\pi}|R(\tau)|\<br>&amp; &#x3D; \sum_\tau R(\tau)P(\tau|\pi_\theta)<br>\end{align}<br>$$<br>LOSS函数的梯度：<br>$$<br>\begin{align*}<br>\nabla J(\pi_\theta) &amp;&#x3D; \sum_\tau R(\tau) \nabla P(\tau|\pi_\theta) \<br>&amp;&#x3D; \sum_\tau R(\tau) P(\tau|\pi_\theta) \frac{\nabla P(\tau|\pi_\theta)}{P(\tau|\pi_\theta)} \<br>&amp;&#x3D; \sum_\tau R(\tau) P(\tau|\pi_\theta) \nabla \log(P(\tau|\pi_\theta)) \<br>&amp;&#x3D; \mathbb{E}<em>{\tau \sim \pi_\theta} [R(\tau) \nabla \log(P(\tau|\pi_\theta))]<br>\end{align*}<br>$$<br>路径的概率，从$s_0$递推，推到T-1,计算出T的概率<br>$$<br>P(\tau|\pi_\theta) &#x3D; \rho_0(s_0) \prod</em>{t&#x3D;0}^{T-1} P(s_{t+1}|s_t, a_t)\pi_\theta(a_t|s_t)<br>$$</p>
 <p>$$<br>\nabla \log\left(P(\tau|\pi_\theta)\right) &#x3D; \nabla \left[ \log \rho_0(s_0) + \sum_{t&#x3D;0}^{T-1} \log P(s_{t+1}|s_t, a_t) + \sum_{t&#x3D;0}^{T-1} \log \pi_\theta(a_t|s_t) \right]<br>$$</p>
@@ -603,10 +603,94 @@
 <p>如果使用时序差分目标，则 </p>
 <p>$$ R_t &#x3D; r_t + \gamma V_\phi(s_{t+1}) $$ </p>
 <p>如果使用GAE目标，则 $$ R_t &#x3D; \hat{A}^{\text{GAE}}_t + V’_\phi(s_t) $$ </p>
-<h2 id="知识蒸馏">1.4. 知识蒸馏</h2><p>教师模型将知识提取出来，学生模型学习其中内容</p>
-<h3 id="基于特征的知识">1.4.1. 基于特征的知识</h3><p><img src="/2025/05/24/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250523201806237.png" alt="image-20250523201806237"></p>
-<h4 id="多个教师教学">1.4.1.1. 多个教师教学</h4><h3 id="基于关系的知识">1.4.2. 基于关系的知识</h3><h2 id="模型剪枝">1.5. 模型剪枝</h2><p>删除权重小于一定阈值的连接或神经元节点，获得更加稀疏的矩阵</p>
-<h3 id="结构化剪枝">1.5.1. 结构化剪枝</h3><p>参数从起点到重点，图中有相连，则保留</p>
+<h3 id="RLHF">1.3.3. RLHF</h3><h4 id="构建奖励模型">1.3.3.1. 构建奖励模型</h4><ol>
+<li><p>收集偏好数据，对模型回答的多个数据，评估排序，不是打分</p>
+<p><img src="/2025/05/24/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530121011621.png" alt="image-20250530121011621"></p>
+</li>
+<li><p>损失函数，max(做好回答- 最差回答)</p>
+<p><img src="/2025/05/24/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530121104796.png" alt="image-20250530121104796"></p>
+</li>
+<li><p>只获取最后一个token的评估</p>
+<p><img src="/2025/05/24/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530121333003.png" alt="image-20250530121333003"></p>
+</li>
+<li><p>使用KL散度，避免与模型的差距较大</p>
+</li>
+<li><p>使用PPO函数，计算历史和未来的奖励</p>
+<p><img src="/2025/05/24/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530121812769.png" alt="image-20250530121812769"></p>
+</li>
+</ol>
+<h4 id="总体流程">1.3.3.2. 总体流程</h4><p><img src="/2025/05/24/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530121856320.png" alt="image-20250530121856320"></p>
+<p><strong>RLHF实开源链接</strong>：</p>
+<ol>
+<li><code>https://github.com/huggingface/trl</code></li>
+<li><code>https://github.com/OpenRLHF/OpenRLHF</code></li>
+<li><code>https://github.com/hiyouga/LLaMA-Factory</code></li>
+<li><code>https://github.com/WangRongsheng/awesome-LLM-resourses</code></li>
+</ol>
+<h3 id="RLAIF">1.3.4. RLAIF</h3><p>模型选择结果，替换人类标记，同时需要使用双重判断</p>
+<p><img src="/2025/05/24/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530170449430.png" alt="image-20250530170449430"></p>
+<ol>
+<li>D-RLAIF，模型直接打分，不再训练</li>
+<li>常规RLAIF，先训练奖励模型</li>
+</ol>
+<h3 id="DPO算法-direct-perference-option">1.3.5. DPO算法(direct perference option)</h3><p>由偏好学习的数据，直接用于模型的训练</p>
+<p>目标：</p>
+<p><img src="/2025/05/24/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530171548497.png" alt="image-20250530171548497"></p>
+<p>损失函数：</p>
+<p><img src="/2025/05/24/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530171648715.png" alt="image-20250530171648715"></p>
+<h3 id="SPLN（self-play">1.3.6. SPLN（self play)</h3><p><img src="/2025/05/24/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530173051126.png" alt="image-20250530173051126"></p>
+<h4 id="main-play">1.3.6.1. main play</h4><p>区分某个回答是人类的回答</p>
+<p><img src="/2025/05/24/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530173622192.png" alt="最大化人类回答与机器回答的区别"></p>
+<h4 id="opponent-play">1.3.6.2. opponent play</h4><p>不需要区分人类回答和LLM回答</p>
+<p><img src="/2025/05/24/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530173750170.png" alt="image-20250530173750170"></p>
+<p><img src="/2025/05/24/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530173801712.png" alt="image-20250530173801712"></p>
+<p>得到优化目标</p>
+<p><img src="/2025/05/24/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530173906352.png" alt="image-20250530173906352"></p>
+<p>最大化生成与真实标注的信息与自己生成信息的差距</p>
+<h3 id="self-rewarding">1.3.7. self-rewarding</h3><p>模型给自己提供奖励，在优化回复的功能是，优化模型指令遵循与打分的能力</p>
+<ol>
+<li>初始模型，具有基础能力</li>
+<li>种子数据集，少量数据集，<ol>
+<li>指令微调，只有回答</li>
+<li>评估微调，回答排序</li>
+</ol>
+</li>
+</ol>
+<p>模型使用种子数据集，生成新的prompt，模型自己打分，取最高分与最低分，加入数据集，用于DPO训练。</p>
+<p>不断迭代</p>
+<p><img src="/2025/05/24/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530175457392.png" alt="image-20250530175457392"></p>
+<h2 id="微调">1.4. 微调</h2><ol>
+<li><p>增加参数微调</p>
+<ol>
+<li>软提示微调： 在embeding之前怎么增加soft prompt，训练优化增加的soft prompt ，模型的参数固定<ol>
+<li>且不同的任务可以使用不同的soft prompt</li>
+</ol>
+</li>
+<li>适配器微调： 在模型前后增加一个层</li>
+</ol>
+</li>
+<li><p>选择性微调</p>
+<ol>
+<li>学习优化哪些参数，优化任务结果，使用正则化，惩罚修改较多的参数<img src="/2025/05/24/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530182117984.png" alt="image-20250530182117984"></li>
+<li>指定修改部分参数</li>
+</ol>
+</li>
+<li><p>重参数微调，调整子空间参数</p>
+<p><img src="/2025/05/24/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530182340311.png" alt="image-20250530182340311"></p>
+<ol>
+<li><p>Low-Rank Adaption(LoRA)，优化两个低秩矩阵，与原矩阵组合</p>
+<p><img src="/2025/05/24/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530182623192.png" alt="image-20250530182623192"></p>
+</li>
+<li><p>学习模型的缩放因子</p>
+<p><img src="/2025/05/24/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530183050936.png" alt="image-20250530183050936"></p>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="知识蒸馏">1.5. 知识蒸馏</h2><p>教师模型将知识提取出来，学生模型学习其中内容</p>
+<h3 id="基于特征的知识">1.5.1. 基于特征的知识</h3><p><img src="/2025/05/24/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250523201806237.png" alt="image-20250523201806237"></p>
+<h4 id="多个教师教学">1.5.1.1. 多个教师教学</h4><h3 id="基于关系的知识">1.5.2. 基于关系的知识</h3><h2 id="模型剪枝">1.6. 模型剪枝</h2><p>删除权重小于一定阈值的连接或神经元节点，获得更加稀疏的矩阵</p>
+<h3 id="结构化剪枝">1.6.1. 结构化剪枝</h3><p>参数从起点到重点，图中有相连，则保留</p>
 <h1 id="简短">2. 简短</h1><h2 id="预训练-1">2.1. 预训练</h2><h3 id="词表化">2.1.1. 词表化</h3><h4 id="BBPE-byte-level-BPE">2.1.1.1. BBPE(byte-level BPE)</h4><p>单词量过大时，每一个单词一个token使用，词表空间较大</p>
 <p>单词使用字节标识，采用unicode 编码作为最小颗粒度，将单词切割为字节token</p>
 <p>例如，对于不存在的字节“待”，使用3个字节标识(中文在unicode编码中使用三个字节表示)</p>
@@ -1347,7 +1431,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">21.3k</span>
+                        class="white-color">21.8k</span>
             
             
             
