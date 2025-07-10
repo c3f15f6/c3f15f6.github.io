@@ -428,7 +428,7 @@ map.find() !&amp;#x3D; map.">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-05-18
+                    2025-07-10
                 </div>
                 
 
@@ -442,7 +442,7 @@ map.find() !&amp;#x3D; map.">
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    7 分
                 </div>
                 
 
@@ -512,7 +512,8 @@ map.find() !&amp;#x3D; map.">
 <p>左闭右开后，每次处理n-1个数据，每减少一圈，处理数据-1</p>
 <img src="https://code-thinking-1253855093.file.myqcloud.com/pics/20220922102236.png" alt="左闭右开原则" style="zoom:50%;">
 
-<h2 id="前缀和">2.3. 前缀和</h2><p>将之间计算的结果累加保存在数据中，之后使用时使用结算完成的数组</p>
+<h2 id="唤醒链表">2.3. 唤醒链表</h2><p><img src="/2024/09/24/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/20220925103433.png" alt="img"><br>$$<br>slow &#x3D; x+y \<br>fast &#x3D; x+y+n(y+z) \<br>fast &#x3D; 2<em>slow<br>$$<br> 计算得到<br>$$<br>x &#x3D; (n-1)(y+z)+z<br>$$<br>代表，*<em>从头节点走向环形入口  &#x3D; 从相遇点出发走n个节点</em></em></p>
+<h2 id="前缀和">2.4. 前缀和</h2><p>将之间计算的结果累加保存在数据中，之后使用时使用结算完成的数组</p>
 <p><strong>需要更具题目要求，选择计算什么样的前缀数组</strong></p>
 <pre class="line-numbers language-cpp"><code class="language-cpp"> <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">~</span><span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d%d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>a<span class="token punctuation">,</span> <span class="token operator">&amp;</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//按位取反，如果结果是eof=-1,取反之后结果为0</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -521,14 +522,14 @@ map.find() !&amp;#x3D; map.">
 <p><img src="/2024/09/24/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/09/24/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/test.jpg" alt="test"></p>
 <p><img src="/2024/09/24/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/09/24/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/cin%EF%BC%8Cscanf%E9%80%9F%E5%BA%A6.jpg" alt="cin/scanf"></p>
 <p>就当是没有图片了吧，在本地无法显示的图片，在博客中显示了。</p>
-<h2 id="哈希表">2.4. 哈希表</h2><h3 id="数组作为哈希表">2.4.1. 数组作为哈希表</h3><h3 id="stl中的哈希表">2.4.2. stl中的哈希表</h3><p>此时就要使用另一种结构体了，set ，关于set，C++ 给提供了如下三种可用的数据结构：</p>
+<h2 id="哈希表">2.5. 哈希表</h2><h3 id="数组作为哈希表">2.5.1. 数组作为哈希表</h3><h3 id="stl中的哈希表">2.5.2. stl中的哈希表</h3><p>此时就要使用另一种结构体了，set ，关于set，C++ 给提供了如下三种可用的数据结构：</p>
 <ul>
 <li>std::set</li>
 <li>std::multiset</li>
 <li>std::unordered_set</li>
 </ul>
 <p>std::set和std::multiset底层实现都是红黑树，std::unordered_set的底层实现是哈希表， 使用unordered_set 读写效率是最高的，并不需要对数据进行排序，而且还不要让数据重复，所以选择unordered_set。</p>
-<h2 id="回溯算法">2.5. 回溯算法</h2><p>算法的模板</p>
+<h2 id="回溯算法">2.6. 回溯算法</h2><p>算法的模板</p>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">backtracking</span><span class="token punctuation">(</span>参数<span class="token punctuation">)</span><span class="token punctuation">{</span>
     <span class="token keyword">if</span><span class="token punctuation">(</span>终止条件）<span class="token punctuation">{</span>
         存放结果<span class="token punctuation">;</span>
@@ -548,12 +549,12 @@ map.find() !&amp;#x3D; map.">
 </blockquote>
 <p>使用切割时候，需要注意下一次开始为本次切割后的下一次位置，此处回溯时候不需要还原，其余元素均需要还原。还原时候注意还原的位置。</p>
 <p><a target="_blank" rel="noopener" href="https://programmercarl.com/0131.%E5%88%86%E5%89%B2%E5%9B%9E%E6%96%87%E4%B8%B2.html#%E7%AE%97%E6%B3%95%E5%85%AC%E5%BC%80%E8%AF%BE">回溯问题</a></p>
-<h3 id="分割字符串方法">2.5.1. 分割字符串方法</h3><ol>
+<h3 id="分割字符串方法">2.6.1. 分割字符串方法</h3><ol>
 <li>函数传递，参数<code>s + start + end</code></li>
 <li>使用string 切割，<code>string s = s.substr(start, end)</code></li>
 </ol>
-<h3 id="两阶vector初始化方法">2.5.2. 两阶vector初始化方法</h3><p><code> is_palind_rome.resize(s.size(), vector&lt;bool&gt;(s.size(), false));</code></p>
-<h2 id="图论">2.6. 图论</h2><h3 id="并查集的实现-并查集理论基础-代码随想录">2.6.1. 并查集的实现   并查集理论基础 | 代码随想录</h3><ol>
+<h3 id="两阶vector初始化方法">2.6.2. 两阶vector初始化方法</h3><p><code> is_palind_rome.resize(s.size(), vector&lt;bool&gt;(s.size(), false));</code></p>
+<h1 id="图论">3. 图论</h1><h2 id="图查找算法">3.1. 图查找算法</h2><h3 id="并查集的实现-并查集理论基础-代码随想录">3.1.1. 并查集的实现   并查集理论基础 | 代码随想录</h3><ol>
 <li>并查集，是将一个集合内所有数据放入一个连通图中，即为father[u]&#x3D; v；</li>
 <li>查询一个并查集，是查询根节点是否相同，find(u)&#x3D;&#x3D; find(v)</li>
 <li>初始化，所有的并查集都指向自身</li>
@@ -591,7 +592,7 @@ void join(int u, int v){
     return ;
 }
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="prim算法">2.6.2. prim算法</h3><ol>
+<h3 id="prim算法">3.1.2. prim算法</h3><ol>
 <li>选择最小边e,v（e是树中，v是树外的数据）</li>
 <li>将节点v加入树中</li>
 <li>更新与v的节点的权重<ol>
@@ -599,7 +600,7 @@ void join(int u, int v){
 </ol>
 </li>
 </ol>
-<h3 id="kruskal-算法">2.6.3. kruskal 算法</h3><ol>
+<h3 id="kruskal-算法">3.1.3. kruskal 算法</h3><ol>
 <li>完成并查集</li>
 <li>对边的权重排序</li>
 <li>选择最小边<ol>
@@ -608,7 +609,7 @@ void join(int u, int v){
 </ol>
 </li>
 </ol>
-<h3 id="拓扑排序">2.6.4. 拓扑排序</h3><ol>
+<h3 id="拓扑排序">3.1.4. 拓扑排序</h3><ol>
 <li>计算节点入度</li>
 <li>选择入度为0 的节点，加入处理队列q, 并将入度替换为-1</li>
 <li>处理队列q<ol>
@@ -621,20 +622,20 @@ void join(int u, int v){
 <blockquote>
 <p>出队元素不等于总元素数量时， <strong>判断有向图中 存在环</strong></p>
 </blockquote>
-<h3 id="dijkstra算法">2.6.5. dijkstra算法</h3><p><strong><u>权值不能为负数，prim算法权值可以是负数，负数情况使用ford算法</u></strong></p>
+<h3 id="dijkstra算法">3.1.5. dijkstra算法</h3><p><strong><u>权值不能为负数，prim算法权值可以是负数，负数情况使用ford算法</u></strong></p>
 <ol>
 <li>选择最小边并且该节点没有被访问过</li>
 <li>标记该节点，已经被访问过</li>
 <li>更新非访问节点到源点的最小距离，同时当前节点的父亲</li>
 </ol>
-<h3 id="使用边权重的dijkstra算法">2.6.6. 使用边权重的dijkstra算法</h3><p>使用边的权值进行计算</p>
+<h3 id="使用边权重的dijkstra算法">3.1.6. 使用边权重的dijkstra算法</h3><p>使用边的权值进行计算</p>
 <ol>
 <li>建立小顶堆</li>
 <li>从小顶堆中选择最小的边</li>
 <li>标记边连线的点已经被访问过了</li>
 <li>更新edge相连的顶点的权重</li>
 </ol>
-<h2 id="附录">2.7. 附录</h2><h3 id="建立小顶堆">2.7.1. 建立小顶堆</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> &amp;lt;queue&amp;gt;</span>
+<h2 id="附录">3.2. 附录</h2><h3 id="建立小顶堆">3.2.1. 建立小顶堆</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> &amp;lt;queue&amp;gt;</span>
 <span class="token keyword">class</span> <span class="token class-name">mycomparison</span><span class="token punctuation">{</span>
     <span class="token keyword">bool</span> <span class="token keyword">operator</span><span class="token punctuation">(</span><span class="token keyword">const</span> pair<span class="token operator">&amp;</span>lt<span class="token punctuation">;</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">&amp;</span>gt<span class="token punctuation">;</span><span class="token operator">&amp;</span> a<span class="token punctuation">,</span> <span class="token keyword">const</span> pair<span class="token operator">&amp;</span>lt<span class="token punctuation">;</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">&amp;</span>gt<span class="token punctuation">;</span><span class="token operator">&amp;</span> b<span class="token punctuation">)</span><span class="token punctuation">{</span>
         <span class="token keyword">return</span> a<span class="token punctuation">.</span>second<span class="token operator">&amp;</span>gt<span class="token punctuation">;</span> b<span class="token punctuation">.</span>second<span class="token punctuation">;</span>
@@ -646,7 +647,7 @@ priority_queue<span class="token operator">&amp;</span>lt<span class="token punc
     a&amp;lt; b时， 是大顶堆；
 */</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="对vector数组进行排序">2.7.2. 对vector数组进行排序</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> &amp;lt;algorithm&amp;gt;</span>
+<h3 id="对vector数组进行排序">3.2.2. 对vector数组进行排序</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> &amp;lt;algorithm&amp;gt;</span>
 vector<span class="token operator">&amp;</span>lt<span class="token punctuation">;</span><span class="token keyword">int</span><span class="token operator">&amp;</span>gt<span class="token punctuation">;</span> edges<span class="token punctuation">;</span>
 <span class="token function">sort</span><span class="token punctuation">(</span>edges<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">,</span> edges<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token keyword">const</span> edge<span class="token operator">&amp;</span> a<span class="token punctuation">,</span> <span class="token keyword">const</span> edge<span class="token operator">&amp;</span> b<span class="token punctuation">)</span><span class="token punctuation">{</span>
     <span class="token keyword">return</span> a<span class="token operator">&amp;</span>lt<span class="token punctuation">;</span> b<span class="token punctuation">;</span>
@@ -657,7 +658,7 @@ vector<span class="token operator">&amp;</span>lt<span class="token punctuation"
     默认情况是升序排序；
 */</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="感谢">3. 感谢</h1><p><a target="_blank" rel="noopener" href="https://programmercarl.com/">代码随想录</a></p>
+<h1 id="感谢">4. 感谢</h1><p><a target="_blank" rel="noopener" href="https://programmercarl.com/">代码随想录</a></p>
 
                 
             </div>
@@ -1156,12 +1157,12 @@ vector<span class="token operator">&amp;</span>lt<span class="token punctuation"
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%8A%A0%E5%AF%86%E6%96%87%E7%AB%A0/">
-                        <span class="chip bg-color">加密文章</span>
-                    </a>
-                    
                     <a href="/tags/%E8%BD%AC%E8%BD%BD/">
                         <span class="chip bg-color">转载</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%8A%A0%E5%AF%86%E6%96%87%E7%AB%A0/">
+                        <span class="chip bg-color">加密文章</span>
                     </a>
                     
                 </div>
@@ -1359,7 +1360,7 @@ vector<span class="token operator">&amp;</span>lt<span class="token punctuation"
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">21.8k</span>
+                        class="white-color">23k</span>
             
             
             
