@@ -244,7 +244,7 @@ $(function () {
     }
 
     // ---- 座右铭字缓出效果 -----
-    var text = "衣带渐宽终不悔，为伊消得人憔悴";
+    var text = "自强不息，知行合一";
     var length = text.length;
     let index = 0;
     var mottoArrs = config.motto;
