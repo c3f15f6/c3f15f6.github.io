@@ -414,7 +414,7 @@ list&amp;lt;int&amp;gt; l">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-07-10
+                    2025-07-11
                 </div>
                 
 
@@ -650,13 +650,22 @@ struct PointCompare {
 std::map&lt;Point, std::string, PointCompare&gt; pointMap;
 // 这里不能使用out
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="priority-queue">1.9. priority_queue</h2><pre class="line-numbers language-c++"><code class="language-c++">bool mycomparison(int& a, int& b){
-    return a&gt;b;
-}
+<h2 id="priority-queue">1.9. priority_queue</h2><pre class="line-numbers language-c++"><code class="language-c++">// 只能使用仿函数类型
+class mycomparison{
+    public:
+    bool operator()(const int& a,const int& b)const{
+        if(a&gt;b){
+            return true;
+        }else{
+            return false;
+        }
+    }
+};
+
 
 priority_queue&lt;int&gt; q;// 大顶堆，数据大的在顶端
 priority_queue&lt;int, vector&lt;int&gt;, mycomparison&gt; min_pq; //小顶堆，小数据在顶端
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="numeric">1.10. numeric</h2><pre class="line-numbers language-c++"><code class="language-c++">#include &lt;numeric&gt;
 
 int sum = std::accumulate(numbers.begin(), numbers.end(), 0);// 默认求和
@@ -1340,7 +1349,7 @@ auto minmax = minmax_element(number.begin(), number.end(),mycomparison);
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">23k</span>
+                        class="white-color">22.9k</span>
             
             
             
