@@ -444,21 +444,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-08-29
+                    2025-08-30
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.5k
+                    5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    13 分
+                    19 分
                 </div>
                 
 
@@ -948,7 +948,199 @@
 </ol>
 </li>
 </ol>
-<h1 id="股票问题">6. 股票问题</h1>
+<h1 id="股票问题">6. 股票问题</h1><blockquote>
+<p>同一个<code>i</code>有两种状态， 状态之间互相推导</p>
+</blockquote>
+<ol>
+<li><p>第<code>i</code>天有两种状态， 持有股票 &#x2F; 不持有股票， 分别设置为 <code>dp[i][0]/ dp[i][1]</code></p>
+</li>
+<li><p>第<code>i</code>天持有股票，可由两种方式推导</p>
+<ol>
+<li><p>第<code>i-1</code> 持有股票</p>
+</li>
+<li><p>第<code>i-1</code>不持有股票，第<code>i</code>天购购入(因为之前没有购入股票，一切为0)</p>
+</li>
+<li><blockquote>
+<p><code>dp[i][0] = max(dp[i-1][0],  - price[i])</code></p>
+<p>如果之前卖出了股票，就成了由不持有股票状态<code>dp[i-1][1]-price[i]</code></p>
+</blockquote>
+</li>
+</ol>
+<p>第<code>i</code>天不持有股票，由两种方式推导</p>
+<ol>
+<li><p>第<code>i-1</code>不持有股票</p>
+</li>
+<li><p>第<code>i-1</code>天持有股票， 第<code>i</code>购入股票</p>
+</li>
+<li><blockquote>
+<p><code>dp[i][1] = max(dp[i-1][1], dp[i-1][0] - price[i])</code></p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li><p>dp公式初始化，所有由第一天的状态组成，初始化</p>
+<ol>
+<li>第一天持有股票<code>dp[0][0] = -price[0]</code></li>
+<li>第一天不持有股票 <code>dp[0][1] = 0</code></li>
+</ol>
+</li>
+<li><p>遍历顺序，从前向后遍历</p>
+</li>
+</ol>
+<h2 id="有限次购买股票">6.1. 有限次购买股票</h2><p><strong>问题：</strong><code>dp</code>数组由多种不同的状态，且不同状态之间互相推导</p>
+<p><strong>解决方法：</strong> 找出所有可能的状态，并推导不同状态之间的公式</p>
+<p>最多有<code>n</code>次购买股票，可以设置五种状态</p>
+<table>
+<thead>
+<tr>
+<th>0</th>
+<th>没有操作</th>
+<th><code>dp[i][0]</code></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>第一次持有股票</td>
+<td><code>dp[i][1]</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>第一次不持有股票</td>
+<td><code>dp[i][2]</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td>第二次持有股票</td>
+<td><code>dp[i][3]</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td>第二次不持有股票</td>
+<td><code>dp[i][4]</code></td>
+</tr>
+</tbody></table>
+<ol>
+<li><p>第一次持有股票 </p>
+<ol>
+<li><p>第<code>i-1</code>第一次持有股票</p>
+</li>
+<li><p>第<code>i</code>天没有操作状态购入股票</p>
+</li>
+</ol>
+</li>
+<li><p>第一次不持有股票</p>
+<ol>
+<li>第<code>i-1</code>天不持有股票</li>
+<li>第<code>i-1</code>天 持有股票后，第<code>i</code>天卖出股票</li>
+</ol>
+</li>
+<li><p>第二次持有股票</p>
+<ol>
+<li>第二次持有股票</li>
+<li>第<code>i-1</code>天第一次不持有股票，第<code>i</code>天购入股票</li>
+</ol>
+</li>
+<li><p>第二次不持有股票</p>
+<ol>
+<li>第二次不持有股票</li>
+<li>第<code>i-1</code>天持有股票， 第<code>i</code>天卖出股票</li>
+</ol>
+</li>
+</ol>
+<p>初始化：在第0天</p>
+<ol>
+<li>第一次购入股票， 为<code>-price[0]</code></li>
+<li>第一次不持有股票，相当于第一天买了又卖了， 0</li>
+<li>第二次购入股票，相当于第一天买入又卖出，再买入， 为<code>-price[0]</code></li>
+<li>略</li>
+</ol>
+<p>dp结果： 只买一次股票包含在买两次股票结果中，所以第二次卖出股票为最终结果</p>
+<h2 id="限制k次购买股票">6.2. 限制k次购买股票</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0188.%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BAIV.html#%E7%AE%97%E6%B3%95%E5%85%AC%E5%BC%80%E8%AF%BE">k次购买</a></p>
+<p><code>k</code>次购买有<code>2k</code>中持有与不持有状态，+1中首次误操作状态</p>
+<ol>
+<li><code>dp[i][j+1]</code>次状态有 <code>dp[i-1][j]</code> ， 上一种状态<code>dp[i-1][j]</code>转换组成<ol>
+<li>由于奇数次状态为持有股票状态，需要购入股票，由上一状态 <code>- price[i]</code>得到</li>
+<li>偶数次状态为不持有股票状态，卖出股票， 总的价格增加，由上一状态<code>+ price[i]</code>得到</li>
+</ol>
+</li>
+<li><code>dp[i][j]</code>公式<ol>
+<li>$dp[i]][j] &#x3D; max(dp[i-1][j] , dp[i-1][j-1] + (-1)^j*prices[i])$</li>
+<li>方便计算，可以将奇偶公式分开枚举</li>
+</ol>
+</li>
+</ol>
+<h2 id="含有冷冻期的股票购买">6.3. 含有冷冻期的股票购买</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0309.%E6%9C%80%E4%BD%B3%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E6%97%B6%E6%9C%BA%E5%90%AB%E5%86%B7%E5%86%BB%E6%9C%9F.html#%E6%80%9D%E8%B7%AF">卖出股票后一天时冷冻期，冷冻期后时不持有股票状态</a></p>
+<p>尝试描述购买股票过程中有多少种状态，画出其状态转化图， 有四种状态，</p>
+<ol>
+<li>持有股票状态 ， <code>dp[i][1]</code></li>
+<li>不持有股票状态,  <code>dp[i][2]</code></li>
+<li>冷冻期,  <code>dp[i][3]</code></li>
+<li>当天卖出股票状态(此时状态与2不同)  <code>dp[i][4]</code></li>
+</ol>
+<p><img src="/2025/08/27/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/image-20250829214353940.png" alt="image-20250829214353940"></p>
+<ol>
+<li>当前持有股票，<ol>
+<li>可由前一天持有股票<code>dp[i-1][1]</code>得到，</li>
+<li><code>i-1</code> 天不持有股票，买入股票得到， <code>dp[i-1][2] -  price[i]</code></li>
+<li><code>i-1</code>冷冻期中后一天，买入股票， <code>dp[i-1][3] - price[i]</code></li>
+</ol>
+</li>
+<li>当前不持有股票</li>
+<li><code>i-1</code>是冷冻期， <code>dp[i][3]</code></li>
+<li>当前是冷冻期<ol>
+<li><code>i-1</code>当天售出股票， <code>dp[i-1][4]</code></li>
+</ol>
+</li>
+<li>当天售出股票<ol>
+<li><code>i</code>持有股票，卖出， <code>dp[i-1][1] + price[i]</code></li>
+</ol>
+</li>
+</ol>
+<p>初始化：</p>
+<ol>
+<li>持有股票时， 因买入股票， 初始为<code>-price[0]</code></li>
+<li>其余状态不持有股票，初始不买不入，初始为0</li>
+</ol>
+<p>遍历顺序：从前向后遍历</p>
+<h2 id="含手续费的股票售出">6.4. 含手续费的股票售出</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0714.%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA%E5%90%AB%E6%89%8B%E7%BB%AD%E8%B4%B9%EF%BC%88%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%89.html#%E7%AE%97%E6%B3%95%E5%85%AC%E5%BC%80%E8%AF%BE">卖出时缴纳手续费</a></p>
+<ol>
+<li>还是两种状态， 持有股票，不持有股票， 由持有股票售出股票-&gt; 不持有股票，需缴纳手续费</li>
+<li>dp转换公式<ol>
+<li><code>dp[i][0] = max(dp[i-1][0] , dp[i-1][1] - price[i])</code></li>
+<li><code>dp[i][1] = max(dp[i-1][1], dp[i-1][0] + price[i] -fee)</code> ，售出时缴纳手续费</li>
+</ol>
+</li>
+<li>初始化： 略</li>
+<li>选择结果： 可以卖出，也可以不卖出，选择最大值情况</li>
+</ol>
+<h1 id="子序列问题">7. 子序列问题</h1><p>可以近似于 爬楼梯问题， 能爬到 <code>num[i]</code> 位置的最大长度</p>
+<ol>
+<li><p><code>dp[i]</code>表示为 <code>i之前包括i内以nums[i]</code>为结尾的序列， 单调增序列的最大长度,</p>
+</li>
+<li><p><code>for 0: j</code> 中，能够爬到 <code>if(nums[j] &lt; nums[i]) </code>中， 长度最大值</p>
+</li>
+</ol>
+<p>   <code>if(nums[j]  &lt;  nums[i] )  dp[i] = max(dp[i], dp[j] +1)</code></p>
+<ol start="3">
+<li>初始化，所有序列初始为1</li>
+</ol>
+<h2 id="最长连续子序列">7.1. 最长连续子序列</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0674.%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E9%80%92%E5%A2%9E%E5%BA%8F%E5%88%97.html#%E6%80%9D%E8%B7%AF">子序列连续-递增</a></p>
+<p>要求连续，所以只能从<code>j-1</code>跳到<code>j</code>的位置，所以只需要比较<code>nums[j-1] &lt; nums[j]</code>， 不需要从<code>[0,j-1]</code>全部与<code>nums[j]</code>比较</p>
+<h2 id="最长公共子序列">7.2. 最长公共子序列</h2><ol>
+<li><p><code>dp[i][j]</code> 表示 以<code>i-1</code> 结尾的A数组  与 以<code>j-1</code>结尾的B 数组 最长公共子序列</p>
+<blockquote>
+<p>因为<code>dp[i][j]</code> 时比较了了<code>i-1</code> 与<code>j-1</code>的序列结果， 所以表示以<code>i-1</code>为结尾的子序列</p>
+</blockquote>
+</li>
+<li><p><code>if(A[i-1] == B[j-1])  dp[i][j] = max(dp[i-1][j-1]+1)</code>  , 比较的当前位置，因为<code>i, j</code>比实际<code>i,j</code>大1， 所以<code>if</code>中减去了1</p>
+</li>
+<li><p>初始化 <code>i=0 , j=0</code> 各种情况都是错误，初始化为0</p>
+</li>
+</ol>
+<p>遍历顺序： <code>dp[i][j]</code>需要从1 开始遍历</p>
+<h3 id="一维dp数组">7.2.1. 一维dp数组</h3><p><code>dp[j]</code>表示与<code>j-1</code>结尾的相同的最大长度</p>
+<p>因为是从上一个<code>i-1</code>复制下来得到，遍历过程中不能修改<code>j-1</code>的<code>dp</code>，否则影响后续计算</p>
+
                 
             </div>
             <hr/>
@@ -1665,7 +1857,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">31.8k</span>
+                        class="white-color">33.3k</span>
             
             
             
