@@ -451,14 +451,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5k
+                    5.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    19 分
+                    22 分
                 </div>
                 
 
@@ -1126,7 +1126,7 @@
 </ol>
 <h2 id="最长连续子序列">7.1. 最长连续子序列</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0674.%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E9%80%92%E5%A2%9E%E5%BA%8F%E5%88%97.html#%E6%80%9D%E8%B7%AF">子序列连续-递增</a></p>
 <p>要求连续，所以只能从<code>j-1</code>跳到<code>j</code>的位置，所以只需要比较<code>nums[j-1] &lt; nums[j]</code>， 不需要从<code>[0,j-1]</code>全部与<code>nums[j]</code>比较</p>
-<h2 id="最长公共子序列">7.2. 最长公共子序列</h2><ol>
+<h2 id="最长重复子序列">7.2. 最长重复子序列</h2><ol>
 <li><p><code>dp[i][j]</code> 表示 以<code>i-1</code> 结尾的A数组  与 以<code>j-1</code>结尾的B 数组 最长公共子序列</p>
 <blockquote>
 <p>因为<code>dp[i][j]</code> 时比较了了<code>i-1</code> 与<code>j-1</code>的序列结果， 所以表示以<code>i-1</code>为结尾的子序列</p>
@@ -1138,8 +1138,81 @@
 </li>
 </ol>
 <p>遍历顺序： <code>dp[i][j]</code>需要从1 开始遍历</p>
-<h3 id="一维dp数组">7.2.1. 一维dp数组</h3><p><code>dp[j]</code>表示与<code>j-1</code>结尾的相同的最大长度</p>
-<p>因为是从上一个<code>i-1</code>复制下来得到，遍历过程中不能修改<code>j-1</code>的<code>dp</code>，否则影响后续计算</p>
+<h3 id="一维dp数组">7.2.1. 一维dp数组</h3><ol>
+<li><p><code>dp[j]</code>表示与<code>j-1</code>结尾的相同的最大长度</p>
+<blockquote>
+<p> 因为是从上一个<code>i-1</code>复制下来得到，遍历过程中不能修改<code>j-1</code>的<code>dp</code>，否则影响后续计算</p>
+</blockquote>
+</li>
+<li><p>·<code>if(A[i-1] == B[j-1])  dp[j] = max(dp[j-1]+1)</code></p>
+</li>
+<li><p>遍历顺序： <code>i</code>从头开始， <code>j</code>必须从后开始</p>
+</li>
+</ol>
+<h2 id="最长公共子序列">7.3. 最长公共子序列</h2><ol>
+<li><code>dp[i][j]</code> 表示以<code>i-1</code> 结尾的序列与 以<code>j-1</code>为结尾的序列，最长的公共子序列</li>
+<li><code>dp[i][j]</code> 有两种计算方式<ol>
+<li><code>A[i-1] == B[j-1]</code> ，长度+1,  <code>dp[i-1][j-1]+1</code></li>
+<li><code>A[i-1] ！= B[j-1]</code> ,需要看<code>i-1</code>和<code>j</code>  &#x2F;   <code>i</code> 与<code>j-1</code> 是否有最长的公共子序列，从两者中选择最大值</li>
+</ol>
+</li>
+<li>初始化：<ol>
+<li><code>i=0, j=0</code>情况，因为序号为<code>0</code>为空串， 与另一条序列的公共序列一定为0</li>
+</ol>
+</li>
+<li>遍历顺序： 从前向后</li>
+</ol>
+<h2 id="最大连续子序和">7.4. 最大连续子序和</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0053.%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%92%8C%EF%BC%88%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%89.html#%E7%AE%97%E6%B3%95%E5%85%AC%E5%BC%80%E8%AF%BE">最大子序和</a></p>
+<p>连续子序和，可以由上一个序列延续获得， 也可以上一序列中断， 由当前序列继续计算</p>
+<ol>
+<li><p><code>dp[i]</code> ，以<code>i</code>为结尾的最长子序和</p>
+</li>
+<li><p><code>dp[i] = max(dp[i-1]+ nums[i], nums[i])</code></p>
+</li>
+<li><p>初始化，<code>dp[0]</code> 可以选择自身开始，或者从0开始</p>
+</li>
+</ol>
+<blockquote>
+<p>题目要求子序长度 &gt;0 ，所以必须从自身开始</p>
+</blockquote>
+<ol start="4">
+<li>遍历顺序： 从前向后遍历</li>
+</ol>
+<h2 id="判断子序列">7.5. 判断子序列</h2><p>子序列a  对应 序列b 的子序列长度</p>
+<p><code>dp[i][j]</code>是子序列a与序列b相同子序列长度</p>
+<ol>
+<li><p>相同时 ， <code>dp[i][j] = dp[i-1][j-1] + 1</code>;</p>
+</li>
+<li><p>不相同时，删除<code>j</code>节点，观察 <code>dp[i][j-1]</code>能到达的最大长度</p>
+<blockquote>
+<p>此时，只能删除<code>j</code>节点，删除<code>i</code>节点后，就不是原来的序列了</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="不同的子序列">7.6. 不同的子序列</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0115.%E4%B8%8D%E5%90%8C%E7%9A%84%E5%AD%90%E5%BA%8F%E5%88%97.html#%E7%AE%97%E6%B3%95%E5%85%AC%E5%BC%80%E8%AF%BE">完整的序列<code>t</code></a>在<code>s</code>的子序列中出现的次数</p>
+<ol>
+<li><p><code>dp[i][j]</code>, 以<code>i-1</code>结尾的序列t ，在以<code>j-1</code>为结尾的序列<code>s</code>中子序列出现次数</p>
+</li>
+<li><p>有两种计算情况</p>
+<ol>
+<li><p><code>s[i-1] == t[j-1]</code> ，看<code>i-1, j-1</code> 时匹配的结果， 同时还可以删除<code>i-1</code>看匹配结果(<code>i-1</code>可能由重复情况)</p>
+<blockquote>
+<p>相同情况时，选择用<code>s[i]</code> 与 <code>t[j]</code>比较，因为<code>s[i]</code>前一位可能等于后一位，所有也需要向前移动一位比较</p>
+</blockquote>
+</li>
+<li><p>不相同时，删除<code>i-1</code>看匹配结果，<code>dp[i-1][j]</code></p>
+</li>
+</ol>
+</li>
+<li><p>初始化，<code>i = 0 , j=0</code>都是异常情况</p>
+<ol>
+<li><code>i =0 </code> , s为空串， <code>j</code>与<code>s</code>相同结果为0</li>
+<li><code>j=0</code>时，<code>j</code>是空串，<code>s</code>中删除到最后，一定有一串与<code>j</code>相同，初始化为1</li>
+</ol>
+</li>
+<li><p>遍历顺序： 从前向后遍历</p>
+</li>
+</ol>
 
                 
             </div>
@@ -1894,7 +1967,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">33.3k</span>
+                        class="white-color">33.9k</span>
             
             
             
