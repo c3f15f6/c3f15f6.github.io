@@ -451,14 +451,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5.6k
+                    6.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    22 分
+                    25 分
                 </div>
                 
 
@@ -1113,7 +1113,15 @@
 <li>初始化： 略</li>
 <li>选择结果： 可以卖出，也可以不卖出，选择最大值情况</li>
 </ol>
-<h1 id="子序列问题">7. 子序列问题</h1><p>可以近似于 爬楼梯问题， 能爬到 <code>num[i]</code> 位置的最大长度</p>
+<h1 id="子序列问题">7. 子序列问题</h1><blockquote>
+<p>字串问题操作数 &#x3D;  不同结果的操作选择</p>
+<ol>
+<li>找到所有可能的操作</li>
+<li>当前情况可以由哪些操作得到，上一操作状态又是什么</li>
+<li>使用<code> max, min</code> 选择最合适的操作</li>
+</ol>
+</blockquote>
+<p>可以近似于 爬楼梯问题， 能爬到 <code>num[i]</code> 位置的最大长度</p>
 <ol>
 <li><p><code>dp[i]</code>表示为 <code>i之前包括i内以nums[i]</code>为结尾的序列， 单调增序列的最大长度,</p>
 </li>
@@ -1212,6 +1220,97 @@
 </li>
 <li><p>遍历顺序： 从前向后遍历</p>
 </li>
+</ol>
+<h2 id="删除操作">7.7. 删除操作</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0583.%E4%B8%A4%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%88%A0%E9%99%A4%E6%93%8D%E4%BD%9C.html#%E7%AE%97%E6%B3%95%E5%85%AC%E5%BC%80%E8%AF%BE">两个字串删除n次后，序列相同</a></p>
+<h3 id="最长相同子序列长度">7.7.1. 最长相同子序列长度</h3><ol>
+<li>求出两字串最长公共子序列，长度n；</li>
+<li>字串a,b删除除了公共子序列外的其他元素，删除后结果相同，删除长度 &#x3D; 删除操作此处</li>
+</ol>
+<h3 id="删除操作DP">7.7.2. 删除操作DP</h3><ol>
+<li><p><code>dp[i][j]</code>是以<code>i-1</code>为结尾的串a，以<code>j-1</code>为结尾的字串b需要删除的最小次数</p>
+</li>
+<li><p><code>dp[i][j]</code>有两种情况，相同结尾，不同结尾</p>
+<ol>
+<li><p><code>a[i-1] == b[j-1]</code>， 不需要删除操作，操作次数 &#x3D; <code>dp[i-1][j-1]</code></p>
+</li>
+<li><p><code>a[i-1] ！= b[j-1]</code>，需要删除 a,b的最后一个，或者两个都删除</p>
+</li>
+<li><p>删除<code>i-1</code> , <code>dp[i-1][j]+1</code></p>
+</li>
+<li><p>删除<code>j-1</code>,  <code>dp[i][j-1]+1</code></p>
+</li>
+<li><p>两个都删除， <code>dp[i-1][j-1]</code>+2</p>
+</li>
+</ol>
+<p>   使用<code>max</code>对三种方案进行选择， 3 包含在1， 2中，可以省略3</p>
+</li>
+<li><p>初始化，<code>i=0, j=0</code>异常情况，需初始化</p>
+<ol>
+<li><code>i=0</code>， 字串<code>a = NULL</code>, 字串<code>b[j]</code> 需删除 <code>j</code>次</li>
+<li>j &#x3D; 0 ，同上</li>
+</ol>
+</li>
+<li><p>遍历顺序： 从前向后</p>
+</li>
+</ol>
+<h2 id="编辑距离">7.8. 编辑距离</h2><p>字串编辑有三种操作，字串<code>a[i]</code>, <code>b[j]</code>, 最后一位不同</p>
+<ol>
+<li><p>删除，删除a 的最后一位<code>a[i]</code>，<code>b</code>没有改变</p>
+</li>
+<li><p>增加，在<code>b[j-1]</code>后增加一位<code>a[i]</code>与a相同， 增加一位<code>a[i]</code>与删除一位<code>a[i]</code>的操作力度相同</p>
+</li>
+<li><p>替换， </p>
+</li>
+<li><p><code>dp[i][j]</code> 表示以<code>i-1</code>为结尾的串a，以<code>j-1</code>为结尾的字串b需要操作的最小次数</p>
+</li>
+<li><p><code>dp[i][j]</code>有两种情况，相同结尾，不同结尾</p>
+<ol>
+<li><p><code>a[i-1] == b[j-1]</code>， 不操作，记录之前的操作次数&#x3D; <code>dp[i-1][j-1]</code></p>
+</li>
+<li><p><code>a[i-1] ！= b[j-1]</code>， 进行以上三种操作</p>
+<ol>
+<li>删除， <code>dp[i-1][j]+1, dp[i][j-1]+1</code></li>
+<li>增加， <code>dp[i-1][j]+1, dp[i][j-1]+1</code></li>
+<li>替换， <code>dp[i-1][j-1]+1</code></li>
+</ol>
+<p>使用<code>max</code>对操作进行选择</p>
+</li>
+</ol>
+</li>
+<li><p>初始化，<code>i= 0, j =0</code>的情况，处理同上</p>
+</li>
+<li><p>遍历顺序，从后向前遍历</p>
+</li>
+</ol>
+<h1 id="回文">8. 回文</h1><h2 id="回文子串">8.1. 回文子串</h2><h3 id="DP算法">8.1.1. DP算法</h3><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0647.%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2.html#%E7%AE%97%E6%B3%95%E5%85%AC%E5%BC%80%E8%AF%BE">求回文字串的数量</a></p>
+<ol>
+<li><p><code>dp[i][j]</code>表示 <code>[i,j]</code>之间的字符是否为回文字串， 然后统计数组dp中有多少个 <code>true</code>,, &#x3D; 有多个回文字串</p>
+</li>
+<li><p>两种情况</p>
+<ol>
+<li><code>a[i] =  a[j]</code>, <ol>
+<li><code>[i, j]</code>之间相同 &#x2F;  相邻，一定是回文子串</li>
+<li><code>[i,j]</code>之间不相邻，<code>dp[i+1][j-1]</code>是回文串，则<code>true</code></li>
+</ol>
+</li>
+<li>不相同，不是回文串，跳过</li>
+</ol>
+</li>
+<li><p>初始化</p>
+<ol>
+<li><code>dp[i][j]</code>全初始化为<code>false</code></li>
+</ol>
+</li>
+<li><p>遍历顺序</p>
+<p>从左下角开始遍历， 即 下-&gt; 上，左-&gt; 右遍历</p>
+<p><img src="/2025/08/27/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/20210121171032473-20230310132134822.jpg" alt="647.回文子串"></p>
+</li>
+</ol>
+<h3 id="双指针-中心扩散">8.1.2. 双指针  中心扩散</h3><p>回文串 由 中间1个 &#x2F;  2个向左右扩散，统计扩散数量，不能扩散时，返回得到扩散的最大数量</p>
+<ol>
+<li>中间 1 个向左右 扩散</li>
+<li>中间 2 个向左右扩散</li>
+<li>相加得到结果</li>
 </ol>
 
                 
@@ -1967,7 +2066,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">33.9k</span>
+                        class="white-color">34.7k</span>
             
             
             
