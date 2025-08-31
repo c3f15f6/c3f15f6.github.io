@@ -451,14 +451,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    6.4k
+                    6.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    25 分
+                    26 分
                 </div>
                 
 
@@ -481,7 +481,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="动态规划">1. 动态规划</h1><p>感谢<a target="_blank" rel="noopener" href="https://programmercarl.com/">代码随想录</a></p>
+                <h1 id="动态规划">1. 动态规划</h1><p><strong>感谢<a target="_blank" rel="noopener" href="https://programmercarl.com/">代码随想录</a></strong></p>
 <p>解题思路</p>
 <ol>
 <li>确定<code>dp</code>数组及其下标的含义</li>
@@ -1312,6 +1312,36 @@
 <li>中间 2 个向左右扩散</li>
 <li>相加得到结果</li>
 </ol>
+<h2 id="最长回文子串">8.2. 最长回文子串</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0005.%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2.html#%E6%80%9D%E8%B7%AF">最长回文字串</a></p>
+<p>字串要求 是连续的</p>
+<h2 id="最长回文子序列">8.3. 最长回文子序列</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0516.%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E5%BA%8F%E5%88%97.html#%E6%80%9D%E8%B7%AF">最长回文序列</a></p>
+<p>回文序列可以不连续</p>
+<ol>
+<li><p><code>dp[i][j] </code>，表示<code>[i,j]</code> 之间最大的回文序列长度</p>
+</li>
+<li><p><code>dp[i][j]</code>两种情况</p>
+</li>
+<li><p><code>a[i] == a[j]</code>，子序列长度加2 ， <code>dp[i+1][j-1]+2</code></p>
+</li>
+<li><p><code>a[i] != a[j]</code>，那就是前一个区间的最大长度，可以缩短<code>i/ j </code>，<code>max(dp[i-1][j], dp[i][j-1])</code></p>
+</li>
+<li><p>初始化</p>
+<ol>
+<li><p>由性质 <code>i == j </code>时候， <code>dp[i+1][j-1]+2</code></p>
+<p>因为<code>i+1 &gt; j-1</code>无意义，所以<code>i==j</code>需要单独初始化</p>
+</li>
+<li><p>其余初始化为0</p>
+</li>
+</ol>
+</li>
+<li><p>遍历顺序： 下- &gt; 上， 左-&gt; 右</p>
+<blockquote>
+<p>遍历时， <code>i == j</code>时，已经初始化，且公式计算不到，所以<code>j</code>只需要从<code>i+1</code>开始遍历</p>
+<p><code>dp[i+1][j-1]+2</code>,所以 &#96;i &lt;&#x3D; s.size()-2, i &gt;&#x3D;0</p>
+</blockquote>
+<p><img src="/2025/08/27/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/20230102172155.png" alt="遍历顺序"></p>
+</li>
+</ol>
 
                 
             </div>
@@ -1792,9 +1822,9 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="栈-队列">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="贪心算法">
                         
-                        <span class="card-title">栈-队列</span>
+                        <span class="card-title">贪心算法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -2066,7 +2096,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">34.7k</span>
+                        class="white-color">35.8k</span>
             
             
             
