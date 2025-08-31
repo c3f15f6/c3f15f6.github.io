@@ -444,7 +444,7 @@ typedef vector&amp;a">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    891
+                    1k
                 </div>
                 
 
@@ -579,6 +579,18 @@ typedef vector&amp;a">
 <li>暴力求解，求当前节点能否到达 边界</li>
 <li>逆推， 从边界向上推，看左边界能到的哪些节点<code>firstBoard</code>，以及有边界<code>secondBoard</code></li>
 <li>左右边界都能到达，为逆推结果</li>
+</ol>
+<h2 id="建造最大岛屿">1.6. 建造最大岛屿</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/kamacoder/0104.%E5%BB%BA%E9%80%A0%E6%9C%80%E5%A4%A7%E5%B2%9B%E5%B1%BF.html#%E6%80%9D%E8%B7%AF">海洋中造出一块岛， 连接其他岛屿，组成最大面积</a></p>
+<ol>
+<li><p>首先统计每个岛屿的面积，并为每个岛屿附上标识，并建立标识对应的面积</p>
+<blockquote>
+<p>建立标识后，可以标识当前节点已被访问，可以用这个标识代替<code>visited</code></p>
+</blockquote>
+</li>
+<li><p>统计 0 值附近所有岛屿面积的和，不同的岛屿需要去重</p>
+</li>
+<li><p>比较出最大值</p>
+</li>
 </ol>
 
                 
@@ -1336,7 +1348,7 @@ typedef vector&amp;a">
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">35.8k</span>
+                        class="white-color">36k</span>
             
             
             

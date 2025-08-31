@@ -1,5 +1,0 @@
-从第一边界开始遍历，返回可以遍历的节点firstBoard
-从第二边界遍历，返回secondBoard
-
-1. 遍历时候，只有g[nextx][nexty] > g[x][y] 时，才能继续遍历
-2. 遍历结束后，比较firstBoard与secondBoard都遍历的节点，是最高点
