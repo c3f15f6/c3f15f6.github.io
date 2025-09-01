@@ -5,12 +5,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="图论, 汤汁小白菜">
-    <meta name="description" content="1. 图论感谢代码随想录
+    <meta name="description" content="1. 图论 搜索感谢代码随想录
 1.1. 图论基础1.1.1. 邻接矩阵邻接矩阵使用二维数组保存信息，矩阵中每个节点代表一个元素
 typedef struct Node{
     int data;
 }Node;
-typedef vector&amp;a">
+typedef vecto">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -437,21 +437,21 @@ typedef vector&amp;a">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-08-31
+                    2025-09-01
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1k
+                    2.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    8 分
                 </div>
                 
 
@@ -474,7 +474,7 @@ typedef vector&amp;a">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="图论">1. 图论</h1><p><strong>感谢<a target="_blank" rel="noopener" href="https://programmercarl.com/0101.%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91.html#%E6%80%9D%E8%B7%AF">代码随想录</a></strong></p>
+                <h1 id="图论-搜索">1. 图论 搜索</h1><p><strong>感谢<a target="_blank" rel="noopener" href="https://programmercarl.com/0101.%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91.html#%E6%80%9D%E8%B7%AF">代码随想录</a></strong></p>
 <h2 id="图论基础">1.1. 图论基础</h2><h3 id="邻接矩阵">1.1.1. 邻接矩阵</h3><p>邻接矩阵使用二维数组保存信息，矩阵中每个节点代表一个元素</p>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> Node<span class="token punctuation">{</span>
     <span class="token keyword">int</span> data<span class="token punctuation">;</span>
@@ -503,7 +503,7 @@ typedef vector&amp;a">
 <h3 id="有向图">1.1.3. 有向图</h3><p>有向图的边$(a, b)$， 其中只存放 a-&gt;b的边</p>
 <h3 id="无向图">1.1.4. 无向图</h3><p>无向图的边(a, b),  a 节点中存放一条a-&gt;b的边， b节点存放一条 b-&gt;a的边</p>
 <h3 id="连通分量">1.1.5. 连通分量</h3><p>无向图中 能够从一个节点到所有的节点的 <strong>最大子图</strong></p>
-<p><img src="/2025/08/30/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E5%9B%BE%E8%AE%BA1/soft/hexo-blog/source/_posts/c/%25E4%25BB%25A3%25E7%25A0%2581%25E9%259A%258F%25E6%2583%25B3%25E5%25BD%2595/%25E5%259B%25BE%25E8%25AE%25BA/20240511102449.png" alt="123 是连通分量，12不是连通分量"></p>
+<p><img src="/2025/08/30/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E5%9B%BE%E8%AE%BA1/20240511102449.png" alt="123 是连通分量， 12不是连通分量"></p>
 <h3 id="强连通分量">1.1.6. 强连通分量</h3><p>有向图中， 增加了方向，依旧是连通分量成为强连通分量</p>
 <h3 id="弱连通分量">1.1.7. 弱连通分量</h3><p>有向图中，增加了方向，不是连通分量 ； 减少方向，是连通分量，是弱~；</p>
 <p><img src="/2025/08/30/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E5%9B%BE%E8%AE%BA1/20240511115235.png" alt="img"></p>
@@ -590,6 +590,140 @@ typedef vector&amp;a">
 <li><p>统计 0 值附近所有岛屿面积的和，不同的岛屿需要去重</p>
 </li>
 <li><p>比较出最大值</p>
+</li>
+</ol>
+<h2 id="岛屿的周长">1.7. 岛屿的周长</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/kamacoder/0106.%E5%B2%9B%E5%B1%BF%E7%9A%84%E5%91%A8%E9%95%BF.html#%E6%80%9D%E8%B7%AF">岛屿与海相邻的周长</a></p>
+<p>岛的陆地是一个正方形，每一条边，与海洋相连都是陆地周长，因此可以<strong>使用图论的方法</strong>，而不是总时搜索</p>
+<ol>
+<li><p>陆地地界的边沿是有一块海洋，边长加1</p>
+<blockquote>
+<p>矩阵边沿也是海洋，也要统计</p>
+</blockquote>
+</li>
+<li><p>每两块相邻的陆地都需要减去2个边沿，&#x3D;  每相邻一块陆地，需要减去一个边沿</p>
+<p>统计所有陆地<code>sum </code>,总边数<code>4*sum</code> ，统计相邻陆地数<code>cover</code>,减去边沿<code>cover</code></p>
+<p>陆地边沿 &#x3D; <code>sum*4 - cover </code></p>
+</li>
+</ol>
+<h2 id="字符串接龙">1.8. 字符串接龙</h2><p><a target="_blank" rel="noopener" href="https://kamacoder.com/problempage.php?pid=1183">字符串作为路径，广度搜索</a></p>
+<p><img src="/2025/08/30/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E5%9B%BE%E8%AE%BA1/20250317105155.png" alt="字符串接龙是无向图"></p>
+<ol>
+<li>无向图中可以使用<code>广度搜索</code>，找打目标节点，即为<code>最短路径</code></li>
+<li>遍历时需要使用<code>visited</code>标识节点，避免循环，此时<code>visited</code>可以使用<code>set</code>标识，也可以使用<code>map</code>，同时标识走到这里的最短路径</li>
+<li>对字符串的替换是对图可行路径的查找，找到了在集合中，标识找到了一条可行路径</li>
+</ol>
+<h2 id="邻接表遍历">1.9. 邻接表遍历</h2><p>邻接表中是以，节点作为数组元素，同时还有节点后指向 一个链表，指向与节点相连的节点</p>
+<p><code> vector&lt;list&lt;int&gt;&gt; g(n+1)</code>，以数组序号作为节点元素，数组的<code>list</code>作为相邻链表</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">// 深搜和广搜中都需要对相邻节点的列表进行遍历</span>
+<span class="token comment" spellcheck="true">// list的遍历方法</span>
+
+<span class="token comment" spellcheck="true">//1. 指针</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">auto</span> it <span class="token operator">=</span> list<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">;</span> it <span class="token operator">!=</span>  list<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// 使用遍历</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">auto</span> i <span class="token operator">:</span> list<span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">// 不能使用类似vector 的for(int i = 0 ; i &amp;lt; vector.size() ;i++){}，list不能使用下标去访问</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="算法">2. 算法</h1><h2 id="并查集">2.1. 并查集</h2><p>含义： 一个集合中的元素指向同一个根节点， 根节点指向自身</p>
+<ol>
+<li>初始化，所有节点指向自身</li>
+<li>插入时，将节点 -&gt; 该集合的<code>根节点</code><ol>
+<li>如果是集合 插入 集合， 需要将集合 的<code>根节点</code> 指向 另一个集合的 <code>根节点</code></li>
+</ol>
+</li>
+<li>比较时，比较两个元素的根节点是否相同</li>
+<li>查找， 迭代查找根节点(指向自身的 节点)<ol>
+<li>并查集的缩小： 在查找到根节点时， 将当前元素的<code>父节点</code>指向<code>根节点</code>，减少深度，加快查询</li>
+</ol>
+</li>
+</ol>
+<pre class="line-numbers language-cpp"><code class="language-cpp">n <span class="token operator">=</span> <span class="token number">1000</span><span class="token punctuation">;</span>
+vector<span class="token operator">&amp;</span>lt<span class="token punctuation">;</span><span class="token keyword">int</span><span class="token operator">&amp;</span>gt<span class="token punctuation">;</span> father <span class="token operator">=</span> vector<span class="token operator">&amp;</span>lt<span class="token punctuation">;</span><span class="token keyword">int</span><span class="token operator">&amp;</span>gt<span class="token punctuation">;</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span>vector<span class="token operator">&amp;</span>lt<span class="token punctuation">;</span><span class="token keyword">int</span><span class="token operator">&amp;</span>gt<span class="token punctuation">;</span><span class="token operator">&amp;</span> father<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span> <span class="token punctuation">;</span> i<span class="token operator">&amp;</span>lt<span class="token punctuation">;</span> father<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        father<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> i <span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">find</span><span class="token punctuation">(</span>vector<span class="token operator">&amp;</span>lt<span class="token punctuation">;</span><span class="token keyword">int</span><span class="token operator">&amp;</span>gt<span class="token punctuation">;</span> father<span class="token punctuation">,</span> <span class="token keyword">int</span> u  <span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span> u <span class="token operator">==</span> father<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> u<span class="token punctuation">;</span>
+    <span class="token keyword">else</span><span class="token punctuation">{</span>
+           <span class="token keyword">int</span> u_father <span class="token operator">=</span> <span class="token function">find</span><span class="token punctuation">(</span>father<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        father<span class="token punctuation">[</span>u<span class="token punctuation">]</span> <span class="token operator">=</span> u_father<span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 简化为 father[u] = find[u]</span>
+        <span class="token keyword">return</span> u_father<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">bool</span> <span class="token function">isSame</span><span class="token punctuation">(</span>vector<span class="token operator">&amp;</span>lt<span class="token punctuation">;</span><span class="token keyword">int</span><span class="token operator">&amp;</span>gt<span class="token punctuation">;</span> father<span class="token punctuation">,</span> <span class="token keyword">int</span> u<span class="token punctuation">,</span>  <span class="token keyword">int</span> v<span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token keyword">int</span> u_father <span class="token operator">=</span> <span class="token function">find</span><span class="token punctuation">(</span>u<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> v_father <span class="token operator">=</span> <span class="token function">find</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> u_father <span class="token operator">==</span> v_father<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">join</span><span class="token punctuation">(</span>vector<span class="token operator">&amp;</span>lt<span class="token punctuation">;</span><span class="token keyword">int</span><span class="token operator">&amp;</span>gt<span class="token punctuation">;</span> father<span class="token punctuation">,</span> <span class="token keyword">int</span> u <span class="token punctuation">,</span> <span class="token keyword">int</span> v<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">int</span> u_father <span class="token operator">=</span> <span class="token function">find</span><span class="token punctuation">(</span>u<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> v_father <span class="token operator">=</span> <span class="token function">find</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>u_father <span class="token operator">==</span> v_father<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// 注意这里插入时，插入的是根节点，不是将u,v 插入</span>
+    <span class="token keyword">else</span> father<span class="token punctuation">[</span>v_father<span class="token punctuation">]</span> <span class="token operator">=</span> u_father<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="无向图中是否有路径">2.2. 无向图中是否有路径</h2><ol>
+<li>将所有的节点加入并查集中</li>
+<li>查看节点<code>i, j</code> 是否重复出现在并查集中，如果是，那就有路径</li>
+</ol>
+<h2 id="无向图中冗余连接">2.3. 无向图中冗余连接</h2><ol>
+<li>如果边<code>i, j</code> 冗余，&#x3D;》 顶点<code>i,j</code>之前就插入在并查集中，具有相同的根</li>
+<li>删除最后一个并查集相同根 的 两个节点组成的边</li>
+</ol>
+<h2 id="有向图中的冗余连接">2.4. 有向图中的冗余连接</h2><p>与<a href="#%E6%97%A0%E5%90%91%E5%9B%BE%E4%B8%AD%E5%86%97%E4%BD%99%E8%BF%9E%E6%8E%A5">无向图</a> 不同，有向图冗余边有以下情况：</p>
+<ol>
+<li>入度为2 的节点， 一定会有两个边，删除其中1条</li>
+<li>如果删除只有还是一个树 ， 这条边可以删除， &#x3D; 所有节点可以组成并查集</li>
+<li>如果不能构成树，那一定是一个环， 这个边就不是应该删除的边，应是零一条边</li>
+<li>如果没有入度为1的节点，一定是有环图<ol>
+<li>将节点依次加入并查集中，删除最后一个形成环的节点</li>
+</ol>
+</li>
+</ol>
+<blockquote>
+<p>删除冗余的最后一条边</p>
+<ol>
+<li>成环的最后一条边 -&gt; 最后使得并查集冗余的边</li>
+<li>节点度为2的边，二选一，选择最后一个插入列表的进行判断</li>
+</ol>
+</blockquote>
+<h2 id="最小生成树">2.5. 最小生成树</h2><h3 id="prim">2.5.1. prim </h3><p>算法步骤：</p>
+<p>初始化： <code>minDist</code>中<code>默认权重</code>不要超过 <code>最大值</code>，否则无法选择节点</p>
+<ol>
+<li>选择距离最小生成树最小的节点</li>
+<li>将节点加入树中</li>
+<li>更新其他节点到最小生成的距离</li>
+</ol>
+<p>使用数据结构<code>minDist</code> 保存节点到当前生成树的最短路径，</p>
+<blockquote>
+<ul>
+<li>最终， <code>minDist</code>中保存着最小生成树的权值</li>
+<li>isTree 记录当前节点是否在树中</li>
+<li>parent 记录与其相连的节点， 记录生成树边</li>
+</ul>
+</blockquote>
+<h3 id="kruscal">2.5.2. kruscal</h3><p>对所有边操作，之前邻接表，邻接矩阵都是对顶点的描述，这里需要定义关于边的数据结构</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> edge<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> e1<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> e2<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> w<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>Edge <span class="token punctuation">;</span> 
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol>
+<li>将所有边保存</li>
+<li>按照权重对边，从小到大<strong>排序</strong></li>
+<li>对所有边遍历<ol>
+<li>在同一个并查集中，跳过</li>
+<li>在不同集合中，加入结果，并加入在同一个并查集中</li>
+</ol>
 </li>
 </ol>
 
@@ -1011,18 +1145,17 @@ typedef vector&amp;a">
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2025/08/30/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E5%9B%BE%E8%AE%BA1/">
+                <a href="/2025/09/01/%E6%9D%82%E9%A1%B9/http%E8%AF%B7%E6%B1%82%E6%B6%88%E6%81%AF/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="图论">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="http请求消息">
                         
-                        <span class="card-title">图论</span>
+                        <span class="card-title">http请求消息</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1032,35 +1165,30 @@ typedef vector&amp;a">
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-08-30
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2025-09-01
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%BC%96%E7%A8%8B/" class="post-category">
-                                    编程
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="post-category">
+                                    计算机网络
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/leetcode/">
-                        <span class="chip bg-color">leetcode</span>
+                    <a href="/tags/http/">
+                        <span class="chip bg-color">http</span>
                     </a>
                     
-                    <a href="/tags/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/">
-                        <span class="chip bg-color">代码随想录</span>
-                    </a>
-                    
-                    <a href="/tags/%E7%BC%96%E7%A8%8B/">
-                        <span class="chip bg-color">编程</span>
+                    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+                        <span class="chip bg-color">计算机网络</span>
                     </a>
                     
                 </div>
@@ -1348,7 +1476,7 @@ typedef vector&amp;a">
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">36k</span>
+                        class="white-color">37.3k</span>
             
             
             
