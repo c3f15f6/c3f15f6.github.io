@@ -437,21 +437,21 @@ typedef vecto">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-09-01
+                    2025-09-02
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.3k
+                    2.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    8 分
+                    11 分
                 </div>
                 
 
@@ -726,6 +726,90 @@ vector<span class="token operator">&amp;</span>lt<span class="token punctuation"
 </ol>
 </li>
 </ol>
+<h2 id="拓扑排序">2.6. 拓扑排序</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/kamacoder/0047.%E5%8F%82%E4%BC%9Adijkstra%E6%9C%B4%E7%B4%A0.html#%E6%80%9D%E8%B7%AF">topology_sort</a></p>
+<p>对于一个给定的有向图，转换为线性的排序； 图中有环时，不能做线性排序 </p>
+<p>&#x3D;&gt; 节点入度为<code>0</code> 的时候，没有依赖，选择作为结果</p>
+<blockquote>
+<ul>
+<li><code>拓扑排序</code>可以用于<code>有向图</code> 无环判断</li>
+<li><code>无向图</code>的环判断可以使用<code>并查集</code>判断</li>
+</ul>
+</blockquote>
+<ol>
+<li><p>统计所有边入度， a-&gt;b， 统计<code>b</code>节点的度</p>
+</li>
+<li><p>选择度为0 的节点，加入待处理集中，可以使用<code>queue</code>作为待处理</p>
+</li>
+<li><p>删除节点<code>i</code>，并将其加入结果集中</p>
+<blockquote>
+<p>删除节点<code>i</code>，是删除与其相邻的节点，此时入度为0 ，只有<code>i-&gt;j</code>的边，将节点<code>j</code>入度 -1 即可</p>
+</blockquote>
+</li>
+</ol>
+<h1 id="最短路径">3. 最短路径</h1><h2 id="单源最短路径Dijkstra">3.1. 单源最短路径Dijkstra</h2><p>选择 节点<code>i</code> 到<strong>原点</strong>的最近距离</p>
+<blockquote>
+<p>prim 寻找节点<code>i</code>到<strong>生成树</strong>的最近距离，原理相同，不过<code>minDist</code>存放值不同1</p>
+</blockquote>
+<ol>
+<li><p>选择距离源点最近的节点</p>
+<blockquote>
+<p>dijkstra 的源点到 源点的距离为<code>0 </code>，初始化源点为0</p>
+<p>prim 初始树没有生成，初始节点均为<code>INT_MAIX-1</code>(方便选择第一个节点)</p>
+</blockquote>
+</li>
+<li><p>将节点插入结果集中，标志为已访问</p>
+</li>
+<li><p>更新节点相邻节点 的 <code>minDist</code></p>
+</li>
+</ol>
+<p>借助三个数组：</p>
+<ol>
+<li><code>minDist[j]</code>: <code>j</code>到源点的最小值</li>
+<li><code>visited[j]</code>： <code>j</code>是否已找到最小值</li>
+<li><code>parent[j]</code>: 与<code>j</code>相连的父节点，每次更新最小值时，更新</li>
+</ol>
+<h3 id="使用边进行Dijkstra">3.1.1. 使用边进行Dijkstra</h3><p>其中有两处修改</p>
+<ol>
+<li><p>使用邻接表代替邻接矩阵</p>
+</li>
+<li><p>使用堆排序选择 距离源点最近的节点</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp">cur <span class="token operator">=</span> q<span class="token punctuation">.</span><span class="token function">top</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 最小的距离节点</span>
+q<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>替换掉使用<code>for</code>对<code>minDist</code>的遍历，查找最小距离节点</p>
+</li>
+<li><p>遍历中，使用对边遍历，代替对节点遍历，</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">while</span><span class="token punctuation">(</span><span class="token operator">!</span>q<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 所有的边都保存在q中</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+</ol>
+<p>修改之后使用的数据结构：</p>
+<ol>
+<li><code>priority_queue&lt;Arc, vector&lt;Arc&gt; , greater&lt;Arc&gt;&gt;</code> 对边权重的小顶堆</li>
+</ol>
+<blockquote>
+<p>小顶堆中a &lt; b，需要使用 &gt;</p>
+<ol>
+<li><p>重定义Arc中的<code>&gt;</code> ，使其能够 <code>&gt;</code>比较运算</p>
+</li>
+<li><p>使用greater<arc> ，使用<code>&gt;</code></arc></p>
+<p>也可以重定义一个比较类，替换2</p>
+</li>
+</ol>
+<p>比较类写法：</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Arc</span><span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">int</span> node<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> w<span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// &amp;gt; 紧跟在operator之后</span>
+    <span class="token comment" spellcheck="true">// 参数使用 const + &amp;</span>
+    <span class="token comment" spellcheck="true">// 函数需要使用const </span>
+    <span class="token keyword">bool</span> <span class="token keyword">operator</span><span class="token operator">&amp;</span>gt<span class="token punctuation">;</span><span class="token punctuation">(</span><span class="token keyword">const</span> Arc<span class="token operator">&amp;</span> other<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token operator">-</span><span class="token operator">&amp;</span>gt<span class="token punctuation">;</span>w <span class="token operator">&amp;</span>gt<span class="token punctuation">;</span> other<span class="token punctuation">.</span>w<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span> 
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</blockquote>
 
                 
             </div>
@@ -1476,7 +1560,7 @@ vector<span class="token operator">&amp;</span>lt<span class="token punctuation"
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">37.3k</span>
+                        class="white-color">38.3k</span>
             
             
             
