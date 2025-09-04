@@ -5,11 +5,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="deepseek 调用方法, 汤汁小白菜">
-    <meta name="description" content="1. deepseek 调用方法1.1. API_KEY设置
+    <meta name="description" content="c
+1. deepseek 调用方法1.1. API_KEY设置
 设置URL = &amp;quot;https://deepseek.com/chat/completions/&amp;quot;
 
 导入系统变量，借助os
-os.getenv(&#34;变量名称&#34;,">
+os.getenv(&#34;变量名称">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -436,21 +437,21 @@ os.getenv(&#34;变量名称&#34;,">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-09-03
+                    2025-09-04
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    351
+                    476
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -473,7 +474,8 @@ os.getenv(&#34;变量名称&#34;,">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="deepseek-调用方法">1. deepseek 调用方法</h1><h2 id="API-KEY设置">1.1. API_KEY设置</h2><ol>
+                <p>c</p>
+<h1 id="deepseek-调用方法">1. deepseek 调用方法</h1><h2 id="API-KEY设置">1.1. API_KEY设置</h2><ol>
 <li><p>设置<code>URL = &quot;https://deepseek.com/chat/completions/&quot;</code></p>
 </li>
 <li><p>导入系统变量，借助<code>os</code></p>
@@ -548,11 +550,26 @@ os.getenv(&#34;变量名称&#34;,">
 <p><code>except ValueError</code></p>
 </li>
 <li><p>是否可以从数据中提取出值</p>
-<p><code>except &#123;KeyError, IndexError, TypeError&#125;</code></p>
+<p>&#96;except {KeyError, IndexError, TypeError}</p>
 </li>
 </ol>
 </li>
 </ol>
+<h2 id="使用超时重传发送">3.1. 使用超时重传发送</h2><p>如果遇到<code>rest</code>请求错误，或者返回的<code>resq</code>状态码有问题，使用退避算法，进行规避<code>n</code>次，超过则返回</p>
+<ol>
+<li>重复遍历<code>n</code>次</li>
+<li>如果遇到<code>请求错误</code>,查看是否超过重复次数，没有，<code>time.sleep</code>一段时间后，再次运行重传</li>
+<li>超过重复请求后，返回错误</li>
+</ol>
+<h1 id="day4">4. day4</h1><h2 id="markdown-渲染">4.1. markdown 渲染</h2><p>使用<code>rich</code>库</p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">from</span> rich<span class="token punctuation">.</span>console <span class="token keyword">import</span> Console
+<span class="token keyword">from</span> rich<span class="token punctuation">.</span>markdown <span class="token keyword">import</span> Markdown
+
+console <span class="token operator">=</span> Console<span class="token punctuation">(</span><span class="token punctuation">)</span>
+markdown_string <span class="token operator">=</span> <span class="token string">""</span><span class="token string">""</span><span class="token string">""</span>
+markdown <span class="token operator">=</span> Markdown<span class="token punctuation">(</span>markdown_string<span class="token punctuation">)</span>
+console
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -1309,7 +1326,7 @@ os.getenv(&#34;变量名称&#34;,">
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">38.3k</span>
+                        class="white-color">39.1k</span>
             
             
             

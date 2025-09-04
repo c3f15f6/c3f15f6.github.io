@@ -437,21 +437,21 @@ typedef vecto">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-09-02
+                    2025-09-03
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.9k
+                    3.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    11 分
+                    13 分
                 </div>
                 
 
@@ -810,6 +810,45 @@ q<span class="token punctuation">.</span><span class="token function">pop</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span> 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </blockquote>
+<h2 id="Bellman-ford算法">3.2. Bellman-ford算法</h2><p>可以用于解决具有负权边的结果 ， 对边进行缩放，此时可以只存储边</p>
+<blockquote>
+<p>dijskra不能处理具有负权边的结果， 使用的是贪心算法，选择当前最近的边，对 负权边忽视最优结果</p>
+</blockquote>
+<p>Bellman-ford算法类似于动态规划的算法， <code>minDist[i] = min(minDist[i] ,  minDist[j-1] + value)</code>, </p>
+<p>通过<code>n-1</code> 次迭代， 一定能找到最小边</p>
+<ol>
+<li><p>遍历<code>n-1</code>次</p>
+</li>
+<li><p>对所有边进行一次修改，每次修改更新最小边</p>
+<p>如果<code>from</code> 节点 &#x3D; <code>INT_MAX</code> ，没有到达<code>from</code> 节点，此时不修改<code>MinDist</code>结果</p>
+</li>
+</ol>
+<h3 id="动态规划思想">3.2.1. 动态规划思想</h3><p><code>dp[k][j]</code> 是最多 <code>k</code>条边经过的最短路径，有两种计算结果</p>
+<ol>
+<li>刚好<code>k</code>次到达最短路径，<code>dp[k-1][v] +  weight</code>， <code>v</code>是能到达 <code>j</code>的节点</li>
+<li>前<code>k-1</code>次已经到达最短路径， <code>dp[k-1][j]</code></li>
+</ol>
+<blockquote>
+<p> <code>dp[k][j] = min(dp[k-1][j] , min(dp[k-1][v]))</code></p>
+</blockquote>
+<h3 id="Bellman-ford-队列优化算法">3.2.2. Bellman-ford 队列优化算法</h3><p>边<code>i-j</code> 中，只有<code>minDist[i]</code> 的权重发生改变，相邻的<code>minDist[j]</code>才需要发生改变， 与<code>i</code>相邻的所有节点都需要更新，此时使用<code>邻接表</code>存储图效果最好</p>
+<p>此时，使用队列<code>queue</code>存放节点<code>i</code>， 作为待处理节点</p>
+<p>同一节点可能未处理之前，可能被修改对此，因此使用<code>visited</code>数组，标识节点是否在队列中，在队列中不需要重复加入</p>
+<blockquote>
+<p>注意： 优化算法只对较少边的情况进行优化， 如果边的数量较多时，优化算法因为<code>queue</code>操作不适合优化</p>
+</blockquote>
+<h3 id="Bellman-ford-判断负权回路">3.2.3. Bellman-ford 判断负权回路</h3><p><a target="_blank" rel="noopener" href="https://programmercarl.com/kamacoder/0095.%E5%9F%8E%E5%B8%82%E9%97%B4%E8%B4%A7%E7%89%A9%E8%BF%90%E8%BE%93II.html#%E6%80%9D%E8%B7%AF">判断是否有回路，且值为负数权重</a></p>
+<ol>
+<li>由<a href="#Bellman-ford%E7%AE%97%E6%B3%95"><code>Bellman_ford</code>算法原理</a> 中， 松弛<code>n-1</code>次后， <code>minDist</code>结果不再发生改变</li>
+<li>所有再多遍历一次，如果在第<code>n</code>后，还发生改变，那么一定出现了<code>负权回路</code></li>
+</ol>
+<h3 id="有限制的最短路径">3.2.4. 有限制的最短路径</h3><p><a target="_blank" rel="noopener" href="https://programmercarl.com/kamacoder/0096.%E5%9F%8E%E5%B8%82%E9%97%B4%E8%B4%A7%E7%89%A9%E8%BF%90%E8%BE%93III.html#%E6%80%9D%E8%B7%AF">从<code>i- j</code> 限制经过<code>k</code>个节点</a>  &#x3D; 可以经过<code>k+1</code>条边</p>
+<p><code>minDist</code>经过<code>k</code>轮松弛，得到最大长度为<code>k</code>的最短路径， 因此原题 &#x3D; 经过<code>k+1</code>次最短路径得到的结果</p>
+<p>但是由于算法采用了滚动数组， 导致第<code>i</code>条边应在第<code>i</code>轮更改，却在之前轮数中，修改，因此需要保留上一轮的数据，下一轮必须使用上一轮进行修改，保证结果正确性。</p>
+<ol>
+<li>使用缓存数组 存放 上一组中的最短路径</li>
+<li>下一组计算时，需使用上一组的数据进行修改</li>
+</ol>
 
                 
             </div>
@@ -1560,7 +1599,7 @@ q<span class="token punctuation">.</span><span class="token function">pop</span>
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">38.3k</span>
+                        class="white-color">39.1k</span>
             
             
             
