@@ -437,14 +437,14 @@ os.getenv(&#34;变量名称">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-09-04
+                    2025-09-05
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    476
+                    652
                 </div>
                 
 
@@ -570,6 +570,49 @@ markdown_string <span class="token operator">=</span> <span class="token string"
 markdown <span class="token operator">=</span> Markdown<span class="token punctuation">(</span>markdown_string<span class="token punctuation">)</span>
 console
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="输出markdown-到word-文件中">4.2. 输出markdown 到word 文件中</h2><ol>
+<li>首先检查文件目录存在</li>
+</ol>
+<pre class="line-numbers language-python"><code class="language-python">  <span class="token keyword">import</span> os
+  output_dir <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>dirname<span class="token punctuation">(</span>output_file<span class="token punctuation">)</span>
+  <span class="token keyword">if</span> output_dir <span class="token operator">and</span> <span class="token operator">not</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>exist<span class="token punctuation">(</span>output_dir<span class="token punctuation">)</span><span class="token punctuation">:</span>
+         os<span class="token punctuation">.</span>makedirs<span class="token punctuation">(</span>output_dir<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="2">
+<li>使用<code>pypandoc</code>输出</li>
+</ol>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> pypandoc
+<span class="token triple-quoted-string string">"""
+    to: "目标格式"
+    format："当前格式"
+    outputfile: "输出文件"
+"""</span>
+pypandoc<span class="token punctuation">.</span>convert_text<span class="token punctuation">(</span>makedown_string<span class="token punctuation">,</span> to<span class="token operator">=</span> <span class="token string">'.doc'</span><span class="token punctuation">,</span> format <span class="token operator">=</span> <span class="token string">'markdown'</span><span class="token punctuation">,</span> outputfile <span class="token operator">=</span> output_filepath<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="3">
+<li>同时可以尝试检查<code>ImportError , Exception</code>等错误</li>
+</ol>
+<h3 id="直接调用pandoc-命令行工具">4.2.1. 直接调用pandoc 命令行工具</h3><ol>
+<li><p>创建临时文件.md存储markdown内容</p>
+<pre class="line-numbers language-python"><code class="language-python">temp_md_file <span class="token operator">=</span> <span class="token string">"temp.md"</span>
+<span class="token keyword">with</span> open<span class="token punctuation">(</span>temp_md_file<span class="token punctuation">,</span> <span class="token string">'w'</span><span class="token punctuation">,</span> encoding<span class="token operator">=</span> <span class="token string">'utf-8'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+    f<span class="token punctuation">.</span>write<span class="token punctuation">(</span>m_str<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>使用<code>subprocess.run</code>执行命令</p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> subprocess
+command <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'pandoc'</span><span class="token punctuation">,</span> <span class="token string">'-f'</span><span class="token punctuation">,</span> <span class="token string">'markdown'</span><span class="token punctuation">,</span> <span class="token string">'t'</span><span class="token punctuation">,</span><span class="token string">'doc'</span><span class="token punctuation">,</span> <span class="token string">'o'</span><span class="token punctuation">,</span> output_filename<span class="token punctuation">,</span> temp_md_file<span class="token punctuation">]</span>
+result <span class="token operator">=</span> subprocess<span class="token punctuation">.</span>run<span class="token punctuation">(</span>command<span class="token punctuation">,</span> capture_output <span class="token operator">=</span> <span class="token boolean">True</span><span class="token punctuation">,</span> text <span class="token operator">=</span> <span class="token boolean">True</span><span class="token punctuation">,</span> encoding <span class="token operator">=</span> <span class="token string">'utf-8'</span><span class="token punctuation">)</span>
+<span class="token keyword">if</span> result<span class="token punctuation">.</span>returncode <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token string">"转换正确"</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>最后删除临时文件</p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">if</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>exist<span class="token punctuation">(</span>temp_md_file<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    os<span class="token punctuation">.</span>remove<span class="token punctuation">(</span>temp_md_file<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+</ol>
 
                 
             </div>
@@ -1326,7 +1369,7 @@ console
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">39.1k</span>
+                        class="white-color">39.5k</span>
             
             
             

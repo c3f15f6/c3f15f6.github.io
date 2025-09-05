@@ -437,21 +437,21 @@ typedef vecto">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-09-03
+                    2025-09-04
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.6k
+                    3.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    13 分
+                    14 分
                 </div>
                 
 
@@ -848,6 +848,26 @@ q<span class="token punctuation">.</span><span class="token function">pop</span>
 <ol>
 <li>使用缓存数组 存放 上一组中的最短路径</li>
 <li>下一组计算时，需使用上一组的数据进行修改</li>
+</ol>
+<h4 id="DP-求解">3.2.4.1. DP 求解</h4><ol>
+<li><p><code>dp[i][j]</code> 标识经历<code>i</code>条边，到达第<code>j</code>点的最短路径</p>
+</li>
+<li><p><code>dp[i][j]</code>的计算方式</p>
+<ol>
+<li>不经历 第<code>i</code>条边，可以到达<code>j</code>点， <code>dp[i-1][j]</code></li>
+<li>经历第<code>i</code>条边，遍历所有<code>from-&gt;j</code>的边, 因<code>from</code>是到达的第<code>i-1</code>条边， 结果为<code>dp[i-1][from] + w</code></li>
+</ol>
+<p>两者最选择，取最小值</p>
+</li>
+<li><p>初始化，起始节点第<code>0</code>轮一定为0，其余初始化为<code>INT_MAX</code>,便于遍历</p>
+</li>
+<li><p>遍历顺序： 第一轮迭代次数 &#x3D; 经历<code>k</code>条边，第二轮遍历所有节点即可</p>
+</li>
+</ol>
+<h4 id="使用queue优化">3.2.4.2. 使用queue优化</h4><p>最主要问题： 统计迭代次数，并且使用上一次的计算结果算本次的更新结果</p>
+<ol>
+<li>使用<code>old_minDist</code>, <code>q_size</code>在每次迭代之前，统计上一次的迭代结果</li>
+<li>结束上一次迭代中待更新的所有节点后，停止本次迭代， 迭代数量-1， 统计下一个迭代</li>
 </ol>
 
                 
@@ -1599,7 +1619,7 @@ q<span class="token punctuation">.</span><span class="token function">pop</span>
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">39.1k</span>
+                        class="white-color">39.5k</span>
             
             
             
