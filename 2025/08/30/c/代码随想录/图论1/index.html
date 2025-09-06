@@ -437,21 +437,21 @@ typedef vecto">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-09-04
+                    2025-09-05
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.8k
+                    4.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    14 分
+                    15 分
                 </div>
                 
 
@@ -868,6 +868,41 @@ q<span class="token punctuation">.</span><span class="token function">pop</span>
 <ol>
 <li>使用<code>old_minDist</code>, <code>q_size</code>在每次迭代之前，统计上一次的迭代结果</li>
 <li>结束上一次迭代中待更新的所有节点后，停止本次迭代， 迭代数量-1， 统计下一个迭代</li>
+</ol>
+<h2 id="多源最短路径算法Floyd">3.3. 多源最短路径算法Floyd</h2><p>算法可以同时计算出<code>多个起源</code>到<code>各个终点</code>的距离，使用动态规划的思想</p>
+<ol>
+<li><p><code>dp[i][j][k]</code> 节点<code>i</code> -&gt; <code>j</code>经过经过<code>[0,k]</code>中节点的最短路径</p>
+</li>
+<li><p><code>dp[i][j][k]</code> 中<code>i-&gt;j</code>最短路径有两种计算方法：</p>
+</li>
+<li><p>经过<code>k</code>节点， 即分为两段<code>i-&gt;k-&gt;j</code>， 计算公式为<code>dp[i][k][k-1] + dp[k][j][k-1]</code></p>
+</li>
+<li><p>不经过<code>k</code>节点，从<code>k-1</code>节点经过，计算公式为<code>dp[i][j][k-1]</code></p>
+<p>从中选择最优方案，<code>min(1, 2)</code></p>
+</li>
+<li><p>初始化： </p>
+<ol>
+<li>dp 有<code>k=0</code>时计算，初始<code>dp[i][j][0]</code>，经过0个节点，即为初始图路径值</li>
+<li><code>dp[i][j][0]</code>其余边初始为最大值，便于比较出最小值</li>
+</ol>
+</li>
+<li><p>遍历顺序：</p>
+<ol>
+<li><code>k</code>层计算依赖于<code>k-1</code>，所有优先计算出<code>k-1</code>层，<code>k</code>在第一层，从小向大遍历</li>
+</ol>
+</li>
+</ol>
+<h1 id="搜索算法">4. 搜索算法</h1><h2 id="A-算法">4.1. A*算法</h2><ol>
+<li>设计启发函数，由启发函数计算值为节点的选取增加权重</li>
+<li>每次选择节点时，依照权重选择节点</li>
+</ol>
+<p>使用A*算法优化广度搜索算法(还可以优化Dijkstra算法)，</p>
+<blockquote>
+<p>广度搜索算法，每次出队相当于取出节点，在这里为出队的节点增加权重，每次出队按照权重低的出队</p>
+</blockquote>
+<ol>
+<li>建立优先队列，从小到大排序，每次取出权重最小的节点</li>
+<li>每次加入队列时，计算启发函数作为权重值</li>
 </ol>
 
                 
@@ -1619,7 +1654,7 @@ q<span class="token punctuation">.</span><span class="token function">pop</span>
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">39.5k</span>
+                        class="white-color">40.4k</span>
             
             
             

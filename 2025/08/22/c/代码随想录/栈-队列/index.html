@@ -442,21 +442,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-08-30
+                    2025-09-06
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    423
+                    844
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    3 分
                 </div>
                 
 
@@ -523,6 +523,44 @@ d.push_front(), d.pop_front();
     priority_queue&lt; pair&lt;int, int&gt;, vector&lt;pair&lt;int, int&gt;&gt; , mycomparison&gt; q;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>使用小顶堆，优先排除较小元素，将较大元素保留在优先队列中。</p>
+<h1 id="单调栈">2. 单调栈</h1><h2 id="右侧最高气温">2.1. 右侧最高气温</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0739.%E6%AF%8F%E6%97%A5%E6%B8%A9%E5%BA%A6.html">最高气温</a></p>
+<p>查找右边 比 当前元素更小的元素</p>
+<ol>
+<li>右边比自身大，找到了，当前元素出栈</li>
+<li>右边比自身小，没找到，入栈</li>
+</ol>
+<p>栈中元素为待查找的元素，找到了就出栈</p>
+<h2 id="nums1元素在nums2中下一个最大元素">2.2. nums1元素在nums2中下一个最大元素</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0496.%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0I.html">nums1元素在nums2中下一个最大元素</a></p>
+<ol>
+<li>先计算<code>num2</code>中下一个更大元素的结果，保存在<code>map</code>中</li>
+<li><code>num1</code>从<code>map</code>中取得结果</li>
+</ol>
+<h2 id="循环数组的下一最大元素">2.3. 循环数组的下一最大元素</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0503.%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0II.html#%E7%AE%97%E6%B3%95%E5%85%AC%E5%BC%80%E8%AF%BE">循环数组的下一最大元素</a></p>
+<p><code>nums</code>是一个循环数组，最后一个元素接在第一个元素</p>
+<blockquote>
+<ol>
+<li>对数组循环时， 使用 <strong><code>% nums.size()</code></strong> 对数组循环遍历</li>
+<li>遍历次数增加一倍，从<code>1 </code>遍历到 <code>2*n</code></li>
+</ol>
+</blockquote>
+<h2 id="接雨水">2.4. 接雨水</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0042.%E6%8E%A5%E9%9B%A8%E6%B0%B4.html#%E6%80%9D%E8%B7%AF">接雨水</a></p>
+<p>左边和右边高度高于中间时，中间出现凹槽， 可以接到雨水</p>
+<h3 id="暴力求解">2.4.1. 暴力求解</h3><p>当前节点<code>j</code></p>
+<ol>
+<li><p>左边<code>[0,j-1]</code>最大高度<code>lheight </code>,右边<code>[j+1 , end]</code>最大高度<code>rheight</code>，每次暴力求解这两个指针</p>
+</li>
+<li><p>计算高度差，使用列方向计算求和</p>
+<img src="/2025/08/22/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E6%A0%88-%E9%98%9F%E5%88%97/20210402091208445.png" alt="列方向求和" style="zoom:75%;"></li>
+</ol>
+<h3 id="动态规划">2.4.2. 动态规划</h3><ol>
+<li><code>j</code>左边最大高度 &#x3D; <code>j-1</code>左边最高高度，或者<code>height[j-1]</code></li>
+<li>右边计算公式为 <code>rheight[j] =  max(rheight[j+1] , height[j+1])</code></li>
+</ol>
+<p>先计算出<code>dp</code>， 代替<a href="#%E6%9A%B4%E5%8A%9B%E6%B1%82%E8%A7%A3">暴力求解</a> 中的双指针</p>
+<h3 id="单调栈-1">2.4.3. 单调栈</h3><p>单调递增栈中，栈底 &gt; 栈头</p>
+<p>如果出栈<code>j</code>， 栈头元素&gt; <code>j</code>, 即将入栈元素 &gt; <code>j</code>， 出现凹槽，计算这个凹槽</p>
+<p>宽 &#x3D; <code>入栈元素 - 栈顶元素</code>， 高度 &#x3D; <code>min(入栈， 栈顶) - 出栈元素(凹槽)</code></p>
+<p><img src="/2025/08/22/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E6%A0%88-%E9%98%9F%E5%88%97/20210223092629946.png" alt="行计算"></p>
 
                 
             </div>
@@ -1281,7 +1319,7 @@ d.push_front(), d.pop_front();
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">39.5k</span>
+                        class="white-color">40.4k</span>
             
             
             
