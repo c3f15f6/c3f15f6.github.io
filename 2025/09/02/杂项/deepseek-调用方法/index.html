@@ -437,14 +437,14 @@ os.getenv(&#34;变量名称">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-09-08
+                    2025-09-10
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    710
+                    831
                 </div>
                 
 
@@ -617,6 +617,27 @@ result <span class="token operator">=</span> subprocess<span class="token punctu
 <p>任务栏：<code>C:\Users\用户名\AppData\Roaming\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar</code></p>
 <p>开始菜单：<code>C:\ProgramData\Microsoft\Windows\Start Menu\Programs</code></p>
 <p>IE开始菜单<code>C:\Users\用户名\AppData\Roaming\Microsoft\Internet Explorer\Quick Launch\User Pinned\StartMenu</code></p>
+<h1 id="9-10">6. 9.10</h1><h2 id="path类">6.1. path类</h2><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">from</span> pathlib <span class="token keyword">import</span> Path
+p_path <span class="token operator">=</span> Path<span class="token punctuation">(</span>路径<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 组合路径</span>
+config_path <span class="token operator">=</span> p_path <span class="token operator">/</span> <span class="token string">"config.txt"</span> 
+<span class="token punctuation">.</span>name <span class="token comment" spellcheck="true"># 文件名</span>
+<span class="token punctuation">.</span>suffix <span class="token comment" spellcheck="true"># 文件后缀</span>
+<span class="token punctuation">.</span>stem <span class="token comment" spellcheck="true"># 无后缀的文件名</span>
+<span class="token punctuation">.</span>parent <span class="token comment" spellcheck="true"># 父目录</span>
+<span class="token punctuation">.</span>is_absolute <span class="token comment" spellcheck="true"># 是否为祖先路径</span>
+<span class="token punctuation">.</span>revolve<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 转换为相对路径</span>
+
+
+<span class="token comment" spellcheck="true"># 创建文件</span>
+<span class="token comment" spellcheck="true"># parents=True 会创建所有不存在的父目录</span>
+<span class="token comment" spellcheck="true"># exist_ok=True 避免目录已存在时报错</span>
+Path<span class="token punctuation">(</span>路径<span class="token punctuation">)</span><span class="token punctuation">.</span>mkdir<span class="token punctuation">(</span>exist_ok <span class="token operator">=</span> <span class="token boolean">True</span><span class="token punctuation">,</span> parents <span class="token operator">=</span> <span class="token boolean">True</span><span class="token punctuation">)</span>
+Path<span class="token punctuation">(</span>路径<span class="token punctuation">)</span><span class="token punctuation">.</span>touch<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 创建空文件</span>
+
+p_path<span class="token punctuation">.</span>write_text<span class="token punctuation">(</span>str<span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 写入文件</span>
+content <span class="token operator">=</span> file<span class="token punctuation">.</span>read_text<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 读取文件内容</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -1367,7 +1388,7 @@ result <span class="token operator">=</span> subprocess<span class="token punctu
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">40.5k</span>
+                        class="white-color">41.3k</span>
             
             
             
