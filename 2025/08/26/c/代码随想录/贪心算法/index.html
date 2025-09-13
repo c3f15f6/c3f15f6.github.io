@@ -562,12 +562,12 @@
 <li>高身高的优先插入后，后面小身高的插入不会影响k值</li>
 </ol>
 <p><code>vector</code> 与 <code>list</code>插入的区别， <code>vector</code>插入时涉及底层扩容，比list插入效率低</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> v<span class="op">;</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>list<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> l<span class="op">;</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>v<span class="op">.</span>insert<span class="op">(</span>v<span class="op">.</span>begin<span class="op">()+</span>pos<span class="op">,</span> val<span class="op">);</span>  <span class="co">// 可以直接使用pos插入</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">auto</span> it <span class="op">=</span> l<span class="op">.</span>begin<span class="op">();</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>it <span class="op">=</span> next<span class="op">(</span>it<span class="op">,</span> pos<span class="op">);</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>l<span class="op">.</span>insert<span class="op">(</span>it<span class="op">,</span> val<span class="op">);</span> <span class="co">// 必须使用迭代器指定位置</span></span></code></pre></div>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">vector&lt;int&gt; v;
+list&lt;int&gt; l;
+v.insert(v.begin()+pos, val);  &#x2F;&#x2F; 可以直接使用pos插入
+auto it &#x3D; l.begin();
+it &#x3D; next(it, pos);
+l.insert(it, val); &#x2F;&#x2F; 必须使用迭代器指定位置<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="射击气球">1.12. 射击气球</h2>
 <p><a target="_blank" rel="noopener" href="https://programmercarl.com/0452.用最少数量的箭引爆气球.html#思路">射击气球</a></p>
 <p>贪心算法，一定要举出贪心的例子，来验证算法，</p>
@@ -1395,7 +1395,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">42.1k</span>
+                        class="white-color">43.2k</span>
             
             
             

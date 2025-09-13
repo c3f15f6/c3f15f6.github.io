@@ -12,8 +12,7 @@
 查找数字是否重复出现，使用哈希表存储
 #include &amp;lt;set&amp;gt;
 set&amp;lt;int&amp;gt; s;
-s.insert(a); // 插入数据
-i">
+s.insert(a); &amp;#x2F;&amp;#x2F;">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -450,14 +449,14 @@ i">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    503
+                    517
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -485,13 +484,13 @@ i">
 <h2 id="快乐数">1.1. 快乐数</h2>
 <p><a target="_blank" rel="noopener" href="https://programmercarl.com/0202.快乐数.html#思路">快乐数</a></p>
 <p>查找数字是否重复出现，使用哈希表存储</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;set&gt;</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>set<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> s<span class="op">;</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>s<span class="op">.</span>insert<span class="op">(</span>a<span class="op">);</span> <span class="co">// 插入数据</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span><span class="op">(</span>s<span class="op">.</span>find<span class="op">(</span>a<span class="op">)!=</span> s<span class="op">.</span>end<span class="op">())&#123;</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 查找数据是否在s中</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">//如果出现 != s.end(), 没出现 == s.end()</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span></code></pre></div>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;set&gt;
+set&lt;int&gt; s;
+s.insert(a); &#x2F;&#x2F; 插入数据
+if(s.find(a)!&#x3D; s.end())&#123;
+    &#x2F;&#x2F; 查找数据是否在s中
+    &#x2F;&#x2F;如果出现 !&#x3D; s.end(), 没出现 &#x3D;&#x3D; s.end()
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="两数之和">1.2. 两数之和</h2>
 <p><a target="_blank" rel="noopener" href="https://programmercarl.com/0001.两数之和.html#算法公开课">两数之和</a></p>
 <ol type="1">
@@ -505,9 +504,9 @@ i">
 <li><p>使用三个指针，查找指针对应的数据之和是否为0</p></li>
 <li><p>指针去重，结果中不能包含统一的数据，所以在取得结果后再去重，而不是先去重再计算结果</p></li>
 </ol>
-<div class="sourceCode" id="cb2"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span><span class="op">(</span>i<span class="op">&gt;</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> nums<span class="op">[</span>i<span class="op">]==</span> nums<span class="op">[</span>i<span class="op">-</span><span class="dv">1</span><span class="op">])&#123;</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>   <span class="cf">continue</span><span class="op">;</span><span class="co">//对已有结果去重</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">&#125;</span></span></code></pre></div>
+<p><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">if(i&gt; 0 &amp;&amp; nums[i]&#x3D;&#x3D; nums[i-1])&#123;
+	continue;&#x2F;&#x2F;对已有结果去重
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></p>
 <ol start="3" type="1">
 <li>vector<int><strong>{</strong>1， 2，3<strong>}</strong>，使用{}作为临时vector</int></li>
 <li><code>for( ; ; )</code> 中第一个式子只对第一次循环有效，循环中赋初值需放在循环内</li>
@@ -1304,7 +1303,7 @@ i">
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">42.1k</span>
+                        class="white-color">43.2k</span>
             
             
             

@@ -448,7 +448,7 @@ os.getenv(&amp;quot;变量">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    920
+                    952
                 </div>
                 
 
@@ -484,17 +484,17 @@ os.getenv(&amp;quot;变量">
 <ol type="1">
 <li><p>设置<code>URL = "https://deepseek.com/chat/completions/"</code></p></li>
 <li><p>导入系统变量，借助<code>os</code></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>os.getenv(<span class="st">&quot;变量名称&quot;</span>, default <span class="op">=</span> 默认值)</span></code></pre></div></li>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">os.getenv(&quot;变量名称&quot;, default &#x3D; 默认值)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ol>
 <h2 id="请求头">1.2. 请求头</h2>
 <ol type="1">
 <li><code>authorization</code> : Bearer API_KEY， 认证信息</li>
 <li><code>Content-Type: application/json</code>, 请求内容格式，post 仅能使用Json</li>
 </ol>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>header <span class="op">=</span> &#123;</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;authorization&quot;</span>: <span class="ss">f&quot;Bearer </span><span class="sc">&#123;</span>API_KEY<span class="sc">&#125;</span><span class="ss">&quot;</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Content-Type&quot;</span>: <span class="st">&quot;application/json&quot;</span>,</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>&#125;</span></code></pre></div>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">header &#x3D; &#123;
+    &quot;authorization&quot;: f&quot;Bearer &#123;API_KEY&#125;&quot;
+    &quot;Content-Type&quot;: &quot;application&#x2F;json&quot;,
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="请求内容payload">1.3. 请求内容payload</h2>
 <ol type="1">
 <li><code>model</code>: 选择模型</li>
@@ -505,17 +505,17 @@ os.getenv(&amp;quot;变量">
 </ol></li>
 <li><code>temperature</code>: 设置为 0 ，模型输出更加稳定， 1，模型输出更发散</li>
 </ol>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>payload <span class="op">=</span> &#123;</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;model&quot;</span>: deepseek<span class="op">-</span>chat,</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;messages&quot;</span>:[</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        &#123;<span class="st">&quot;role&quot;</span>: <span class="st">&quot;system&quot;</span>, <span class="st">&quot;content&quot;</span>:<span class="st">&quot;命令要求&quot;</span> &#125;，</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        &#123;<span class="st">&quot;role&quot;</span>: <span class="st">&quot;User&quot;</span>, <span class="st">&quot;content&quot;</span>: <span class="st">&quot;用户输入&quot;</span>&#125;,</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        &#123;<span class="st">&quot;role&quot;</span>: <span class="st">&quot;&quot;</span>&#125;</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    ]</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>&#125;</span></code></pre></div>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">payload &#x3D; &#123;
+    &quot;model&quot;: deepseek-chat,
+    &quot;messages&quot;:[
+        &#123;&quot;role&quot;: &quot;system&quot;, &quot;content&quot;:&quot;命令要求&quot; &#125;，
+        &#123;&quot;role&quot;: &quot;User&quot;, &quot;content&quot;: &quot;用户输入&quot;&#125;,
+        &#123;&quot;role&quot;: &quot;&quot;&#125;
+    ]
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="发送请求">1.4. 发送请求</h2>
 <p>发送内容，使用<code>post</code>请求</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>resp <span class="op">=</span> requests.post(url, header <span class="op">=</span> header, payload <span class="op">=</span> payload, timeout <span class="op">=</span>timeout)</span></code></pre></div>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">resp &#x3D; requests.post(url, header &#x3D; header, payload &#x3D; payload, timeout &#x3D;timeout)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="response-返回内容">1.5. response 返回内容</h2>
 <p>返回内容在<code>resp.json()['choices'][0]['message']['content']</code>, 提取出结果并返回</p>
 <figure>
@@ -562,49 +562,49 @@ os.getenv(&amp;quot;变量">
 <h1 id="day4">4. day4</h1>
 <h2 id="markdown-渲染">4.1. markdown 渲染</h2>
 <p>使用<code>rich</code>库</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> rich.console <span class="im">import</span> Console</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> rich.markdown <span class="im">import</span> Markdown</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>console <span class="op">=</span> Console()</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>markdown_string <span class="op">=</span> <span class="st">&quot;&quot;&quot;&quot;&quot;&quot;</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>markdown <span class="op">=</span> Markdown(markdown_string)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>console</span></code></pre></div>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">from rich.console import Console
+from rich.markdown import Markdown
+
+console &#x3D; Console()
+markdown_string &#x3D; &quot;&quot;&quot;&quot;&quot;&quot;
+markdown &#x3D; Markdown(markdown_string)
+console<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="输出markdown-到word-文件中">4.2. 输出markdown 到word 文件中</h2>
 <ol type="1">
 <li>首先检查文件目录存在</li>
 </ol>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>  <span class="im">import</span> os</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  output_dir <span class="op">=</span> os.path.dirname(output_file)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> output_dir <span class="kw">and</span> <span class="kw">not</span> os.path.exist(output_dir):</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>       os.makedirs(output_dir)</span></code></pre></div>
+<p><pre class="line-numbers language-python" data-language="python"><code class="language-python">import os
+output_dir &#x3D; os.path.dirname(output_file)
+if output_dir and not os.path.exist(output_dir):
+   	os.makedirs(output_dir)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></p>
 <ol start="2" type="1">
 <li>使用<code>pypandoc</code>输出</li>
 </ol>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pypandoc</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">&quot;&quot;&quot;</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"> to: &quot;目标格式&quot;</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"> format：&quot;当前格式&quot;</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"> outputfile: &quot;输出文件&quot;</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">&quot;&quot;&quot;</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>pypandoc.convert_text(makedown_string, to<span class="op">=</span> <span class="st">&#39;docx&#39;</span>, <span class="bu">format</span> <span class="op">=</span> <span class="st">&#39;markdown&#39;</span>, outputfile <span class="op">=</span> output_filepath)</span></code></pre></div>
+<p><pre class="line-numbers language-python" data-language="python"><code class="language-python">import pypandoc
+&quot;&quot;&quot;
+	to: &quot;目标格式&quot;
+	format：&quot;当前格式&quot;
+	outputfile: &quot;输出文件&quot;
+&quot;&quot;&quot;
+pypandoc.convert_text(makedown_string, to&#x3D; &#39;docx&#39;, format &#x3D; &#39;markdown&#39;, outputfile &#x3D; output_filepath)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></p>
 <ol start="3" type="1">
 <li>同时可以尝试检查<code>ImportError , Exception</code>等错误</li>
 </ol>
 <h3 id="直接调用pandoc-命令行工具">4.2.1. 直接调用pandoc 命令行工具</h3>
 <ol type="1">
 <li><p>创建临时文件.md存储markdown内容</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>temp_md_file <span class="op">=</span> <span class="st">&quot;temp.md&quot;</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(temp_md_file, <span class="st">&#39;w&#39;</span>, encoding<span class="op">=</span> <span class="st">&#39;utf-8&#39;</span>) <span class="im">as</span> f:</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    f.write(m_str)</span></code></pre></div></li>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">temp_md_file &#x3D; &quot;temp.md&quot;
+with open(temp_md_file, &#39;w&#39;, encoding&#x3D; &#39;utf-8&#39;) as f:
+    f.write(m_str)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
 <li><p>使用<code>subprocess.run</code>执行命令</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> subprocess</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>command <span class="op">=</span> [<span class="st">&#39;pandoc&#39;</span>, <span class="st">&#39;-f&#39;</span>, <span class="st">&#39;markdown&#39;</span>, <span class="st">&#39;t&#39;</span>,<span class="st">&#39;doc&#39;</span>, <span class="st">&#39;o&#39;</span>, output_filename, temp_md_file]</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> subprocess.run(command, capture_output <span class="op">=</span> <span class="va">True</span>, text <span class="op">=</span> <span class="va">True</span>, encoding <span class="op">=</span> <span class="st">&#39;utf-8&#39;</span>)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> result.returncode <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">&quot;转换正确&quot;</span></span></code></pre></div></li>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">import subprocess
+command &#x3D; [&#39;pandoc&#39;, &#39;-f&#39;, &#39;markdown&#39;, &#39;t&#39;,&#39;doc&#39;, &#39;o&#39;, output_filename, temp_md_file]
+result &#x3D; subprocess.run(command, capture_output &#x3D; True, text &#x3D; True, encoding &#x3D; &#39;utf-8&#39;)
+if result.returncode &#x3D;&#x3D; 0:
+    return &quot;转换正确&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 <li><p>最后删除临时文件</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> os.path.exist(temp_md_file):</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    os.remove(temp_md_file)</span></code></pre></div></li>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">if os.path.exist(temp_md_file):
+    os.remove(temp_md_file)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
 </ol>
 <h1 id="section">5. 9.8</h1>
 <p>win11 主要文件夹路径</p>
@@ -613,26 +613,27 @@ os.getenv(&amp;quot;变量">
 <p>IE开始菜单<code>C:\Users\用户名\AppData\Roaming\Microsoft\Internet Explorer\Quick Launch\User Pinned\StartMenu</code></p>
 <h1 id="section-1">6. 9.10</h1>
 <h2 id="path类">6.1. path类</h2>
-<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>p_path <span class="op">=</span> Path(路径)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 组合路径</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>config_path <span class="op">=</span> p_path <span class="op">/</span> <span class="st">&quot;config.txt&quot;</span> </span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>.name <span class="co"># 文件名</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>.suffix <span class="co"># 文件后缀</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>.stem <span class="co"># 无后缀的文件名</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>.parent <span class="co"># 父目录</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>.is_absolute <span class="co"># 是否为祖先路径</span></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>.revolve() <span class="co"># 转换为相对路径</span></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 创建文件</span></span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="co"># parents=True 会创建所有不存在的父目录</span></span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="co"># exist_ok=True 避免目录已存在时报错</span></span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>Path(路径).mkdir(exist_ok <span class="op">=</span> <span class="va">True</span>, parents <span class="op">=</span> <span class="va">True</span>)</span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>Path(路径).touch()  <span class="co"># 创建空文件</span></span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>p_path.write_text(<span class="bu">str</span>) <span class="co"># 写入文件</span></span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>content <span class="op">=</span> <span class="bu">file</span>.read_text() <span class="co"># 读取文件内容</span></span></code></pre></div>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">from pathlib import Path
+p_path &#x3D; Path(路径)
+# 组合路径
+config_path &#x3D; p_path &#x2F; &quot;config.txt&quot; 
+.name # 文件名
+.suffix # 文件后缀
+.stem # 无后缀的文件名
+.parent # 父目录
+.is_absolute # 是否为祖先路径
+.revolve() # 转换为相对路径
+
+
+# 创建文件
+# parents&#x3D;True 会创建所有不存在的父目录
+# exist_ok&#x3D;True 避免目录已存在时报错
+Path(路径).mkdir(exist_ok &#x3D; True, parents &#x3D; True)
+Path(路径).touch()  # 创建空文件
+
+p_path.write_text(str) # 写入文件
+content &#x3D; file.read_text() # 读取文件内容
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -1383,7 +1384,7 @@ os.getenv(&amp;quot;变量">
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">42.1k</span>
+                        class="white-color">43.2k</span>
             
             
             

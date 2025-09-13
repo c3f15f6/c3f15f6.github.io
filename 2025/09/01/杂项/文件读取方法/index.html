@@ -443,7 +443,7 @@ with语句确保文件">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    95
+                    99
                 </div>
                 
 
@@ -480,13 +480,13 @@ with语句确保文件">
 <p><code>open(file, mode ='r' , encoding = None)</code></p></li>
 <li><p><code>with</code>语句确保文件在使用完毕后自动关闭</p></li>
 </ol>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&#39;example.txt&#39;</span>,<span class="st">&#39;r&#39;</span>, encoding <span class="op">=</span> <span class="st">&#39;utf-8&#39;</span>) <span class="im">as</span> f:</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    content <span class="op">=</span> f.read()  <span class="co"># 读取整个文件</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    line1 <span class="op">=</span> f.readline() <span class="co"># 读取第一行</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    lines <span class="op">=</span> f.readlines() <span class="co"># 读取所有，作为一个列表</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i, line <span class="kw">in</span> <span class="bu">enumerate</span>(f):</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(i, line)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    </span></code></pre></div>
+<pre class="line-numbers language-pythoN" data-language="pythoN"><code class="language-pythoN">with open(&#39;example.txt&#39;,&#39;r&#39;, encoding &#x3D; &#39;utf-8&#39;) as f:
+    content &#x3D; f.read()  # 读取整个文件
+    line1 &#x3D; f.readline() # 读取第一行
+    lines &#x3D; f.readlines() # 读取所有，作为一个列表
+    for i, line in enumerate(f):
+        print(i, line)
+    <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -1237,7 +1237,7 @@ with语句确保文件">
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">42.1k</span>
+                        class="white-color">43.2k</span>
             
             
             

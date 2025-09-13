@@ -447,7 +447,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    723
+                    745
                 </div>
                 
 
@@ -486,37 +486,38 @@
 <li>初始化，所有的并查集都指向自身</li>
 <li>路径压缩，节点在find过程中都执行根节点</li>
 </ol>
-<div class="sourceCode" id="cb1"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">// 使用数据存放并查集</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> father<span class="op">(</span>n<span class="op">,</span> <span class="dv">0</span><span class="op">);</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> init<span class="op">()&#123;</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span><span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span>i<span class="op">&lt;</span> father<span class="op">.</span>size<span class="op">();</span>i<span class="op">++)&#123;</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        father<span class="op">[</span>i<span class="op">]=</span> i<span class="op">;</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">&#125;</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> find<span class="op">(</span><span class="dt">int</span> u<span class="op">)&#123;</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span><span class="op">(</span>father<span class="op">[</span>u<span class="op">]==</span>u<span class="op">)</span> <span class="cf">return</span> u<span class="op">;</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> <span class="op">&#123;</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        father<span class="op">[</span>u<span class="op">]=</span>find<span class="op">(</span>father<span class="op">[</span>u<span class="op">]);</span><span class="co">// 路径压缩，指向根节点</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">&#125;</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> father<span class="op">[</span>u<span class="op">];</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> is_same<span class="op">(</span><span class="dt">int</span> u<span class="op">,</span> <span class="dt">int</span> v<span class="op">)&#123;</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> a <span class="op">=</span> find<span class="op">(</span>u<span class="op">);</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> b <span class="op">=</span> find<span class="op">(</span>v<span class="op">);</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span><span class="op">(</span>a <span class="op">==</span> b<span class="op">)</span> <span class="cf">return</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> join<span class="op">(</span><span class="dt">int</span> u<span class="op">,</span> <span class="dt">int</span> v<span class="op">)&#123;</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> a <span class="op">=</span> find<span class="op">(</span>u<span class="op">);</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> b <span class="op">=</span> find<span class="op">(</span>v<span class="op">);</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span><span class="op">(</span>a <span class="op">==</span> b<span class="op">)</span> <span class="cf">return</span> <span class="op">;</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    father<span class="op">[</span>u<span class="op">]=</span> v<span class="op">;</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">;</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span></code></pre></div>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F; 使用数据存放并查集
+
+vector&lt;int&gt; father(n, 0);
+void init()&#123;
+    for(int i &#x3D; 0;i&lt; father.size();i++)&#123;
+        father[i]&#x3D; i;
+    &#125;
+&#125;
+
+int find(int u)&#123;
+    if(father[u]&#x3D;&#x3D;u) return u;
+    else &#123;
+        father[u]&#x3D;find(father[u]);&#x2F;&#x2F; 路径压缩，指向根节点
+    &#125;
+    return father[u];
+&#125;
+
+int is_same(int u, int v)&#123;
+    int a &#x3D; find(u);
+    int b &#x3D; find(v);
+    if(a &#x3D;&#x3D; b) return 1;
+    else return 0;
+&#125;
+
+void join(int u, int v)&#123;
+    int a &#x3D; find(u);
+    int b &#x3D; find(v);
+    if(a &#x3D;&#x3D; b) return ;
+    father[u]&#x3D; v;
+    return ;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="prim算法">0.2.2. prim算法</h3>
 <ol type="1">
 <li>选择最小边e,v（e是树中，v是树外的数据）</li>
@@ -567,28 +568,28 @@
 </ol>
 <h2 id="附录">0.3. 附录</h2>
 <h3 id="建立小顶堆">0.3.1. 建立小顶堆</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;queue&gt;</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> mycomparison<span class="op">&#123;</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">bool</span> <span class="kw">operator</span><span class="op">(</span><span class="at">const</span> pair<span class="op">&lt;</span><span class="dt">int</span><span class="op">,</span> <span class="dt">int</span><span class="op">&gt;&amp;</span> a<span class="op">,</span> <span class="at">const</span> pair<span class="op">&lt;</span><span class="dt">int</span><span class="op">,</span> <span class="dt">int</span><span class="op">&gt;&amp;</span> b<span class="op">)&#123;</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> a<span class="op">.</span>second<span class="op">&gt;</span> b<span class="op">.</span>second<span class="op">;</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">&#125;</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>priority_queue<span class="op">&lt;</span>pair<span class="op">&lt;</span><span class="dt">int</span><span class="op">,</span> <span class="dt">int</span><span class="op">&gt;,</span> vector<span class="op">&lt;</span>pair<span class="op">&lt;</span><span class="dt">int</span><span class="op">,</span><span class="dt">int</span><span class="op">&gt;&gt;</span> <span class="op">,</span> mycomparison<span class="op">&gt;</span> p<span class="op">;</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">/*</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">    a&gt; b时 ，是小顶堆；</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">    a&lt; b时， 是大顶堆；</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">*/</span></span></code></pre></div>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">#include &lt;queue&gt;
+class mycomparison&#123;
+    bool operator(const pair&lt;int, int&gt;&amp; a, const pair&lt;int, int&gt;&amp; b)&#123;
+        return a.second&gt; b.second;
+    &#125;
+&#125;
+priority_queue&lt;pair&lt;int, int&gt;, vector&lt;pair&lt;int,int&gt;&gt; , mycomparison&gt; p;
+&#x2F;*
+	a&gt; b时 ，是小顶堆；
+	a&lt; b时， 是大顶堆；
+*&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="对vector数组进行排序">0.3.2. 对vector数组进行排序</h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;algorithm&gt;</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> edges<span class="op">;</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>sort<span class="op">(</span>edges<span class="op">.</span>begin<span class="op">()</span> <span class="op">,</span> edges<span class="op">.</span>end<span class="op">(),</span> <span class="op">[](</span><span class="at">const</span> edge<span class="op">&amp;</span> a<span class="op">,</span> <span class="at">const</span> edge<span class="op">&amp;</span> b<span class="op">)&#123;</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a<span class="op">&lt;</span> b<span class="op">;</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;);</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">/*</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">    a&lt; b， 升序排序；</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">    a&gt; b， 降序排序；</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">    默认情况是升序排序；</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">*/</span></span></code></pre></div>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">#include &lt;algorithm&gt;
+vector&lt;int&gt; edges;
+sort(edges.begin() , edges.end(), [](const edge&amp; a, const edge&amp; b)&#123;
+	return a&lt; b;
+&#125;);
+&#x2F;*
+	a&lt; b， 升序排序；
+	a&gt; b， 降序排序；
+	默认情况是升序排序；
+*&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -1327,7 +1328,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">42.1k</span>
+                        class="white-color">43.2k</span>
             
             
             
