@@ -5,12 +5,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="服务器常用命令, 汤汁小白菜">
-    <meta name="description" content="1. 一、程序测试的常用命令其中top内存监控输出的文件里面，每行对应的数字分别与如下对应。
+    <meta name="description" content="1. 一、程序测试的常用命令
+其中top内存监控输出的文件里面，每行对应的数字分别与如下对应。
 2. 二、运行的Shell脚本
-首先在Linux系统中新建一个文件。
 
+首先在Linux系统中新建一个文件。
 之后在mlcs.sh文件中输入要运行的命令：
-kill -9 进程id  ">
+kill -9">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -440,7 +441,7 @@ kill -9 进程id  ">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    559
+                    565
                 </div>
                 
 
@@ -470,52 +471,44 @@ kill -9 进程id  ">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="一、程序测试的常用命令">1. 一、程序测试的常用命令</h1><p>其中<code>top</code>内存监控输出的文件里面，每行对应的数字分别与如下对应。</p>
-<h1 id="二、运行的Shell脚本">2. 二、运行的Shell脚本</h1><ol>
-<li><p>首先在Linux系统中新建一个文件。</p>
-</li>
+                <h1 id="一程序测试的常用命令">1. 一、程序测试的常用命令</h1>
+<p>其中<code>top</code>内存监控输出的文件里面，每行对应的数字分别与如下对应。</p>
+<h1 id="二运行的shell脚本">2. 二、运行的Shell脚本</h1>
+<ol type="1">
+<li><p>首先在Linux系统中新建一个文件。</p></li>
 <li><p>之后在<code>mlcs.sh</code>文件中输入要运行的命令：</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">kill</span> -9 进程id  <span class="token comment" spellcheck="true"># 提前杀死进程，只限于咱们自己用户下的进程</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">kill</span> <span class="at">-9</span> 进程id  <span class="co"># 提前杀死进程，只限于咱们自己用户下的进程</span></span></code></pre></div>
 <p><code>&gt;</code> 将内容输出到文件里面，如果原文件存在，则直接覆盖。</p>
-<p><code>&gt;&gt;</code> 将内容输出到文件里，如果原文件存在则直接追加到原文件中。</p>
-</li>
+<p><code>&gt;&gt;</code> 将内容输出到文件里，如果原文件存在则直接追加到原文件中。</p></li>
 </ol>
-<h2 id="内存监控命令">2.1. 内存监控命令</h2><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">top</span> -b -c -d 2 <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">"你想监控程序的那个名字，能唯一识别就行"</span> <span class="token operator">&amp;</span>gt<span class="token punctuation">;</span> <span class="token string">"输出到的文件名字"</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>   例如，我要监控名字里面包括<code>mlcs.exe</code>的这个进程，将信息输出到同级目录下的<code>memory.txt</code>这个文件里面：</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">top</span> -b -c -d 2 <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">"mlcs.exe"</span> <span class="token operator">&amp;</span>gt<span class="token punctuation">;</span> <span class="token string">"memory.txt"</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>   其中<code>-d</code>参数代表几秒监控一下内存，这里设置每2秒监控一次。</p>
+<h2 id="内存监控命令">2.1. 内存监控命令</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">top</span> <span class="at">-b</span> <span class="at">-c</span> <span class="at">-d</span> 2 <span class="kw">|</span> <span class="fu">grep</span> <span class="st">&quot;你想监控程序的那个名字，能唯一识别就行&quot;</span> <span class="op">&gt;</span> <span class="st">&quot;输出到的文件名字&quot;</span></span></code></pre></div>
+<p>例如，我要监控名字里面包括<code>mlcs.exe</code>的这个进程，将信息输出到同级目录下的<code>memory.txt</code>这个文件里面：</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">top</span> <span class="at">-b</span> <span class="at">-c</span> <span class="at">-d</span> 2 <span class="kw">|</span> <span class="fu">grep</span> <span class="st">&quot;mlcs.exe&quot;</span> <span class="op">&gt;</span> <span class="st">&quot;memory.txt&quot;</span></span></code></pre></div>
+<p>其中<code>-d</code>参数代表几秒监控一下内存，这里设置每2秒监控一次。</p>
 <p>删除所有包名称包括mlsc.exe的进程</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">pkill</span> -f me_test.sh
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>   断开终端也可运行某程序的命令：</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">nohup</span> 要执行的命令 <span class="token operator">&amp;</span>gt<span class="token punctuation">;</span> output.log 2<span class="token operator">&amp;</span>gt<span class="token punctuation">;</span><span class="token operator">&amp;</span>1 <span class="token operator">&amp;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>   比如我要执行程序的命令是<code>mlcs.exe</code>：</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">nohup</span> ./mlcs.exe <span class="token operator">&amp;</span>gt<span class="token punctuation">;</span> output.log 2<span class="token operator">&amp;</span>gt<span class="token punctuation">;</span><span class="token operator">&amp;</span>1 <span class="token operator">&amp;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>   其中<code>output.log</code>就是日志输出，随便什么名字都行，默认存储到当前路径下。</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">touch</span> mlcs.sh  <span class="token comment" spellcheck="true"># 其中mlcs是文件名，随便起</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>   比如我要循环执行某一个程序：</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token keyword">for</span> <span class="token variable"><span class="token punctuation">((</span>i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&amp;</span>lt<span class="token punctuation">;</span><span class="token operator">=</span> <span class="token number">12</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">))</span></span>
-<span class="token keyword">do</span>
-    <span class="token keyword">for</span> <span class="token variable"><span class="token punctuation">((</span>j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&amp;</span>lt<span class="token punctuation">;</span><span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">))</span></span>
-    <span class="token keyword">do</span>
-        <span class="token comment" spellcheck="true"># 要循环执行的命令</span>
-        <span class="token comment" spellcheck="true"># 其中可以通过${i}或者${j}获得i和j的变量值，进行命令拼接</span>
-        <span class="token comment" spellcheck="true"># 比如其中${i}就是获得变量，将最后运行的结果输出到result.txt中，</span>
-        <span class="token comment" spellcheck="true"># 其中结果指的是在命令行输出的结果</span>
-        ./w_mlcs.exe <span class="token variable">${i}</span> <span class="token operator">&amp;</span>gt<span class="token punctuation">;</span><span class="token operator">&amp;</span>gt<span class="token punctuation">;</span> result.txt
-    <span class="token keyword">done</span>
-<span class="token keyword">done</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>   一定要在Linux系统中手动输入，不要从在Windows系统下输入，然后将文件传到Linux中，他们两个系统的编码方式不同，否则会运行失败。</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">chmod</span> 777 mlcs.sh
-./mlcs.sh
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pkill</span> <span class="at">-f</span> me_test.sh</span></code></pre></div>
+<p>断开终端也可运行某程序的命令：</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nohup</span> 要执行的命令 <span class="op">&gt;</span> output.log <span class="dv">2</span><span class="op">&gt;&amp;</span><span class="dv">1</span> <span class="kw">&amp;</span></span></code></pre></div>
+<p>比如我要执行程序的命令是<code>mlcs.exe</code>：</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nohup</span> ./mlcs.exe <span class="op">&gt;</span> output.log <span class="dv">2</span><span class="op">&gt;&amp;</span><span class="dv">1</span> <span class="kw">&amp;</span></span></code></pre></div>
+<p>其中<code>output.log</code>就是日志输出，随便什么名字都行，默认存储到当前路径下。</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> mlcs.sh  <span class="co"># 其中mlcs是文件名，随便起</span></span></code></pre></div>
+<p>比如我要循环执行某一个程序：</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="kw">((</span><span class="va">i</span> <span class="op">=</span> <span class="dv">1</span><span class="kw">;</span> <span class="va">i</span> <span class="op">&lt;=</span> <span class="dv">12</span><span class="kw">;</span> <span class="va">i</span><span class="op">++</span><span class="kw">))</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="kw">((</span><span class="va">j</span> <span class="op">=</span> <span class="dv">1</span><span class="kw">;</span> <span class="va">j</span> <span class="op">&lt;=</span> <span class="dv">20</span><span class="kw">;</span> <span class="va">j</span><span class="op">++</span><span class="kw">))</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">do</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 要循环执行的命令</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 其中可以通过$&#123;i&#125;或者$&#123;j&#125;获得i和j的变量值，进行命令拼接</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 比如其中$&#123;i&#125;就是获得变量，将最后运行的结果输出到result.txt中，</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 其中结果指的是在命令行输出的结果</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>        <span class="ex">./w_mlcs.exe</span> <span class="va">$&#123;i&#125;</span> <span class="op">&gt;&gt;</span> result.txt</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">done</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div>
+<p>一定要在Linux系统中手动输入，不要从在Windows系统下输入，然后将文件传到Linux中，他们两个系统的编码方式不同，否则会运行失败。</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 777 mlcs.sh</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">./mlcs.sh</span></span></code></pre></div>
 
                 
             </div>
@@ -1258,7 +1251,7 @@ kill -9 进程id  ">
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">43.9k</span>
+                        class="white-color">42.1k</span>
             
             
             

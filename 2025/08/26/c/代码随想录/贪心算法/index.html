@@ -5,11 +5,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="贪心算法, 汤汁小白菜">
-    <meta name="description" content="1. 贪心算法感谢代码随想录
+    <meta name="description" content="1. 贪心算法
+感谢代码随想录
 贪心算法——由局部最优推导出全局最优
-1.1. 饼干分配按照常识推导，但所用知识需要逻辑正确
-大胃口  吃 大饼干，如果胃口大了，可以换小胃口 			大饼干不能喂小胃口，如果饼干小了， 不能喂更小的饼干
-小饼干">
+1.1. 饼干分配
+按照常识推导，但所用知识需要逻辑正确
+大胃口 吃 大饼干，如果胃口大了，可以换小胃口 大饼干不能喂小胃口，如果饼干小了， 不能喂更小的饼干">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -454,7 +455,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    5 分
                 </div>
                 
 
@@ -477,136 +478,164 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="贪心算法">1. 贪心算法</h1><p><strong>感谢<a target="_blank" rel="noopener" href="https://programmercarl.com/0101.%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91.html#%E6%80%9D%E8%B7%AF">代码随想录</a></strong></p>
+                <h1 id="贪心算法">1. 贪心算法</h1>
+<p><strong>感谢<a target="_blank" rel="noopener" href="https://programmercarl.com/0101.对称二叉树.html#思路">代码随想录</a></strong></p>
 <p>贪心算法——由局部最优推导出全局最优</p>
-<h2 id="饼干分配">1.1. 饼干分配</h2><p>按照常识推导，但所用知识需要逻辑正确</p>
-<p>大胃口  吃 大饼干，如果胃口大了，可以换小胃口 			大饼干不能喂小胃口，如果饼干小了， 不能喂更小的饼干</p>
-<p>小饼干去喂小胃口，如果饼干小了，换大饼干					小胃口不能吃小饼干，胃口大了，不能换大胃口</p>
-<h2 id="贪心">1.2. 贪心</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0376.%E6%91%86%E5%8A%A8%E5%BA%8F%E5%88%97.html#%E6%80%9D%E8%B7%AF">贪每一个波峰或波谷</a></p>
-<ol>
+<h2 id="饼干分配">1.1. 饼干分配</h2>
+<p>按照常识推导，但所用知识需要逻辑正确</p>
+<p>大胃口 吃 大饼干，如果胃口大了，可以换小胃口 大饼干不能喂小胃口，如果饼干小了， 不能喂更小的饼干</p>
+<p>小饼干去喂小胃口，如果饼干小了，换大饼干 小胃口不能吃小饼干，胃口大了，不能换大胃口</p>
+<h2 id="贪心">1.2. 贪心</h2>
+<p><a target="_blank" rel="noopener" href="https://programmercarl.com/0376.摆动序列.html#思路">贪每一个波峰或波谷</a></p>
+<ol type="1">
 <li>有变化： pre&lt; 0 &amp; cur &gt; 0 或 pre&gt; 0 &amp; cur&lt; 0</li>
 </ol>
-<p><img src="/2025/08/26/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/20201124174327597.png" alt="376.摆动序列"></p>
-<ol start="2">
-<li>平台,只记录最右边，pre&lt;&#x3D;0 &amp; cur&gt;0</li>
+<figure>
+<img src="/2025/08/26/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/20201124174327597.png" alt="376.摆动序列"><figcaption aria-hidden="true">376.摆动序列</figcaption>
+</figure>
+<ol start="2" type="1">
+<li>平台,只记录最右边，pre&lt;=0 &amp; cur&gt;0</li>
 </ol>
-<p><img src="/2025/08/26/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/20230106170449.png" alt="img"></p>
-<ol start="3">
+<figure>
+<img src="/2025/08/26/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/20230106170449.png" alt="img"><figcaption aria-hidden="true">img</figcaption>
+</figure>
+<ol start="3" type="1">
 <li><p>平台上升， 平台期仍保持原有状态</p>
-<p><img src="/2025/08/26/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/20230108171505.png" alt="img"></p>
-</li>
+<figure>
+<img src="/2025/08/26/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/20230108171505.png" alt="img"><figcaption aria-hidden="true">img</figcaption>
+</figure></li>
 </ol>
-<h2 id="最大连续和">1.3. 最大连续和</h2><p>当连续和 &lt; 0 时，后续增加会减小数值，应从当前位置继续开始</p>
+<h2 id="最大连续和">1.3. 最大连续和</h2>
+<p>当连续和 &lt; 0 时，后续增加会减小数值，应从当前位置继续开始</p>
 <blockquote>
 <p>注意： count计算后便与result比较，而不是先归零</p>
 </blockquote>
-<h2 id="买卖股票的最佳时机">1.4. 买卖股票的最佳时机</h2><p>总利润 &#x3D; 每一条的利润</p>
+<h2 id="买卖股票的最佳时机">1.4. 买卖股票的最佳时机</h2>
+<p>总利润 = 每一条的利润</p>
 <p>贪心：每次贪正利润</p>
-<p><img src="/2025/08/26/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/2020112917480858-20230310134659477.png" alt="122.买卖股票的最佳时机II"></p>
-<h2 id="跳跃游戏">1.5. 跳跃游戏</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0055.%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F.html#%E6%80%9D%E8%B7%AF">跳跃游戏</a></p>
-<p>从i 能够到达x  &#x3D; 从i的跳跃范围能够到达x，且i只能在跳跃范围内移动</p>
-<h2 id="跳跃游戏2">1.6. 跳跃游戏2</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0045.%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8FII.html#%E6%80%9D%E8%B7%AF">最短跳跃游戏</a></p>
-<p>x 是第i-1次跳跃位置， cover(i-1) </p>
+<figure>
+<img src="/2025/08/26/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/2020112917480858-20230310134659477.png" alt="122.买卖股票的最佳时机II"><figcaption aria-hidden="true">122.买卖股票的最佳时机II</figcaption>
+</figure>
+<h2 id="跳跃游戏">1.5. 跳跃游戏</h2>
+<p><a target="_blank" rel="noopener" href="https://programmercarl.com/0055.跳跃游戏.html#思路">跳跃游戏</a></p>
+<p>从i 能够到达x = 从i的跳跃范围能够到达x，且i只能在跳跃范围内移动</p>
+<h2 id="跳跃游戏2">1.6. 跳跃游戏2</h2>
+<p><a target="_blank" rel="noopener" href="https://programmercarl.com/0045.跳跃游戏II.html#思路">最短跳跃游戏</a></p>
+<p>x 是第i-1次跳跃位置， cover(i-1)</p>
 <p>如果i大于了cover(i-1)，则需要选择cover(i-1)中能跳跃的最大位置作为新一跳的界限，并增加一步</p>
-<h2 id="k次取反最大数组和">1.7. k次取反最大数组和</h2><ol>
+<h2 id="k次取反最大数组和">1.7. k次取反最大数组和</h2>
+<ol type="1">
 <li>选择将负数反转</li>
 <li>选择最小的绝对值进行反转</li>
 </ol>
 <blockquote>
 <p>或者每次选择最小值，反转，但是更复杂</p>
 </blockquote>
-<h2 id="加油站">1.8. 加油站</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0134.%E5%8A%A0%E6%B2%B9%E7%AB%99.html#%E7%AE%97%E6%B3%95%E5%85%AC%E5%BC%80%E8%AF%BE">加油，能够循环的起点</a></p>
-<ol>
+<h2 id="加油站">1.8. 加油站</h2>
+<p><a target="_blank" rel="noopener" href="https://programmercarl.com/0134.加油站.html#算法公开课">加油，能够循环的起点</a></p>
+<ol type="1">
 <li>首先排除不能循环的情况；</li>
-<li>一定能够循环<ol>
+<li>一定能够循环
+<ol type="1">
 <li>从0开始的区间为负值情况，则起点错误，从下一个起点开始，直到找到能够值不为负的区间</li>
-</ol>
-</li>
+</ol></li>
 </ol>
 <p>同时，从后向前相加，如果能加从0开始的最小和，相加为正数时，则为开始起点</p>
-<h2 id="糖果分发">1.9. 糖果分发</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0135.%E5%88%86%E5%8F%91%E7%B3%96%E6%9E%9C.html#%E7%AE%97%E6%B3%95%E5%85%AC%E5%BC%80%E8%AF%BE">分发糖果</a>：要求分高的同学的糖果一定比两边分低的同学糖果数量多</p>
+<h2 id="糖果分发">1.9. 糖果分发</h2>
+<p><a target="_blank" rel="noopener" href="https://programmercarl.com/0135.分发糖果.html#算法公开课">分发糖果</a>：要求分高的同学的糖果一定比两边分低的同学糖果数量多</p>
 <blockquote>
 <p>注意贪心比较的方向， 所有的结果都能比较得到</p>
 </blockquote>
-<ol>
-<li>依次比较左右孩子，<ol>
+<ol type="1">
+<li>依次比较左右孩子，
+<ol type="1">
 <li>依次比较左孩子，<strong>从左向右遍历</strong>， 可以使用到上一次比较的结果</li>
 <li>依次比较右孩子，<strong>从右向左遍历</strong>， 遍历时，选择max(本轮比右孩子多的糖果，从左边得到的糖果)</li>
+</ol></li>
 </ol>
-</li>
-</ol>
-<h2 id="柠檬水找零">1.10. 柠檬水找零</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0860.%E6%9F%A0%E6%AA%AC%E6%B0%B4%E6%89%BE%E9%9B%B6.html#%E7%AE%97%E6%B3%95%E5%85%AC%E5%BC%80%E8%AF%BE">柠檬水</a></p>
+<h2 id="柠檬水找零">1.10. 柠檬水找零</h2>
+<p><a target="_blank" rel="noopener" href="https://programmercarl.com/0860.柠檬水找零.html#算法公开课">柠檬水</a></p>
 <p>优先将面额较大的零钱找出，因为小零钱更加万能</p>
-<h2 id="根据身高重建序列">1.11. 根据身高重建序列</h2><p>讨论两个维度 ，首先固定一个维度，再讨论下一个维度</p>
-<ol>
+<h2 id="根据身高重建序列">1.11. 根据身高重建序列</h2>
+<p>讨论两个维度 ，首先固定一个维度，再讨论下一个维度</p>
+<ol type="1">
 <li>按照身高从大到小排序，以此作为插入顺序，同时需要规定k值小的排在前面</li>
 <li>高身高的优先插入后，后面小身高的插入不会影响k值</li>
 </ol>
 <p><code>vector</code> 与 <code>list</code>插入的区别， <code>vector</code>插入时涉及底层扩容，比list插入效率低</p>
-<pre class="line-numbers language-c++"><code class="language-c++">vector&lt;int&gt; v;
-list&lt;int&gt; l;
-v.insert(v.begin()+pos, val);  // 可以直接使用pos插入
-auto it = l.begin();
-it = next(it, pos);
-l.insert(it, val); // 必须使用迭代器指定位置
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="射击气球">1.12. 射击气球</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0452.%E7%94%A8%E6%9C%80%E5%B0%91%E6%95%B0%E9%87%8F%E7%9A%84%E7%AE%AD%E5%BC%95%E7%88%86%E6%B0%94%E7%90%83.html#%E6%80%9D%E8%B7%AF">射击气球</a></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> v<span class="op">;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>list<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> l<span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>v<span class="op">.</span>insert<span class="op">(</span>v<span class="op">.</span>begin<span class="op">()+</span>pos<span class="op">,</span> val<span class="op">);</span>  <span class="co">// 可以直接使用pos插入</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">auto</span> it <span class="op">=</span> l<span class="op">.</span>begin<span class="op">();</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>it <span class="op">=</span> next<span class="op">(</span>it<span class="op">,</span> pos<span class="op">);</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>l<span class="op">.</span>insert<span class="op">(</span>it<span class="op">,</span> val<span class="op">);</span> <span class="co">// 必须使用迭代器指定位置</span></span></code></pre></div>
+<h2 id="射击气球">1.12. 射击气球</h2>
+<p><a target="_blank" rel="noopener" href="https://programmercarl.com/0452.用最少数量的箭引爆气球.html#思路">射击气球</a></p>
 <p>贪心算法，一定要举出贪心的例子，来验证算法，</p>
 <p>首先需要排序，根据排序顺序选择判断结果</p>
-<ol>
+<ol type="1">
 <li>将右边界排序，记录最左边右端节点，但有其他值超过节点时，需射出一箭</li>
 </ol>
-<p><img src="/2025/08/26/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/image-20250827111033620.png" alt="image-20250827111033620"></p>
-<ol start="2">
+<figure>
+<img src="/2025/08/26/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/image-20250827111033620.png" alt="image-20250827111033620"><figcaption aria-hidden="true">image-20250827111033620</figcaption>
+</figure>
+<ol start="2" type="1">
 <li><p>将左边界排序，记录最右端节点，如果其他值查过节点时，需要射出一箭</p>
-<p><img src="/2025/08/26/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/image-20250827111332960.png" alt="image-20250827111332960"></p>
-</li>
+<figure>
+<img src="/2025/08/26/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/image-20250827111332960.png" alt="image-20250827111332960"><figcaption aria-hidden="true">image-20250827111332960</figcaption>
+</figure></li>
 </ol>
-<h2 id="无重叠区间">1.13. 无重叠区间</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0435.%E6%97%A0%E9%87%8D%E5%8F%A0%E5%8C%BA%E9%97%B4.html">无重叠区间</a></p>
-<ol>
+<h2 id="无重叠区间">1.13. 无重叠区间</h2>
+<p><a target="_blank" rel="noopener" href="https://programmercarl.com/0435.无重叠区间.html">无重叠区间</a></p>
+<ol type="1">
 <li><p>使用右边界，每一个不相交的区间是保留下的区间，其余都需删除</p>
-<p><img src="/2025/08/26/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/image-20250827112819769.png" alt="image-20250827112819769"></p>
-</li>
+<figure>
+<img src="/2025/08/26/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/image-20250827112819769.png" alt="image-20250827112819769"><figcaption aria-hidden="true">image-20250827112819769</figcaption>
+</figure></li>
 <li><p>左排序时，统计有重复区域的区间，然后删除</p>
-<p><img src="/2025/08/26/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/image-20250827113408417.png" alt="image-20250827113408417"></p>
-</li>
+<figure>
+<img src="/2025/08/26/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/image-20250827113408417.png" alt="image-20250827113408417"><figcaption aria-hidden="true">image-20250827113408417</figcaption>
+</figure></li>
 </ol>
-<h2 id="划分字母区间">1.14. 划分字母区间</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0763.%E5%88%92%E5%88%86%E5%AD%97%E6%AF%8D%E5%8C%BA%E9%97%B4.html#%E6%80%9D%E8%B7%AF">区间</a></p>
+<h2 id="划分字母区间">1.14. 划分字母区间</h2>
+<p><a target="_blank" rel="noopener" href="https://programmercarl.com/0763.划分字母区间.html#思路">区间</a></p>
 <p>当区间[a,b]之间字符的最大值以达到时，这个区间为字母区间，并将a置为新的区间开始b+1</p>
-<h2 id="合并区间">1.15. 合并区间</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0056.%E5%90%88%E5%B9%B6%E5%8C%BA%E9%97%B4.html#%E5%85%B6%E4%BB%96%E8%AF%AD%E8%A8%80%E7%89%88%E6%9C%AC">合并区间</a></p>
+<h2 id="合并区间">1.15. 合并区间</h2>
+<p><a target="_blank" rel="noopener" href="https://programmercarl.com/0056.合并区间.html#其他语言版本">合并区间</a></p>
 <p>合并区间，从左向右比较，只能使用左排序</p>
-<h2 id="最小单调递增数字">1.16. 最小单调递增数字</h2><p>如果有<code>n1 n2 n3</code>情况，<br>如果<code>n2 &gt; n3</code>， 则其最大的递增序列为<code>(n2-1) 9</code><br>如果<code>n1 &gt; n2</code>， 最大为<code>(n1-1) 9 9</code></p>
+<h2 id="最小单调递增数字">1.16. 最小单调递增数字</h2>
+<p>如果有<code>n1 n2 n3</code>情况， 如果<code>n2 &gt; n3</code>， 则其最大的递增序列为<code>(n2-1) 9</code> 如果<code>n1 &gt; n2</code>， 最大为<code>(n1-1) 9 9</code></p>
 <p>如果序列比较n-1与n，则for循环最小值为1</p>
-<h2 id="监控二叉树">1.17. 监控二叉树</h2><ol>
+<h2 id="监控二叉树">1.17. 监控二叉树</h2>
+<ol type="1">
 <li><p><strong>优先从叶子节点开始监控</strong>，因为叶子节点监控数量为指数级</p>
 <p>有三种节点状态</p>
 <blockquote>
-<ol>
+<ol type="1">
 <li>无监控</li>
 <li>有监控</li>
 <li>有摄像头</li>
 </ol>
 </blockquote>
-<p>对叶子节点进行监控，则空节点需设置为有监控状态</p>
-</li>
+<p>对叶子节点进行监控，则空节点需设置为有监控状态</p></li>
 <li><p>状态返回</p>
-<ol>
+<ol type="1">
 <li>left 与right 都是监控状态，则mid需返回无监控1</li>
 <li>left，right有一个是无监控1， 则mid需设置有摄像头3，并增加一个摄像头</li>
 <li>left, right有一个有摄像头，则mid返回有监控2</li>
+</ol></li>
 </ol>
-</li>
-</ol>
-<h2 id="友军数量">1.18. 友军数量</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0649.Dota2%E5%8F%82%E8%AE%AE%E9%99%A2.html#%E6%80%9D%E8%B7%AF">杀死后面的参议员</a></p>
+<h2 id="友军数量">1.18. 友军数量</h2>
+<p><a target="_blank" rel="noopener" href="https://programmercarl.com/0649.Dota2参议院.html#思路">杀死后面的参议员</a></p>
 <p>贪心思想： 前面杀死后面的所有参议员</p>
 <blockquote>
 <p>使用flag 标识，前方时候有敌军</p>
 </blockquote>
-<ol>
-<li>前方有敌军，自身被杀死<ol>
+<ol type="1">
+<li>前方有敌军，自身被杀死
+<ol type="1">
 <li>但是多了一个友军,flag+1</li>
-</ol>
-</li>
+</ol></li>
 <li>前方没有敌军，自身还活着，友军数量+1</li>
 </ol>
 
@@ -1367,7 +1396,7 @@ l.insert(it, val); // 必须使用迭代器指定位置
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">43.9k</span>
+                        class="white-color">42.1k</span>
             
             
             

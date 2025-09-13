@@ -6,22 +6,21 @@
     <meta charset="utf-8">
     <meta name="keywords" content="汤汁小白菜">
     <meta name="description" content="1. web课程学习内容
+
 mvc格式
+
 javabean周期
 javabean 与mvc组成
 
-
 jsp中使用数据库
+
 mysql建立
 JDBC连接，解决乱码
 查询
 用结果集操作数据库表
 预处理语句
 
-
-jsp的文件操作
-FILE类
-文件操作流">
+jsp的">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -445,7 +444,7 @@ FILE类
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    8 分
+                    9 分
                 </div>
                 
 
@@ -468,500 +467,543 @@ FILE类
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="web课程学习内容">1. web课程学习内容</h1><ol>
-<li>mvc格式<ol>
+                <h1 id="web课程学习内容">1. web课程学习内容</h1>
+<ol type="1">
+<li>mvc格式
+<ol type="1">
 <li>javabean周期</li>
 <li>javabean 与mvc组成</li>
-</ol>
-</li>
-<li>jsp中使用数据库<ol>
+</ol></li>
+<li>jsp中使用数据库
+<ol type="1">
 <li>mysql建立</li>
 <li>JDBC连接，解决乱码</li>
 <li>查询</li>
 <li>用结果集操作数据库表</li>
 <li>预处理语句</li>
-</ol>
-</li>
-<li>jsp的文件操作<ol>
+</ol></li>
+<li>jsp的文件操作
+<ol type="1">
 <li>FILE类</li>
 <li>文件操作流</li>
 <li>文件上床下载</li>
-</ol>
-</li>
-<li>xml<ol>
+</ol></li>
+<li>xml
+<ol type="1">
 <li>xml基本结构</li>
 <li>dom 解析器</li>
 <li>sax解析器</li>
 <li>xml与css显示</li>
-</ol>
-</li>
+</ol></li>
 <li>化妆品销售</li>
 </ol>
-<h1 id="web">2. web</h1><p><img src="C:/Users/34999/AppData/Roaming/Typora/typora-user-images/image-20250522212412585.png" alt="流程"></p>
-<p><img src="/2025/05/24/java/web%E5%9F%BA%E7%A1%80/image-20250522212605681.png" alt="学习流程"></p>
-<h2 id="html">2.1. html</h2><h3 id="标题">2.1.1. 标题</h3><p>h1</p>
-<pre class="line-numbers language-html"><code class="language-html"><span class="token entity" title="&lt;">&amp;lt;</span>a href = "https://www.cctv.com" target="_self"<span class="token entity" title="&gt;">&amp;gt;</span> 央视网<span class="token entity" title="&lt;">&amp;lt;</span>/a<span class="token entity" title="&gt;">&amp;gt;</span> 
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h1 id="web">2. web</h1>
+<figure>
+<img src="C:/Users/34999/AppData/Roaming/Typora/typora-user-images/image-20250522212412585.png" alt="流程"><figcaption aria-hidden="true">流程</figcaption>
+</figure>
+<figure>
+<img src="/2025/05/24/java/web%E5%9F%BA%E7%A1%80/image-20250522212605681.png" alt="学习流程"><figcaption aria-hidden="true">学习流程</figcaption>
+</figure>
+<h2 id="html">2.1. html</h2>
+<h3 id="标题">2.1.1. 标题</h3>
+<p>h1</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;a</span><span class="ot"> href</span> <span class="ot">=</span> <span class="st">&quot;https://www.cctv.com&quot;</span><span class="ot"> target=</span><span class="st">&quot;_self&quot;</span><span class="kw">&gt;</span> 央视网<span class="kw">&lt;/a&gt;</span> </span></code></pre></div>
 <p>span : 没有语义的标签</p>
-<span style="color: gray;"> 
-
-
-
-<h3 id="css引入">2.1.2. css引入</h3><ol>
+<p><span style="color: gray;"></span></p>
+<h3 id="css引入">2.1.2. css引入</h3>
+<ol type="1">
 <li>行内样式，写在标签的style属性中</li>
-<li>内部样式：写在<style> 标签中</li>
-<li>外部，<code>&lt;link rel= &quot;stylesheet&quot; href= &quot;style.css&quot;&gt;</code></li>
+<li>内部样式：写在
+<style>
+标签中</li>
+<li>外部，<code>&lt;link rel= "stylesheet" href= "style.css"&gt;</code></li>
 </ol>
-<p><span style="color: gray;"> today </span> </p>
+<p><span style="color: gray;"> today </span></p>
 <style> 
     span{
         color: red;
     }
-</style> 
-
-<h4 id="颜色">2.1.2.1. 颜色</h4><table>
+</style>
+<h4 id="颜色">2.1.2.1. 颜色</h4>
+<table>
 <thead>
-<tr>
+<tr class="header">
 <th>种类</th>
 <th>使用方法</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr class="odd">
 <td>关键字</td>
 <td>red</td>
 </tr>
-<tr>
+<tr class="even">
 <td>rgb</td>
 <td>rag(red ,green ,blue)</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>rgba</td>
 <td>rgba(red, green, blue ,透明度)</td>
 </tr>
-<tr>
+<tr class="even">
 <td>十六进制</td>
 <td>#</td>
 </tr>
-</tbody></table>
-<h4 id="css选择器">2.1.2.2. css选择器</h4><table>
+</tbody>
+</table>
+<h4 id="css选择器">2.1.2.2. css选择器</h4>
+<table>
+<colgroup>
+<col style="width: 11%">
+<col style="width: 28%">
+<col style="width: 22%">
+<col style="width: 38%">
+</colgroup>
 <thead>
-<tr>
-<th align="left">选择器类型</th>
-<th align="left">写法（语法）</th>
-<th align="left">示例</th>
-<th align="left">示例说明</th>
+<tr class="header">
+<th style="text-align: left;">选择器类型</th>
+<th style="text-align: left;">写法（语法）</th>
+<th style="text-align: left;">示例</th>
+<th style="text-align: left;">示例说明</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left"><strong>元素选择器</strong></td>
-<td align="left"><code>元素名称 &#123; ... &#125;</code></td>
-<td align="left"><code>h1 &#123; ... &#125;</code></td>
-<td align="left">选择页面上所有的 <code>&lt;h1&gt;</code> 标签</td>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>元素选择器</strong></td>
+<td style="text-align: left;"><code>元素名称 &#123; ... &#125;</code></td>
+<td style="text-align: left;"><code>h1 &#123; ... &#125;</code></td>
+<td style="text-align: left;">选择页面上所有的 <code>&lt;h1&gt;</code> 标签</td>
 </tr>
-<tr>
-<td align="left"><strong>类选择器</strong></td>
-<td align="left"><code>.class属性值 &#123; ... &#125;</code></td>
-<td align="left"><code>.cls &#123; ... &#125;</code></td>
-<td align="left">选择页面上所有 <code>class</code> 属性为 <code>cls</code> 的标签</td>
+<tr class="even">
+<td style="text-align: left;"><strong>类选择器</strong></td>
+<td style="text-align: left;"><code>.class属性值 &#123; ... &#125;</code></td>
+<td style="text-align: left;"><code>.cls &#123; ... &#125;</code></td>
+<td style="text-align: left;">选择页面上所有 <code>class</code> 属性为 <code>cls</code> 的标签</td>
 </tr>
-<tr>
-<td align="left"><strong>ID 选择器</strong></td>
-<td align="left"><code>#id属性值 &#123; ... &#125;</code></td>
-<td align="left"><code>#hid &#123; ... &#125;</code></td>
-<td align="left">选择页面上 <code>id</code> 属性为 <code>hid</code> 的标签</td>
+<tr class="odd">
+<td style="text-align: left;"><strong>ID 选择器</strong></td>
+<td style="text-align: left;"><code>#id属性值 &#123; ... &#125;</code></td>
+<td style="text-align: left;"><code>#hid &#123; ... &#125;</code></td>
+<td style="text-align: left;">选择页面上 <code>id</code> 属性为 <code>hid</code> 的标签</td>
 </tr>
-<tr>
-<td align="left"><strong>分组选择器</strong></td>
-<td align="left"><code>选择器1, 选择器2 &#123; ... &#125;</code></td>
-<td align="left"><code>h1, h2 &#123; ... &#125;</code></td>
-<td align="left">选择页面上所有的 <code>&lt;h1&gt;</code> 和 <code>&lt;h2&gt;</code> 标签</td>
+<tr class="even">
+<td style="text-align: left;"><strong>分组选择器</strong></td>
+<td style="text-align: left;"><code>选择器1, 选择器2 &#123; ... &#125;</code></td>
+<td style="text-align: left;"><code>h1, h2 &#123; ... &#125;</code></td>
+<td style="text-align: left;">选择页面上所有的 <code>&lt;h1&gt;</code> 和 <code>&lt;h2&gt;</code> 标签</td>
 </tr>
-<tr>
-<td align="left"><strong>属性选择器</strong></td>
-<td align="left"><code>元素名称[属性] &#123; ... &#125;</code></td>
-<td align="left"><code>input[type] &#123; ... &#125;</code></td>
-<td align="left">选择页面上所有有 <code>type</code> 属性的 <code>&lt;input&gt;</code> 标签</td>
+<tr class="odd">
+<td style="text-align: left;"><strong>属性选择器</strong></td>
+<td style="text-align: left;"><code>元素名称[属性] &#123; ... &#125;</code></td>
+<td style="text-align: left;"><code>input[type] &#123; ... &#125;</code></td>
+<td style="text-align: left;">选择页面上所有有 <code>type</code> 属性的 <code>&lt;input&gt;</code> 标签</td>
 </tr>
-<tr>
-<td align="left"></td>
-<td align="left"><code>元素名称[属性名=&quot;值&quot;] &#123; ... &#125;</code></td>
-<td align="left"><code>input[type=&quot;text&quot;] &#123; ... &#125;</code></td>
-<td align="left">选择页面上 <code>type</code> 属性为 <code>text</code> 的 <code>&lt;input&gt;</code> 标签</td>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><code>元素名称[属性名="值"] &#123; ... &#125;</code></td>
+<td style="text-align: left;"><code>input[type="text"] &#123; ... &#125;</code></td>
+<td style="text-align: left;">选择页面上 <code>type</code> 属性为 <code>text</code> 的 <code>&lt;input&gt;</code> 标签</td>
 </tr>
-<tr>
-<td align="left"><strong>后代选择器</strong></td>
-<td align="left"><code>元素1 元素2 &#123; ... &#125;</code> （注意有空格）</td>
-<td align="left"><code>form input &#123; ... &#125;</code></td>
-<td align="left">选择 <code>&lt;form&gt;</code> 标签内的所有 <code>&lt;input&gt;</code> 标签</td>
+<tr class="odd">
+<td style="text-align: left;"><strong>后代选择器</strong></td>
+<td style="text-align: left;"><code>元素1 元素2 &#123; ... &#125;</code> （注意有空格）</td>
+<td style="text-align: left;"><code>form input &#123; ... &#125;</code></td>
+<td style="text-align: left;">选择 <code>&lt;form&gt;</code> 标签内的所有 <code>&lt;input&gt;</code> 标签</td>
 </tr>
-</tbody></table>
-<h3 id="video">2.1.3. video</h3><pre class="line-numbers language-html"><code class="language-html"><span class="token entity" title="&lt;">&amp;lt;</span>video src = "video/mp4" controls width ="800px"<span class="token entity" title="&gt;">&amp;gt;</span> <span class="token entity" title="&lt;">&amp;lt;</span>/video<span class="token entity" title="&gt;">&amp;gt;</span>
-width = 80% 长度占父类框架的占比
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</tbody>
+</table>
+<h3 id="video">2.1.3. video</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;video</span><span class="ot"> src</span> <span class="ot">=</span> <span class="st">&quot;video/mp4&quot;</span><span class="ot"> controls width</span> <span class="ot">=</span><span class="st">&quot;800px&quot;</span><span class="kw">&gt;</span> <span class="kw">&lt;/video&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>width = 80% 长度占父类框架的占比</span></code></pre></div>
 <p>音频</p>
-<pre><code>&lt;audio src=“ ” controls&gt;&lt;/audio&gt;
-</code></pre>
-<h4 id="段落">2.1.3.1. 段落</h4><p>hello </p><p></p>
-
-<h4 id="加粗">2.1.3.2. 加粗</h4><p><b> hello </b></p>
+<pre><code>&lt;audio src=“ ” controls&gt;&lt;/audio&gt;</code></pre>
+<h4 id="段落">2.1.3.1. 段落</h4>
+<p>
+hello
+</p><p></p>
+<h4 id="加粗">2.1.3.2. 加粗</h4>
+<p><b> hello </b></p>
 <p><strong> hello </strong></p>
-<p><u> &#x2F; <ins> 下划线</ins></u></p>
-<p><i> &#x2F; <em> 倾斜</em></i></p>
-<p><s> &#x2F; <del> 删除线</del></s></p>
-<h4 id="特殊符号">2.1.3.3. 特殊符号</h4><table>
+<p><u> / <ins> 下划线</ins></u></p>
+<p><i> / <em> 倾斜</em></i></p>
+<p><s> / <del> 删除线</del></s></p>
+<h4 id="特殊符号">2.1.3.3. 特殊符号</h4>
+<table>
 <thead>
-<tr>
-<th>&nbsp;</th>
+<tr class="header">
+<th> </th>
 <th>空格</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr class="odd">
 <td>&lt;</td>
 <td>&lt;</td>
 </tr>
-<tr>
+<tr class="even">
 <td>&gt;</td>
 <td>&gt;</td>
 </tr>
-</tbody></table>
-<h3 id="盒子模型">2.1.4. 盒子模型</h3><p><img src="/2025/05/24/java/web%E5%9F%BA%E7%A1%80/image-20250524155210755.png" alt="image-20250524155210755"></p>
+</tbody>
+</table>
+<h3 id="盒子模型">2.1.4. 盒子模型</h3>
+<figure>
+<img src="/2025/05/24/java/web%E5%9F%BA%E7%A1%80/image-20250524155210755.png" alt="image-20250524155210755"><figcaption aria-hidden="true">image-20250524155210755</figcaption>
+</figure>
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th>div</th>
 <th>span</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr class="odd">
 <td>一行显示一个</td>
 <td>一行显示多个</td>
 </tr>
-<tr>
+<tr class="even">
 <td>宽度默认为父元素的宽度</td>
 <td></td>
 </tr>
-<tr>
+<tr class="odd">
 <td>可以设置height, weigth</td>
 <td></td>
 </tr>
-</tbody></table>
-<pre class="line-numbers language-css"><code class="language-css"><span class="token selector">div</span><span class="token punctuation">{</span>
-    <span class="token property">width</span><span class="token punctuation">:</span><span class="token number">200</span>px<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 定义的内容展示区域的宽度 */</span>
-    <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">100</span>px<span class="token punctuation">;</span>
-    <span class="token property">padding</span><span class="token punctuation">:</span> <span class="token number">20</span>px <span class="token number">20</span>px <span class="token number">20</span>px <span class="token number">20</span>px<span class="token punctuation">;</span>
-    <span class="token property">margin</span><span class="token punctuation">:</span> <span class="token number">20</span>px <span class="token number">20</span>px <span class="token number">20</span>px <span class="token number">20</span>px <span class="token punctuation">;</span>
-    <span class="token property">border</span><span class="token punctuation">:</span> <span class="token number">20</span>px solid <span class="token hexcode">#100000</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/*宽度 边框 颜色*/</span>
-    <span class="token property">box-sizing</span><span class="token punctuation">:</span> content-box<span class="token punctuation">;</span>
-    <span class="token comment" spellcheck="true">/* content-box 内容盒子； bordor-box 边框盒子
-        /* 当前的盒子居中显示 */</span>
-    <span class="token property">margin</span><span class="token punctuation">:</span> <span class="token number">10</span>px auto<span class="token punctuation">;</span> 
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="对齐方式">2.1.4.1. 对齐方式</h4><p>弹性布局flex</p>
+</tbody>
+</table>
+<div class="sourceCode" id="cb4"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>div&#123;</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">width</span>:<span class="dv">200</span><span class="dt">px</span><span class="op">;</span>  <span class="co">/* 定义的内容展示区域的宽度 */</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">height</span>: <span class="dv">100</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">padding</span>: <span class="dv">20</span><span class="dt">px</span> <span class="dv">20</span><span class="dt">px</span> <span class="dv">20</span><span class="dt">px</span> <span class="dv">20</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">margin</span>: <span class="dv">20</span><span class="dt">px</span> <span class="dv">20</span><span class="dt">px</span> <span class="dv">20</span><span class="dt">px</span> <span class="dv">20</span><span class="dt">px</span> <span class="op">;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">border</span>: <span class="dv">20</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">#100000</span><span class="op">;</span> <span class="co">/*宽度 边框 颜色*/</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">box-sizing</span>: <span class="dv">content-box</span><span class="op">;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">/* content-box 内容盒子； bordor-box 边框盒子</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">        /* 当前的盒子居中显示 */</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">margin</span>: <span class="dv">10</span><span class="dt">px</span> <span class="bu">auto</span><span class="op">;</span> </span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>&#125;</span></code></pre></div>
+<h4 id="对齐方式">2.1.4.1. 对齐方式</h4>
+<p>弹性布局flex</p>
 <table>
+<colgroup>
+<col style="width: 18%">
+<col style="width: 75%">
+<col style="width: 5%">
+</colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th>属性</th>
 <th>取值</th>
 <th>含义</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr class="odd">
 <td>display</td>
 <td>flex</td>
 <td></td>
 </tr>
-<tr>
+<tr class="even">
 <td>flex-direction</td>
 <td>row x<br><br>column y轴</td>
 <td></td>
 </tr>
-<tr>
+<tr class="odd">
 <td>justify-content</td>
-<td>1. flex-start 从头开始<br>flex-end<br>center<br>space-around    均分<br> space-between  两边贴边</td>
+<td>1. flex-start 从头开始<br>flex-end<br>center<br>space-around 均分<br> space-between 两边贴边</td>
 <td></td>
 </tr>
-</tbody></table>
-<h3 id="表格">2.1.5. 表格</h3><table>
+</tbody>
+</table>
+<h3 id="表格">2.1.5. 表格</h3>
+<table>
 <thead>
-<tr>
+<tr class="header">
 <th>&lt;table</th>
 <th>整个表格</th>
 <th>border: 边框宽度<br>width: 表格的宽度<br><br>cellspacing: 单元之间的空间</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr class="odd">
 <td>&lt;tr</td>
 <td>表格的行</td>
 <td></td>
 </tr>
-<tr>
-<td>&lt;td&#x2F;th</td>
+<tr class="even">
+<td>&lt;td/th</td>
 <td>表格的列</td>
 <td>&lt;th是表头，&lt;td 是普通表格</td>
 </tr>
-</tbody></table>
-<h3 id="表单">2.1.6. 表单</h3><p>提升与表格的交互，并在input前增加标识</p>
-<pre class="line-numbers language-html"><code class="language-html"><span class="token entity" title="&lt;">&amp;lt;</span>label for="username"<span class="token entity" title="&gt;">&amp;gt;</span>用户名:<span class="token entity" title="&lt;">&amp;lt;</span>/label<span class="token entity" title="&gt;">&amp;gt;</span>
-<span class="token entity" title="&lt;">&amp;lt;</span>input type="text" id="username" name="username" placeholder="请输入用户名"<span class="token entity" title="&gt;">&amp;gt;</span>
-
- <span class="token entity" title="&lt;">&amp;lt;</span>label<span class="token entity" title="&gt;">&amp;gt;</span>
-    用户名:
-    <span class="token entity" title="&lt;">&amp;lt;</span>input type="text" name="username" placeholder="请输入用户名"<span class="token entity" title="&gt;">&amp;gt;</span>
-<span class="token entity" title="&lt;">&amp;lt;</span>/label<span class="token entity" title="&gt;">&amp;gt;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ol>
-<li>input<ol>
+</tbody>
+</table>
+<h3 id="表单">2.1.6. 表单</h3>
+<p>提升与表格的交互，并在input前增加标识</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;label</span><span class="ot"> for=</span><span class="st">&quot;username&quot;</span><span class="kw">&gt;</span>用户名:<span class="kw">&lt;/label&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;text&quot;</span><span class="ot"> id=</span><span class="st">&quot;username&quot;</span><span class="ot"> name=</span><span class="st">&quot;username&quot;</span><span class="ot"> placeholder=</span><span class="st">&quot;请输入用户名&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a> <span class="kw">&lt;label&gt;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    用户名:</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;text&quot;</span><span class="ot"> name=</span><span class="st">&quot;username&quot;</span><span class="ot"> placeholder=</span><span class="st">&quot;请输入用户名&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/label&gt;</span></span></code></pre></div>
+<ol type="1">
+<li>input
+<ol type="1">
 <li>text</li>
 <li>password</li>
 <li>radio 单选按钮，相当与select option</li>
 <li>checkbox</li>
-</ol>
-</li>
+</ol></li>
 <li>select</li>
 <li>textarea, 更大的文本框输入</li>
 </ol>
-<h2 id="javascript">2.2. javascript</h2><p>js代码最后放置在body的末尾</p>
+<h2 id="javascript">2.2. javascript</h2>
+<p>js代码最后放置在body的末尾</p>
 <p>结尾的;可有可无</p>
-<ol>
+<ol type="1">
 <li><p>内部脚本</p>
-<pre class="line-numbers language-html"><code class="language-html"><span class="token entity" title="&lt;">&amp;lt;</span>script<span class="token entity" title="&gt;">&amp;gt;</span>
-    alert("hello world!");
-<span class="token entity" title="&lt;">&amp;lt;</span>/script<span class="token entity" title="&gt;">&amp;gt;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-</li>
+<div class="sourceCode" id="cb6"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;script&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">alert</span>(<span class="st">&quot;hello world!&quot;</span>)<span class="op">;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/script&gt;</span></span></code></pre></div></li>
 <li><p>外部脚本</p>
-<pre class="line-numbers language-html"><code class="language-html"><span class="token entity" title="&lt;">&amp;lt;</span>script src = "/.js"<span class="token entity" title="&gt;">&amp;gt;</span> <span class="token entity" title="&lt;">&amp;lt;</span>/script<span class="token entity" title="&gt;">&amp;gt;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
+<div class="sourceCode" id="cb7"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;script</span><span class="ot"> src</span> <span class="ot">=</span> <span class="st">&quot;/.js&quot;</span><span class="kw">&gt;</span> <span class="kw">&lt;/script&gt;</span></span></code></pre></div></li>
 </ol>
-<p>在<body> 内外，都可以被执行</body></p>
-<h3 id="定义变量">2.2.1. 定义变量</h3><pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//定义变量</span>
-<span class="token keyword">const</span> a <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//声明常量</span>
-<span class="token keyword">let</span> a<span class="token operator">=</span><span class="token string">'abc'</span><span class="token punctuation">;</span>
-<span class="token keyword">typeof</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//返回a的类型</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+在
+<body>
+<p>内外，都可以被执行</p>
+<h3 id="定义变量">2.2.1. 定义变量</h3>
+<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> a <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> <span class="co">//定义变量</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> a <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> <span class="co">//声明常量</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> a<span class="op">=</span><span class="st">&#39;abc&#39;</span><span class="op">;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="kw">typeof</span>(a)<span class="op">;</span> <span class="co">//返回a的类型</span></span></code></pre></div>
 <p>输入内容</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token function">alert</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 弹窗</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//控制台</span>
-document<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//Body标签中</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h4 id="拼接字符串">2.2.1.1. 拼接字符串</h4><pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">let</span> a<span class="token operator">=</span> <span class="token number">9</span><span class="token punctuation">;</span>
-<span class="token keyword">let</span> b<span class="token operator">=</span> <span class="token string">'tom'</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'hello my name is'</span><span class="token operator">+</span>b<span class="token operator">+</span> <span class="token string">'year is'</span><span class="token operator">+</span> a<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 使用'+字符串拼接</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`hello my name is </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>b<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> yeas is</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>a<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 使用` ${}模板字符串输出</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="函数function">2.2.2. 函数function</h3><pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">name</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token keyword">return</span> a<span class="token operator">+</span>b<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token comment" spellcheck="true">// 匿名函数</span>
-<span class="token keyword">let</span> sum <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token keyword">return</span> a<span class="token operator">+</span>b<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">let</span> sum <span class="token operator">=</span> <span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token punctuation">)</span><span class="token operator">=</span><span class="token operator">&amp;</span>gt<span class="token punctuation">;</span><span class="token punctuation">{</span>
-    <span class="token keyword">return</span> a<span class="token operator">+</span>b <span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="对象">2.2.3. 对象</h3><pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">let</span> user <span class="token operator">=</span> <span class="token punctuation">{</span>
-    name<span class="token punctuation">:</span> <span class="token string">'Tom'</span><span class="token punctuation">,</span>
-    age<span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">,</span>
-    sing<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token function">alert</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token operator">+</span> <span class="token string">'刚满十八岁'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token comment" spellcheck="true">//简化为</span>
-    <span class="token function">sing</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="json">2.2.3.1. json</h4><p>JavaScript 对象标记法（使用js对象语法书写的文本）</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">alert</span>(a)<span class="op">;</span>  <span class="co">// 弹窗</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(a)<span class="op">;</span> <span class="co">//控制台</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">document</span><span class="op">.</span><span class="fu">write</span>(a)<span class="op">;</span> <span class="co">//Body标签中</span></span></code></pre></div>
+<h4 id="拼接字符串">2.2.1.1. 拼接字符串</h4>
+<div class="sourceCode" id="cb10"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> a<span class="op">=</span> <span class="dv">9</span><span class="op">;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> b<span class="op">=</span> <span class="st">&#39;tom&#39;</span><span class="op">;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&#39;hello my name is&#39;</span><span class="op">+</span>b<span class="op">+</span> <span class="st">&#39;year is&#39;</span><span class="op">+</span> a)<span class="op">;</span><span class="co">// 使用&#39;+字符串拼接</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="vs">`hello my name is </span><span class="sc">$&#123;</span>b<span class="sc">&#125;</span><span class="vs"> yeas is</span><span class="sc">$&#123;</span>a<span class="sc">&#125;</span><span class="vs">`</span>) <span class="co">// 使用` $&#123;&#125;模板字符串输出</span></span></code></pre></div>
+<h3 id="函数function">2.2.2. 函数function</h3>
+<div class="sourceCode" id="cb11"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">name</span>(a<span class="op">,</span> b)&#123;</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a<span class="op">+</span>b<span class="op">;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>&#125;</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co">// 匿名函数</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> sum <span class="op">=</span> <span class="kw">function</span>(a<span class="op">,</span>b)&#123;</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a<span class="op">+</span>b<span class="op">;</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>&#125;</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> sum <span class="op">=</span> (a<span class="op">,</span>b)<span class="kw">=&gt;</span>&#123;</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a<span class="op">+</span>b <span class="op">;</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>&#125;</span></code></pre></div>
+<h3 id="对象">2.2.3. 对象</h3>
+<div class="sourceCode" id="cb12"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> user <span class="op">=</span> &#123;</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">name</span><span class="op">:</span> <span class="st">&#39;Tom&#39;</span><span class="op">,</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">age</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">sing</span><span class="op">:</span> <span class="kw">function</span>()&#123;</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">alert</span>(<span class="kw">this</span><span class="op">.</span><span class="at">name</span><span class="op">+</span> <span class="st">&#39;刚满十八岁&#39;</span>)<span class="op">;</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    &#125;</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">//简化为</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sing</span>(a<span class="op">,</span> b)&#123;</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    &#125;</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>&#125;</span></code></pre></div>
+<h4 id="json">2.2.3.1. json</h4>
+<p>JavaScript 对象标记法（使用js对象语法书写的文本）</p>
 <p>不同的是，所有的变量名使用<code>“”</code>引起</p>
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th>JSON.stringify()</th>
 <th>js对象-&gt; json 变量的字符串</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr class="odd">
 <td>JSON.parse()</td>
 <td>json -&gt; 没有字符串的变量</td>
 </tr>
-</tbody></table>
-<h3 id="DOM">2.2.4. DOM</h3><p>文档对象模型： 将标记语言的各个组成部分封装为对应的对象；</p>
+</tbody>
+</table>
+<h3 id="dom">2.2.4. DOM</h3>
+<p>文档对象模型： 将标记语言的各个组成部分封装为对应的对象；</p>
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th>Document</th>
 <th>整个文档</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr class="odd">
 <td>Element</td>
 <td>元素对象</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Attribute</td>
 <td>属性对象</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Text</td>
 <td>文本内容的对象</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Comment</td>
 <td>注释形成的对象</td>
 </tr>
-</tbody></table>
-<p><img src="/2025/05/24/java/web%E5%9F%BA%E7%A1%80/image-20250525161235954.png" alt="image-20250525161235954"></p>
-<h4 id="获取对象">2.2.4.1. 获取对象</h4><p>选择器对应css中的选择器<a href="#css%E9%80%89%E6%8B%A9%E5%99%A8">css选择器</a> </p>
-<pre class="line-numbers language-javascript"><code class="language-javascript">document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'选择器'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 获取匹配到的第一个元素</span>
-document<span class="token punctuation">.</span><span class="token function">querySelectorALL</span><span class="token punctuation">(</span><span class="token string">'选择器'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 获取所有匹配到的元素</span>
-<span class="token comment" spellcheck="true">//得到的是一个节点集合，有长度，有索引</span>
-
-<span class="token keyword">let</span> hs <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span>#title<span class="token punctuation">)</span><span class="token punctuation">;</span>
-hs<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> <span class="token string">'修改后的内容'</span> <span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// innerHTML代表文本内容</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="时间监听">2.2.5. 时间监听</h3><p>语法： 事件源.addEvenListener(‘事件类型’, 事件触发执行的函数);</p>
+</tbody>
+</table>
+<figure>
+<img src="/2025/05/24/java/web%E5%9F%BA%E7%A1%80/image-20250525161235954.png" alt="image-20250525161235954"><figcaption aria-hidden="true">image-20250525161235954</figcaption>
+</figure>
+<h4 id="获取对象">2.2.4.1. 获取对象</h4>
+<p>选择器对应css中的选择器<a href="#css选择器">css选择器</a></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">document</span><span class="op">.</span><span class="fu">querySelector</span>(<span class="st">&#39;选择器&#39;</span>)<span class="op">;</span> <span class="co">// 获取匹配到的第一个元素</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">document</span><span class="op">.</span><span class="fu">querySelectorALL</span>(<span class="st">&#39;选择器&#39;</span>)<span class="op">;</span> <span class="co">// 获取所有匹配到的元素</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co">//得到的是一个节点集合，有长度，有索引</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> hs <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">querySelectorAll</span>(#title)<span class="op">;</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>hs<span class="op">.</span><span class="at">innerHTML</span> <span class="op">=</span> <span class="st">&#39;修改后的内容&#39;</span> <span class="op">;</span> <span class="co">// innerHTML代表文本内容</span></span></code></pre></div>
+<h3 id="时间监听">2.2.5. 时间监听</h3>
+<p>语法： 事件源.addEvenListener(‘事件类型’, 事件触发执行的函数);</p>
 <ul>
 <li>事件源：document中对象</li>
 <li>事件类型： 点击click</li>
 <li>事件处理的函数：要做什么事</li>
 </ul>
-<h4 id="事件类型">2.2.5.1. 事件类型</h4><table>
+<h4 id="事件类型">2.2.5.1. 事件类型</h4>
+<table>
 <thead>
-<tr>
+<tr class="header">
 <th>鼠标</th>
 <th>click</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr class="odd">
 <td></td>
 <td>mouseenter</td>
 </tr>
-<tr>
+<tr class="even">
 <td></td>
 <td>mouseleave</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>键盘</td>
 <td>keydown 按键触发</td>
 </tr>
-<tr>
+<tr class="even">
 <td></td>
 <td>keyup 按键抬起</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>焦点</td>
 <td>focus 进入输入框</td>
 </tr>
-<tr>
+<tr class="even">
 <td></td>
 <td>blur 离开输入框</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>表单事件</td>
 <td>input 输入时触发</td>
 </tr>
-<tr>
+<tr class="even">
 <td></td>
 <td>submit 提交时触发</td>
 </tr>
-</tbody></table>
-<pre class="line-numbers language-javascript"><code class="language-javascript"> <span class="token keyword">import</span> <span class="token punctuation">{</span>func1<span class="token punctuation">,</span> func2<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"./utils.js"</span> <span class="token comment" spellcheck="true">// js导入函数</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</tbody>
+</table>
+<div class="sourceCode" id="cb14"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a> <span class="im">import</span> &#123;func1<span class="op">,</span> func2&#125; <span class="im">from</span> <span class="st">&quot;./utils.js&quot;</span> <span class="co">// js导入函数</span></span></code></pre></div>
 <p>utils.js中的内容</p>
-<pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">export</span> functtion <span class="token function">printLog</span><span class="token punctuation">(</span>msg<span class="token punctuation">)</span><span class="token punctuation">{</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment" spellcheck="true">//使用export标记</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> functtion <span class="fu">printLog</span>(msg)&#123;</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(msg)<span class="op">;</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>&#125;</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co">//使用export标记</span></span></code></pre></div>
 <p>html导入时候，需表明类型是模块化的js</p>
-<pre class="line-numbers language-html"><code class="language-html"><span class="token entity" title="&lt;">&amp;lt;</span>script src="./js/1.js" type="module"<span class="token entity" title="&gt;">&amp;gt;</span><span class="token entity" title="&lt;">&amp;lt;</span>/script<span class="token entity" title="&gt;">&amp;gt;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="vue">2.3. vue</h2><p>Vue是一款构建用户界面的渐进式的JavaScript框架</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;./js/1.js&quot;</span><span class="ot"> type=</span><span class="st">&quot;module&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></span></code></pre></div>
+<h2 id="vue">2.3. vue</h2>
+<p>Vue是一款构建用户界面的渐进式的JavaScript框架</p>
 <p>构建用户界面：针对数据构建</p>
 <p>渐进式：可以只使用一部分</p>
-<p><img src="/2025/05/24/java/web%E5%9F%BA%E7%A1%80/image-20250525174822695.png" alt="image-20250525174822695"></p>
-<ol>
-<li>准备<ol>
-<li>引入Vue模块 </li>
+<figure>
+<img src="/2025/05/24/java/web%E5%9F%BA%E7%A1%80/image-20250525174822695.png" alt="image-20250525174822695"><figcaption aria-hidden="true">image-20250525174822695</figcaption>
+</figure>
+<ol type="1">
+<li>准备
+<ol type="1">
+<li>引入Vue模块</li>
 <li>创建Vue程序的应用示例，控制视图的元素</li>
 <li>准备元素，被Vue控制</li>
-</ol>
-</li>
-<li>数据驱动<ol>
+</ol></li>
+<li>数据驱动
+<ol type="1">
 <li>准备数据</li>
 <li>通过差值表达式渲染界面</li>
+</ol></li>
 </ol>
-</li>
-</ol>
-<pre class="line-numbers language-html"><code class="language-html"><span class="token entity" title="&lt;">&amp;lt;</span>div id="app"<span class="token entity" title="&gt;">&amp;gt;</span>
-    <span class="token entity" title="&lt;">&amp;lt;</span>h1<span class="token entity" title="&gt;">&amp;gt;</span>
-        {{message}}
-    <span class="token entity" title="&lt;">&amp;lt;</span>/h1<span class="token entity" title="&gt;">&amp;gt;</span>
-<span class="token entity" title="&lt;">&amp;lt;</span>/div<span class="token entity" title="&gt;">&amp;gt;</span>
-
-<span class="token entity" title="&lt;">&amp;lt;</span>script type="module"<span class="token entity" title="&gt;">&amp;gt;</span>
-    import{ creatApp } from "https://unpkg.com/vue@3/dist/vue.esm-browser.js";
-    createApp({
-        data(){
-            return{
-                message: "hello vue";
-            }
-        }
-    }).mount("#app");// 使用mount接管app
-<span class="token entity" title="&lt;">&amp;lt;</span>/script<span class="token entity" title="&gt;">&amp;gt;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="vue指令">2.3.1. vue指令</h3><pre class="line-numbers language-html"><code class="language-html"><span class="token entity" title="&lt;">&amp;lt;</span>p v-xxx= ""<span class="token entity" title="&gt;">&amp;gt;</span> ...<span class="token entity" title="&lt;">&amp;lt;</span>/p<span class="token entity" title="&gt;">&amp;gt;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="v-for遍历">2.3.1.1. v-for遍历</h4><p>key的值避免复用</p>
-<pre class="line-numbers language-html"><code class="language-html"><span class="token entity" title="&lt;">&amp;lt;</span>tr v-for="(item, index) in items" : key ="item.id"<span class="token entity" title="&gt;">&amp;gt;</span> {{item}}<span class="token entity" title="&lt;">&amp;lt;</span>/tr<span class="token entity" title="&gt;">&amp;gt;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span><span class="ot"> id=</span><span class="st">&quot;app&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;h1&gt;</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>        <span class="co">&#123;&#123;message&#125;&#125;</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/h1&gt;</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;script</span><span class="ot"> type=</span><span class="st">&quot;module&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span>&#123; creatApp &#125; <span class="im">from</span> <span class="st">&quot;https://unpkg.com/vue@3/dist/vue.esm-browser.js&quot;</span><span class="op">;</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">createApp</span>(&#123;</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">data</span>()&#123;</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span>&#123;</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>                <span class="dt">message</span><span class="op">:</span> <span class="st">&quot;hello vue&quot;</span><span class="op">;</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>            &#125;</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>        &#125;</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>    &#125;)<span class="op">.</span><span class="fu">mount</span>(<span class="st">&quot;#app&quot;</span>)<span class="op">;</span><span class="co">// 使用mount接管app</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/script&gt;</span></span></code></pre></div>
+<h3 id="vue指令">2.3.1. vue指令</h3>
+<div class="sourceCode" id="cb18"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;p</span><span class="ot"> v-xxx=</span> <span class="st">&quot;&quot;</span><span class="kw">&gt;</span> ...<span class="kw">&lt;/p&gt;</span></span></code></pre></div>
+<h4 id="v-for遍历">2.3.1.1. v-for遍历</h4>
+<p>key的值避免复用</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;tr</span><span class="ot"> v-for=</span><span class="st">&quot;(item, index) in items&quot;</span><span class="ot"> : key</span> <span class="ot">=</span><span class="st">&quot;item.id&quot;</span><span class="kw">&gt;</span> <span class="co">&#123;&#123;item&#125;&#125;</span><span class="kw">&lt;/tr&gt;</span></span></code></pre></div>
 <p><strong>v-bind</strong>：动态为html绑定属性值，src, style,alt</p>
-<pre class="line-numbers language-html"><code class="language-html"><span class="token entity" title="&lt;">&amp;lt;</span>td<span class="token entity" title="&gt;">&amp;gt;</span><span class="token entity" title="&lt;">&amp;lt;</span>img class= "avatar", v-bind:src="{{item.src}}" :alt ="{{item.alt}}"<span class="token entity" title="&gt;">&amp;gt;</span><span class="token entity" title="&lt;">&amp;lt;</span>/td<span class="token entity" title="&gt;">&amp;gt;</span>
-<span class="token entity" title="&lt;">&amp;lt;</span>!-- vlind:属性，然后对应v-for中的内容
-// : 简写形式 
---<span class="token entity" title="&gt;">&amp;gt;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p><strong>v-if&#x2F;v-show</strong>:控制元素的显示&#x2F;隐藏</p>
-<pre class="line-numbers language-html"><code class="language-html"><span class="token entity" title="&lt;">&amp;lt;</span>!--
-    v-if：根据条件判断结果，判断结果输出/隐藏，不一定创建
-        不频繁使用
-        紧跟v-else-if, v-else
-    v-show: 根据条件结果，调用css 中display格式，分别用来显示和隐藏，会创建
-        频繁使用
-    “”之间的结果判断
---<span class="token entity" title="&gt;">&amp;gt;</span>
-<span class="token entity" title="&lt;">&amp;lt;</span>span v-show="e.job==1"<span class="token entity" title="&gt;">&amp;gt;</span> 帮助人<span class="token entity" title="&lt;">&amp;lt;</span>/span<span class="token entity" title="&gt;">&amp;gt;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;td&gt;&lt;img</span><span class="ot"> class=</span> <span class="st">&quot;avatar&quot;</span><span class="er">,</span><span class="ot"> v-bind:src=</span><span class="st">&quot;</span><span class="er">&lt;</span><span class="st">!--swig￼2--&gt;&quot;</span><span class="ot"> :alt</span> <span class="ot">=</span><span class="st">&quot;</span><span class="er">&lt;</span><span class="st">!--swig￼3--&gt;&quot;</span><span class="kw">&gt;&lt;/td&gt;</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- vlind:属性，然后对应v-for中的内容</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co">// : 简写形式 </span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co">--&gt;</span></span></code></pre></div>
+<p><strong>v-if/v-show</strong>:控制元素的显示/隐藏</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co">    v-if：根据条件判断结果，判断结果输出/隐藏，不一定创建</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co">        不频繁使用</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co">        紧跟v-else-if, v-else</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co">    v-show: 根据条件结果，调用css 中display格式，分别用来显示和隐藏，会创建</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="co">        频繁使用</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="co">    “”之间的结果判断</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="co">--&gt;</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;span</span><span class="ot"> v-show=</span><span class="st">&quot;e.job==1&quot;</span><span class="kw">&gt;</span> 帮助人<span class="kw">&lt;/span&gt;</span></span></code></pre></div>
 <p><strong>v-model</strong>: 双向绑定元素与vue data，绑定输入的内容</p>
-<pre class="line-numbers language-html"><code class="language-html"><span class="token entity" title="&lt;">&amp;lt;</span>input type="text" id="name" v-model="searchForm.name"<span class="token entity" title="&gt;">&amp;gt;</span> 
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;text&quot;</span><span class="ot"> id=</span><span class="st">&quot;name&quot;</span><span class="ot"> v-model=</span><span class="st">&quot;searchForm.name&quot;</span><span class="kw">&gt;</span> </span></code></pre></div>
 <p><strong>v-on</strong>： 为html绑定事件</p>
 <p>引号中绑定的是函数动作，可以简化为@click</p>
-<pre class="line-numbers language-html"><code class="language-html"><span class="token entity" title="&lt;">&amp;lt;</span>button type="button" v-on:click="handle"<span class="token entity" title="&gt;">&amp;gt;</span>
-    点击
-<span class="token entity" title="&lt;">&amp;lt;</span>/button<span class="token entity" title="&gt;">&amp;gt;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;button</span><span class="ot"> type=</span><span class="st">&quot;button&quot;</span><span class="ot"> v-on:click=</span><span class="st">&quot;handle&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    点击</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/button&gt;</span></span></code></pre></div>
 <p>在vue中定义方法</p>
-<pre class="line-numbers language-vue"><code class="language-vue">const app = createApp({
-    data(){
-        return{
+<pre class="vue"><code>const app = createApp(&#123;
+    data()&#123;
+        return&#123;
 
-        }
-    },
-    method:{
-        handle(){
+        &#125;
+    &#125;,
+    method:&#123;
+        handle()&#123;
 
-        }
-    }
-}).mount("#app")
-// 使用时需要将button的类型设置为button
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="致谢">3. 致谢</h1><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1yGydYEE3H?spm_id_from=333.788.videopod.episodes&vd_source=8f246175d50731783a1ab3dafac1f6ab&p=2">02.Web前端开发初识_哔哩哔哩_bilibili</a></p>
-<p></p></li></ol></span>
+        &#125;
+    &#125;
+&#125;).mount(&quot;#app&quot;)
+// 使用时需要将button的类型设置为button</code></pre>
+<h1 id="致谢">3. 致谢</h1>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1yGydYEE3H?spm_id_from=333.788.videopod.episodes&amp;vd_source=8f246175d50731783a1ab3dafac1f6ab&amp;p=2">02.Web前端开发初识_哔哩哔哩_bilibili</a></p>
+</body><p></p></li></ol>
                 
             </div>
             <hr/>
@@ -1703,7 +1745,7 @@ hs<span class="token punctuation">.</span>innerHTML <span class="token operator"
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">43.9k</span>
+                        class="white-color">42.1k</span>
             
             
             
