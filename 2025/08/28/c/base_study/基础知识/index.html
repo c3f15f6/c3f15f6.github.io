@@ -5,14 +5,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="基础知识, 汤汁小白菜">
-    <meta name="description" content="1. 基础知识
-1.1. Union联合体
-union&amp;#123;
+    <meta name="description" content="1. 基础知识1.1. Union联合体union{
     linkNode link;
     NetNode net;
-&amp;#125;LinkOrNet
+}LinkOrNet
+
 结构体中有两个变量，但是只能有一个变量占据内存
-c++">
+c++17 中替代方案variant
+#i">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -446,7 +446,7 @@ c++">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    67
+                    68
                 </div>
                 
 
@@ -468,26 +468,23 @@ c++">
         <hr class="clearfix">
 
         
-        <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.css">
-        
 
         
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="基础知识">1. 基础知识</h1>
-<h2 id="union联合体">1.1. Union联合体</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">union</span><span class="op">&#123;</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    linkNode link<span class="op">;</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    NetNode net<span class="op">;</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span>LinkOrNet</span></code></pre></div>
+                <h1 id="基础知识">1. 基础知识</h1><h2 id="Union联合体">1.1. Union联合体</h2><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">union</span><span class="token punctuation">{</span>
+    linkNode link<span class="token punctuation">;</span>
+    NetNode net<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>LinkOrNet
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>结构体中有两个变量，但是只能有一个变量占据内存</p>
 <p>c++17 中替代方案variant</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;variant&gt;</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>varient<span class="op">&lt;</span>linkNode<span class="op">,</span> NetNode<span class="op">&gt;</span> a<span class="op">;</span> </span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>LinkNode b<span class="op">;</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span> b<span class="op">;</span> <span class="co">// 自动追踪</span></span></code></pre></div>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> &amp;lt;variant&amp;gt;</span>
+varient<span class="token operator">&amp;</span>lt<span class="token punctuation">;</span>linkNode<span class="token punctuation">,</span> NetNode<span class="token operator">&amp;</span>gt<span class="token punctuation">;</span> a<span class="token punctuation">;</span> 
+LinkNode b<span class="token punctuation">;</span>
+a<span class="token operator">=</span> b<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 自动追踪</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -1063,9 +1060,6 @@ c++">
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
 
-  <!-- 是否加载使用自带的 prismjs. -->
-  <script type="text/javascript" src="/libs/prism/prism.js"></script>
-
 
 <!-- 代码语言 -->
 
@@ -1242,7 +1236,7 @@ c++">
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">42.1k</span>
+                        class="white-color">43.9k</span>
             
             
             

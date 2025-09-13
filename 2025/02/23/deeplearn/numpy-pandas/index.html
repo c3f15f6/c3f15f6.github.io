@@ -5,13 +5,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="numpy_pandas, 汤汁小白菜">
-    <meta name="description" content="1. NumPy 与 Pandas 用法总结
-1.1. NumPy 用法
-1.1.1. 安装 NumPy
-pip install numpy
-1.1.2. 导入 NumPy
-import numpy as np
-1.1.3. 创">
+    <meta name="description" content="1. NumPy 与 Pandas 用法总结1.1. NumPy 用法1.1.1. 安装 NumPypip install numpy
+
+1.1.2. 导入 NumPyimport numpy as np
+
+1.1.3. 创建数组
+从列表或">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -441,7 +440,7 @@ import numpy as np
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    944
+                    908
                 </div>
                 
 
@@ -463,132 +462,134 @@ import numpy as np
         <hr class="clearfix">
 
         
-        <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.css">
-        
 
         
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="numpy-与-pandas-用法总结">1. NumPy 与 Pandas 用法总结</h1>
-<h2 id="numpy-用法">1.1. NumPy 用法</h2>
-<h3 id="安装-numpy">1.1.1. 安装 NumPy</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install numpy</span></code></pre></div>
-<h3 id="导入-numpy">1.1.2. 导入 NumPy</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code></pre></div>
-<h3 id="创建数组">1.1.3. 创建数组</h3>
-<ul>
+                <h1 id="NumPy-与-Pandas-用法总结">1. NumPy 与 Pandas 用法总结</h1><h2 id="NumPy-用法">1.1. NumPy 用法</h2><h3 id="安装-NumPy">1.1.1. 安装 NumPy</h3><pre class="line-numbers language-bash"><code class="language-bash">pip <span class="token function">install</span> numpy
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="导入-NumPy">1.1.2. 导入 NumPy</h3><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="创建数组">1.1.3. 创建数组</h3><ul>
 <li>从列表或元组创建数组</li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>arr <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>matrix <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">3</span>, <span class="dv">4</span>]])</span></code></pre></div>
+<pre class="line-numbers language-python"><code class="language-python">arr <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+matrix <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <ul>
 <li>使用内置函数创建数组</li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>zeros <span class="op">=</span> np.zeros((<span class="dv">2</span>, <span class="dv">3</span>))       <span class="co"># 全零数组</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>ones <span class="op">=</span> np.ones((<span class="dv">3</span>, <span class="dv">4</span>))         <span class="co"># 全一数组</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>arange <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">2</span>)   <span class="co"># 创建一个范围数组</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>linspace <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">5</span>)  <span class="co"># 等间距数组</span></span></code></pre></div>
-<h3 id="数组属性">1.1.4. 数组属性</h3>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>shape <span class="op">=</span> arr.shape               <span class="co"># 数组形状</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>dtype <span class="op">=</span> arr.dtype               <span class="co"># 数据类型</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>size <span class="op">=</span> arr.size                 <span class="co"># 数组元素总数</span></span></code></pre></div>
-<h3 id="数组切片与索引">1.1.5. 数组切片与索引</h3>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>slice_arr <span class="op">=</span> arr[<span class="dv">1</span>:<span class="dv">3</span>]                  <span class="co"># 切片</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>element <span class="op">=</span> arr[<span class="dv">1</span>]                       <span class="co"># 单个元素</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>row_slice <span class="op">=</span> matrix[<span class="dv">0</span>, :]               <span class="co"># 第一行</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>col_slice <span class="op">=</span> matrix[:, <span class="dv">1</span>]               <span class="co"># 第二列</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>sub_matrix <span class="op">=</span> matrix[<span class="dv">0</span>:<span class="dv">2</span>, <span class="dv">0</span>:<span class="dv">2</span>]          <span class="co"># 子矩阵</span></span></code></pre></div>
-<h3 id="数组操作">1.1.6. 数组操作</h3>
-<ul>
+<pre class="line-numbers language-python"><code class="language-python">zeros <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>       <span class="token comment" spellcheck="true"># 全零数组</span>
+ones <span class="token operator">=</span> np<span class="token punctuation">.</span>ones<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span>         <span class="token comment" spellcheck="true"># 全一数组</span>
+arange <span class="token operator">=</span> np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true"># 创建一个范围数组</span>
+linspace <span class="token operator">=</span> np<span class="token punctuation">.</span>linspace<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 等间距数组</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="数组属性">1.1.4. 数组属性</h3><pre class="line-numbers language-python"><code class="language-python">shape <span class="token operator">=</span> arr<span class="token punctuation">.</span>shape               <span class="token comment" spellcheck="true"># 数组形状</span>
+dtype <span class="token operator">=</span> arr<span class="token punctuation">.</span>dtype               <span class="token comment" spellcheck="true"># 数据类型</span>
+size <span class="token operator">=</span> arr<span class="token punctuation">.</span>size                 <span class="token comment" spellcheck="true"># 数组元素总数</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="数组切片与索引">1.1.5. 数组切片与索引</h3><pre class="line-numbers language-python"><code class="language-python">slice_arr <span class="token operator">=</span> arr<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token number">3</span><span class="token punctuation">]</span>                  <span class="token comment" spellcheck="true"># 切片</span>
+element <span class="token operator">=</span> arr<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>                       <span class="token comment" spellcheck="true"># 单个元素</span>
+row_slice <span class="token operator">=</span> matrix<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token punctuation">]</span>               <span class="token comment" spellcheck="true"># 第一行</span>
+col_slice <span class="token operator">=</span> matrix<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span>               <span class="token comment" spellcheck="true"># 第二列</span>
+sub_matrix <span class="token operator">=</span> matrix<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">]</span>          <span class="token comment" spellcheck="true"># 子矩阵</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="数组操作">1.1.6. 数组操作</h3><ul>
 <li>统计操作</li>
 </ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>sum_arr <span class="op">=</span> np.<span class="bu">sum</span>(arr)                  <span class="co"># 求和</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>mean_arr <span class="op">=</span> np.mean(arr)                <span class="co"># 均值</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>max_arr <span class="op">=</span> np.<span class="bu">max</span>(arr)                  <span class="co"># 最大值</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>min_arr <span class="op">=</span> np.<span class="bu">min</span>(arr)                  <span class="co"># 最小值</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>std_arr <span class="op">=</span> np.std(arr)                  <span class="co"># 标准差</span></span></code></pre></div>
+<pre class="line-numbers language-python"><code class="language-python">sum_arr <span class="token operator">=</span> np<span class="token punctuation">.</span>sum<span class="token punctuation">(</span>arr<span class="token punctuation">)</span>                  <span class="token comment" spellcheck="true"># 求和</span>
+mean_arr <span class="token operator">=</span> np<span class="token punctuation">.</span>mean<span class="token punctuation">(</span>arr<span class="token punctuation">)</span>                <span class="token comment" spellcheck="true"># 均值</span>
+max_arr <span class="token operator">=</span> np<span class="token punctuation">.</span>max<span class="token punctuation">(</span>arr<span class="token punctuation">)</span>                  <span class="token comment" spellcheck="true"># 最大值</span>
+min_arr <span class="token operator">=</span> np<span class="token punctuation">.</span>min<span class="token punctuation">(</span>arr<span class="token punctuation">)</span>                  <span class="token comment" spellcheck="true"># 最小值</span>
+std_arr <span class="token operator">=</span> np<span class="token punctuation">.</span>std<span class="token punctuation">(</span>arr<span class="token punctuation">)</span>                  <span class="token comment" spellcheck="true"># 标准差</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>数学操作</li>
 </ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>add_arr <span class="op">=</span> arr <span class="op">+</span> <span class="dv">10</span>                     <span class="co"># 加法</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>mul_arr <span class="op">=</span> arr <span class="op">*</span> <span class="dv">2</span>                      <span class="co"># 乘法</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>exp_arr <span class="op">=</span> np.exp(arr)                  <span class="co"># 指数</span></span></code></pre></div>
+<pre class="line-numbers language-python"><code class="language-python">add_arr <span class="token operator">=</span> arr <span class="token operator">+</span> <span class="token number">10</span>                     <span class="token comment" spellcheck="true"># 加法</span>
+mul_arr <span class="token operator">=</span> arr <span class="token operator">*</span> <span class="token number">2</span>                      <span class="token comment" spellcheck="true"># 乘法</span>
+exp_arr <span class="token operator">=</span> np<span class="token punctuation">.</span>exp<span class="token punctuation">(</span>arr<span class="token punctuation">)</span>                  <span class="token comment" spellcheck="true"># 指数</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>矩阵运算</li>
 </ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>dot_product <span class="op">=</span> np.dot(matrix, matrix)   <span class="co"># 矩阵乘法</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>transpose <span class="op">=</span> matrix.T                    <span class="co"># 转置</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>inverse <span class="op">=</span> np.linalg.inv(matrix)         <span class="co"># 矩阵求逆（需方阵）</span></span></code></pre></div>
-<h3 id="广播">1.1.7. 广播</h3>
-<p>NumPy 支持广播，使得不同形状的数组可以进行运算。</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> arr <span class="op">+</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])     <span class="co"># 广播机制</span></span></code></pre></div>
-<h2 id="pandas-用法">1.2. Pandas 用法</h2>
-<h3 id="安装-pandas">1.2.1. 安装 Pandas</h3>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install pandas</span></code></pre></div>
-<h3 id="导入-pandas">1.2.2. 导入 Pandas</h3>
-<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code></pre></div>
-<h3 id="创建-dataframe-和-series">1.2.3. 创建 DataFrame 和 Series</h3>
-<ul>
+<pre class="line-numbers language-python"><code class="language-python">dot_product <span class="token operator">=</span> np<span class="token punctuation">.</span>dot<span class="token punctuation">(</span>matrix<span class="token punctuation">,</span> matrix<span class="token punctuation">)</span>   <span class="token comment" spellcheck="true"># 矩阵乘法</span>
+transpose <span class="token operator">=</span> matrix<span class="token punctuation">.</span>T                    <span class="token comment" spellcheck="true"># 转置</span>
+inverse <span class="token operator">=</span> np<span class="token punctuation">.</span>linalg<span class="token punctuation">.</span>inv<span class="token punctuation">(</span>matrix<span class="token punctuation">)</span>         <span class="token comment" spellcheck="true"># 矩阵求逆（需方阵）</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="广播">1.1.7. 广播</h3><p>NumPy 支持广播，使得不同形状的数组可以进行运算。</p>
+<pre class="line-numbers language-python"><code class="language-python">result <span class="token operator">=</span> arr <span class="token operator">+</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span>     <span class="token comment" spellcheck="true"># 广播机制</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="Pandas-用法">1.2. Pandas 用法</h2><h3 id="安装-Pandas">1.2.1. 安装 Pandas</h3><pre class="line-numbers language-bash"><code class="language-bash">pip <span class="token function">install</span> pandas
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="导入-Pandas">1.2.2. 导入 Pandas</h3><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="创建-DataFrame-和-Series">1.2.3. 创建 DataFrame 和 Series</h3><ul>
 <li>从字典创建 DataFrame</li>
 </ul>
-<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> &#123;<span class="st">&#39;A&#39;</span>: [<span class="dv">1</span>, <span class="dv">2</span>], <span class="st">&#39;B&#39;</span>: [<span class="dv">3</span>, <span class="dv">4</span>]&#125;</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(data)</span></code></pre></div>
+<pre class="line-numbers language-python"><code class="language-python">data <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'A'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">'B'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">}</span>
+df <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>data<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <ul>
 <li>从列表创建 Series</li>
 </ul>
-<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> pd.Series([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>])</span></code></pre></div>
-<h3 id="常用属性">1.2.4. 常用属性</h3>
-<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>columns <span class="op">=</span> df.columns              <span class="co"># 列名</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>index <span class="op">=</span> df.index                  <span class="co"># 索引</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>shape <span class="op">=</span> df.shape                  <span class="co"># 形状</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>dtypes <span class="op">=</span> df.dtypes                <span class="co"># 数据类型</span></span></code></pre></div>
-<h3 id="访问数据">1.2.5. 访问数据</h3>
-<ul>
+<pre class="line-numbers language-python"><code class="language-python">s <span class="token operator">=</span> pd<span class="token punctuation">.</span>Series<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="常用属性">1.2.4. 常用属性</h3><pre class="line-numbers language-python"><code class="language-python">columns <span class="token operator">=</span> df<span class="token punctuation">.</span>columns              <span class="token comment" spellcheck="true"># 列名</span>
+index <span class="token operator">=</span> df<span class="token punctuation">.</span>index                  <span class="token comment" spellcheck="true"># 索引</span>
+shape <span class="token operator">=</span> df<span class="token punctuation">.</span>shape                  <span class="token comment" spellcheck="true"># 形状</span>
+dtypes <span class="token operator">=</span> df<span class="token punctuation">.</span>dtypes                <span class="token comment" spellcheck="true"># 数据类型</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="访问数据">1.2.5. 访问数据</h3><ul>
 <li>行选择</li>
 </ul>
-<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>row <span class="op">=</span> df.iloc[<span class="dv">0</span>]                 <span class="co"># 按位置选择第一行</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>row_label <span class="op">=</span> df.loc[<span class="dv">0</span>]            <span class="co"># 按标签选择第一行</span></span></code></pre></div>
+<pre class="line-numbers language-python"><code class="language-python">row <span class="token operator">=</span> df<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>                 <span class="token comment" spellcheck="true"># 按位置选择第一行</span>
+row_label <span class="token operator">=</span> df<span class="token punctuation">.</span>loc<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>            <span class="token comment" spellcheck="true"># 按标签选择第一行</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <ul>
 <li>列选择</li>
 </ul>
-<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>column_A <span class="op">=</span> df[<span class="st">&#39;A&#39;</span>]                <span class="co"># 选择列 A</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>column_B <span class="op">=</span> df[[<span class="st">&#39;B&#39;</span>]]              <span class="co"># 选择列 B</span></span></code></pre></div>
+<pre class="line-numbers language-python"><code class="language-python">column_A <span class="token operator">=</span> df<span class="token punctuation">[</span><span class="token string">'A'</span><span class="token punctuation">]</span>                <span class="token comment" spellcheck="true"># 选择列 A</span>
+column_B <span class="token operator">=</span> df<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">'B'</span><span class="token punctuation">]</span><span class="token punctuation">]</span>              <span class="token comment" spellcheck="true"># 选择列 B</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <ul>
 <li>切片选择</li>
 </ul>
-<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>subset <span class="op">=</span> df.iloc[<span class="dv">0</span>:<span class="dv">2</span>, <span class="dv">0</span>:<span class="dv">2</span>]       <span class="co"># 选择子集</span></span></code></pre></div>
-<h3 id="数据操作">1.2.6. 数据操作</h3>
-<ul>
-<li>增加/删除列</li>
+<pre class="line-numbers language-python"><code class="language-python">subset <span class="token operator">=</span> df<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">]</span>       <span class="token comment" spellcheck="true"># 选择子集</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="数据操作">1.2.6. 数据操作</h3><ul>
+<li>增加&#x2F;删除列</li>
 </ul>
-<div class="sourceCode" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;C&#39;</span>] <span class="op">=</span> [<span class="dv">5</span>, <span class="dv">6</span>]                   <span class="co"># 添加新列 C</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>df.drop(<span class="st">&#39;C&#39;</span>, axis<span class="op">=</span><span class="dv">1</span>, inplace<span class="op">=</span><span class="va">True</span>) <span class="co"># 删除列 C</span></span></code></pre></div>
+<pre class="line-numbers language-python"><code class="language-python">df<span class="token punctuation">[</span><span class="token string">'C'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span>                   <span class="token comment" spellcheck="true"># 添加新列 C</span>
+df<span class="token punctuation">.</span>drop<span class="token punctuation">(</span><span class="token string">'C'</span><span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> inplace<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 删除列 C</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <ul>
 <li>数据过滤</li>
 </ul>
-<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>filtered_df <span class="op">=</span> df[df[<span class="st">&#39;A&#39;</span>] <span class="op">&gt;</span> <span class="dv">1</span>]      <span class="co"># 过滤条件</span></span></code></pre></div>
-<h3 id="统计分析">1.2.7. 统计分析</h3>
-<div class="sourceCode" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>mean_A <span class="op">=</span> df[<span class="st">&#39;A&#39;</span>].mean()             <span class="co"># 计算均值</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>sum_A <span class="op">=</span> df[<span class="st">&#39;A&#39;</span>].<span class="bu">sum</span>()               <span class="co"># 计算求和</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>describe <span class="op">=</span> df.describe()             <span class="co"># 描述性统计</span></span></code></pre></div>
-<h3 id="数据处理">1.2.8. 数据处理</h3>
-<ul>
+<pre class="line-numbers language-python"><code class="language-python">filtered_df <span class="token operator">=</span> df<span class="token punctuation">[</span>df<span class="token punctuation">[</span><span class="token string">'A'</span><span class="token punctuation">]</span> <span class="token operator">&amp;</span>gt<span class="token punctuation">;</span> <span class="token number">1</span><span class="token punctuation">]</span>      <span class="token comment" spellcheck="true"># 过滤条件</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="统计分析">1.2.7. 统计分析</h3><pre class="line-numbers language-python"><code class="language-python">mean_A <span class="token operator">=</span> df<span class="token punctuation">[</span><span class="token string">'A'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>mean<span class="token punctuation">(</span><span class="token punctuation">)</span>             <span class="token comment" spellcheck="true"># 计算均值</span>
+sum_A <span class="token operator">=</span> df<span class="token punctuation">[</span><span class="token string">'A'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>sum<span class="token punctuation">(</span><span class="token punctuation">)</span>               <span class="token comment" spellcheck="true"># 计算求和</span>
+describe <span class="token operator">=</span> df<span class="token punctuation">.</span>describe<span class="token punctuation">(</span><span class="token punctuation">)</span>             <span class="token comment" spellcheck="true"># 描述性统计</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="数据处理">1.2.8. 数据处理</h3><ul>
 <li>排序</li>
 </ul>
-<div class="sourceCode" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>sorted_df <span class="op">=</span> df.sort_values(by<span class="op">=</span><span class="st">&#39;A&#39;</span>)  <span class="co"># 根据列 A 排序</span></span></code></pre></div>
+<pre class="line-numbers language-python"><code class="language-python">sorted_df <span class="token operator">=</span> df<span class="token punctuation">.</span>sort_values<span class="token punctuation">(</span>by<span class="token operator">=</span><span class="token string">'A'</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 根据列 A 排序</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ul>
 <li>缺失值处理</li>
 </ul>
-<div class="sourceCode" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df.fillna(<span class="dv">0</span>, inplace<span class="op">=</span><span class="va">True</span>)          <span class="co"># 填充缺失值</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>df.dropna(inplace<span class="op">=</span><span class="va">True</span>)             <span class="co"># 删除包含缺失值的行</span></span></code></pre></div>
-<h3 id="数据导入与导出">1.2.9. 数据导入与导出</h3>
-<div class="sourceCode" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>df.to_csv(<span class="st">&#39;file.csv&#39;</span>, index<span class="op">=</span><span class="va">False</span>)  <span class="co"># 导出为 CSV 文件</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">&#39;file.csv&#39;</span>)         <span class="co"># 从 CSV 文件导入</span></span></code></pre></div>
-<h3 id="读热码转换">1.2.10. 读热码转换</h3>
-<div class="sourceCode" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>pd.get_dummies(data, columns<span class="op">=</span><span class="va">None</span>, drop_first<span class="op">=</span><span class="va">False</span>, dummy_na<span class="op">=</span><span class="va">False</span>, ...)</span></code></pre></div>
+<pre class="line-numbers language-python"><code class="language-python">df<span class="token punctuation">.</span>fillna<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> inplace<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>          <span class="token comment" spellcheck="true"># 填充缺失值</span>
+df<span class="token punctuation">.</span>dropna<span class="token punctuation">(</span>inplace<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>             <span class="token comment" spellcheck="true"># 删除包含缺失值的行</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3 id="数据导入与导出">1.2.9. 数据导入与导出</h3><pre class="line-numbers language-python"><code class="language-python">df<span class="token punctuation">.</span>to_csv<span class="token punctuation">(</span><span class="token string">'file.csv'</span><span class="token punctuation">,</span> index<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 导出为 CSV 文件</span>
+df <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">'file.csv'</span><span class="token punctuation">)</span>         <span class="token comment" spellcheck="true"># 从 CSV 文件导入</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3 id="读热码转换">1.2.10. 读热码转换</h3><pre class="line-numbers language-python"><code class="language-python">
+pd<span class="token punctuation">.</span>get_dummies<span class="token punctuation">(</span>data<span class="token punctuation">,</span> columns<span class="token operator">=</span>None<span class="token punctuation">,</span> drop_first<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> dummy_na<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>主要参数：</p>
 <ul>
 <li>data: 要编码的数据，可以是 DataFrame 或 Series。</li>
@@ -596,20 +597,20 @@ import numpy as np
 <li>drop_first: 布尔值，默认为 False。如果为 True，则删除第一个类别的列，以避免虚拟变量陷阱（dummy variable trap），即多重共线性问题。</li>
 <li>dummy_na: 布尔值，默认为 False。如果为 True，那么将生成一个额外的列，用于指示缺失值（NaN）的存在。这一列会在原始数据中出现 NaN（缺失值）的地方标记为 1，其余为 0。</li>
 </ul>
-<h2 id="使用-numpy-数组作为-dataframe-的数据">1.3. 使用 NumPy 数组作为 DataFrame 的数据</h2>
-<p>您还可以使用 NumPy 数组作为 DataFrame 的数据并指定索引和列名：</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>python复制代码<span class="co"># 创建 NumPy 数组</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">3</span>, <span class="dv">4</span>]])</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 将 NumPy 数组转换为 DataFrame，并指定索引和列名</span></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(data, index<span class="op">=</span>[<span class="st">&#39;row1&#39;</span>, <span class="st">&#39;row2&#39;</span>], columns<span class="op">=</span>[<span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>])</span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span></code></pre></div>
-<h2 id="tensorflow">1.4. tensorflow</h2>
-<ol type="1">
+<h2 id="使用-NumPy-数组作为-DataFrame-的数据">1.3. 使用 NumPy 数组作为 DataFrame 的数据</h2><p>您还可以使用 NumPy 数组作为 DataFrame 的数据并指定索引和列名：</p>
+<pre class="line-numbers language-python"><code class="language-python">python复制代码<span class="token comment" spellcheck="true"># 创建 NumPy 数组</span>
+data <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 将 NumPy 数组转换为 DataFrame，并指定索引和列名</span>
+df <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>data<span class="token punctuation">,</span> index<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'row1'</span><span class="token punctuation">,</span> <span class="token string">'row2'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> columns<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'A'</span><span class="token punctuation">,</span> <span class="token string">'B'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>df<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="tensorflow">1.4. tensorflow</h2><ol>
 <li>转换为tensors，不能改变</li>
 </ol>
-<div class="sourceCode" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>tf.constant([[<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">3</span>], [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>], [<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>]])</span></code></pre></div>
-<ol start="2" type="1">
+<pre class="line-numbers language-python"><code class="language-python">tf<span class="token punctuation">.</span>constant<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ol start="2">
 <li>转换为variable</li>
 </ol>
 
@@ -1179,9 +1180,6 @@ import numpy as np
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
 
-  <!-- 是否加载使用自带的 prismjs. -->
-  <script type="text/javascript" src="/libs/prism/prism.js"></script>
-
 
 <!-- 代码语言 -->
 
@@ -1358,7 +1356,7 @@ import numpy as np
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">42.1k</span>
+                        class="white-color">43.9k</span>
             
             
             

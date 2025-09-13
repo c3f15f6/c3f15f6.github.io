@@ -5,12 +5,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="图论0, 汤汁小白菜">
-    <meta name="description" content="0.1. 岛屿
-0.2. 图查找算法
-0.2.1. 并查集的实现 并查集理论基础 | 代码随想录
-
-并查集，是将一个集合内所有数据放入一个连通图中，即为father[u]= v；
-查询一个并查集，是查询根节点是否相同，find(u">
+    <meta name="description" content="0.1. 岛屿0.2. 图查找算法0.2.1. 并查集的实现   并查集理论基础 | 代码随想录
+并查集，是将一个集合内所有数据放入一个连通图中，即为father[u]&amp;#x3D; v；
+查询一个并查集，是查询根节点是否相同，find(u)">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -448,7 +445,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    723
+                    732
                 </div>
                 
 
@@ -470,126 +467,115 @@
         <hr class="clearfix">
 
         
-        <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.css">
-        
 
         
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="岛屿">0.1. 岛屿</h2>
-<h2 id="图查找算法">0.2. 图查找算法</h2>
-<h3 id="并查集的实现-并查集理论基础-代码随想录">0.2.1. 并查集的实现 并查集理论基础 | 代码随想录</h3>
-<ol type="1">
-<li>并查集，是将一个集合内所有数据放入一个连通图中，即为father[u]= v；</li>
-<li>查询一个并查集，是查询根节点是否相同，find(u)== find(v)</li>
+                <h2 id="岛屿">0.1. 岛屿</h2><h2 id="图查找算法">0.2. 图查找算法</h2><h3 id="并查集的实现-并查集理论基础-代码随想录">0.2.1. 并查集的实现   并查集理论基础 | 代码随想录</h3><ol>
+<li>并查集，是将一个集合内所有数据放入一个连通图中，即为father[u]&#x3D; v；</li>
+<li>查询一个并查集，是查询根节点是否相同，find(u)&#x3D;&#x3D; find(v)</li>
 <li>初始化，所有的并查集都指向自身</li>
 <li>路径压缩，节点在find过程中都执行根节点</li>
 </ol>
-<div class="sourceCode" id="cb1"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">// 使用数据存放并查集</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> father<span class="op">(</span>n<span class="op">,</span> <span class="dv">0</span><span class="op">);</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> init<span class="op">()&#123;</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span><span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span>i<span class="op">&lt;</span> father<span class="op">.</span>size<span class="op">();</span>i<span class="op">++)&#123;</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        father<span class="op">[</span>i<span class="op">]=</span> i<span class="op">;</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">&#125;</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> find<span class="op">(</span><span class="dt">int</span> u<span class="op">)&#123;</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span><span class="op">(</span>father<span class="op">[</span>u<span class="op">]==</span>u<span class="op">)</span> <span class="cf">return</span> u<span class="op">;</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> <span class="op">&#123;</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        father<span class="op">[</span>u<span class="op">]=</span>find<span class="op">(</span>father<span class="op">[</span>u<span class="op">]);</span><span class="co">// 路径压缩，指向根节点</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">&#125;</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> father<span class="op">[</span>u<span class="op">];</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> is_same<span class="op">(</span><span class="dt">int</span> u<span class="op">,</span> <span class="dt">int</span> v<span class="op">)&#123;</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> a <span class="op">=</span> find<span class="op">(</span>u<span class="op">);</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> b <span class="op">=</span> find<span class="op">(</span>v<span class="op">);</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span><span class="op">(</span>a <span class="op">==</span> b<span class="op">)</span> <span class="cf">return</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> join<span class="op">(</span><span class="dt">int</span> u<span class="op">,</span> <span class="dt">int</span> v<span class="op">)&#123;</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> a <span class="op">=</span> find<span class="op">(</span>u<span class="op">);</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> b <span class="op">=</span> find<span class="op">(</span>v<span class="op">);</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span><span class="op">(</span>a <span class="op">==</span> b<span class="op">)</span> <span class="cf">return</span> <span class="op">;</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    father<span class="op">[</span>u<span class="op">]=</span> v<span class="op">;</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">;</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span></code></pre></div>
-<h3 id="prim算法">0.2.2. prim算法</h3>
-<ol type="1">
+<pre class="line-numbers language-c++"><code class="language-c++">// 使用数据存放并查集
+
+vector&lt;int&gt; father(n, 0);
+void init(){
+    for(int i = 0;i&lt; father.size();i++){
+        father[i]= i;
+    }
+}
+
+int find(int u){
+    if(father[u]==u) return u;
+    else {
+        father[u]=find(father[u]);// 路径压缩，指向根节点
+    }
+    return father[u];
+}
+
+int is_same(int u, int v){
+    int a = find(u);
+    int b = find(v);
+    if(a == b) return 1;
+    else return 0;
+}
+
+void join(int u, int v){
+    int a = find(u);
+    int b = find(v);
+    if(a == b) return ;
+    father[u]= v;
+    return ;
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="prim算法">0.2.2. prim算法</h3><ol>
 <li>选择最小边e,v（e是树中，v是树外的数据）</li>
 <li>将节点v加入树中</li>
-<li>更新与v的节点的权重
-<ol type="1">
+<li>更新与v的节点的权重<ol>
 <li>此处记录树的连接关系，记录当前节点的父亲</li>
-</ol></li>
 </ol>
-<h3 id="kruskal-算法">0.2.3. kruskal 算法</h3>
-<ol type="1">
+</li>
+</ol>
+<h3 id="kruskal-算法">0.2.3. kruskal 算法</h3><ol>
 <li>完成并查集</li>
 <li>对边的权重排序</li>
-<li>选择最小边
-<ol type="1">
+<li>选择最小边<ol>
 <li>如果在并查集中，跳过</li>
 <li>不在并查集中，加入节点树种</li>
-</ol></li>
 </ol>
-<h3 id="拓扑排序">0.2.4. 拓扑排序</h3>
-<ol type="1">
+</li>
+</ol>
+<h3 id="拓扑排序">0.2.4. 拓扑排序</h3><ol>
 <li>计算节点入度</li>
 <li>选择入度为0 的节点，加入处理队列q, 并将入度替换为-1</li>
-<li>处理队列q
-<ol type="1">
+<li>处理队列q<ol>
 <li>cur指向的所有节点，入度减1</li>
 <li>如果入度等于1，加入处理队列q, 并将入度替换为-1</li>
 <li>记录出队元素cur.</li>
-</ol></li>
+</ol>
+</li>
 </ol>
 <blockquote>
 <p>出队元素不等于总元素数量时， <strong>判断有向图中 存在环</strong></p>
 </blockquote>
-<h3 id="dijkstra算法">0.2.5. dijkstra算法</h3>
-<p><strong><u>权值不能为负数，prim算法权值可以是负数，负数情况使用ford算法</u></strong></p>
-<ol type="1">
+<h3 id="dijkstra算法">0.2.5. dijkstra算法</h3><p><strong><u>权值不能为负数，prim算法权值可以是负数，负数情况使用ford算法</u></strong></p>
+<ol>
 <li>选择最小边并且该节点没有被访问过</li>
 <li>标记该节点，已经被访问过</li>
 <li>更新非访问节点到源点的最小距离，同时当前节点的父亲</li>
 </ol>
-<h3 id="使用边权重的dijkstra算法">0.2.6. 使用边权重的dijkstra算法</h3>
-<p>使用边的权值进行计算</p>
-<ol type="1">
+<h3 id="使用边权重的dijkstra算法">0.2.6. 使用边权重的dijkstra算法</h3><p>使用边的权值进行计算</p>
+<ol>
 <li>建立小顶堆</li>
 <li>从小顶堆中选择最小的边</li>
 <li>标记边连线的点已经被访问过了</li>
 <li>更新edge相连的顶点的权重</li>
 </ol>
-<h2 id="附录">0.3. 附录</h2>
-<h3 id="建立小顶堆">0.3.1. 建立小顶堆</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;queue&gt;</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> mycomparison<span class="op">&#123;</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">bool</span> <span class="kw">operator</span><span class="op">(</span><span class="at">const</span> pair<span class="op">&lt;</span><span class="dt">int</span><span class="op">,</span> <span class="dt">int</span><span class="op">&gt;&amp;</span> a<span class="op">,</span> <span class="at">const</span> pair<span class="op">&lt;</span><span class="dt">int</span><span class="op">,</span> <span class="dt">int</span><span class="op">&gt;&amp;</span> b<span class="op">)&#123;</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> a<span class="op">.</span>second<span class="op">&gt;</span> b<span class="op">.</span>second<span class="op">;</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">&#125;</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>priority_queue<span class="op">&lt;</span>pair<span class="op">&lt;</span><span class="dt">int</span><span class="op">,</span> <span class="dt">int</span><span class="op">&gt;,</span> vector<span class="op">&lt;</span>pair<span class="op">&lt;</span><span class="dt">int</span><span class="op">,</span><span class="dt">int</span><span class="op">&gt;&gt;</span> <span class="op">,</span> mycomparison<span class="op">&gt;</span> p<span class="op">;</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">/*</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">    a&gt; b时 ，是小顶堆；</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">    a&lt; b时， 是大顶堆；</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">*/</span></span></code></pre></div>
-<h3 id="对vector数组进行排序">0.3.2. 对vector数组进行排序</h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;algorithm&gt;</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> edges<span class="op">;</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>sort<span class="op">(</span>edges<span class="op">.</span>begin<span class="op">()</span> <span class="op">,</span> edges<span class="op">.</span>end<span class="op">(),</span> <span class="op">[](</span><span class="at">const</span> edge<span class="op">&amp;</span> a<span class="op">,</span> <span class="at">const</span> edge<span class="op">&amp;</span> b<span class="op">)&#123;</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a<span class="op">&lt;</span> b<span class="op">;</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;);</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">/*</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">    a&lt; b， 升序排序；</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">    a&gt; b， 降序排序；</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">    默认情况是升序排序；</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">*/</span></span></code></pre></div>
+<h2 id="附录">0.3. 附录</h2><h3 id="建立小顶堆">0.3.1. 建立小顶堆</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> &amp;lt;queue&amp;gt;</span>
+<span class="token keyword">class</span> <span class="token class-name">mycomparison</span><span class="token punctuation">{</span>
+    <span class="token keyword">bool</span> <span class="token keyword">operator</span><span class="token punctuation">(</span><span class="token keyword">const</span> pair<span class="token operator">&amp;</span>lt<span class="token punctuation">;</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">&amp;</span>gt<span class="token punctuation">;</span><span class="token operator">&amp;</span> a<span class="token punctuation">,</span> <span class="token keyword">const</span> pair<span class="token operator">&amp;</span>lt<span class="token punctuation">;</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">&amp;</span>gt<span class="token punctuation">;</span><span class="token operator">&amp;</span> b<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> a<span class="token punctuation">.</span>second<span class="token operator">&amp;</span>gt<span class="token punctuation">;</span> b<span class="token punctuation">.</span>second<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+priority_queue<span class="token operator">&amp;</span>lt<span class="token punctuation">;</span>pair<span class="token operator">&amp;</span>lt<span class="token punctuation">;</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">&amp;</span>gt<span class="token punctuation">;</span><span class="token punctuation">,</span> vector<span class="token operator">&amp;</span>lt<span class="token punctuation">;</span>pair<span class="token operator">&amp;</span>lt<span class="token punctuation">;</span><span class="token keyword">int</span><span class="token punctuation">,</span><span class="token keyword">int</span><span class="token operator">&amp;</span>gt<span class="token punctuation">;</span><span class="token operator">&amp;</span>gt<span class="token punctuation">;</span> <span class="token punctuation">,</span> mycomparison<span class="token operator">&amp;</span>gt<span class="token punctuation">;</span> p<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">/*
+    a&amp;gt; b时 ，是小顶堆；
+    a&amp;lt; b时， 是大顶堆；
+*/</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="对vector数组进行排序">0.3.2. 对vector数组进行排序</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> &amp;lt;algorithm&amp;gt;</span>
+vector<span class="token operator">&amp;</span>lt<span class="token punctuation">;</span><span class="token keyword">int</span><span class="token operator">&amp;</span>gt<span class="token punctuation">;</span> edges<span class="token punctuation">;</span>
+<span class="token function">sort</span><span class="token punctuation">(</span>edges<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">,</span> edges<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token keyword">const</span> edge<span class="token operator">&amp;</span> a<span class="token punctuation">,</span> <span class="token keyword">const</span> edge<span class="token operator">&amp;</span> b<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">return</span> a<span class="token operator">&amp;</span>lt<span class="token punctuation">;</span> b<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">/*
+    a&amp;lt; b， 升序排序；
+    a&amp;gt; b， 降序排序；
+    默认情况是升序排序；
+*/</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -1149,9 +1135,6 @@
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
 
-  <!-- 是否加载使用自带的 prismjs. -->
-  <script type="text/javascript" src="/libs/prism/prism.js"></script>
-
 
 <!-- 代码语言 -->
 
@@ -1328,7 +1311,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">42.1k</span>
+                        class="white-color">43.9k</span>
             
             
             

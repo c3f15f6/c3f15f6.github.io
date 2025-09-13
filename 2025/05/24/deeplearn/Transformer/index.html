@@ -5,19 +5,26 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="transformer, 汤汁小白菜">
-    <meta name="description" content="1. Transformer
-1.1. 模型基本框架
-
-image-20250425173522602
-
-
-image-20250516114212148
+    <meta name="description" content="1. Transformer1.1. 模型基本框架
 
 1.2. 编码器
-
 通过嵌入层
 对位置进行编码
-经过编码器">
+经过编码器层
+注意力层：
+注意力机制
+残差+ 规范化层
+
+
+前馈网络
+前馈网络
+残差+ 规范化层
+
+
+
+
+
+class Transforme">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -451,14 +458,14 @@ image-20250516114212148
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.2k
+                    2.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    10 分
+                    9 分
                 </div>
                 
 
@@ -473,375 +480,328 @@ image-20250516114212148
         <hr class="clearfix">
 
         
-        <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.css">
-        
 
         
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="transformer">1. Transformer</h1>
-<h2 id="模型基本框架">1.1. 模型基本框架</h2>
-<figure>
-<img src="/2025/05/24/deeplearn/Transformer/image-20250425173522602.png" alt="image-20250425173522602"><figcaption aria-hidden="true">image-20250425173522602</figcaption>
-</figure>
-<figure>
-<img src="/2025/05/24/deeplearn/Transformer/image-20250516114212148.png" alt="image-20250516114212148"><figcaption aria-hidden="true">image-20250516114212148</figcaption>
-</figure>
-<h2 id="编码器">1.2. 编码器</h2>
-<ol type="1">
+                <h1 id="Transformer">1. Transformer</h1><h2 id="模型基本框架">1.1. 模型基本框架</h2><p><img src="/2025/05/24/deeplearn/Transformer/image-20250425173522602.png" alt="image-20250425173522602"></p>
+<p><img src="/2025/05/24/deeplearn/Transformer/image-20250516114212148.png" alt="image-20250516114212148"></p>
+<h2 id="编码器">1.2. 编码器</h2><ol>
 <li>通过嵌入层</li>
 <li>对位置进行编码</li>
-<li>经过编码器层
-<ol type="1">
-<li>注意力层：
-<ol type="1">
+<li>经过编码器层<ol>
+<li>注意力层：<ol>
 <li>注意力机制</li>
 <li>残差+ 规范化层</li>
-</ol></li>
-<li>前馈网络
-<ol type="1">
+</ol>
+</li>
+<li>前馈网络<ol>
 <li>前馈网络</li>
 <li>残差+ 规范化层</li>
-</ol></li>
-</ol></li>
 </ol>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TransformerEncoder(d2l.Encoder):</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, vocab_size, key_size, query_size, value_size,</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                 num_hiddens, norm_shape, ffn_num_input, ffn_num_hiddens,</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>                 num_heads, num_layers, dropout, use_bias<span class="op">=</span><span class="va">False</span>, <span class="op">**</span>kwargs):</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>(TransformerEncoder, <span class="va">self</span>).<span class="fu">__init__</span>(<span class="op">**</span>kwargs)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.num_hiddens <span class="op">=</span> num_hiddens</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.embedding <span class="op">=</span> nn.Embedding(vocab_size, num_hiddens)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.pos_encoding <span class="op">=</span> d2l.PositionalEncoding(num_hiddens, dropout)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.blks <span class="op">=</span> nn.Sequential()</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(num_layers):</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.blks.add_module(<span class="st">&quot;block&quot;</span><span class="op">+</span><span class="bu">str</span>(i),</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>                EncoderBlock(key_size, query_size, value_size, num_hiddens,</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>                             norm_shape, ffn_num_input, ffn_num_hiddens,</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>                             num_heads, dropout, use_bias))</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, X, valid_lens, <span class="op">*</span>args):</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 因为位置编码值在-1和1之间，</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 因此嵌入值乘以嵌入维度的平方根进行缩放，</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 然后再与位置编码相加。</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        X <span class="op">=</span> <span class="va">self</span>.pos_encoding(<span class="va">self</span>.embedding(X) <span class="op">*</span> math.sqrt(<span class="va">self</span>.num_hiddens))</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.attention_weights <span class="op">=</span> [<span class="va">None</span>] <span class="op">*</span> <span class="bu">len</span>(<span class="va">self</span>.blks)</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i, blk <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="va">self</span>.blks):</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>            X <span class="op">=</span> blk(X, valid_lens)</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.attention_weights[</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>                i] <span class="op">=</span> blk.attention.attention.attention_weights</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> X</span></code></pre></div>
-<h3 id="encoderblock层">1.2.1. EncoderBlock层</h3>
-<figure>
-<img src="/2025/05/24/deeplearn/Transformer/image-20250425175900742.png" alt="image-20250425175900742"><figcaption aria-hidden="true">image-20250425175900742</figcaption>
-</figure>
-<ol type="1">
-<li>注意力层：
-<ol type="1">
+</li>
+</ol>
+</li>
+</ol>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">TransformerEncoder</span><span class="token punctuation">(</span>d2l<span class="token punctuation">.</span>Encoder<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> vocab_size<span class="token punctuation">,</span> key_size<span class="token punctuation">,</span> query_size<span class="token punctuation">,</span> value_size<span class="token punctuation">,</span>
+                 num_hiddens<span class="token punctuation">,</span> norm_shape<span class="token punctuation">,</span> ffn_num_input<span class="token punctuation">,</span> ffn_num_hiddens<span class="token punctuation">,</span>
+                 num_heads<span class="token punctuation">,</span> num_layers<span class="token punctuation">,</span> dropout<span class="token punctuation">,</span> use_bias<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        super<span class="token punctuation">(</span>TransformerEncoder<span class="token punctuation">,</span> self<span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>num_hiddens <span class="token operator">=</span> num_hiddens
+        
+        self<span class="token punctuation">.</span>embedding <span class="token operator">=</span> nn<span class="token punctuation">.</span>Embedding<span class="token punctuation">(</span>vocab_size<span class="token punctuation">,</span> num_hiddens<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>pos_encoding <span class="token operator">=</span> d2l<span class="token punctuation">.</span>PositionalEncoding<span class="token punctuation">(</span>num_hiddens<span class="token punctuation">,</span> dropout<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>blks <span class="token operator">=</span> nn<span class="token punctuation">.</span>Sequential<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>num_layers<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>blks<span class="token punctuation">.</span>add_module<span class="token punctuation">(</span><span class="token string">"block"</span><span class="token operator">+</span>str<span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">,</span>
+                EncoderBlock<span class="token punctuation">(</span>key_size<span class="token punctuation">,</span> query_size<span class="token punctuation">,</span> value_size<span class="token punctuation">,</span> num_hiddens<span class="token punctuation">,</span>
+                             norm_shape<span class="token punctuation">,</span> ffn_num_input<span class="token punctuation">,</span> ffn_num_hiddens<span class="token punctuation">,</span>
+                             num_heads<span class="token punctuation">,</span> dropout<span class="token punctuation">,</span> use_bias<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            
+    <span class="token keyword">def</span> <span class="token function">forward</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> X<span class="token punctuation">,</span> valid_lens<span class="token punctuation">,</span> <span class="token operator">*</span>args<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment" spellcheck="true"># 因为位置编码值在-1和1之间，</span>
+        <span class="token comment" spellcheck="true"># 因此嵌入值乘以嵌入维度的平方根进行缩放，</span>
+        <span class="token comment" spellcheck="true"># 然后再与位置编码相加。</span>
+        X <span class="token operator">=</span> self<span class="token punctuation">.</span>pos_encoding<span class="token punctuation">(</span>self<span class="token punctuation">.</span>embedding<span class="token punctuation">(</span>X<span class="token punctuation">)</span> <span class="token operator">*</span> math<span class="token punctuation">.</span>sqrt<span class="token punctuation">(</span>self<span class="token punctuation">.</span>num_hiddens<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>attention_weights <span class="token operator">=</span> <span class="token punctuation">[</span>None<span class="token punctuation">]</span> <span class="token operator">*</span> len<span class="token punctuation">(</span>self<span class="token punctuation">.</span>blks<span class="token punctuation">)</span>
+        <span class="token keyword">for</span> i<span class="token punctuation">,</span> blk <span class="token keyword">in</span> enumerate<span class="token punctuation">(</span>self<span class="token punctuation">.</span>blks<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            X <span class="token operator">=</span> blk<span class="token punctuation">(</span>X<span class="token punctuation">,</span> valid_lens<span class="token punctuation">)</span>
+            self<span class="token punctuation">.</span>attention_weights<span class="token punctuation">[</span>
+                i<span class="token punctuation">]</span> <span class="token operator">=</span> blk<span class="token punctuation">.</span>attention<span class="token punctuation">.</span>attention<span class="token punctuation">.</span>attention_weights
+        <span class="token keyword">return</span> X
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="EncoderBlock层">1.2.1. EncoderBlock层</h3><p><img src="/2025/05/24/deeplearn/Transformer/image-20250425175900742.png" alt="image-20250425175900742"></p>
+<ol>
+<li>注意力层：<ol>
 <li>注意力机制</li>
 <li>残差+ 规范化层</li>
-</ol></li>
-<li>前馈网络
-<ol type="1">
+</ol>
+</li>
+<li>前馈网络<ol>
 <li>前馈网络</li>
 <li>残差+ 规范化层</li>
-</ol></li>
 </ol>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> EncoderBlock(nn.Module):</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;Transformer编码器块&quot;&quot;&quot;</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, key_size, query_size, value_size, num_hiddens,</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                     norm_shape, ffn_num_input, ffn_num_hiddens, num_heads,</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                     dropout, use_bias<span class="op">=</span><span class="va">False</span>, <span class="op">**</span>kwargs):</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>(EncoderBlock, <span class="va">self</span>).<span class="fu">__init__</span>(<span class="op">**</span>kwargs)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.attention <span class="op">=</span> d2l.MultiHeadAttention(</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>            key_size, query_size, value_size, num_hiddens, num_heads, dropout,</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>            use_bias)</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.addnorm1 <span class="op">=</span> AddNorm(norm_shape, dropout)</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.ffn <span class="op">=</span> PositionWiseFFN(</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>            ffn_num_input, ffn_num_hiddens, num_hiddens)</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.addnorm2 <span class="op">=</span> AddNorm(norm_shape, dropout)</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, X, valid_lens):</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>        Y <span class="op">=</span> <span class="va">self</span>.addnorm1(X, <span class="va">self</span>.attention(X, X, X, valid_lens))</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.addnorm2(Y, <span class="va">self</span>.ffn(Y))</span></code></pre></div>
-<h4 id="多头注意力机制">1.2.1.1. 多头注意力机制</h4>
-<p>将键值对分为多个子空间，每个注意力机制学习一个子空间的特征，得到H组的注意力权重，然后将注意力权重通过线性层汇聚</p>
-<figure>
-<img src="/2025/05/24/deeplearn/Transformer/image-20250425155705305.png" alt="image-20250425155705305"><figcaption aria-hidden="true">image-20250425155705305</figcaption>
-</figure>
+</li>
+</ol>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">EncoderBlock</span><span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""Transformer编码器块"""</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> key_size<span class="token punctuation">,</span> query_size<span class="token punctuation">,</span> value_size<span class="token punctuation">,</span> num_hiddens<span class="token punctuation">,</span>
+                     norm_shape<span class="token punctuation">,</span> ffn_num_input<span class="token punctuation">,</span> ffn_num_hiddens<span class="token punctuation">,</span> num_heads<span class="token punctuation">,</span>
+                     dropout<span class="token punctuation">,</span> use_bias<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        super<span class="token punctuation">(</span>EncoderBlock<span class="token punctuation">,</span> self<span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>attention <span class="token operator">=</span> d2l<span class="token punctuation">.</span>MultiHeadAttention<span class="token punctuation">(</span>
+            key_size<span class="token punctuation">,</span> query_size<span class="token punctuation">,</span> value_size<span class="token punctuation">,</span> num_hiddens<span class="token punctuation">,</span> num_heads<span class="token punctuation">,</span> dropout<span class="token punctuation">,</span>
+            use_bias<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>addnorm1 <span class="token operator">=</span> AddNorm<span class="token punctuation">(</span>norm_shape<span class="token punctuation">,</span> dropout<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>ffn <span class="token operator">=</span> PositionWiseFFN<span class="token punctuation">(</span>
+            ffn_num_input<span class="token punctuation">,</span> ffn_num_hiddens<span class="token punctuation">,</span> num_hiddens<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>addnorm2 <span class="token operator">=</span> AddNorm<span class="token punctuation">(</span>norm_shape<span class="token punctuation">,</span> dropout<span class="token punctuation">)</span>
+    <span class="token keyword">def</span> <span class="token function">forward</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> X<span class="token punctuation">,</span> valid_lens<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        Y <span class="token operator">=</span> self<span class="token punctuation">.</span>addnorm1<span class="token punctuation">(</span>X<span class="token punctuation">,</span> self<span class="token punctuation">.</span>attention<span class="token punctuation">(</span>X<span class="token punctuation">,</span> X<span class="token punctuation">,</span> X<span class="token punctuation">,</span> valid_lens<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>addnorm2<span class="token punctuation">(</span>Y<span class="token punctuation">,</span> self<span class="token punctuation">.</span>ffn<span class="token punctuation">(</span>Y<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="多头注意力机制">1.2.1.1. 多头注意力机制</h4><p>将键值对分为多个子空间，每个注意力机制学习一个子空间的特征，得到H组的注意力权重，然后将注意力权重通过线性层汇聚</p>
+<p><img src="/2025/05/24/deeplearn/Transformer/image-20250425155705305.png" alt="image-20250425155705305"></p>
 <p>常规思路：</p>
-<ol type="1">
+<ol>
 <li>将query, key, values映射到子空间，使用不同的Linear映射</li>
 <li>将不同头的注意力结果合并在一起，在feature维度上合并</li>
 <li>再通过一个Linear线性层，连接所有head</li>
 </ol>
 <p>并行思路</p>
-<ol type="1">
+<ol>
 <li>将query,key, values映射到完整空间，然后将完整空间查分成子空间，head与batch组成一个伪batch</li>
 <li>再将子空间的数据通过点积注意力</li>
 <li>将head从batch中分离出来，与feature合并，效果与非并行情况相同</li>
 <li>最后通过线性层</li>
 </ol>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MultiHeadAttention(nn.Module):</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, key_size, query_size, value_size, num_hiddens, num_head, dropout, bias <span class="op">=</span> false, <span class="op">**</span>kwargs):</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.num_head <span class="op">=</span> head</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.attention <span class="op">=</span> d2l.DotProductAttention(dropout)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.W_k <span class="op">=</span> nn.Linear(key_size, num_hiddens)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.W_q <span class="op">=</span> nn.Linear(query_size, num_hiddens)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.W_v <span class="op">=</span> nn.Linear(value_size, num_hiddens)</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.W_o <span class="op">=</span> nn.Linear(num_hiddens, num_hiddens) <span class="co"># 全连接层</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, query ,key ,values, valid_lens):</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 转换为(batch_size* head, key/query , num_hidden/head)</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        query <span class="op">=</span> transpose(<span class="va">self</span>.W_q(query),  <span class="va">self</span>.head_num)</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>        keys <span class="op">=</span> transpose_qkv(<span class="va">self</span>.W_k(keys), <span class="va">self</span>.num_heads)</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        values <span class="op">=</span> transpose_qkv(<span class="va">self</span>.W_v(values), <span class="va">self</span>.num_heads)</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 将掩码扩展为batch*head</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> valid_len <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>            valid_lens <span class="op">=</span> torch.repeat_interleave(</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>                valid_lens, repeats <span class="op">=</span> <span class="va">self</span>.num_heads , dim <span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>        output <span class="op">=</span> <span class="va">self</span>.attention(query, key ,value, valid_len)</span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>        output_concat<span class="op">=</span>transpose_output(output, <span class="va">self</span>.num_heads)</span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 输出为（batch_size, query_size, hidden_size)</span></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.W_o(output_concat)</span></code></pre></div>
-<h4 id="残差规范化层">1.2.1.2. 残差+规范化层</h4>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> AddNorm(nn.Module):</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;残差连接后进行层规范化&quot;&quot;&quot;</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, normalized_shape, dropout, <span class="op">**</span>kwargs):</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>(AddNorm, <span class="va">self</span>).<span class="fu">__init__</span>(<span class="op">**</span>kwargs)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.dropout <span class="op">=</span> nn.Dropout(dropout)</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.ln <span class="op">=</span> nn.LayerNorm(normalized_shape)</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, X, Y):</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Y+X 残差网络</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Ln 层归一化</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.ln(<span class="va">self</span>.dropout(Y) <span class="op">+</span> X)</span></code></pre></div>
-<h5 id="残差层">1.2.1.2.1. 残差层</h5>
-<p>训练是模型训练出F(X) = f(x)- X</p>
-<figure>
-<img src="/2025/05/24/deeplearn/Transformer/image-20250423225436209.png" alt="image-20250423225436209"><figcaption aria-hidden="true">image-20250423225436209</figcaption>
-</figure>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">MultiHeadAttention</span><span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> key_size<span class="token punctuation">,</span> query_size<span class="token punctuation">,</span> value_size<span class="token punctuation">,</span> num_hiddens<span class="token punctuation">,</span> num_head<span class="token punctuation">,</span> dropout<span class="token punctuation">,</span> bias <span class="token operator">=</span> false<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+           self<span class="token punctuation">.</span>num_head <span class="token operator">=</span> head
+        self<span class="token punctuation">.</span>attention <span class="token operator">=</span> d2l<span class="token punctuation">.</span>DotProductAttention<span class="token punctuation">(</span>dropout<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>W_k <span class="token operator">=</span> nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span>key_size<span class="token punctuation">,</span> num_hiddens<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>W_q <span class="token operator">=</span> nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span>query_size<span class="token punctuation">,</span> num_hiddens<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>W_v <span class="token operator">=</span> nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span>value_size<span class="token punctuation">,</span> num_hiddens<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>W_o <span class="token operator">=</span> nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span>num_hiddens<span class="token punctuation">,</span> num_hiddens<span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 全连接层</span>
+        
+    <span class="token keyword">def</span> <span class="token function">forward</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> query <span class="token punctuation">,</span>key <span class="token punctuation">,</span>values<span class="token punctuation">,</span> valid_lens<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        
+           <span class="token comment" spellcheck="true"># 转换为(batch_size* head, key/query , num_hidden/head)</span>
+        query <span class="token operator">=</span> transpose<span class="token punctuation">(</span>self<span class="token punctuation">.</span>W_q<span class="token punctuation">(</span>query<span class="token punctuation">)</span><span class="token punctuation">,</span>  self<span class="token punctuation">.</span>head_num<span class="token punctuation">)</span>
+        keys <span class="token operator">=</span> transpose_qkv<span class="token punctuation">(</span>self<span class="token punctuation">.</span>W_k<span class="token punctuation">(</span>keys<span class="token punctuation">)</span><span class="token punctuation">,</span> self<span class="token punctuation">.</span>num_heads<span class="token punctuation">)</span>
+        values <span class="token operator">=</span> transpose_qkv<span class="token punctuation">(</span>self<span class="token punctuation">.</span>W_v<span class="token punctuation">(</span>values<span class="token punctuation">)</span><span class="token punctuation">,</span> self<span class="token punctuation">.</span>num_heads<span class="token punctuation">)</span>
+        
+        <span class="token comment" spellcheck="true"># 将掩码扩展为batch*head</span>
+        <span class="token keyword">if</span> valid_len <span class="token keyword">is</span> <span class="token operator">not</span> None<span class="token punctuation">:</span>
+            valid_lens <span class="token operator">=</span> torch<span class="token punctuation">.</span>repeat_interleave<span class="token punctuation">(</span>
+                valid_lens<span class="token punctuation">,</span> repeats <span class="token operator">=</span> self<span class="token punctuation">.</span>num_heads <span class="token punctuation">,</span> dim <span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>
+            
+        output <span class="token operator">=</span> self<span class="token punctuation">.</span>attention<span class="token punctuation">(</span>query<span class="token punctuation">,</span> key <span class="token punctuation">,</span>value<span class="token punctuation">,</span> valid_len<span class="token punctuation">)</span>
+        
+        output_concat<span class="token operator">=</span>transpose_output<span class="token punctuation">(</span>output<span class="token punctuation">,</span> self<span class="token punctuation">.</span>num_heads<span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 输出为（batch_size, query_size, hidden_size)</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>W_o<span class="token punctuation">(</span>output_concat<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="残差-规范化层">1.2.1.2. 残差+规范化层</h4><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">AddNorm</span><span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""残差连接后进行层规范化"""</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> normalized_shape<span class="token punctuation">,</span> dropout<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        super<span class="token punctuation">(</span>AddNorm<span class="token punctuation">,</span> self<span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>dropout <span class="token operator">=</span> nn<span class="token punctuation">.</span>Dropout<span class="token punctuation">(</span>dropout<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>ln <span class="token operator">=</span> nn<span class="token punctuation">.</span>LayerNorm<span class="token punctuation">(</span>normalized_shape<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">forward</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> X<span class="token punctuation">,</span> Y<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment" spellcheck="true"># Y+X 残差网络</span>
+        <span class="token comment" spellcheck="true"># Ln 层归一化</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>ln<span class="token punctuation">(</span>self<span class="token punctuation">.</span>dropout<span class="token punctuation">(</span>Y<span class="token punctuation">)</span> <span class="token operator">+</span> X<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h5 id="残差层">1.2.1.2.1. 残差层</h5><p>训练是模型训练出F(X) &#x3D; f(x)- X</p>
+<p><img src="/2025/05/24/deeplearn/Transformer/image-20250423225436209.png" alt="image-20250423225436209"></p>
 <p>对应模型中 支线 为x ，前馈神经网络中预测是f(X), 相加后得到准确预测的F(X)</p>
-<figure>
-<img src="/2025/05/24/deeplearn/Transformer/image-20250425181440459.png" alt="image-20250425181440459"><figcaption aria-hidden="true">image-20250425181440459</figcaption>
-</figure>
-<h5 id="批量归一化层batchnorm">1.2.1.2.2. 批量归一化层BatchNorm</h5>
-<p><span class="math display">$$
-\mathrm{BN}(\mathbf{x}) = \boldsymbol{\gamma} \odot \frac{\mathbf{x} - \hat{\boldsymbol{\mu}}_\mathcal{B}}{\hat{\boldsymbol{\sigma}}_\mathcal{B}} + \boldsymbol{\beta}.
-$$</span></p>
-<p>对特征维度进行归一化,<span class="math inline"><em>γ</em>、<em>β</em></span> 是拉伸和偏移参数</p>
-<ol type="1">
+<p><img src="/2025/05/24/deeplearn/Transformer/image-20250425181440459.png" alt="image-20250425181440459"></p>
+<h5 id="批量归一化层BatchNorm">1.2.1.2.2. 批量归一化层BatchNorm</h5><p>$$<br>\mathrm{BN}(\mathbf{x}) &#x3D; \boldsymbol{\gamma} \odot \frac{\mathbf{x} - \hat{\boldsymbol{\mu}}_\mathcal{B}}{\hat{\boldsymbol{\sigma}}_\mathcal{B}} + \boldsymbol{\beta}.<br>$$</p>
+<p>对特征维度进行归一化,$\gamma、\beta$ 是拉伸和偏移参数</p>
+<ol>
 <li><p>对特征维度进行归一化</p>
-<pre><code>mean = X.mean(dim = 0, keepdim = True)</code></pre></li>
+<pre><code>mean = X.mean(dim = 0, keepdim = True)
+</code></pre>
+</li>
 <li><p>卷积层</p>
-<ol type="1">
+<ol>
 <li>对通道维度进行归一化</li>
-</ol></li>
-<li><p>训练状态下使用小批次的样本均值与方差，测试状态使用的移动平均估算的均值与方差</p></li>
 </ol>
-<h3 id="前馈网络层">1.2.2. 前馈网络层</h3>
-<p>这里的线性层可以使用1*1cnn网络代替，代替结果</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> PositionWiseFFN(nn.Module):</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;基于位置的前馈网络&quot;&quot;&quot;</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, ffn_num_input, ffn_num_hiddens, ffn_num_outputs,</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                 <span class="op">**</span>kwargs):</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>(PositionWiseFFN, <span class="va">self</span>).<span class="fu">__init__</span>(<span class="op">**</span>kwargs)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.dense1 <span class="op">=</span> nn.Linear(ffn_num_input, ffn_num_hiddens)</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.relu <span class="op">=</span> nn.ReLU()</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.dense2 <span class="op">=</span> nn.Linear(ffn_num_hiddens, ffn_num_outputs)</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, X):</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.dense2(<span class="va">self</span>.relu(<span class="va">self</span>.dense1(X)))</span></code></pre></div>
-<h2 id="解码器">1.3. 解码器</h2>
-<figure>
-<img src="/2025/05/24/deeplearn/Transformer/image-20250425181429443.png" alt="image-20250425181429443"><figcaption aria-hidden="true">image-20250425181429443</figcaption>
-</figure>
-<ol type="1">
+</li>
+<li><p>训练状态下使用小批次的样本均值与方差，测试状态使用的移动平均估算的均值与方差</p>
+</li>
+</ol>
+<h3 id="前馈网络层">1.2.2. 前馈网络层</h3><p>这里的线性层可以使用1*1cnn网络代替，代替结果</p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">PositionWiseFFN</span><span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""基于位置的前馈网络"""</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> ffn_num_input<span class="token punctuation">,</span> ffn_num_hiddens<span class="token punctuation">,</span> ffn_num_outputs<span class="token punctuation">,</span>
+                 <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        super<span class="token punctuation">(</span>PositionWiseFFN<span class="token punctuation">,</span> self<span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>dense1 <span class="token operator">=</span> nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span>ffn_num_input<span class="token punctuation">,</span> ffn_num_hiddens<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>relu <span class="token operator">=</span> nn<span class="token punctuation">.</span>ReLU<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>dense2 <span class="token operator">=</span> nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span>ffn_num_hiddens<span class="token punctuation">,</span> ffn_num_outputs<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">forward</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> X<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>dense2<span class="token punctuation">(</span>self<span class="token punctuation">.</span>relu<span class="token punctuation">(</span>self<span class="token punctuation">.</span>dense1<span class="token punctuation">(</span>X<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="解码器">1.3. 解码器</h2><p><img src="/2025/05/24/deeplearn/Transformer/image-20250425181429443.png" alt="image-20250425181429443"></p>
+<ol>
 <li>通过嵌入层</li>
 <li>对位置进行编码</li>
-<li>经过解码器层
-<ol type="1">
+<li>经过解码器层<ol>
 <li>第一个注意力层 ， query ,key, value,都是解码器输入</li>
-<li>第二个注意力层， query 来自解码器输入 ， key, values来自编码器输入
-<ol type="1">
+<li>第二个注意力层， query 来自解码器输入 ， key, values来自编码器输入<ol>
 <li>交叉注意力机制中，<strong>key,value</strong>来源使用一致，这里key,values来自编码器输入</li>
-</ol></li>
+</ol>
+</li>
 <li>前馈神经网络</li>
-</ol></li>
+</ol>
+</li>
 <li>全连接层</li>
 </ol>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TransformerDecoder(d2l.AttentionDecoder):</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, vocab_size, key_size, query_size, value_size,</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                 num_hiddens, norm_shape, ffn_num_input, ffn_num_hiddens,</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                 num_heads, num_layers, dropout, <span class="op">**</span>kwargs):</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>(TransformerDecoder, <span class="va">self</span>).<span class="fu">__init__</span>(<span class="op">**</span>kwargs)</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.num_hiddens <span class="op">=</span> num_hiddens</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.num_layers <span class="op">=</span> num_layers</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.embedding <span class="op">=</span> nn.Embedding(vocab_size, num_hiddens)</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.pos_encoding <span class="op">=</span> d2l.PositionalEncoding(num_hiddens, dropout)</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.blks <span class="op">=</span> nn.Sequential()</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(num_layers):</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.blks.add_module(<span class="st">&quot;block&quot;</span><span class="op">+</span><span class="bu">str</span>(i),</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>                DecoderBlock(key_size, query_size, value_size, num_hiddens,</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>                             norm_shape, ffn_num_input, ffn_num_hiddens,</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>                             num_heads, dropout, i))</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.dense <span class="op">=</span> nn.Linear(num_hiddens, vocab_size)</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> init_state(<span class="va">self</span>, enc_outputs, enc_valid_lens, <span class="op">*</span>args):</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> [enc_outputs, enc_valid_lens, [<span class="va">None</span>] <span class="op">*</span> <span class="va">self</span>.num_layers]</span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>        X <span class="op">=</span> <span class="va">self</span>.pos_encoding(<span class="va">self</span>.embedding(X) <span class="op">*</span> math.sqrt(<span class="va">self</span>.num_hiddens))</span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._attention_weights <span class="op">=</span> [[<span class="va">None</span>] <span class="op">*</span> <span class="bu">len</span>(<span class="va">self</span>.blks) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span> (<span class="dv">2</span>)]</span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i, blk <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="va">self</span>.blks):</span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>            X, state <span class="op">=</span> blk(X, state)</span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>            <span class="co"># 解码器自注意力权重</span></span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>._attention_weights[<span class="dv">0</span>][</span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>                i] <span class="op">=</span> blk.attention1.attention.attention_weights</span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>            <span class="co"># “编码器－解码器”自注意力权重</span></span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>._attention_weights[<span class="dv">1</span>][</span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>                i] <span class="op">=</span> blk.attention2.attention.attention_weights</span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.dense(X), state</span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>            </span></code></pre></div>
-<h3 id="解码器层">1.3.1. 解码器层</h3>
-<p>经过解码器层</p>
-<ol type="1">
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">TransformerDecoder</span><span class="token punctuation">(</span>d2l<span class="token punctuation">.</span>AttentionDecoder<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> vocab_size<span class="token punctuation">,</span> key_size<span class="token punctuation">,</span> query_size<span class="token punctuation">,</span> value_size<span class="token punctuation">,</span>
+                 num_hiddens<span class="token punctuation">,</span> norm_shape<span class="token punctuation">,</span> ffn_num_input<span class="token punctuation">,</span> ffn_num_hiddens<span class="token punctuation">,</span>
+                 num_heads<span class="token punctuation">,</span> num_layers<span class="token punctuation">,</span> dropout<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        super<span class="token punctuation">(</span>TransformerDecoder<span class="token punctuation">,</span> self<span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>num_hiddens <span class="token operator">=</span> num_hiddens
+        self<span class="token punctuation">.</span>num_layers <span class="token operator">=</span> num_layers
+        self<span class="token punctuation">.</span>embedding <span class="token operator">=</span> nn<span class="token punctuation">.</span>Embedding<span class="token punctuation">(</span>vocab_size<span class="token punctuation">,</span> num_hiddens<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>pos_encoding <span class="token operator">=</span> d2l<span class="token punctuation">.</span>PositionalEncoding<span class="token punctuation">(</span>num_hiddens<span class="token punctuation">,</span> dropout<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>blks <span class="token operator">=</span> nn<span class="token punctuation">.</span>Sequential<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>num_layers<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>blks<span class="token punctuation">.</span>add_module<span class="token punctuation">(</span><span class="token string">"block"</span><span class="token operator">+</span>str<span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">,</span>
+                DecoderBlock<span class="token punctuation">(</span>key_size<span class="token punctuation">,</span> query_size<span class="token punctuation">,</span> value_size<span class="token punctuation">,</span> num_hiddens<span class="token punctuation">,</span>
+                             norm_shape<span class="token punctuation">,</span> ffn_num_input<span class="token punctuation">,</span> ffn_num_hiddens<span class="token punctuation">,</span>
+                             num_heads<span class="token punctuation">,</span> dropout<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>dense <span class="token operator">=</span> nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span>num_hiddens<span class="token punctuation">,</span> vocab_size<span class="token punctuation">)</span>
+        
+    <span class="token keyword">def</span> <span class="token function">init_state</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> enc_outputs<span class="token punctuation">,</span> enc_valid_lens<span class="token punctuation">,</span> <span class="token operator">*</span>args<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token punctuation">[</span>enc_outputs<span class="token punctuation">,</span> enc_valid_lens<span class="token punctuation">,</span> <span class="token punctuation">[</span>None<span class="token punctuation">]</span> <span class="token operator">*</span> self<span class="token punctuation">.</span>num_layers<span class="token punctuation">]</span>
+        X <span class="token operator">=</span> self<span class="token punctuation">.</span>pos_encoding<span class="token punctuation">(</span>self<span class="token punctuation">.</span>embedding<span class="token punctuation">(</span>X<span class="token punctuation">)</span> <span class="token operator">*</span> math<span class="token punctuation">.</span>sqrt<span class="token punctuation">(</span>self<span class="token punctuation">.</span>num_hiddens<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>_attention_weights <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>None<span class="token punctuation">]</span> <span class="token operator">*</span> len<span class="token punctuation">(</span>self<span class="token punctuation">.</span>blks<span class="token punctuation">)</span> <span class="token keyword">for</span> _ <span class="token keyword">in</span> range <span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+        <span class="token keyword">for</span> i<span class="token punctuation">,</span> blk <span class="token keyword">in</span> enumerate<span class="token punctuation">(</span>self<span class="token punctuation">.</span>blks<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            X<span class="token punctuation">,</span> state <span class="token operator">=</span> blk<span class="token punctuation">(</span>X<span class="token punctuation">,</span> state<span class="token punctuation">)</span>
+            <span class="token comment" spellcheck="true"># 解码器自注意力权重</span>
+            self<span class="token punctuation">.</span>_attention_weights<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span>
+                i<span class="token punctuation">]</span> <span class="token operator">=</span> blk<span class="token punctuation">.</span>attention1<span class="token punctuation">.</span>attention<span class="token punctuation">.</span>attention_weights
+            <span class="token comment" spellcheck="true"># “编码器－解码器”自注意力权重</span>
+            self<span class="token punctuation">.</span>_attention_weights<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>
+                i<span class="token punctuation">]</span> <span class="token operator">=</span> blk<span class="token punctuation">.</span>attention2<span class="token punctuation">.</span>attention<span class="token punctuation">.</span>attention_weights
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>dense<span class="token punctuation">(</span>X<span class="token punctuation">)</span><span class="token punctuation">,</span> state
+            
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="解码器层">1.3.1. 解码器层</h3><p>经过解码器层</p>
+<ol>
 <li>第一个注意力层 ， query ,key, value,都是解码器输入</li>
 <li>第二个注意力层， query 来自解码器输入 ， key, values来自编码器输入</li>
 <li>前馈神经网络</li>
 </ol>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> DecoderBlock(nn.Module):</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;解码器中第i个块&quot;&quot;&quot;</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, key_size, query_size, value_size, num_hiddens,</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                 norm_shape, ffn_num_input, ffn_num_hiddens, num_heads,</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>                 dropout, i, <span class="op">**</span>kwargs):</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>(DecoderBlock, <span class="va">self</span>).<span class="fu">__init__</span>(<span class="op">**</span>kwargs)</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.i <span class="op">=</span> i</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.attention1 <span class="op">=</span> d2l.MultiHeadAttention(</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>            key_size, query_size, value_size, num_hiddens, num_heads, dropout)</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.addnorm1 <span class="op">=</span> AddNorm(norm_shape, dropout)</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.attention2 <span class="op">=</span> d2l.MultiHeadAttention(</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>            key_size, query_size, value_size, num_hiddens, num_heads, dropout)</span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.addnorm2 <span class="op">=</span> AddNorm(norm_shape, dropout)</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.ffn <span class="op">=</span> PositionWiseFFN(ffn_num_input, ffn_num_hiddens,</span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>                                   num_hiddens)</span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.addnorm3 <span class="op">=</span> AddNorm(norm_shape, dropout)</span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, X, state):</span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>        enc_outputs, enc_valid_lens <span class="op">=</span> state[<span class="dv">0</span>], state[<span class="dv">1</span>]</span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 训练阶段，输出序列的所有词元都在同一时间处理，</span></span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 因此state[2][self.i]初始化为None。</span></span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 预测阶段，输出序列是通过词元一个接着一个解码的，</span></span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 因此state[2][self.i]包含着直到当前时间步第i个块解码的输出表示</span></span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> state[<span class="dv">2</span>][<span class="va">self</span>.i] <span class="kw">is</span> <span class="va">None</span>:</span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>            <span class="co"># 使用当前输入的数据进行预测</span></span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>            key_values <span class="op">=</span> X</span>
-<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
-<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>            <span class="co">&#39;&#39;&#39;</span></span>
-<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a><span class="co">            state[2] 中存放者上一个时间步，留下的已经每个块之前计算好的key_value</span></span>
-<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a><span class="co">            # 加上y_t之前的数据一起预测</span></span>
-<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a><span class="co">            &#39;&#39;&#39;</span></span>
-<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>            key_values <span class="op">=</span> torch.cat((state[<span class="dv">2</span>][<span class="va">self</span>.i], X), axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>        state[<span class="dv">2</span>][<span class="va">self</span>.i] <span class="op">=</span> key_values</span>
-<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.training:</span>
-<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>            batch_size, num_steps, _ <span class="op">=</span> X.shape</span>
-<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>            <span class="co"># dec_valid_lens的开头:(batch_size,num_steps),</span></span>
-<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>            <span class="co"># 其中每一行是[1,2,...,num_steps]</span></span>
-<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>            dec_valid_lens <span class="op">=</span> torch.arange(</span>
-<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>                <span class="dv">1</span>, num_steps <span class="op">+</span> <span class="dv">1</span>, device<span class="op">=</span>X.device).repeat(batch_size, <span class="dv">1</span>)</span>
-<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
-<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a>            dec_valid_lens <span class="op">=</span> <span class="va">None</span></span>
-<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 自注意力</span></span>
-<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a>        X2 <span class="op">=</span> <span class="va">self</span>.attention1(X, key_values, key_values, dec_valid_lens)</span>
-<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a>        Y <span class="op">=</span> <span class="va">self</span>.addnorm1(X, X2)</span>
-<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 编码器－解码器注意力。</span></span>
-<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a>        <span class="co"># enc_outputs的开头:(batch_size,num_steps,num_hiddens)</span></span>
-<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a>        Y2 <span class="op">=</span> <span class="va">self</span>.attention2(Y, enc_outputs, enc_outputs, enc_valid_lens)</span>
-<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a>        Z <span class="op">=</span> <span class="va">self</span>.addnorm2(Y, Y2)</span>
-<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.addnorm3(Z, <span class="va">self</span>.ffn(Z)), state</span>
-<span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a>        </span></code></pre></div>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">DecoderBlock</span><span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""解码器中第i个块"""</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> key_size<span class="token punctuation">,</span> query_size<span class="token punctuation">,</span> value_size<span class="token punctuation">,</span> num_hiddens<span class="token punctuation">,</span>
+                 norm_shape<span class="token punctuation">,</span> ffn_num_input<span class="token punctuation">,</span> ffn_num_hiddens<span class="token punctuation">,</span> num_heads<span class="token punctuation">,</span>
+                 dropout<span class="token punctuation">,</span> i<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        super<span class="token punctuation">(</span>DecoderBlock<span class="token punctuation">,</span> self<span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>i <span class="token operator">=</span> i
+        self<span class="token punctuation">.</span>attention1 <span class="token operator">=</span> d2l<span class="token punctuation">.</span>MultiHeadAttention<span class="token punctuation">(</span>
+            key_size<span class="token punctuation">,</span> query_size<span class="token punctuation">,</span> value_size<span class="token punctuation">,</span> num_hiddens<span class="token punctuation">,</span> num_heads<span class="token punctuation">,</span> dropout<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>addnorm1 <span class="token operator">=</span> AddNorm<span class="token punctuation">(</span>norm_shape<span class="token punctuation">,</span> dropout<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>attention2 <span class="token operator">=</span> d2l<span class="token punctuation">.</span>MultiHeadAttention<span class="token punctuation">(</span>
+            key_size<span class="token punctuation">,</span> query_size<span class="token punctuation">,</span> value_size<span class="token punctuation">,</span> num_hiddens<span class="token punctuation">,</span> num_heads<span class="token punctuation">,</span> dropout<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>addnorm2 <span class="token operator">=</span> AddNorm<span class="token punctuation">(</span>norm_shape<span class="token punctuation">,</span> dropout<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>ffn <span class="token operator">=</span> PositionWiseFFN<span class="token punctuation">(</span>ffn_num_input<span class="token punctuation">,</span> ffn_num_hiddens<span class="token punctuation">,</span>
+                                   num_hiddens<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>addnorm3 <span class="token operator">=</span> AddNorm<span class="token punctuation">(</span>norm_shape<span class="token punctuation">,</span> dropout<span class="token punctuation">)</span>
+    <span class="token keyword">def</span> <span class="token function">forward</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> X<span class="token punctuation">,</span> state<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        enc_outputs<span class="token punctuation">,</span> enc_valid_lens <span class="token operator">=</span> state<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> state<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+        <span class="token comment" spellcheck="true"># 训练阶段，输出序列的所有词元都在同一时间处理，</span>
+        <span class="token comment" spellcheck="true"># 因此state[2][self.i]初始化为None。</span>
+        <span class="token comment" spellcheck="true"># 预测阶段，输出序列是通过词元一个接着一个解码的，</span>
+        <span class="token comment" spellcheck="true"># 因此state[2][self.i]包含着直到当前时间步第i个块解码的输出表示</span>
+        <span class="token keyword">if</span> state<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">[</span>self<span class="token punctuation">.</span>i<span class="token punctuation">]</span> <span class="token keyword">is</span> None<span class="token punctuation">:</span>
+            <span class="token comment" spellcheck="true"># 使用当前输入的数据进行预测</span>
+            key_values <span class="token operator">=</span> X
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token triple-quoted-string string">'''
+            state[2] 中存放者上一个时间步，留下的已经每个块之前计算好的key_value
+            # 加上y_t之前的数据一起预测
+            '''</span>
+            key_values <span class="token operator">=</span> torch<span class="token punctuation">.</span>cat<span class="token punctuation">(</span><span class="token punctuation">(</span>state<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">[</span>self<span class="token punctuation">.</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> X<span class="token punctuation">)</span><span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>
+        state<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">[</span>self<span class="token punctuation">.</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> key_values
+        <span class="token keyword">if</span> self<span class="token punctuation">.</span>training<span class="token punctuation">:</span>
+            batch_size<span class="token punctuation">,</span> num_steps<span class="token punctuation">,</span> _ <span class="token operator">=</span> X<span class="token punctuation">.</span>shape
+            <span class="token comment" spellcheck="true"># dec_valid_lens的开头:(batch_size,num_steps),</span>
+            <span class="token comment" spellcheck="true"># 其中每一行是[1,2,...,num_steps]</span>
+            dec_valid_lens <span class="token operator">=</span> torch<span class="token punctuation">.</span>arange<span class="token punctuation">(</span>
+                <span class="token number">1</span><span class="token punctuation">,</span> num_steps <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> device<span class="token operator">=</span>X<span class="token punctuation">.</span>device<span class="token punctuation">)</span><span class="token punctuation">.</span>repeat<span class="token punctuation">(</span>batch_size<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            dec_valid_lens <span class="token operator">=</span> None
+
+        <span class="token comment" spellcheck="true"># 自注意力</span>
+        X2 <span class="token operator">=</span> self<span class="token punctuation">.</span>attention1<span class="token punctuation">(</span>X<span class="token punctuation">,</span> key_values<span class="token punctuation">,</span> key_values<span class="token punctuation">,</span> dec_valid_lens<span class="token punctuation">)</span>
+        Y <span class="token operator">=</span> self<span class="token punctuation">.</span>addnorm1<span class="token punctuation">(</span>X<span class="token punctuation">,</span> X2<span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 编码器－解码器注意力。</span>
+        <span class="token comment" spellcheck="true"># enc_outputs的开头:(batch_size,num_steps,num_hiddens)</span>
+        Y2 <span class="token operator">=</span> self<span class="token punctuation">.</span>attention2<span class="token punctuation">(</span>Y<span class="token punctuation">,</span> enc_outputs<span class="token punctuation">,</span> enc_outputs<span class="token punctuation">,</span> enc_valid_lens<span class="token punctuation">)</span>
+        Z <span class="token operator">=</span> self<span class="token punctuation">.</span>addnorm2<span class="token punctuation">(</span>Y<span class="token punctuation">,</span> Y2<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>addnorm3<span class="token punctuation">(</span>Z<span class="token punctuation">,</span> self<span class="token punctuation">.</span>ffn<span class="token punctuation">(</span>Z<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> state
+        
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>在transformer结构中，query与key权重对values值进行查询，values值是编码器的输入，为什么就可以查询到解码器想要的结果呢？比如，编码器编码我是李华，解码器对I 查询 我，ji</p>
-<h2 id="优化">1.4. 优化</h2>
-<p>Adam， 自动调整学习率</p>
+<h2 id="优化">1.4. 优化</h2><p>Adam， 自动调整学习率</p>
 <p>warm up 和逆平方根衰减</p>
-<h2 id="bert">1.5. BERT</h2>
-<h3 id="预训练无监督自监督">1.5.1. 预训练（无监督/自监督）</h3>
-<p>自监督</p>
-<ol type="1">
+<h2 id="BERT">1.5. BERT</h2><h3 id="预训练（无监督-自监督）">1.5.1. 预训练（无监督&#x2F;自监督）</h3><p>自监督</p>
+<ol>
 <li>完形填空</li>
 <li>预测下一句</li>
 </ol>
-<h3 id="微调有监督">1.5.2. 微调（有监督）</h3>
-<p>需要根据下游任务添加输出层，添加的层需要重新训练</p>
-<ol type="1">
+<h3 id="微调（有监督）">1.5.2. 微调（有监督）</h3><p>需要根据下游任务添加输出层，添加的层需要重新训练</p>
+<ol>
 <li>两个句子分类</li>
 <li>单个句子的分类</li>
-<li>问答任务
-<ol type="1">
+<li>问答任务<ol>
 <li>找到答案正确的文本位置</li>
-</ol></li>
-<li>命名实体位置标记
-<ol type="1">
-<li>标记实体位置（begin ,inside ,O（非实体））</li>
-</ol></li>
 </ol>
-<h2 id="decoder_only">1.6. Decoder_only</h2>
-<p><strong>优点</strong>：</p>
-<ol type="1">
+</li>
+<li>命名实体位置标记<ol>
+<li>标记实体位置（begin ,inside ,O（非实体））</li>
+</ol>
+</li>
+</ol>
+<h2 id="Decoder-only">1.6. Decoder_only</h2><p><strong>优点</strong>：</p>
+<ol>
 <li>Decoder-only的注意力矩阵始终是满秩，表达能力更强</li>
 <li>不会浪费Encoder的参数，输入可以直接作用与decoder</li>
 </ol>
-<h3 id="预训练">1.6.1. 预训练</h3>
-<p>test prediction 预测文本</p>
-<h3 id="微调">1.6.2. 微调</h3>
-<p>test prediction + task classfication 的损失相加</p>
-<figure>
-<img src="/2025/05/24/deeplearn/Transformer/image-20250516123238590.png" alt="task"><figcaption aria-hidden="true">task</figcaption>
-</figure>
-<h2 id="gpt-2">1.7. GPT-2</h2>
-<p><strong>无需微调，预训练的模型就可以解决下游任务</strong></p>
-<figure>
-<img src="/2025/05/24/deeplearn/Transformer/image-20250516123552285.png" alt="image-20250516123552285"><figcaption aria-hidden="true">image-20250516123552285</figcaption>
-</figure>
+<h3 id="预训练">1.6.1. 预训练</h3><p>test prediction 预测文本</p>
+<h3 id="微调">1.6.2. 微调</h3><p>test prediction + task classfication 的损失相加</p>
+<p><img src="/2025/05/24/deeplearn/Transformer/image-20250516123238590.png" alt="task"></p>
+<h2 id="GPT-2">1.7. GPT-2</h2><p><strong>无需微调，预训练的模型就可以解决下游任务</strong></p>
+<p><img src="/2025/05/24/deeplearn/Transformer/image-20250516123552285.png" alt="image-20250516123552285"></p>
 <p>Zero-shot, One-shot, Few-shot</p>
 <p>使用任务提示（prompt）和少量示例直接输入</p>
-<h3 id="lay-n放在模块前">1.7.1. lay N放在模块前</h3>
-<ol type="1">
+<h3 id="lay-N放在模块前">1.7.1. lay N放在模块前</h3><ol>
 <li>尺度定律： 模型的大小与Loss线性拟合</li>
 <li>涌现能力： 大模型效果迅速提升</li>
 </ol>
-<h2 id="gpt">1.8. GPT</h2>
-<p>参数数量增多，需要减少计算量。</p>
-<h3 id="sparse-attention">1.8.1. sparse attention</h3>
-<p>减少attention的计算量，只关注临近部分和前面的部分权重</p>
-<figure>
-<img src="/2025/05/24/deeplearn/Transformer/image-20250516124911687.png" alt="image-20250516124911687"><figcaption aria-hidden="true">image-20250516124911687</figcaption>
-</figure>
-<h3 id="chatgpt">1.8.2. chatgpt</h3>
-<p>增加人类反馈强化学习（RLHF) ,与人互动</p>
-<h2 id="llama">1.9. LLAMA</h2>
-<h3 id="swiglu">1.9.1. swiGLU</h3>
-<figure>
-<img src="/2025/05/24/deeplearn/Transformer/image-20250516155254082.png" alt="image-20250516155254082"><figcaption aria-hidden="true">image-20250516155254082</figcaption>
-</figure>
+<h2 id="GPT">1.8. GPT</h2><p>参数数量增多，需要减少计算量。</p>
+<h3 id="sparse-attention">1.8.1. sparse attention</h3><p>减少attention的计算量，只关注临近部分和前面的部分权重</p>
+<p><img src="/2025/05/24/deeplearn/Transformer/image-20250516124911687.png" alt="image-20250516124911687"></p>
+<h3 id="chatgpt">1.8.2. chatgpt</h3><p>增加人类反馈强化学习（RLHF) ,与人互动</p>
+<h2 id="LLAMA">1.9. LLAMA</h2><h3 id="swiGLU">1.9.1. swiGLU</h3><p><img src="/2025/05/24/deeplearn/Transformer/image-20250516155254082.png" alt="image-20250516155254082"></p>
 <p>使用swi激活函数，同时使用门控机制（GLU)，选择性激活函数</p>
 <p>优点： swish激活函数更平滑，GLU实现选择性激活</p>
-<h3 id="gqa-grouped-query-attention">1.9.2. GQA-grouped-query attention</h3>
-<p>减少k,v的head 数量，query共享重复的k,v，减少参数</p>
-<figure>
-<img src="/2025/05/24/deeplearn/Transformer/image-20250516155516226.png" alt="image-20250516155516226"><figcaption aria-hidden="true">image-20250516155516226</figcaption>
-</figure>
-<h3 id="layer-norm-变体">1.9.3. layer norm 变体</h3>
-<p>RMSNorm:均方根归一化</p>
+<h3 id="GQA-grouped-query-attention">1.9.2. GQA-grouped-query attention</h3><p>减少k,v的head 数量，query共享重复的k,v，减少参数</p>
+<p><img src="/2025/05/24/deeplearn/Transformer/image-20250516155516226.png" alt="image-20250516155516226"></p>
+<h3 id="layer-norm-变体">1.9.3. layer norm 变体</h3><p>RMSNorm:均方根归一化</p>
 <p><strong>取出平移，只保留缩放</strong></p>
 <p>优点：计算简单</p>
-<figure>
-<img src="/2025/05/24/deeplearn/Transformer/image-20250516160128424.png" alt="image-20250516160128424"><figcaption aria-hidden="true">image-20250516160128424</figcaption>
-</figure>
+<p><img src="/2025/05/24/deeplearn/Transformer/image-20250516160128424.png" alt="image-20250516160128424"></p>
 
                 
             </div>
@@ -1397,9 +1357,6 @@ $$</span></p>
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
 
-  <!-- 是否加载使用自带的 prismjs. -->
-  <script type="text/javascript" src="/libs/prism/prism.js"></script>
-
 
 <!-- 代码语言 -->
 
@@ -1576,7 +1533,7 @@ $$</span></p>
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">42.1k</span>
+                        class="white-color">43.9k</span>
             
             
             
