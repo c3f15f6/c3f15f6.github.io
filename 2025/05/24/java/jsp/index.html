@@ -5,8 +5,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="jsp+servlet, 汤汁小白菜">
-    <meta name="description" content="1. java基础1.1. 修饰符1.1.1. final2. servlet2.1. http协议http://ip:端口/资源路径?name= 
-eg : http://127.0.0.1/myweb/servlet?name = zh">
+    <meta name="description" content="1. java基础
+1.1. 修饰符
+1.1.1. final
+2. servlet
+2.1. http协议
+http://ip:端口/资源路径?name= 
+eg : http://127.0.0.1/myweb/servle">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -59,7 +64,6 @@ eg : http://127.0.0.1/myweb/servlet?name = zh">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
 <!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
-
 
 <body>
     <header class="navbar-fixed">
@@ -444,14 +448,14 @@ eg : http://127.0.0.1/myweb/servlet?name = zh">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.3k
+                    2.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    9 分
+                    10 分
                 </div>
                 
 
@@ -466,51 +470,61 @@ eg : http://127.0.0.1/myweb/servlet?name = zh">
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="java基础">1. java基础</h1><h2 id="修饰符">1.1. 修饰符</h2><h3 id="final">1.1.1. final</h3><h1 id="servlet">2. servlet</h1><h2 id="http协议">2.1. http协议</h2><pre class="line-numbers language-http"><code class="language-http"><span class="token header-name keyword">http:</span>//ip:端口/资源路径?name= 
-eg : http://127.0.0.1/myweb/servlet?name = zhangsan
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<ol>
-<li>支持客户&#x2F;服务端</li>
+                <h1 id="java基础">1. java基础</h1>
+<h2 id="修饰符">1.1. 修饰符</h2>
+<h3 id="final">1.1.1. final</h3>
+<h1 id="servlet">2. servlet</h1>
+<h2 id="http协议">2.1. http协议</h2>
+<pre class="http"><code>http://ip:端口/资源路径?name= 
+eg : http://127.0.0.1/myweb/servlet?name = zhangsan</code></pre>
+<ol type="1">
+<li>支持客户/服务端</li>
 <li>支持get ,post请求</li>
 <li>传输内容，类型可以有Content-Type</li>
 <li>http无连接，http1.1之后支持可持续连接</li>
 <li>http无状态信息</li>
 </ol>
-<h3 id="请求和responce">2.1.1. 请求和responce</h3><h4 id="请求request">2.1.1.1. 请求request</h4><ol>
+<h3 id="请求和responce">2.1.1. 请求和responce</h3>
+<h4 id="请求request">2.1.1.1. 请求request</h4>
+<ol type="1">
 <li><p>请求行</p>
 <blockquote>
 <p>get的请求放在请求行中</p>
 </blockquote>
-<p>method Request_url http_version 换行</p>
-</li>
+<p>method Request_url http_version 换行</p></li>
 <li><p>请求头</p>
-<ol>
+<ol type="1">
 <li>键值对</li>
-</ol>
-</li>
+</ol></li>
 <li><p>请求体</p>
-<ol>
+<ol type="1">
 <li>get没有请求行</li>
+</ol></li>
 </ol>
-</li>
-</ol>
-<h4 id="response">2.1.1.2. response</h4><ol>
+<h4 id="response">2.1.1.2. response</h4>
+<ol type="1">
 <li>状态行</li>
 <li>响应头</li>
 <li>响应正文</li>
 </ol>
-<h3 id="消息头">2.1.2. 消息头</h3><ul>
+<h3 id="消息头">2.1.2. 消息头</h3>
+<ul>
 <li><em>referer</em>: 请求前来位置</li>
 <li><em>Location</em>: 请求达到位置</li>
 <li><em>refresh</em>: 自动跳转时间</li>
 </ul>
-<h2 id="服务器">2.2. 服务器</h2><p>接受客户端的请求,调用程序处理,返回程序数据</p>
-<h3 id="tomcat目录">2.2.1. tomcat目录</h3><ul>
+<h2 id="服务器">2.2. 服务器</h2>
+<p>接受客户端的请求,调用程序处理,返回程序数据</p>
+<h3 id="tomcat目录">2.2.1. tomcat目录</h3>
+<ul>
 <li>bin: 启动或关闭的配置文件</li>
 <li>conf: 配置servel端口号等信息文件</li>
 <li>lib: 运行时使用的java包</li>
@@ -518,66 +532,74 @@ eg : http://127.0.0.1/myweb/servlet?name = zhangsan
 <li>webapps: web应用</li>
 <li>works: 工作目录</li>
 </ul>
-<h3 id="使用idea-集成tomcat">2.2.2. 使用idea 集成tomcat</h3><h2 id="servlet实现">2.3. servlet实现</h2><ol>
+<h3 id="使用idea-集成tomcat">2.2.2. 使用idea 集成tomcat</h3>
+<h2 id="servlet实现">2.3. servlet实现</h2>
+<ol type="1">
 <li>创建java类</li>
 <li>实现servlet规范, 继承HttpServlet类</li>
 <li>重写service 方法,用于处理请求</li>
 <li>设置注释,指定访问方法的路径</li>
 </ol>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@Webservlet</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token punctuation">,</span> value <span class="token operator">=</span><span class="token punctuation">{</span> <span class="token punctuation">,</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> value可以指定多个名称
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h3 id="servlet执行流程">2.3.1. servlet执行流程</h3><ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="at">@Webservlet</span><span class="op">(</span>name <span class="op">=</span> <span class="op">,</span> value <span class="op">=&#123;</span> <span class="op">,</span> <span class="op">&#125;)</span> value可以指定多个名称</span></code></pre></div>
+<h3 id="servlet执行流程">2.3.1. servlet执行流程</h3>
+<ol type="1">
 <li>从请求头中找到主机</li>
 <li>访问请求头中的资源,第一次访问创建一个对象</li>
 <li>将参数交给req, 通过resp响应参数</li>
 </ol>
-<h3 id="三种访问方式">2.3.2. 三种访问方式</h3><p>继承方式</p>
+<h3 id="三种访问方式">2.3.2. 三种访问方式</h3>
+<p>继承方式</p>
 <p>HttpServlet -&gt; GenericServlet &gt; Servlet</p>
-<h3 id="service-doPost-doGet">2.3.3. service ,doPost, doGet</h3><p>调用service 实际上调用doPost, doGet</p>
+<h3 id="service-dopost-doget">2.3.3. service ,doPost, doGet</h3>
+<p>调用service 实际上调用doPost, doGet</p>
 <blockquote>
 <p>不知道post 或 get ,写service</p>
 </blockquote>
-<h3 id="servlet生命周期">2.3.4. servlet生命周期</h3><p>请求访问servlet容器时候,检查容器中是否存在该资源对象,没有调用init方法,第二次访问时,调用service.程序停止售,调用destory方法</p>
-<p><img src="/2025/05/24/java/jsp/image-20250503221820723.png" alt="image-20250503221820723"></p>
-<h3 id="HttpServletRequest-获取请求">2.3.5. HttpServletRequest 获取请求</h3><p>HTTp的请求都封装在Req对象中</p>
-<pre class="line-numbers language-java"><code class="language-java">String value <span class="token operator">=</span> Req<span class="token punctuation">.</span><span class="token function">getParameter</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span> 获取名称对应的值
-
-String<span class="token punctuation">[</span><span class="token punctuation">]</span> values <span class="token operator">=</span> Req<span class="token punctuation">.</span><span class="token function">getParameterValues</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span> 同一个name存在多个值
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h4 id="请求乱码问题">2.3.5.1. 请求乱码问题</h4><p>乱码原因: request 封装时候,使用的ISO ,不支持中文编码</p>
+<h3 id="servlet生命周期">2.3.4. servlet生命周期</h3>
+<p>请求访问servlet容器时候,检查容器中是否存在该资源对象,没有调用init方法,第二次访问时,调用service.程序停止售,调用destory方法</p>
+<figure>
+<img src="/2025/05/24/java/jsp/image-20250503221820723.png" alt="image-20250503221820723"><figcaption aria-hidden="true">image-20250503221820723</figcaption>
+</figure>
+<h3 id="httpservletrequest-获取请求">2.3.5. HttpServletRequest 获取请求</h3>
+<p>HTTp的请求都封装在Req对象中</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">String</span> value <span class="op">=</span> Req<span class="op">.</span><span class="fu">getParameter</span><span class="op">(</span><span class="st">&quot;&quot;</span><span class="op">)</span> 获取名称对应的值</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">String</span><span class="op">[]</span> values <span class="op">=</span> Req<span class="op">.</span><span class="fu">getParameterValues</span><span class="op">(</span><span class="st">&quot;&quot;</span><span class="op">)</span> 同一个name存在多个值</span></code></pre></div>
+<h4 id="请求乱码问题">2.3.5.1. 请求乱码问题</h4>
+<p>乱码原因: request 封装时候,使用的ISO ,不支持中文编码</p>
 <p>get 不会乱码，post有乱码</p>
 <p>解决办法: 设置请求的编码方式</p>
-<pre class="line-numbers language-java"><code class="language-java">req<span class="token punctuation">.</span><span class="token function">sertCharacterEncoding</span><span class="token punctuation">(</span><span class="token string">"utf-8"</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 只值对post代码</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<pre class="line-numbers language-java"><code class="language-java">String name <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span>req<span class="token punctuation">.</span><span class="token function">getParameter</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span><span class="token string">'ISO-8859-1'</span><span class="token punctuation">,</span> charameter <span class="token operator">=</span> <span class="token string">'utf-8'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//适用于所有get 与post</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="请求转发">2.3.5.2. 请求转发</h4><ol>
+<div class="sourceCode" id="cb4"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>req<span class="op">.</span><span class="fu">sertCharacterEncoding</span><span class="op">(</span><span class="st">&quot;utf-8&quot;</span><span class="op">)</span> <span class="co">// 只值对post代码</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">String</span> name <span class="op">=</span> <span class="kw">new</span> <span class="bu">String</span><span class="op">(</span>req<span class="op">.</span><span class="fu">getParameter</span><span class="op">(</span>name<span class="op">)).</span><span class="fu">getBytes</span><span class="op">(</span><span class="er">&#39;</span>ISO<span class="op">-</span><span class="dv">8859</span><span class="op">-</span><span class="dv">1</span><span class="er">&#39;</span><span class="op">,</span> charameter <span class="op">=</span> <span class="er">&#39;</span>utf<span class="op">-</span><span class="dv">8</span><span class="er">&#39;</span><span class="op">)</span> <span class="co">//适用于所有get 与post</span></span></code></pre></div>
+<h4 id="请求转发">2.3.5.2. 请求转发</h4>
+<ol type="1">
 <li>服务器行为</li>
 <li>前台地址栏不发生改变,只产生输出</li>
 <li>只有一个请求</li>
 <li>req, resp对象共享</li>
 </ol>
-<pre class="line-numbers language-java"><code class="language-java">req<span class="token punctuation">.</span><span class="token function">getRequestDispatcher</span><span class="token punctuation">(</span><span class="token string">"跳转网址"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forward</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span> resp<span class="token punctuation">)</span><span class="token punctuation">;</span>
-req<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span>String name <span class="token punctuation">,</span> Object value<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//设置新的对象值</span>
-req<span class="token punctuation">.</span><span class="token function">getAttribute</span><span class="token punctuation">(</span>String name<span class="token punctuation">)</span><span class="token punctuation">;</span>
-req<span class="token punctuation">.</span><span class="token function">removeAttribute</span><span class="token punctuation">(</span>String name<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//删除对象值</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="HttpServletResponse-响应请求">2.3.6. HttpServletResponse 响应请求</h3><p>使用流输出方法响应</p>
-<ol>
+<div class="sourceCode" id="cb6"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>req<span class="op">.</span><span class="fu">getRequestDispatcher</span><span class="op">(</span><span class="st">&quot;跳转网址&quot;</span><span class="op">).</span><span class="fu">forward</span><span class="op">(</span>req<span class="op">,</span> resp<span class="op">);</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>req<span class="op">.</span><span class="fu">setAttribute</span><span class="op">(</span><span class="bu">String</span> name <span class="op">,</span> <span class="bu">Object</span> value<span class="op">);</span><span class="co">//设置新的对象值</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>req<span class="op">.</span><span class="fu">getAttribute</span><span class="op">(</span><span class="bu">String</span> name<span class="op">);</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>req<span class="op">.</span><span class="fu">removeAttribute</span><span class="op">(</span><span class="bu">String</span> name<span class="op">);</span><span class="co">//删除对象值</span></span></code></pre></div>
+<h3 id="httpservletresponse-响应请求">2.3.6. HttpServletResponse 响应请求</h3>
+<p>使用流输出方法响应</p>
+<ol type="1">
 <li>getWritter() 字符输出流(输出字符串)</li>
 <li>getOutputStream(), 字节输出流(输出任意数据)</li>
 </ol>
 <p><strong>两种流不能同时使用</strong></p>
-<h4 id="响应乱码">2.3.6.1. 响应乱码</h4><p><strong>原因</strong>： 服务端和客户端的编码格式一致</p>
+<h4 id="响应乱码">2.3.6.1. 响应乱码</h4>
+<p><strong>原因</strong>： 服务端和客户端的编码格式一致</p>
 <p>解决办法：同时设置服务端和客户端的编码，保证编码格式一致</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 设置服务端的编码格式</span>
-response<span class="token punctuation">.</span><span class="token function">setCharacterEncoding</span><span class="token punctuation">(</span><span class="token string">"UTF-8"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">// 设置客户端代码</span>
-response<span class="token punctuation">.</span><span class="token function">setHeader</span><span class="token punctuation">(</span><span class="token string">"content_type"</span><span class="token punctuation">,</span> <span class="token string">"text/html; charset= UTF-8"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">// 同时设置编码格式</span>
-response<span class="token punctuation">.</span><span class="token function">setContentType</span><span class="token punctuation">(</span><span class="token string">"text/html; charset= UTF-8"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="客户端重定向">2.3.6.2. 客户端重定向</h4><p>服务端指导客户端的行为</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">// 设置服务端的编码格式</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>response<span class="op">.</span><span class="fu">setCharacterEncoding</span><span class="op">(</span><span class="st">&quot;UTF-8&quot;</span><span class="op">);</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">// 设置客户端代码</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>response<span class="op">.</span><span class="fu">setHeader</span><span class="op">(</span><span class="st">&quot;content_type&quot;</span><span class="op">,</span> <span class="st">&quot;text/html; charset= UTF-8&quot;</span><span class="op">);</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">// 同时设置编码格式</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>response<span class="op">.</span><span class="fu">setContentType</span><span class="op">(</span><span class="st">&quot;text/html; charset= UTF-8&quot;</span><span class="op">);</span></span></code></pre></div>
+<h4 id="客户端重定向">2.3.6.2. 客户端重定向</h4>
+<p>服务端指导客户端的行为</p>
 <blockquote>
 <p>地址栏发生改变，写入location</p>
 <p>服务器接受location</p>
@@ -586,226 +608,219 @@ response<span class="token punctuation">.</span><span class="token function">set
 <blockquote>
 <p>请求对象不共享</p>
 </blockquote>
-<pre class="line-numbers language-java"><code class="language-java">response<span class="token punctuation">.</span><span class="token function">sendRedirect</span><span class="token punctuation">(</span><span class="token string">"s05"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="请求转发与重定向的区别">2.3.6.3. 请求转发与重定向的区别</h4><table>
+<div class="sourceCode" id="cb8"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>response<span class="op">.</span><span class="fu">sendRedirect</span><span class="op">(</span><span class="st">&quot;s05&quot;</span><span class="op">);</span></span></code></pre></div>
+<h4 id="请求转发与重定向的区别">2.3.6.3. 请求转发与重定向的区别</h4>
+<table>
 <thead>
-<tr>
+<tr class="header">
 <th>请求转发</th>
 <th>重定向</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr class="odd">
 <td>一次请求，request数据共享</td>
 <td>两次请求</td>
 </tr>
-<tr>
+<tr class="even">
 <td>服务端跳转</td>
 <td>客户端跳转</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>绝对地址到当前项目中，不能向外跳转</td>
 <td>可以向域外跳转</td>
 </tr>
-</tbody></table>
-<h2 id="Cookie对象">2.4. Cookie对象</h2><p>浏览器中将数据存放在客户端中，在客户端中处理数据，减少网络传输与数据库查询</p>
+</tbody>
+</table>
+<h2 id="cookie对象">2.4. Cookie对象</h2>
+<p>浏览器中将数据存放在客户端中，在客户端中处理数据，减少网络传输与数据库查询</p>
 <p>由服务器写入客户端</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 服务器写入Cookie 到客户端中，客户端保存Cookie</span>
-Cookie cookie <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Cookie</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"a"</span><span class="token punctuation">,</span> value <span class="token operator">=</span> <span class="token string">'b'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-response<span class="token punctuation">.</span><span class="token function">addCookie</span><span class="token punctuation">(</span>cookie<span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">// 获取Cookie</span>
-Cookie<span class="token punctuation">[</span><span class="token punctuation">]</span> conkie <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getCookies</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 获取客户端路径下所有的Cookie对象</span>
-<span class="token comment" spellcheck="true">//将Cookie 的name 与需要查找的Cookie作比较</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="设置对象存在时间">2.4.1. 设置对象存在时间</h3><p>设置maxAge存活时间 ，从创建Cookie对象开始</p>
-<pre class="line-numbers language-java"><code class="language-java">cookie<span class="token punctuation">.</span><span class="token function">setMaxAge</span><span class="token punctuation">(</span>time<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">/*
-1. 负整数，只在浏览器内存中存在
-2. 正整数，保存磁盘对应的时间，关闭后依旧计数，时间为s
-3. 0 ： 删除这个Cookie
-*/</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="注意点">2.4.2. 注意点</h3><ol>
+<div class="sourceCode" id="cb9"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">// 服务器写入Cookie 到客户端中，客户端保存Cookie</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>Cookie cookie <span class="op">=</span> <span class="kw">new</span> <span class="fu">Cookie</span><span class="op">(</span>name <span class="op">=</span> <span class="st">&quot;a&quot;</span><span class="op">,</span> value <span class="op">=</span> <span class="ch">&#39;b&#39;</span><span class="op">);</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>response<span class="op">.</span><span class="fu">addCookie</span><span class="op">(</span>cookie<span class="op">)</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">// 获取Cookie</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>Cookie<span class="op">[]</span> conkie <span class="op">=</span> request<span class="op">.</span><span class="fu">getCookies</span><span class="op">();</span> <span class="co">// 获取客户端路径下所有的Cookie对象</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">//将Cookie 的name 与需要查找的Cookie作比较</span></span></code></pre></div>
+<h3 id="设置对象存在时间">2.4.1. 设置对象存在时间</h3>
+<p>设置maxAge存活时间 ，从创建Cookie对象开始</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>cookie<span class="op">.</span><span class="fu">setMaxAge</span><span class="op">(</span>time<span class="op">);</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">/*</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">1. 负整数，只在浏览器内存中存在</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">2. 正整数，保存磁盘对应的时间，关闭后依旧计数，时间为s</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co">3. 0 ： 删除这个Cookie</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co">*/</span></span></code></pre></div>
+<h3 id="注意点">2.4.2. 注意点</h3>
+<ol type="1">
 <li>Cookie 只在当前浏览器中有效，不跨浏览器和及其</li>
-<li>Cookie不支持存放中文，使用时候需要编码&#x2F;解码</li>
+<li>Cookie不支持存放中文，使用时候需要编码/解码</li>
 <li>新的同名name Cookie 将覆盖之前的Cookie</li>
 <li>Cookie的存储数量有上限，Cookie的大小有限，4KB左右</li>
 </ol>
-<pre class="line-numbers language-java"><code class="language-java">String name <span class="token operator">=</span> <span class="token string">"陈龙"</span><span class="token punctuation">;</span>
-
-<span class="token comment" spellcheck="true">// 中文通过URLEncoder.encode()编码</span>
-name <span class="token operator">=</span> URLEncoder<span class="token punctuation">.</span><span class="token function">encoder</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token comment" spellcheck="true">// 使用时，需URLDecoder.decoder()解码</span>
-name <span class="token operator">=</span> URLDecoder<span class="token punctuation">.</span><span class="token function">decoder</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="Cookie的访问路径">2.4.3. Cookie的访问路径</h3><ol>
+<div class="sourceCode" id="cb11"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">String</span> name <span class="op">=</span> <span class="st">&quot;陈龙&quot;</span><span class="op">;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">// 中文通过URLEncoder.encode()编码</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="bu">URLEncoder</span><span class="op">.</span><span class="fu">encoder</span><span class="op">(</span>name<span class="op">);</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co">// 使用时，需URLDecoder.decoder()解码</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="bu">URLDecoder</span><span class="op">.</span><span class="fu">decoder</span><span class="op">(</span>name<span class="op">);</span></span></code></pre></div>
+<h3 id="cookie的访问路径">2.4.3. Cookie的访问路径</h3>
+<ol type="1">
 <li>当前浏览器下如何项目任何资源都可以获取Cookie</li>
 </ol>
-<pre class="line-numbers language-java"><code class="language-java">cookie<span class="token punctuation">.</span><span class="token function">setPath</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token comment" spellcheck="true">// 默认本项目</span>
-cookie<span class="token punctuation">.</span><span class="token function">setPaht</span><span class="token punctuation">(</span><span class="token string">"/s02"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">// 设置指定站点名</span>
-cookie<span class="token punctuation">.</span><span class="token function">setPath</span><span class="token punctuation">(</span><span class="token string">"/sc03"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">// 指定项目的指定资源访问cookie</span>
-cookie<span class="token punctuation">.</span><span class="token function">setPaht</span><span class="token punctuation">(</span><span class="token string">"s03/co1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>只有访问的路径包括  <em>cookie的路径</em> 时， 能够获取这个cookie</p>
-<h2 id="HttpSession-对象">2.5. HttpSession 对象</h2><p>属于服务器对象， 标识一次对话，确定是否为一个用户的数据</p>
-<pre class="line-numbers language-java"><code class="language-java">HttpSession session <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getSession</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 如session 对象存在，则获取 ；否则第一次创建对象</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>cookie<span class="op">.</span><span class="fu">setPath</span><span class="op">(</span><span class="st">&quot;/&quot;</span><span class="op">);</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">// 默认本项目</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>cookie<span class="op">.</span><span class="fu">setPaht</span><span class="op">(</span><span class="st">&quot;/s02&quot;</span><span class="op">);</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co">// 设置指定站点名</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>cookie<span class="op">.</span><span class="fu">setPath</span><span class="op">(</span><span class="st">&quot;/sc03&quot;</span><span class="op">);</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co">// 指定项目的指定资源访问cookie</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>cookie<span class="op">.</span><span class="fu">setPaht</span><span class="op">(</span><span class="st">&quot;s03/co1&quot;</span><span class="op">);</span></span></code></pre></div>
+<p>只有访问的路径包括 <em>cookie的路径</em> 时， 能够获取这个cookie</p>
+<h2 id="httpsession-对象">2.5. HttpSession 对象</h2>
+<p>属于服务器对象， 标识一次对话，确定是否为一个用户的数据</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>HttpSession session <span class="op">=</span> request<span class="op">.</span><span class="fu">getSession</span><span class="op">();</span> <span class="co">// 如session 对象存在，则获取 ；否则第一次创建对象</span></span></code></pre></div>
 <p>一次请求到了服务器，标识启动了会话，客户端向服务器传递JSESSIONID的cookie，用于标识服务器中对应的session， 如果有，则共享数据，没有创建sesion,同时给客户端创建JSESSIONID的cookie.</p>
-<h3 id="设置域对象">2.5.1. 设置域对象</h3><p>HttpSession 与 request 的区别</p>
+<h3 id="设置域对象">2.5.1. 设置域对象</h3>
+<p>HttpSession 与 request 的区别</p>
 <p>重定向： 只要session会话不是小，session一直共享数据</p>
-<pre class="line-numbers language-java"><code class="language-java">HttpSession session <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getSession</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-session<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">,</span> <span class="token string">"hello"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-session<span class="token punctuation">.</span><span class="token function">getAttribute</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h3 id="session-对象的销毁">2.5.2. session 对象的销毁</h3><p>默认是30min， 一旦有操作，session 重新计时</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>HttpSession session <span class="op">=</span> request<span class="op">.</span><span class="fu">getSession</span><span class="op">();</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>session<span class="op">.</span><span class="fu">setAttribute</span><span class="op">(</span><span class="st">&quot;name&quot;</span><span class="op">,</span> <span class="st">&quot;hello&quot;</span><span class="op">);</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>session<span class="op">.</span><span class="fu">getAttribute</span><span class="op">(</span><span class="st">&quot;name&quot;</span><span class="op">);</span></span></code></pre></div>
+<h3 id="session-对象的销毁">2.5.2. session 对象的销毁</h3>
+<p>默认是30min， 一旦有操作，session 重新计时</p>
 <blockquote>
-<p>在conf&#x2F;web.xml中修改session_config中timeout,单位为1min</p>
+<p>在conf/web.xml中修改session_config中timeout,单位为1min</p>
 </blockquote>
-<h4 id="设置到期时间">2.5.2.1. 设置到期时间</h4><pre class="line-numbers language-java"><code class="language-java">session<span class="token punctuation">.</span><span class="token function">setMaxInactiveInterval</span><span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//单位为s</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="立即销毁">2.5.2.2. 立即销毁</h4><p>退出登录，立马销毁</p>
-<pre class="line-numbers language-java"><code class="language-java">session<span class="token punctuation">.</span><span class="token function">invalidate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="关闭浏览器，Cookie对象销毁">2.5.2.3. 关闭浏览器，Cookie对象销毁</h4><p>session 需要JSESSIONID ，JSESSIONID默认在浏览器内存中有效，Cookie消失后，session 结束</p>
-<h4 id="关闭服务器失效">2.5.2.4. 关闭服务器失效</h4><h2 id="ServletContext对象">2.6. ServletContext对象</h2><h3 id="获取对象">2.6.1. 获取对象</h3><pre class="line-numbers language-java"><code class="language-java">ServletContext servletContext1 <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getServletContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token comment" spellcheck="true">// session对象获取</span>
-ServletContext servletContext2 <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getSession</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getServletContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">// ServletConfig对象中获取</span>
-<span class="token function">getServletConfig</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getServletContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">// servlet中直接获取</span>
-ServletContext servletContext4 <span class="token operator">=</span> <span class="token function">getServletContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="设置到期时间">2.5.2.1. 设置到期时间</h4>
+<div class="sourceCode" id="cb15"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>session<span class="op">.</span><span class="fu">setMaxInactiveInterval</span><span class="op">(</span><span class="dv">15</span><span class="op">);</span> <span class="co">//单位为s</span></span></code></pre></div>
+<h4 id="立即销毁">2.5.2.2. 立即销毁</h4>
+<p>退出登录，立马销毁</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>session<span class="op">.</span><span class="fu">invalidate</span><span class="op">();</span> </span></code></pre></div>
+<h4 id="关闭浏览器cookie对象销毁">2.5.2.3. 关闭浏览器，Cookie对象销毁</h4>
+<p>session 需要JSESSIONID ，JSESSIONID默认在浏览器内存中有效，Cookie消失后，session 结束</p>
+<h4 id="关闭服务器失效">2.5.2.4. 关闭服务器失效</h4>
+<h2 id="servletcontext对象">2.6. ServletContext对象</h2>
+<h3 id="获取对象">2.6.1. 获取对象</h3>
+<div class="sourceCode" id="cb17"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>ServletContext servletContext1 <span class="op">=</span> request<span class="op">.</span><span class="fu">getServletContext</span><span class="op">();</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co">// session对象获取</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>ServletContext servletContext2 <span class="op">=</span> request<span class="op">.</span><span class="fu">getSession</span><span class="op">().</span><span class="fu">getServletContext</span><span class="op">();</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co">// ServletConfig对象中获取</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="fu">getServletConfig</span><span class="op">().</span><span class="fu">getServletContext</span><span class="op">();</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co">// servlet中直接获取</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>ServletContext servletContext4 <span class="op">=</span> <span class="fu">getServletContext</span><span class="op">();</span></span></code></pre></div>
 <p>常用方法</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 获取服务器信息</span>
-String serverInfo <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getServletContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getServerInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">// 获取项目路径</span>
-String realPath <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getServletContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getRealPath</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 从根目录下获取</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="Servlet-域对象">2.6.2. Servlet 域对象</h3><ol>
+<div class="sourceCode" id="cb18"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">// 获取服务器信息</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">String</span> serverInfo <span class="op">=</span> request<span class="op">.</span><span class="fu">getServletContext</span><span class="op">().</span><span class="fu">getServerInfo</span><span class="op">();</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co">// 获取项目路径</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="bu">String</span> realPath <span class="op">=</span> request<span class="op">.</span><span class="fu">getServletContext</span><span class="op">().</span><span class="fu">getRealPath</span><span class="op">(</span><span class="st">&quot;/&quot;</span><span class="op">);</span><span class="co">// 从根目录下获取</span></span></code></pre></div>
+<h3 id="servlet-域对象">2.6.2. Servlet 域对象</h3>
+<ol type="1">
 <li><p>request 域对象</p>
-<p>再一次请求中有效，请求转发有效，重定向无效</p>
-</li>
+<p>再一次请求中有效，请求转发有效，重定向无效</p></li>
 <li><p>session 对象</p>
-<p>一次会话中有效，session销毁后无效</p>
-</li>
+<p>一次会话中有效，session销毁后无效</p></li>
 <li><p>servletContext 对象</p>
-<p>服务器中始终有效</p>
-</li>
+<p>服务器中始终有效</p></li>
 </ol>
-<h2 id="文件上传下载">2.7. 文件上传下载</h2><h3 id="上传">2.7.1. 上传</h3><h4 id="前端实现">2.7.1.1. 前端实现</h4><ol>
+<h2 id="文件上传下载">2.7. 文件上传下载</h2>
+<h3 id="上传">2.7.1. 上传</h3>
+<h4 id="前端实现">2.7.1.1. 前端实现</h4>
+<ol type="1">
 <li>准备表单form</li>
-<li>设置表单的请求类型 ‘method &#x3D;”post”</li>
-<li>设置表达类型为文件上传类型 enctype &#x3D; “multipart&#x2F;form-data”</li>
-<li>设置文件提交的地址 active &#x3D; “提交路径”</li>
-<li>准备表单元素<ol>
-<li>普通的表单项 type &#x3D; “text”</li>
-<li>文件项 type &#x3D; “file”</li>
+<li>设置表单的请求类型 ‘method =“post”</li>
+<li>设置表达类型为文件上传类型 enctype = “multipart/form-data”</li>
+<li>设置文件提交的地址 active = “提交路径”</li>
+<li>准备表单元素
+<ol type="1">
+<li>普通的表单项 type = “text”</li>
+<li>文件项 type = “file”</li>
 <li>设置表单元素的name值</li>
+</ol></li>
 </ol>
-</li>
-</ol>
-<h4 id="后端实现">2.7.1.2. 后端实现</h4><p>添加注解<code>MultipartConfig</code>, servlet将 multipart&#x2F;form-data 的post封装在part对象中</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@MultipartConfig</span>
-Part part <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getPart</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-String fileName <span class="token operator">=</span> part<span class="token punctuation">.</span><span class="token function">getSubmittedFileName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 获取提交文件名称；</span>
-String realPath <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getServletContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getRealPath</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">// 需要自行指定保存路径</span>
-String saveName<span class="token operator">=</span> fileName<span class="token operator">+</span><span class="token string">'/'</span><span class="token operator">+</span> realPath<span class="token punctuation">;</span>
-part<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>saveName<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="文件下载">2.7.2. 文件下载</h3><h4 id="超链接下载">2.7.2.1. 超链接下载</h4><ol>
-<li>没有download属性<ol>
+<h4 id="后端实现">2.7.1.2. 后端实现</h4>
+<p>添加注解<code>MultipartConfig</code>, servlet将 multipart/form-data 的post封装在part对象中</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="at">@MultipartConfig</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>Part part <span class="op">=</span> request<span class="op">.</span><span class="fu">getPart</span><span class="op">(</span><span class="st">&quot;name&quot;</span><span class="op">);</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="bu">String</span> fileName <span class="op">=</span> part<span class="op">.</span><span class="fu">getSubmittedFileName</span><span class="op">();</span> <span class="co">// 获取提交文件名称；</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="bu">String</span> realPath <span class="op">=</span> request<span class="op">.</span><span class="fu">getServletContext</span><span class="op">().</span><span class="fu">getRealPath</span><span class="op">(</span><span class="st">&quot;/&quot;</span><span class="op">);</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co">// 需要自行指定保存路径</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="bu">String</span> saveName<span class="op">=</span> fileName<span class="op">+</span><span class="ch">&#39;/&#39;</span><span class="op">+</span> realPath<span class="op">;</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>part<span class="op">.</span><span class="fu">write</span><span class="op">(</span>saveName<span class="op">);</span></span></code></pre></div>
+<h3 id="文件下载">2.7.2. 文件下载</h3>
+<h4 id="超链接下载">2.7.2.1. 超链接下载</h4>
+<ol type="1">
+<li>没有download属性
+<ol type="1">
 <li>浏览器识别文件，跳转显示，否则下载</li>
-</ol>
-</li>
-<li>有download属性<ol>
+</ol></li>
+<li>有download属性
+<ol type="1">
 <li>指定属性值，为下载名</li>
+</ol></li>
 </ol>
-</li>
-</ol>
-<pre class="line-numbers language-html"><code class="language-html"><span class="token entity" title="&lt;">&amp;lt;</span>a href="download/text.png"<span class="token entity" title="&gt;">&amp;gt;</span> 图片文件<span class="token entity" title="&lt;">&amp;lt;</span>/a<span class="token entity" title="&gt;">&amp;gt;</span>
-<span class="token entity" title="&lt;">&amp;lt;</span>a href="download/text.png" download<span class="token entity" title="&gt;">&amp;gt;</span>图片文件<span class="token entity" title="&lt;">&amp;lt;</span>/a<span class="token entity" title="&gt;">&amp;gt;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h4 id="后端下载">2.7.2.2. 后端下载</h4><ol>
+<div class="sourceCode" id="cb20"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;a</span><span class="ot"> href=</span><span class="st">&quot;download/text.png&quot;</span><span class="kw">&gt;</span> 图片文件<span class="kw">&lt;/a&gt;</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;a</span><span class="ot"> href=</span><span class="st">&quot;download/text.png&quot;</span><span class="ot"> download</span><span class="kw">&gt;</span>图片文件<span class="kw">&lt;/a&gt;</span></span></code></pre></div>
+<h4 id="后端下载">2.7.2.2. 后端下载</h4>
+<ol type="1">
 <li><p>设置request和response的编码类型</p>
-<pre class="line-numbers language-java"><code class="language-java">request<span class="token punctuation">.</span><span class="token function">setCharacterEncoding</span><span class="token punctuation">(</span><span class="token string">"UTF-8"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-response<span class="token punctuation">.</span><span class="token function">setContentType</span><span class="token punctuation">(</span><span class="token string">"text/html; charset = UTF-8"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-</li>
-<li><p>获取文件名称</p>
-</li>
+<div class="sourceCode" id="cb21"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>request<span class="op">.</span><span class="fu">setCharacterEncoding</span><span class="op">(</span><span class="st">&quot;UTF-8&quot;</span><span class="op">);</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>response<span class="op">.</span><span class="fu">setContentType</span><span class="op">(</span><span class="st">&quot;text/html; charset = UTF-8&quot;</span><span class="op">);</span></span></code></pre></div></li>
+<li><p>获取文件名称</p></li>
 </ol>
-<pre class="line-numbers language-java"><code class="language-java">String fileName <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getParameter</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ol start="3">
+<div class="sourceCode" id="cb22"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="bu">String</span> fileName <span class="op">=</span> request<span class="op">.</span><span class="fu">getParameter</span><span class="op">(</span><span class="st">&quot;name&quot;</span><span class="op">)</span></span></code></pre></div>
+<ol start="3" type="1">
 <li><p>判断文件名称是否为空</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 文件名= null 或者全是空格</span>
-<span class="token keyword">if</span><span class="token punctuation">(</span>fileName <span class="token operator">==</span> null <span class="token operator">||</span> <span class="token string">""</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>fileName<span class="token punctuation">.</span><span class="token function">trim</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    response<span class="token punctuation">.</span><span class="token function">getWritter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"输出提示信息"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    response<span class="token punctuation">.</span><span class="token function">getWritter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 关闭信息</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
+<div class="sourceCode" id="cb23"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">// 文件名= null 或者全是空格</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span><span class="op">(</span>fileName <span class="op">==</span> <span class="kw">null</span> <span class="op">||</span> <span class="st">&quot;&quot;</span><span class="op">.</span><span class="fu">equals</span><span class="op">(</span>fileName<span class="op">.</span><span class="fu">trim</span><span class="op">()))&#123;</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    response<span class="op">.</span><span class="fu">getWritter</span><span class="op">().</span><span class="fu">write</span><span class="op">(</span><span class="st">&quot;输出提示信息&quot;</span><span class="op">);</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    response<span class="op">.</span><span class="fu">getWritter</span><span class="op">().</span><span class="fu">close</span><span class="op">();</span><span class="co">// 关闭信息</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span></code></pre></div></li>
 <li><p>将路径转换为file 对象</p>
-<pre class="line-numbers language-java"><code class="language-java">String path <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getServletContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getRealPath</span><span class="token punctuation">(</span><span class="token string">"/download/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-File file <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span>path<span class="token operator">+</span> fileName<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">// 检查文件存在//是否为文件夹</span>
-<span class="token keyword">if</span><span class="token punctuation">(</span>file<span class="token punctuation">.</span><span class="token function">exist</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;&amp;</span> file<span class="token punctuation">.</span><span class="token function">isFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
+<div class="sourceCode" id="cb24"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="bu">String</span> path <span class="op">=</span> request<span class="op">.</span><span class="fu">getServletContext</span><span class="op">().</span><span class="fu">getRealPath</span><span class="op">(</span><span class="st">&quot;/download/&quot;</span><span class="op">);</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="bu">File</span> file <span class="op">=</span> <span class="kw">new</span> <span class="bu">File</span><span class="op">(</span>path<span class="op">+</span> fileName<span class="op">);</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co">// 检查文件存在//是否为文件夹</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span><span class="op">(</span>file<span class="op">.</span><span class="fu">exist</span><span class="op">()&amp;&amp;</span> file<span class="op">.</span><span class="fu">isFile</span><span class="op">())&#123;</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span></code></pre></div></li>
 <li><p>输出</p>
-<ol>
-<li><p>设置响应类型， 浏览器无法解析的MINE类型 “application&#x2F;x-msdoanload”, “application&#x2F;octet-stream”</p>
-<ol>
-<li>response.setContentType(“application&#x2F;x-msdoanload”)</li>
-</ol>
-</li>
+<ol type="1">
+<li><p>设置响应类型， 浏览器无法解析的MINE类型 “application/x-msdoanload”, “application/octet-stream”</p>
+<ol type="1">
+<li>response.setContentType(“application/x-msdoanload”)</li>
+</ol></li>
 <li><p>设置响应头，下载文件筐和文件名</p>
-<ol>
-<li>response.setHeader(“Content_Dispostion”, ”attachment;filename&#x3D;”+ fileName);</li>
-</ol>
-</li>
+<ol type="1">
+<li>response.setHeader(“Content_Dispostion”, ”attachment;filename="+ fileName);</li>
+</ol></li>
 <li><p>输出流和输入流</p>
-<pre class="line-numbers language-java"><code class="language-java">InputStream in <span class="token operator">=</span>  <span class="token keyword">new</span> <span class="token class-name">FileInputSream</span><span class="token punctuation">(</span>file<span class="token punctuation">)</span><span class="token punctuation">;</span>
-ServletOutputSream out <span class="token operator">=</span> response<span class="token punctuation">.</span><span class="token function">getOutputStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> bytes <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">byte</span><span class="token punctuation">[</span><span class="token number">1024</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token keyword">int</span> len <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token keyword">while</span><span class="token punctuation">(</span><span class="token punctuation">(</span>len <span class="token operator">=</span> in<span class="token punctuation">.</span><span class="token function">read</span><span class="token punctuation">(</span><span class="token keyword">byte</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">!=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    out<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>bytes<span class="token punctuation">,</span><span class="token number">0</span> <span class="token punctuation">,</span> len<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token comment" spellcheck="true">// 关闭资源</span>
-out<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-in<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
+<div class="sourceCode" id="cb25"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="bu">InputStream</span> in <span class="op">=</span>  <span class="kw">new</span> <span class="fu">FileInputSream</span><span class="op">(</span>file<span class="op">);</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>ServletOutputSream out <span class="op">=</span> response<span class="op">.</span><span class="fu">getOutputStream</span><span class="op">();</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="dt">byte</span><span class="op">[]</span> bytes <span class="op">=</span> <span class="kw">new</span> <span class="dt">byte</span><span class="op">[</span><span class="dv">1024</span><span class="op">];</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> len <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span><span class="op">((</span>len <span class="op">=</span> in<span class="op">.</span><span class="fu">read</span><span class="op">(</span><span class="dt">byte</span><span class="op">))!=</span> <span class="op">-</span><span class="dv">1</span><span class="op">)&#123;</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    out<span class="op">.</span><span class="fu">write</span><span class="op">(</span>bytes<span class="op">,</span><span class="dv">0</span> <span class="op">,</span> len<span class="op">);</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="co">// 关闭资源</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>out<span class="op">.</span><span class="fu">close</span><span class="op">();</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>in<span class="op">.</span><span class="fu">close</span><span class="op">();</span></span></code></pre></div></li>
 <li><p>简便实现</p>
-<pre class="line-numbers language-java"><code class="language-java">response<span class="token punctuation">.</span><span class="token function">setContentType</span><span class="token punctuation">(</span><span class="token string">"application/octet-stream"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 设置为通用的二进制流类型</span>
-response<span class="token punctuation">.</span><span class="token function">setHeader</span><span class="token punctuation">(</span><span class="token string">"Content-Disposition"</span><span class="token punctuation">,</span> <span class="token string">"attachment; filename=\""</span> <span class="token operator">+</span> fileName <span class="token operator">+</span> <span class="token string">"\""</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 提示浏览器下载文件</span>
-
-<span class="token comment" spellcheck="true">// 使用 try-with-resources 确保流被正确关闭</span>
-<span class="token keyword">try</span> <span class="token punctuation">(</span>InputStream in <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileInputStream</span><span class="token punctuation">(</span>file<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    ServletOutputStream out <span class="token operator">=</span> response<span class="token punctuation">.</span><span class="token function">getOutputStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">// 使用 transferTo 方法进行拷贝 (Java 9+)</span>
-    in<span class="token punctuation">.</span><span class="token function">transferTo</span><span class="token punctuation">(</span>out<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token comment" spellcheck="true">// 注意：在 try-with-resources 块结束时，in 和 out 会自动关闭</span>
-
-<span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">IOException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">// 处理可能的 IO 异常</span>
-    e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 在实际应用中应该记录日志或返回更友好的错误信息</span>
-    response<span class="token punctuation">.</span><span class="token function">sendError</span><span class="token punctuation">(</span>HttpServletResponse<span class="token punctuation">.</span>SC_INTERNAL_SERVER_ERROR<span class="token punctuation">,</span> <span class="token string">"文件读取或传输失败"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-</ol>
-</li>
+<div class="sourceCode" id="cb26"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>response<span class="op">.</span><span class="fu">setContentType</span><span class="op">(</span><span class="st">&quot;application/octet-stream&quot;</span><span class="op">);</span> <span class="co">// 设置为通用的二进制流类型</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>response<span class="op">.</span><span class="fu">setHeader</span><span class="op">(</span><span class="st">&quot;Content-Disposition&quot;</span><span class="op">,</span> <span class="st">&quot;attachment; filename=</span><span class="sc">\&quot;</span><span class="st">&quot;</span> <span class="op">+</span> fileName <span class="op">+</span> <span class="st">&quot;</span><span class="sc">\&quot;</span><span class="st">&quot;</span><span class="op">);</span> <span class="co">// 提示浏览器下载文件</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co">// 使用 try-with-resources 确保流被正确关闭</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> <span class="op">(</span><span class="bu">InputStream</span> in <span class="op">=</span> <span class="kw">new</span> <span class="bu">FileInputStream</span><span class="op">(</span>file<span class="op">);</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>    ServletOutputStream out <span class="op">=</span> response<span class="op">.</span><span class="fu">getOutputStream</span><span class="op">())</span> <span class="op">&#123;</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 使用 transferTo 方法进行拷贝 (Java 9+)</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>    in<span class="op">.</span><span class="fu">transferTo</span><span class="op">(</span>out<span class="op">);</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 注意：在 try-with-resources 块结束时，in 和 out 会自动关闭</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">IOException</span> e<span class="op">)</span> <span class="op">&#123;</span></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 处理可能的 IO 异常</span></span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>    e<span class="op">.</span><span class="fu">printStackTrace</span><span class="op">();</span> <span class="co">// 在实际应用中应该记录日志或返回更友好的错误信息</span></span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>    response<span class="op">.</span><span class="fu">sendError</span><span class="op">(</span>HttpServletResponse<span class="op">.</span><span class="fu">SC_INTERNAL_SERVER_ERROR</span><span class="op">,</span> <span class="st">&quot;文件读取或传输失败&quot;</span><span class="op">);</span></span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span></code></pre></div></li>
+</ol></li>
 </ol>
 
                 
@@ -1370,6 +1385,9 @@ response<span class="token punctuation">.</span><span class="token function">set
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
 
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.js"></script>
+
 
 <!-- 代码语言 -->
 
@@ -1546,7 +1564,7 @@ response<span class="token punctuation">.</span><span class="token function">set
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">43.9k</span>
+                        class="white-color">42.1k</span>
             
             
             
