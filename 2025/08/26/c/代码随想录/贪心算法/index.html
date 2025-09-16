@@ -440,14 +440,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-09-05
+                    2025-09-14
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.4k
+                    1.5k
                 </div>
                 
 
@@ -546,10 +546,21 @@
 <p>注意贪心比较的方向， 所有的结果都能比较得到</p>
 </blockquote>
 <ol type="1">
-<li>依次比较左右孩子，
+<li><p>依次比较左右孩子，</p>
+<blockquote>
+<p>遍历顺序，在于是否使用之前的数据（类似于dp)，如果使用到，之前的数据需要先比较</p>
+</blockquote>
 <ol type="1">
-<li>依次比较左孩子，<strong>从左向右遍历</strong>， 可以使用到上一次比较的结果</li>
-<li>依次比较右孩子，<strong>从右向左遍历</strong>， 遍历时，选择max(本轮比右孩子多的糖果，从左边得到的糖果)</li>
+<li>依次比较左孩子，
+<ol type="1">
+<li>要求： 右边的孩子大于左边所有孩子，需要使用到左边比较数据</li>
+<li><strong>从左向右遍历</strong>， 可以使用到上一次比较的结果</li>
+</ol></li>
+<li>依次比较右孩子，
+<ol type="1">
+<li>要求： 左边的孩子大于右边所有孩子，需要用到右边比较的数据</li>
+<li><strong>从右向左遍历</strong>， 遍历时，选择max(本轮比右孩子多的糖果，从左边得到的糖果)</li>
+</ol></li>
 </ol></li>
 </ol>
 <h2 id="柠檬水找零">1.10. 柠檬水找零</h2>
@@ -1395,7 +1406,7 @@ l.insert(it, val); &#x2F;&#x2F; 必须使用迭代器指定位置<span aria-hidd
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">43.2k</span>
+                        class="white-color">43.6k</span>
             
             
             
