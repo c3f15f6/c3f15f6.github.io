@@ -1,0 +1,1876 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="汤汁小白菜">
+    <meta name="description" content="1. 大模型
+训练流程
+
+image-20250516165010562
+
+1.1. 预训练
+无监督学习，学习先验的背景知识
+大模型的输出总的概率与原数据比较，不需要 L(u) = ∑ilog (p(ui|u0, ..., u">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>汤汁小白菜</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">汤汁小白菜</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/resume">
+          
+          <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>resume</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">汤汁小白菜</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/resume " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-user-circle" style="position: absolute;left:50px" ></i>
+			      
+		          <span>resume</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title"></h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2025-05-24
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2025-05-31
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    3.4k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    13 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="大模型">1. 大模型</h1>
+<p>训练流程</p>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250516165010562.png" alt="image-20250516165010562"><figcaption aria-hidden="true">image-20250516165010562</figcaption>
+</figure>
+<h2 id="预训练">1.1. 预训练</h2>
+<p>无监督学习，学习先验的背景知识</p>
+<p>大模型的输出总的概率与原数据比较，不需要 <span class="math display"><em>L</em>(<em>u</em>) = ∑<sub><em>i</em></sub>log (<em>p</em>(<em>u</em><sub><em>i</em></sub>|<em>u</em><sub>0</sub>, ..., <em>u</em><sub><em>i</em> − 1</sub>)|<em>θ</em>)</span></p>
+<ol type="1">
+<li><p>数据获取</p>
+<ol type="1">
+<li>网页爬取，数据没有处理</li>
+<li>重复</li>
+<li>拼写错误</li>
+</ol></li>
+<li><p>数据清洗</p>
+<ol type="1">
+<li><p>转换文本格式</p></li>
+<li><p>去重</p>
+<ol type="1">
+<li>URL爬取的网站去重</li>
+<li>文档的相似度</li>
+<li>对文档分组30M， 超过6次重复， 删除其余5行</li>
+<li>启发式过滤，使用token级的KL散度去重</li>
+</ol>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250516172556394.png" alt="image-20250516172556394"><figcaption aria-hidden="true">image-20250516172556394</figcaption>
+</figure></li>
+<li><p>数据打包 1. <bos> <eos> 2. 一行一行的训练，而不是一句一句的训练</eos></bos></p></li>
+<li><p>观测模型，使用测试集对中间模型测试</p></li>
+<li><p>数据比例，代码模型中平衡代码补全（中间填充）与代码编写（从前向后编写）的任务，两种数据集都需要</p></li>
+</ol></li>
+</ol>
+<h3 id="继续预训练">1.1.1. 继续预训练</h3>
+<p>当前的base model 对于专业领域的效果很差，继续与训练补全知识。</p>
+<p>加入新的数据，调整学习率</p>
+<ol type="1">
+<li>warmup 的步数不会影响最终的结果</li>
+<li>学习率较大，下游任务更好</li>
+<li>对原有模型继续warmup，效果更差</li>
+</ol>
+<p>使用梯形的学习率，保存拐点位置的学习率，继续预训练时候，使用拐点数据预训练，保持较高的搜索速度，拟合新增的数据集</p>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250516173720277.png" alt="image-20250516173720277"><figcaption aria-hidden="true">image-20250516173720277</figcaption>
+</figure>
+<h3 id="scaling-up">1.1.2. scaling up</h3>
+<p>扩大模型的参数和容量</p>
+<h3 id="尺度定律">1.1.3. 尺度定律</h3>
+<p>模型的损失是可预测的，与模型的算力，大小，数据集有较大的关系</p>
+<ol type="1">
+<li>模型的参数</li>
+<li>数据的大小</li>
+<li>算力</li>
+</ol>
+<p>模型与参数、大小、算力由直接的关系，不需要训练，就能知道最终的训练结果</p>
+<h4 id="尺度定律-1">1.1.3.1. 尺度定律</h4>
+<ol type="1">
+<li><p>模型与参数、大小、算力由直接的关系，与模型形状弱依赖</p>
+<ol type="1">
+<li>某个网络的占比</li>
+<li>隐层数量的占比</li>
+<li>每个head的大小</li>
+</ol>
+<p>的影响很小，不需要对此调参</p></li>
+<li><p>其他变量充足的时候，我们就知道模型最后的效果</p></li>
+</ol>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250519222325535.png" alt="image-20250519222325535"><figcaption aria-hidden="true">image-20250519222325535</figcaption>
+</figure>
+<ol start="3" type="1">
+<li><p>过拟合的普遍性，一味增加其中一项，模型效果就会进入衰退阶段</p>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250519223024436.png" alt="image-20250519223024436"><figcaption aria-hidden="true">image-20250519223024436</figcaption>
+</figure></li>
+<li><p>同等算力下，调整模型大小和数据集的大小</p>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250519223337327.png" alt="image-20250519223337327"><figcaption aria-hidden="true">image-20250519223337327</figcaption>
+</figure></li>
+<li><p>模型在训练集与测试集上表现高度相关</p></li>
+<li><p>训练数据有显示，仍然可以重复使用数据进行训练得到可预测的“尺度定律”</p></li>
+<li><p>其他模型（包括transform)都具有尺度定律</p></li>
+</ol>
+<h4 id="利用尺度定律">1.1.3.2. 利用尺度定律</h4>
+<ol type="1">
+<li><p>固定模型的大小，更改预训练的数据量</p>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250519224015225.png" alt="image-20250519224015225"><figcaption aria-hidden="true">image-20250519224015225</figcaption>
+</figure></li>
+<li><p>规定算力大小，训练不同大小的模型，（训练到模型收敛较难，可以得到算力的大小）</p></li>
+</ol>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250519224308944.png" alt="image-20250519224308944"><figcaption aria-hidden="true">image-20250519224308944</figcaption>
+</figure>
+<h3 id="涌现">1.1.4. 涌现</h3>
+<p>大模型在训练数量的规模时，准确率会发生突变</p>
+<h2 id="后训练">1.2. 后训练</h2>
+<p>对齐人类的要求，回答问题有用、无害</p>
+<h3 id="指令微调">1.2.1. 指令微调</h3>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250519225029335.png" alt="image-20250519225029335"><figcaption aria-hidden="true">image-20250519225029335</figcaption>
+</figure>
+<ol type="1">
+<li><p>上下文学习</p>
+<ol type="1">
+<li>用户给出例子，模型不更新参数直接学习</li>
+</ol>
+<p>使用例子训练，模型直接输出</p></li>
+<li><p>预训练-微调</p>
+<ol type="1">
+<li>在目标任务上进行微调</li>
+</ol>
+<p>给出命令前缀，然后训练</p></li>
+<li><p>指令微调</p>
+<ol type="1">
+<li>在非目标任务上进行泛化，在任务上泛化很好</li>
+</ol></li>
+</ol>
+<p>指令-回答， 对回答的预测计算损失函数</p>
+<h3 id="数据合成">1.2.2. 数据合成</h3>
+<ol type="1">
+<li>人工构建任务例子</li>
+<li>使用强模型根据种子任务生成指令</li>
+<li>将生成的指令再给另一个强模型，获得指令的回答，得到&lt;指令，回答&gt; 对</li>
+</ol>
+<h3 id="test-scaling">1.2.3. test scaling</h3>
+<p>模型输出多个结果，打分选择结果</p>
+<p>过程奖励模型&gt;结果奖励模型</p>
+<p>选择框架</p>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250523163748097.png" alt="image-20250523163748097"><figcaption aria-hidden="true">image-20250523163748097</figcaption>
+</figure>
+<h3 id="微调方法">1.2.4. 微调方法</h3>
+<h4 id="lora">1.2.4.1. lora</h4>
+<p>增加低秩矩阵</p>
+<h4 id="前缀调整">1.2.4.2. 前缀调整</h4>
+<p>训练的模型权重不再调整，k,v前分别添加可训练的连续前缀向量</p>
+<p>冻结原权重，增加可训练模块</p>
+<h4 id="提示调整">1.2.4.3. 提示调整</h4>
+<p>训练文本前增加提示命令</p>
+<h4 id="adapter">1.2.4.4. adapter</h4>
+<p>在前馈神经网络前增加低秩矩阵</p>
+<h4 id="loramoe">1.2.4.5. LoRAMoE</h4>
+<p>微调插入专家模型中的LoRA适配器</p>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250523200928848.png" alt="image-20250523200928848"><figcaption aria-hidden="true">image-20250523200928848</figcaption>
+</figure>
+<h2 id="强化学习">1.3. 强化学习</h2>
+<p>最大化智能体获得的期望累计奖励</p>
+<h3 id="ppo函数">1.3.1. PPO函数</h3>
+<p>策略： 大模型生成句子的过程<span class="math inline"><em>π</em></span></p>
+<p>轨迹： 一系列的动作，大模型生成句子时候，的状态与动作 <span class="math display"><em>τ</em> = <em>s</em><sub>1</sub>, <em>a</em><sub>1</sub>, ..<em>s</em><sub><em>n</em></sub>, <em>a</em><sub><em>n</em></sub></span> 奖励：<span class="math inline"><em>R</em>(<em>τ</em>)</span>，一整条轨迹的奖励</p>
+<p>基于策略的强化学习的目标：找到一种策略，是在这个策略的轨迹上的奖励分数最大 <span class="math display">$$
+\begin{align}
+\underset{\pi_\theta}{argmax} j({\pi_\theta}) &amp;= \underset{\pi_\theta}{argmax}E_{\tau~\pi}|R(\tau)|\\
+&amp; = \sum_\tau R(\tau)P(\tau|\pi_\theta)
+\end{align}
+$$</span> LOSS函数的梯度： <span class="math display">$$
+\begin{align*}
+\nabla J(\pi_\theta) &amp;= \sum_\tau R(\tau) \nabla P(\tau|\pi_\theta) \\
+&amp;= \sum_\tau R(\tau) P(\tau|\pi_\theta) \frac{\nabla P(\tau|\pi_\theta)}{P(\tau|\pi_\theta)} \\
+&amp;= \sum_\tau R(\tau) P(\tau|\pi_\theta) \nabla \log(P(\tau|\pi_\theta)) \\
+&amp;= \mathbb{E}_{\tau \sim \pi_\theta} [R(\tau) \nabla \log(P(\tau|\pi_\theta))]
+\end{align*}
+$$</span> 路径的概率，从<span class="math inline"><em>s</em><sub>0</sub></span>递推，推到T-1,计算出T的概率 <span class="math display">$$
+P(\tau|\pi_\theta) = \rho_0(s_0) \prod_{t=0}^{T-1} P(s_{t+1}|s_t, a_t)\pi_\theta(a_t|s_t)
+$$</span></p>
+<p><span class="math display">$$
+\nabla \log\left(P(\tau|\pi_\theta)\right) = \nabla \left[ \log \rho_0(s_0) + \sum_{t=0}^{T-1} \log P(s_{t+1}|s_t, a_t) + \sum_{t=0}^{T-1} \log \pi_\theta(a_t|s_t) \right] 
+$$</span></p>
+<p>前两项和策略模型的参数 <span class="math inline"><em>θ</em></span> 无关，可舍去。于是 <span class="math display">$$
+\nabla \log\left(P(\tau|\pi_\theta)\right) = \sum_{t=0}^{T-1} \nabla \log \pi_\theta(a_t|s_t)
+$$</span> 带入Loss的梯度中，使用每时刻的奖励函数代替总路径<span class="math inline"><em>R</em>(<em>τ</em>)</span> <span class="math display">$$
+\nabla J(\pi_\theta) = \mathbb{E}_{\tau \sim \pi_\theta}\left[ \sum_{t=0}^{T-1} \Psi_t \nabla \log \pi_\theta(a_t|s_t) \right]
+$$</span> <span class="math inline"><em>ψ</em><sub><em>t</em></sub></span>的组成形式</p>
+<ol type="1">
+<li><span class="math inline">$\sum_{t=0}^\infty r_t$</span> 轨迹的累积奖励<br>
+</li>
+<li><span class="math inline">$\sum_{t'=t}^\infty \gamma^{t'-t} r_{t'}$</span> 轨迹的折扣奖励<br>
+</li>
+<li><span class="math inline">$\sum_{t'=t}^\infty \gamma^{t'-t} r_{t'} - b(s_t)$</span> 引入基线<br>
+</li>
+<li><span class="math inline"><em>Q</em><sup><em>π</em></sup>(<em>s</em><sub><em>t</em></sub>, <em>a</em><sub><em>t</em></sub>)</span> 动作价值函数<br>
+</li>
+<li><span class="math inline"><em>A</em><sup><em>π</em></sup>(<em>s</em><sub><em>t</em></sub>, <em>a</em><sub><em>t</em></sub>)</span> 优势函数<br>
+</li>
+<li><span class="math inline"><em>r</em><sub><em>t</em></sub> + <em>V</em><sup><em>π</em></sup>(<em>s</em><sub><em>t</em> + 1</sub>) − <em>V</em><sup><em>π</em></sup>(<em>s</em><sub><em>t</em></sub>)</span> 时序差分残差</li>
+</ol>
+<p>累计折扣奖励 <span class="math display"><em>G</em><sub><em>t</em></sub> = <em>r</em><sub><em>t</em></sub> + <em>γ</em><em>r</em><sub><em>t</em> + 1</sub> + <em>γ</em><sup>2</sup><em>r</em><sub><em>t</em> + 2</sub> + … + <em>γ</em><sup><em>T</em> − <em>t</em> − 1</sup><em>r</em><sub><em>T</em> − 1</sub> = <em>r</em><sub><em>t</em></sub> + <em>γ</em><em>G</em><sub><em>t</em> + 1</sub></span></p>
+<p>动作价值函数：在策略<em>π</em> 下，从状态 <em>s_t</em> 开始并执行动作 <em>a_t</em> 后，未来所有折扣奖励的<strong>期望</strong>。 <span class="math display">$$
+\begin{align}
+Q_\pi(s_t, a_t) &amp;= \mathbb{E}_\pi[G_t | s_t, a_t] \\
+&amp;= \mathbb{E}_\pi\left[\sum_{t=0}^{T-t} \gamma^{t'} r_{t'} | s_t, a_t\right] \\
+&amp;= \mathbb{E}_\pi[r_t | s_t, a_t] + \mathbb{E}_\pi[\gamma V_\pi(S_{t+1}) | s_t, a_t] \\
+&amp;= \sum_{s_{t+1} \in \mathcal{S}} P(s_{t+1}|s_t, a_t)R(s_t, a_t, s_{t+1}) + \gamma \sum_{s_{t+1} \in \mathcal{S}} P(s_{t+1}|s_t, a_t)V_\pi(s_{t+1})  \\
+&amp; 贝尔曼期望方程，将 G_t 拆分为当前奖励和未来价值\\
+&amp;= \mathbb{E}_{s_{t+1} \sim P(\cdot|s_t, a_t)}[r + \gamma V_\pi(s_{t+1})]
+\end{align}
+$$</span> 优势函数:在策略 π<em>π</em> 下，在状态 <em>s_t</em> 执行动作 <em>a_t</em> 相对于在该状态下平均（期望）价值的“优势”或“额外价值”。 <span class="math display">$$
+\begin{align}
+A_\pi(s_t, a_t) &amp;= Q_\pi(s_t, a_t) - V_\pi(s_t) \\
+&amp;= \mathbb{E}_{s_{t+1} \sim P(\cdot|s_t, a_t)}[r_t + \gamma V_\pi(s_{t+1})] - \mathbb{E}_{s_{t+1} \sim P(\cdot|s_t, a_t)}[V_\pi(s_t)] \\
+&amp;= \mathbb{E}_{s_{t+1} \sim P(\cdot|s_t, a_t)}[r_t + \gamma V_\pi(s_{t+1}) - V_\pi(s_t)] \\
+&amp;= \mathbb{E}_{s_{t+1} \sim P(\cdot|s_t, a_t)}[\text{TD\_error}]
+\end{align}
+$$</span></p>
+<h3 id="价值损失">1.3.2. 价值损失</h3>
+<p>这里提到的“价值训练过程”通常指的是在强化学习中，<strong>价值函数（Value Function）的估计和更新过程</strong>。这通常通过训练一个神经网络（价值网络/Critic网络）来预测状态的价值 V(s)<em>V</em>(<em>s</em>) 或状态-动作对的价值 Q(s,a)<em>Q</em>(<em>s</em>,<em>a</em>)。最常见的训练方法是使用<strong>均方误差（Mean Squared Error, MSE）损失</strong></p>
+<p>价值函数 V<strong>ϕ<em>(</em>s</strong>t<em>) 的目标是准确估计<strong>未来累积折扣奖励</strong>。因此，训练它的方法就是让它的预测值 </em>V<strong>ϕ<em>(</em>s</strong>t*) 尽可能接近“真实”的累积折扣奖励 R_t。</p>
+<p>价值损失采用的是MSE损失，最小化如下目标函数：</p>
+<p><span class="math display">ℒ<sub>critic</sub>(<em>ϕ</em>) = 𝔼<sub><em>t</em></sub>[(<em>V</em><sub><em>ϕ</em></sub>(<em>s</em><sub><em>t</em></sub>)−<em>R</em><sub><em>t</em></sub>)<sup>2</sup>]</span></p>
+<p>其中<span class="math inline"><em>V</em><sub><em>ϕ</em></sub>(<em>s</em><sub><em>t</em></sub>)</span>为价值模型预测出来的回报，<span class="math inline"><em>R</em><sub><em>t</em></sub></span>为实际得到的回报。</p>
+<p><span class="math inline"><em>R</em><sub><em>t</em></sub></span> 是理论标签值，需要计算出来</p>
+<p>如果使用时序差分目标，则</p>
+<p><span class="math display"><em>R</em><sub><em>t</em></sub> = <em>r</em><sub><em>t</em></sub> + <em>γ</em><em>V</em><sub><em>ϕ</em></sub>(<em>s</em><sub><em>t</em> + 1</sub>)</span></p>
+<p>如果使用GAE目标，则 <span class="math display"><em>R</em><sub><em>t</em></sub> = <em>Â</em><sub><em>t</em></sub><sup>GAE</sup> + <em>V</em>′<sub><em>ϕ</em></sub>(<em>s</em><sub><em>t</em></sub>)</span></p>
+<h3 id="rlhf">1.3.3. RLHF</h3>
+<h4 id="构建奖励模型">1.3.3.1. 构建奖励模型</h4>
+<ol type="1">
+<li><p>收集偏好数据，对模型回答的多个数据，评估排序，不是打分</p>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530121011621.png" alt="image-20250530121011621"><figcaption aria-hidden="true">image-20250530121011621</figcaption>
+</figure></li>
+<li><p>损失函数，max(做好回答- 最差回答)</p>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530121104796.png" alt="image-20250530121104796"><figcaption aria-hidden="true">image-20250530121104796</figcaption>
+</figure></li>
+<li><p>只获取最后一个token的评估</p>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530121333003.png" alt="image-20250530121333003"><figcaption aria-hidden="true">image-20250530121333003</figcaption>
+</figure></li>
+<li><p>使用KL散度，避免与模型的差距较大</p></li>
+<li><p>使用PPO函数，计算历史和未来的奖励</p>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530121812769.png" alt="image-20250530121812769"><figcaption aria-hidden="true">image-20250530121812769</figcaption>
+</figure></li>
+</ol>
+<h4 id="总体流程">1.3.3.2. 总体流程</h4>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530121856320.png" alt="image-20250530121856320"><figcaption aria-hidden="true">image-20250530121856320</figcaption>
+</figure>
+<p><strong>RLHF实开源链接</strong>：</p>
+<ol type="1">
+<li><code>https://github.com/huggingface/trl</code></li>
+<li><code>https://github.com/OpenRLHF/OpenRLHF</code></li>
+<li><code>https://github.com/hiyouga/LLaMA-Factory</code></li>
+<li><code>https://github.com/WangRongsheng/awesome-LLM-resourses</code></li>
+</ol>
+<h3 id="rlaif">1.3.4. RLAIF</h3>
+<p>模型选择结果，替换人类标记，同时需要使用双重判断</p>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530170449430.png" alt="image-20250530170449430"><figcaption aria-hidden="true">image-20250530170449430</figcaption>
+</figure>
+<ol type="1">
+<li>D-RLAIF，模型直接打分，不再训练</li>
+<li>常规RLAIF，先训练奖励模型</li>
+</ol>
+<h3 id="dpo算法direct-perference-option">1.3.5. DPO算法(direct perference option)</h3>
+<p>由偏好学习的数据，直接用于模型的训练</p>
+<p>目标：</p>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530171548497.png" alt="image-20250530171548497"><figcaption aria-hidden="true">image-20250530171548497</figcaption>
+</figure>
+<p>损失函数：</p>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530171648715.png" alt="image-20250530171648715"><figcaption aria-hidden="true">image-20250530171648715</figcaption>
+</figure>
+<h3 id="splnself-play">1.3.6. SPLN（self play)</h3>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530173051126.png" alt="image-20250530173051126"><figcaption aria-hidden="true">image-20250530173051126</figcaption>
+</figure>
+<h4 id="main-play">1.3.6.1. main play</h4>
+<p>区分某个回答是人类的回答</p>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530173622192.png" alt="最大化人类回答与机器回答的区别"><figcaption aria-hidden="true">最大化人类回答与机器回答的区别</figcaption>
+</figure>
+<h4 id="opponent-play">1.3.6.2. opponent play</h4>
+<p>不需要区分人类回答和LLM回答</p>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530173750170.png" alt="image-20250530173750170"><figcaption aria-hidden="true">image-20250530173750170</figcaption>
+</figure>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530173801712.png" alt="image-20250530173801712"><figcaption aria-hidden="true">image-20250530173801712</figcaption>
+</figure>
+<p>得到优化目标</p>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530173906352.png" alt="image-20250530173906352"><figcaption aria-hidden="true">image-20250530173906352</figcaption>
+</figure>
+<p>最大化生成与真实标注的信息与自己生成信息的差距</p>
+<h3 id="self-rewarding">1.3.7. self-rewarding</h3>
+<p>模型给自己提供奖励，在优化回复的功能是，优化模型指令遵循与打分的能力</p>
+<ol type="1">
+<li>初始模型，具有基础能力</li>
+<li>种子数据集，少量数据集，
+<ol type="1">
+<li>指令微调，只有回答</li>
+<li>评估微调，回答排序</li>
+</ol></li>
+</ol>
+<p>模型使用种子数据集，生成新的prompt，模型自己打分，取最高分与最低分，加入数据集，用于DPO训练。</p>
+<p>不断迭代</p>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530175457392.png" alt="image-20250530175457392"><figcaption aria-hidden="true">image-20250530175457392</figcaption>
+</figure>
+<h2 id="微调">1.4. 微调</h2>
+<ol type="1">
+<li><p>增加参数微调</p>
+<ol type="1">
+<li>软提示微调： 在embeding之前怎么增加soft prompt，训练优化增加的soft prompt ，模型的参数固定
+<ol type="1">
+<li>且不同的任务可以使用不同的soft prompt</li>
+</ol></li>
+<li>适配器微调： 在模型前后增加一个层</li>
+</ol></li>
+<li><p>选择性微调</p>
+<ol type="1">
+<li>学习优化哪些参数，优化任务结果，使用正则化，惩罚修改较多的参数<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530182117984.png" alt="image-20250530182117984"></li>
+<li>指定修改部分参数</li>
+</ol></li>
+<li><p>重参数微调，调整子空间参数</p>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530182340311.png" alt="image-20250530182340311"><figcaption aria-hidden="true">image-20250530182340311</figcaption>
+</figure>
+<ol type="1">
+<li><p>Low-Rank Adaption(LoRA)，优化两个低秩矩阵，与原矩阵组合</p>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530182623192.png" alt="image-20250530182623192"><figcaption aria-hidden="true">image-20250530182623192</figcaption>
+</figure></li>
+<li><p>学习模型的缩放因子</p>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530183050936.png" alt="image-20250530183050936"><figcaption aria-hidden="true">image-20250530183050936</figcaption>
+</figure></li>
+</ol></li>
+</ol>
+<h2 id="知识蒸馏">1.5. 知识蒸馏</h2>
+<p>教师模型将知识提取出来，学生模型学习其中内容</p>
+<h3 id="基于特征的知识">1.5.1. 基于特征的知识</h3>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250523201806237.png" alt="image-20250523201806237"><figcaption aria-hidden="true">image-20250523201806237</figcaption>
+</figure>
+<h4 id="多个教师教学">1.5.1.1. 多个教师教学</h4>
+<h3 id="基于关系的知识">1.5.2. 基于关系的知识</h3>
+<h2 id="模型剪枝">1.6. 模型剪枝</h2>
+<p>删除权重小于一定阈值的连接或神经元节点，获得更加稀疏的矩阵</p>
+<h3 id="结构化剪枝">1.6.1. 结构化剪枝</h3>
+<p>参数从起点到重点，图中有相连，则保留</p>
+<h1 id="简短">2. 简短</h1>
+<h2 id="预训练-1">2.1. 预训练</h2>
+<h3 id="词表化">2.1.1. 词表化</h3>
+<h4 id="bbpebyte-level-bpe">2.1.1.1. BBPE(byte-level BPE)</h4>
+<p>单词量过大时，每一个单词一个token使用，词表空间较大</p>
+<p>单词使用字节标识，采用unicode 编码作为最小颗粒度，将单词切割为字节token</p>
+<p>例如，对于不存在的字节“待”，使用3个字节标识(中文在unicode编码中使用三个字节表示)</p>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/v2-4cd433a354233d03bc2aad15745a7285_1440w.jpg" alt="img"><figcaption aria-hidden="true">img</figcaption>
+</figure>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/v2-66a59222fb083b240eac861eb026c73c_r.jpg" alt="img"><figcaption aria-hidden="true">img</figcaption>
+</figure>
+<h3 id="模型预训练">2.1.2. 模型预训练</h3>
+<p>采用无监督学习，学习输入文本的特征，学习语言语法</p>
+<p>输入一堆文本，让模型做 Next Token Prediction 的任务，学习基础语法，初步学习。</p>
+<p>类似与transfomer论文中的对语言的输入学习输出。</p>
+<h2 id="指令微调-1">2.2. 指令微调</h2>
+<p>GPT-3只能完成续写任务,InstructGPT可以根据指令回答问题</p>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/v2-a7a8e7aed0750d189f792b19e8272dfe_r.jpg" alt="img"><figcaption aria-hidden="true">img</figcaption>
+</figure>
+<h3 id="监督学习">2.2.1. 监督学习</h3>
+<p>给出指令问题，并给出答案，监督模型学习</p>
+<ol type="1">
+<li><p>指令: 在面试中如何回答这个问题？</p>
+<ol type="1">
+<li>输入:当你在车里独处时，你会想些什么？</li>
+<li>输出:如果是在晚上，我通常会考虑我今天所取得的进步，如果是在早上，我会思考如何做到最好。我也会尝试练习感恩和活在当下的状态，以避免分心驾驶。</li>
+</ol></li>
+<li><p>指令: 按人口对这些国家进行排名。</p>
+<ol type="1">
+<li>输入:巴西，中国，美国，日本，加拿大，澳大利亚</li>
+<li>输出:中国，美国，巴西，日本，加拿大，澳大利亚</li>
+</ol></li>
+</ol>
+<p>模型学习指令回答方式，准确的响应问题</p>
+<h2 id="奖励模型">2.3. 奖励模型</h2>
+<p>之前，模型只是简单学习了语言学习的内容，但是并不知到语言中是否正确，或者错误，这将导致预训练模型中原先「错误」或「有害」的知识没能在 SFT 数据中被纠正。</p>
+<h3 id="利用偏序对训练奖励模型">2.3.1. 利用偏序对训练奖励模型</h3>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/v2-29f8de16d921303fc6ee5c338fc68800_1440w.jpg" alt="img"><figcaption aria-hidden="true">img</figcaption>
+</figure>
+<p>偏序对是指：不直接为每一个样本直接打分，而是标注这些样本的好坏顺序，标准A比B好多少，而不是具体的分数。</p>
+<blockquote>
+<p>直接打分：A句子（5分），B句子（3分） 偏序对标注：A &gt; B</p>
+</blockquote>
+<p>模型通过尝试最大化「好句子得分和坏句子得分之间的分差」，从而学会自动给每一个句子判分。</p>
+<h2 id="强化学习reinforcement-learningppo">2.4. 强化学习（Reinforcement Learning，PPO）</h2>
+<p>进行Reward model之后，需要使用RM进化模型</p>
+<ol type="1">
+<li></li>
+</ol>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">小白菜</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://c3f15f6.github.io/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">https://c3f15f6.github.io/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">小白菜</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'ypIvvy9QRua2Q0ztdf0tgeBp-gzGzoHsz',
+        appKey: '9nVDPQd67XNMLKXa2xogMJMm',
+        serverURLs: 'https://ypivvy9q.lc-cn-n1-shared.com',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'just go go'
+    });
+</script>
+
+<!--酷Q推送-->
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2025/05/24/java/%E5%89%8D%E7%AB%AF%E4%BB%A3%E7%A0%81%E7%9A%84%E8%81%94%E5%90%88%E4%BD%BF%E7%94%A8/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="前端代码的联合使用">
+                        
+                        <span class="card-title">前端代码的联合使用</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2025-05-24
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/java/" class="post-category">
+                                    java
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/html/">
+                        <span class="chip bg-color">html</span>
+                    </a>
+                    
+                    <a href="/tags/css/">
+                        <span class="chip bg-color">css</span>
+                    </a>
+                    
+                    <a href="/tags/javascript/">
+                        <span class="chip bg-color">javascript</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2025/05/24/python/deeplearn/%E7%BC%96%E7%A0%81%E5%99%A8%20-%20%E8%A7%A3%E7%A0%81%E5%99%A8/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="编码器 - 解码器">
+                        
+                        <span class="card-title">编码器 - 解码器</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-05-24
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/python/" class="post-category">
+                                    python
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">深度学习</span>
+                    </a>
+                    
+                    <a href="/tags/transformer/">
+                        <span class="chip bg-color">transformer</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 汤汁小白菜<br />'
+            + '文章作者: 小白菜<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('1'),
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="149297"
+                   fixed='true'
+                   autoplay='true'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.4'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2024-2025</span>
+            
+            <a href="/about" target="_blank">小白菜</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">45.6k</span>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/c3f15f6" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:c3y15f6@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=3114429249" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 3114429249" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+     
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/libs/others/star.js"><\/script>');
+            }
+        </script>
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
