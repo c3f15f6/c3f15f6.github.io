@@ -5,10 +5,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="numpy_pandas, 汤汁小白菜">
-    <meta name="description" content="1. NumPy 与 Pandas 用法总结1.1. NumPy 用法1.1.1. 安装 NumPypip install numpy
-1.1.2. 导入 NumPyimport numpy as np
-1.1.3. 创建数组
-从列表或元组">
+    <meta name="description" content="1. NumPy 与 Pandas 用法总结
+1.1. NumPy 用法
+1.1.1. 安装 NumPy
+pip install numpy
+1.1.2. 导入 NumPy
+import numpy as np
+1.1.3. 创">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -437,7 +440,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    996
+                    1k
                 </div>
                 
 
@@ -467,78 +470,92 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="NumPy-与-Pandas-用法总结">1. NumPy 与 Pandas 用法总结</h1><h2 id="NumPy-用法">1.1. NumPy 用法</h2><h3 id="安装-NumPy">1.1.1. 安装 NumPy</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip install numpy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h3 id="导入-NumPy">1.1.2. 导入 NumPy</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python">import numpy as np<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h3 id="创建数组">1.1.3. 创建数组</h3><ul>
-<li>从列表或元组创建数组<pre class="line-numbers language-python" data-language="python"><code class="language-python">arr &#x3D; np.array([1, 2, 3])
+                <h1 id="numpy-与-pandas-用法总结">1. NumPy 与 Pandas 用法总结</h1>
+<h2 id="numpy-用法">1.1. NumPy 用法</h2>
+<h3 id="安装-numpy">1.1.1. 安装 NumPy</h3>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip install numpy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="导入-numpy">1.1.2. 导入 NumPy</h3>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">import numpy as np<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="创建数组">1.1.3. 创建数组</h3>
+<ul>
+<li>从列表或元组创建数组 <pre class="line-numbers language-python" data-language="python"><code class="language-python">arr &#x3D; np.array([1, 2, 3])
 matrix &#x3D; np.array([[1, 2], [3, 4]])<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
-<li>使用内置函数创建数组<pre class="line-numbers language-python" data-language="python"><code class="language-python">zeros &#x3D; np.zeros((2, 3))       # 全零数组
+<li>使用内置函数创建数组 <pre class="line-numbers language-python" data-language="python"><code class="language-python">zeros &#x3D; np.zeros((2, 3))       # 全零数组
 ones &#x3D; np.ones((3, 4))         # 全一数组
 arange &#x3D; np.arange(0, 10, 2)   # 创建一个范围数组
-linspace &#x3D; np.linspace(0, 1, 5)  # 等间距数组<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
+linspace &#x3D; np.linspace(0, 1, 5)  # 等间距数组<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ul>
-<h3 id="数组属性">1.1.4. 数组属性</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python">shape &#x3D; arr.shape               # 数组形状
+<h3 id="数组属性">1.1.4. 数组属性</h3>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">shape &#x3D; arr.shape               # 数组形状
 dtype &#x3D; arr.dtype               # 数据类型
 size &#x3D; arr.size                 # 数组元素总数<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h3 id="数组切片与索引">1.1.5. 数组切片与索引</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python">slice_arr &#x3D; arr[1:3]                  # 切片
+<h3 id="数组切片与索引">1.1.5. 数组切片与索引</h3>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">slice_arr &#x3D; arr[1:3]                  # 切片
 element &#x3D; arr[1]                       # 单个元素
 row_slice &#x3D; matrix[0, :]               # 第一行
 col_slice &#x3D; matrix[:, 1]               # 第二列
 sub_matrix &#x3D; matrix[0:2, 0:2]          # 子矩阵<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="数组操作">1.1.6. 数组操作</h3><ul>
-<li>统计操作<pre class="line-numbers language-python" data-language="python"><code class="language-python">sum_arr &#x3D; np.sum(arr)                  # 求和
+<h3 id="数组操作">1.1.6. 数组操作</h3>
+<ul>
+<li>统计操作 <pre class="line-numbers language-python" data-language="python"><code class="language-python">sum_arr &#x3D; np.sum(arr)                  # 求和
 mean_arr &#x3D; np.mean(arr)                # 均值
 max_arr &#x3D; np.max(arr)                  # 最大值
 min_arr &#x3D; np.min(arr)                  # 最小值
 std_arr &#x3D; np.std(arr)                  # 标准差<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li>数学操作<pre class="line-numbers language-python" data-language="python"><code class="language-python">add_arr &#x3D; arr + 10                     # 加法
+<li>数学操作 <pre class="line-numbers language-python" data-language="python"><code class="language-python">add_arr &#x3D; arr + 10                     # 加法
 mul_arr &#x3D; arr * 2                      # 乘法
 exp_arr &#x3D; np.exp(arr)                  # 指数<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
-<li>矩阵运算<pre class="line-numbers language-python" data-language="python"><code class="language-python">dot_product &#x3D; np.dot(matrix, matrix)   # 矩阵乘法
+<li>矩阵运算 <pre class="line-numbers language-python" data-language="python"><code class="language-python">dot_product &#x3D; np.dot(matrix, matrix)   # 矩阵乘法
 transpose &#x3D; matrix.T                    # 转置
-inverse &#x3D; np.linalg.inv(matrix)         # 矩阵求逆（需方阵）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-</li>
+inverse &#x3D; np.linalg.inv(matrix)         # 矩阵求逆（需方阵）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
 </ul>
-<h3 id="广播">1.1.7. 广播</h3><p>NumPy 支持广播，使得不同形状的数组可以进行运算。<br><pre class="line-numbers language-python" data-language="python"><code class="language-python">result &#x3D; arr + np.array([1, 2, 3])     # 广播机制<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></p>
-<h2 id="Pandas-用法">1.2. Pandas 用法</h2><h3 id="安装-Pandas">1.2.1. 安装 Pandas</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip install pandas<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h3 id="导入-Pandas">1.2.2. 导入 Pandas</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python">import pandas as pd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h3 id="创建-DataFrame-和-Series">1.2.3. 创建 DataFrame 和 Series</h3><ul>
-<li>从字典创建 DataFrame<pre class="line-numbers language-python" data-language="python"><code class="language-python">data &#x3D; &#123;&#39;A&#39;: [1, 2], &#39;B&#39;: [3, 4]&#125;
+<h3 id="广播">1.1.7. 广播</h3>
+<p>NumPy 支持广播，使得不同形状的数组可以进行运算。 <pre class="line-numbers language-python" data-language="python"><code class="language-python">result &#x3D; arr + np.array([1, 2, 3])     # 广播机制<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></p>
+<h2 id="pandas-用法">1.2. Pandas 用法</h2>
+<h3 id="安装-pandas">1.2.1. 安装 Pandas</h3>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip install pandas<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="导入-pandas">1.2.2. 导入 Pandas</h3>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">import pandas as pd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="创建-dataframe-和-series">1.2.3. 创建 DataFrame 和 Series</h3>
+<ul>
+<li>从字典创建 DataFrame <pre class="line-numbers language-python" data-language="python"><code class="language-python">data &#x3D; &#123;&#39;A&#39;: [1, 2], &#39;B&#39;: [3, 4]&#125;
 df &#x3D; pd.DataFrame(data)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
-<li>从列表创建 Series<pre class="line-numbers language-python" data-language="python"><code class="language-python">s &#x3D; pd.Series([1, 2, 3, 4])<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
+<li>从列表创建 Series <pre class="line-numbers language-python" data-language="python"><code class="language-python">s &#x3D; pd.Series([1, 2, 3, 4])<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ul>
-<h3 id="常用属性">1.2.4. 常用属性</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python">columns &#x3D; df.columns              # 列名
+<h3 id="常用属性">1.2.4. 常用属性</h3>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">columns &#x3D; df.columns              # 列名
 index &#x3D; df.index                  # 索引
 shape &#x3D; df.shape                  # 形状
 dtypes &#x3D; df.dtypes                # 数据类型<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="访问数据">1.2.5. 访问数据</h3><ul>
-<li>行选择<pre class="line-numbers language-python" data-language="python"><code class="language-python">row &#x3D; df.iloc[0]                 # 按位置选择第一行
+<h3 id="访问数据">1.2.5. 访问数据</h3>
+<ul>
+<li>行选择 <pre class="line-numbers language-python" data-language="python"><code class="language-python">row &#x3D; df.iloc[0]                 # 按位置选择第一行
 row_label &#x3D; df.loc[0]            # 按标签选择第一行<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
-<li>列选择<pre class="line-numbers language-python" data-language="python"><code class="language-python">column_A &#x3D; df[&#39;A&#39;]                # 选择列 A
+<li>列选择 <pre class="line-numbers language-python" data-language="python"><code class="language-python">column_A &#x3D; df[&#39;A&#39;]                # 选择列 A
 column_B &#x3D; df[[&#39;B&#39;]]              # 选择列 B<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
-<li>切片选择<pre class="line-numbers language-python" data-language="python"><code class="language-python">subset &#x3D; df.iloc[0:2, 0:2]       # 选择子集<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
+<li>切片选择 <pre class="line-numbers language-python" data-language="python"><code class="language-python">subset &#x3D; df.iloc[0:2, 0:2]       # 选择子集<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ul>
-<h3 id="数据操作">1.2.6. 数据操作</h3><ul>
-<li>增加/删除列<pre class="line-numbers language-python" data-language="python"><code class="language-python">df[&#39;C&#39;] &#x3D; [5, 6]                   # 添加新列 C
+<h3 id="数据操作">1.2.6. 数据操作</h3>
+<ul>
+<li>增加/删除列 <pre class="line-numbers language-python" data-language="python"><code class="language-python">df[&#39;C&#39;] &#x3D; [5, 6]                   # 添加新列 C
 df.drop(&#39;C&#39;, axis&#x3D;1, inplace&#x3D;True) # 删除列 C<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
-<li>数据过滤<pre class="line-numbers language-python" data-language="python"><code class="language-python">filtered_df &#x3D; df[df[&#39;A&#39;] &gt; 1]      # 过滤条件<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
+<li>数据过滤 <pre class="line-numbers language-python" data-language="python"><code class="language-python">filtered_df &#x3D; df[df[&#39;A&#39;] &gt; 1]      # 过滤条件<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ul>
-<h3 id="统计分析">1.2.7. 统计分析</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python">mean_A &#x3D; df[&#39;A&#39;].mean()             # 计算均值
+<h3 id="统计分析">1.2.7. 统计分析</h3>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">mean_A &#x3D; df[&#39;A&#39;].mean()             # 计算均值
 sum_A &#x3D; df[&#39;A&#39;].sum()               # 计算求和
 describe &#x3D; df.describe()             # 描述性统计<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h3 id="数据处理">1.2.8. 数据处理</h3><ul>
-<li>排序<pre class="line-numbers language-python" data-language="python"><code class="language-python">sorted_df &#x3D; df.sort_values(by&#x3D;&#39;A&#39;)  # 根据列 A 排序<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-<li>缺失值处理<pre class="line-numbers language-python" data-language="python"><code class="language-python">df.fillna(0, inplace&#x3D;True)          # 填充缺失值
-df.dropna(inplace&#x3D;True)             # 删除包含缺失值的行<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-</li>
+<h3 id="数据处理">1.2.8. 数据处理</h3>
+<ul>
+<li>排序 <pre class="line-numbers language-python" data-language="python"><code class="language-python">sorted_df &#x3D; df.sort_values(by&#x3D;&#39;A&#39;)  # 根据列 A 排序<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li>缺失值处理 <pre class="line-numbers language-python" data-language="python"><code class="language-python">df.fillna(0, inplace&#x3D;True)          # 填充缺失值
+df.dropna(inplace&#x3D;True)             # 删除包含缺失值的行<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
 </ul>
-<h3 id="数据导入与导出">1.2.9. 数据导入与导出</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python">df.to_csv(&#39;file.csv&#39;, index&#x3D;False)  # 导出为 CSV 文件
+<h3 id="数据导入与导出">1.2.9. 数据导入与导出</h3>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">df.to_csv(&#39;file.csv&#39;, index&#x3D;False)  # 导出为 CSV 文件
 df &#x3D; pd.read_csv(&#39;file.csv&#39;)         # 从 CSV 文件导入<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h3 id="读热码转换">1.2.10. 读热码转换</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python">
+<h3 id="读热码转换">1.2.10. 读热码转换</h3>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">
 pd.get_dummies(data, columns&#x3D;None, drop_first&#x3D;False, dummy_na&#x3D;False, ...)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>主要参数：</p>
 <ul>
@@ -547,18 +564,20 @@ pd.get_dummies(data, columns&#x3D;None, drop_first&#x3D;False, dummy_na&#x3D;Fal
 <li>drop_first: 布尔值，默认为 False。如果为 True，则删除第一个类别的列，以避免虚拟变量陷阱（dummy variable trap），即多重共线性问题。</li>
 <li>dummy_na: 布尔值，默认为 False。如果为 True，那么将生成一个额外的列，用于指示缺失值（NaN）的存在。这一列会在原始数据中出现 NaN（缺失值）的地方标记为 1，其余为 0。</li>
 </ul>
-<h2 id="使用-NumPy-数组作为-DataFrame-的数据">1.3. 使用 NumPy 数组作为 DataFrame 的数据</h2><p>您还可以使用 NumPy 数组作为 DataFrame 的数据并指定索引和列名：</p>
+<h2 id="使用-numpy-数组作为-dataframe-的数据">1.3. 使用 NumPy 数组作为 DataFrame 的数据</h2>
+<p>您还可以使用 NumPy 数组作为 DataFrame 的数据并指定索引和列名：</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">python复制代码# 创建 NumPy 数组
 data &#x3D; np.array([[1, 2], [3, 4]])
 
 # 将 NumPy 数组转换为 DataFrame，并指定索引和列名
 df &#x3D; pd.DataFrame(data, index&#x3D;[&#39;row1&#39;, &#39;row2&#39;], columns&#x3D;[&#39;A&#39;, &#39;B&#39;])
 print(df)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="tensorflow">1.4. tensorflow</h2><ol>
+<h2 id="tensorflow">1.4. tensorflow</h2>
+<ol type="1">
 <li>转换为tensors，不能改变</li>
 </ol>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">tf.constant([[2, 1, 4, 3], [1, 2, 3, 4], [4, 3, 2, 1]])<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ol>
+<ol start="2" type="1">
 <li>转换为variable</li>
 </ol>
 
@@ -1307,7 +1326,7 @@ print(df)<span aria-hidden="true" class="line-numbers-rows"><span></span><span><
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">46.2k</span>
+                        class="white-color">46.5k</span>
             
             
             
