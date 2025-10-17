@@ -5,11 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="25美赛, 汤汁小白菜">
-    <meta name="description" content="1. review_25
-1.1. 两阶段预测
-1.1.1. LightGBM
-预测是否有概率获奖，二分类，不能获奖置为0
-原理：基于决策树，采用梯度提升框架，迭代训练一系列的决策树，组合形成一个强学习器。每次迭代前，新的弱学习其会">
+    <meta name="description" content="1. review_251.1. 两阶段预测1.1.1. LightGBM预测是否有概率获奖，二分类，不能获奖置为0
+原理：基于决策树，采用梯度提升框架，迭代训练一系列的决策树，组合形成一个强学习器。每次迭代前，新的弱学习其会你和前一个模型">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -442,7 +439,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    771
+                    768
                 </div>
                 
 
@@ -472,43 +469,29 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="review_25">1. review_25</h1>
-<h2 id="两阶段预测">1.1. 两阶段预测</h2>
-<h3 id="lightgbm">1.1.1. LightGBM</h3>
-<p>预测是否有概率获奖，二分类，不能获奖置为0</p>
+                <h1 id="review-25">1. review_25</h1><h2 id="两阶段预测">1.1. 两阶段预测</h2><h3 id="LightGBM">1.1.1. LightGBM</h3><p>预测是否有概率获奖，二分类，不能获奖置为0</p>
 <p>原理：基于决策树，采用梯度提升框架，迭代训练一系列的决策树，组合形成一个强学习器。每次迭代前，新的弱学习其会你和前一个模型预测的残差（梯度），从而逐步减少模型的误差。</p>
 <p>主要使用：</p>
-<ol type="1">
+<ol>
 <li>梯度采样，采样梯度较大的样本，较少训练数据量</li>
 <li>基于EFB 特征捆绑，将少数几个特征捆绑，减少训练特征</li>
 <li>提高训练并行策略</li>
 </ol>
 <p>因此成为Light，更轻量化的梯度提升机器学习框架</p>
-<h3 id="random-effects-tobit-model">1.1.2. random effects Tobit model</h3>
-<p><span class="math display"><em>y</em>*<sub><em>i</em></sub> = <em>β</em>′<em>x</em><sub><em>i</em></sub> + <em>ϵ</em><sub><em>i</em></sub></span></p>
-<p>截断等式中，等式左边预测的并不是获得奖牌数量，因为对于真实获得0奖牌的国家，其因变量对应的<span class="math inline"><em>y</em></span>可能是负值，因此不能直接使用最小二乘法。</p>
-<p>使用 <span class="math inline">$y_i = \begin{cases} y_i^* &amp; \text{if } y_i^* &gt; 0 \\ 0 &amp; \text{if } y_i^* \le 0 \end{cases}$</span> 进行最大似然估计y，求出系数</p>
-<p>因为模型对不同国家的不同时间进行观测， 不同国家具有潜在的异质性，需要对不同的国家增加变量<span class="math inline"><em>u</em><sub><em>i</em></sub></span>，同一国家不同时间段，个体随机效应系数是相同的</p>
+<h3 id="random-effects-Tobit-model">1.1.2. random effects Tobit model</h3><script type="math/tex; mode=display">
+y*_i=β′x_i+ϵ_i</script><p>截断等式中，等式左边预测的并不是获得奖牌数量，因为对于真实获得0奖牌的国家，其因变量对应的$y$可能是负值，因此不能直接使用最小二乘法。</p>
+<p>使用 $y_i = \begin{cases} y_i^<em> &amp; \text{if } y_i^</em> &gt; 0 \\ 0 &amp; \text{if } y_i^* \le 0 \end{cases}$  进行最大似然估计y，求出系数</p>
+<p>因为模型对不同国家的不同时间进行观测， 不同国家具有潜在的异质性，需要对不同的国家增加变量$u_i$，同一国家不同时间段，个体随机效应系数是相同的</p>
 <p>预测奖牌数量，预测过程中没有小于0的值， 因为对第一阶段中能获奖的国家进行预测，本阶段预测的国家奖牌数量均大于1</p>
-<h2 id="量化国家---项目关系">1.2. 量化国家 - 项目关系</h2>
-<h3 id="hhi">1.2.1. HHI</h3>
-<p>Herfindahl-Hirschman Index 起初用于衡量企业的垄断关系，这里用来量化国家在某个项目中的领先地位</p>
-<h3 id="imp">1.2.2. IMP</h3>
-<p>Monopoly Power Index ,量化某个项目对于国家的重要程度，</p>
-<p><span class="math inline"><em>I</em><em>M</em><em>P</em> = <em>i</em><em>国</em><em>占</em><em>据</em><em>的</em><em>H</em><em>H</em><em>I</em><em>系</em><em>数</em>/<em>该</em><em>国</em><em>家</em><em>总</em><em>的</em><em>H</em><em>H</em><em>I</em><em>系</em><em>数</em></span></p>
-<h2 id="great-coach-作用">1.3. great coach 作用</h2>
-<h3 id="hhi-1">1.3.1. HHI</h3>
-<p>判断某个国家在该项目的领先地位变化</p>
-<h3 id="welchs-t-检验">1.3.2. Welch’s t 检验</h3>
-<p><span class="math display">$$
-t = \frac{两部分均值之差}{两部分均值的方差}
-$$</span></p>
-<p>t 值反映两者之间是否存在显著差异， 当波动性超过拒绝值时，可以判断两部分的方差具有波动，标识此处发生断点</p>
+<h2 id="量化国家-项目关系">1.2. 量化国家 - 项目关系</h2><h3 id="HHI">1.2.1. HHI</h3><p>Herfindahl-Hirschman Index  起初用于衡量企业的垄断关系，这里用来量化国家在某个项目中的领先地位</p>
+<h3 id="IMP">1.2.2. IMP</h3><p>Monopoly Power Index  ,量化某个项目对于国家的重要程度，</p>
+<p>$IMP = i国占据的HHI系数/ 该国家总的HHI系数$</p>
+<h2 id="great-coach-作用">1.3. great coach 作用</h2><h3 id="HHI-1">1.3.1. HHI</h3><p>判断某个国家在该项目的领先地位变化</p>
+<h3 id="Welch’s-t-检验">1.3.2. Welch’s t 检验</h3><script type="math/tex; mode=display">
+t = \frac{两部分均值之差}{两部分均值的方差}</script><p>t 值反映两者之间是否存在显著差异， 当波动性超过拒绝值时，可以判断两部分的方差具有波动，标识此处发生断点</p>
 <p>针对教练任教时间，检测领先地位是否有断点出现，检测P值</p>
-<h3 id="投资项目">1.3.3. 投资项目</h3>
-<p>优先选择金牌数量少、这个项目该国家具有一定的基础并且对国家总体项目重要程度，而且这个项目开放，不要有垄断国家的出现。</p>
-<h2 id="结果分析">1.4. 结果分析</h2>
-<ol type="1">
+<h3 id="投资项目">1.3.3. 投资项目</h3><p>优先选择金牌数量少、这个项目该国家具有一定的基础并且对国家总体项目重要程度，而且这个项目开放，不要有垄断国家的出现。</p>
+<h2 id="结果分析">1.4. 结果分析</h2><ol>
 <li>好的教练对项目的长期提升具有极大的帮助</li>
 <li>限制单个国家的参赛人数，可以降低项目的垄断系数，例如：足球本是资本投入项目，应有某个大国垄断，但是因为一次只有一对参赛，垄断系数较低；相反，田径比赛的垄断系数</li>
 </ol>
@@ -1253,7 +1236,7 @@ $$</span></p>
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">46.5k</span>
+                        class="white-color">46.9k</span>
             
             
             
