@@ -417,21 +417,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-10-17
+                    2025-10-18
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    928
+                    1.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    5 分
                 </div>
                 
 
@@ -585,6 +585,55 @@ IQR(x) = Q_3 - Q_1</script><h2 id="learn-rate">4.4. learn rate</h2><p>确定模�
 <li>redundant feature ，重复相关的feature ，删除相关的feature</li>
 <li>number &lt;= feature ，特征数量较少， 增加数据/减少特征/正则化 </li>
 </ol>
+<h1 id="五">5. 五</h1><h2 id="operation">5.1. operation</h2><ol>
+<li><code>~</code> 非 相当于 <code>!</code></li>
+<li><code>sprintf(&quot;string %0.2f&quot;, a)</code> 格式化自负床</li>
+</ol>
+<h3 id="生成矩阵">5.1.1. 生成矩阵</h3><ol>
+<li><code> </code> 或者’,’ 分割行 [1 2 3]</li>
+<li>‘；’ 分割列 [1; 2; 3]</li>
+<li><code>v = 1 : 6</code>， 生成【1，6】数组</li>
+<li>ones(2， 3)  , zeros(2, 3), rand(2,3), randn(2,100)</li>
+<li>eye(2)</li>
+</ol>
+<blockquote>
+<p> hist(data, n), 绘制n 各方格立方图</p>
+<p>help eye</p>
+</blockquote>
+<h3 id="data">5.1.2. data</h3><ol>
+<li>size(data, dim) ，</li>
+<li>length(vector), length(data), 返回最大matrix</li>
+<li>load ‘xxx.mat’, save ‘xxx.mat’ xxx， <strong>文件名只能使用 ‘’</strong></li>
+<li>who 显示变量， whos 显示变量详细</li>
+<li>A() ， 使用() 取出元素， A（[1,2], :) 取出1，2 所有元素</li>
+<li>数组拼接 A = (A, B) , 列拼接， A= （A;B）行拼接</li>
+</ol>
+<h3 id="compute-1">5.1.3. compute</h3><ol>
+<li>$<em>$ 矩阵乘法， $.</em>$ 点乘，</li>
+<li>find(A) 矩阵中为1 的元素，</li>
+<li>max(A, []， dim), 默认列方向， sum(A,dim), prod(A)</li>
+<li>float() 抹去小数点， ceil(A) 进位</li>
+</ol>
+<h3 id>5.1.4.  </h3><p>plot(x, y, ‘color’) , xlabel, ylabel, title(), figure(1), hold on , subplot(1, 2, 1), axis([x1, x2, y1, y2]), imageesc(), colorbar, colormap gray</p>
+<h3 id="control">5.1.5. control</h3><pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">for i &#x3D; i :10
+	pass
+end
+
+if 表达式
+
+elseif 表达式
+
+else
+
+while 表达式
+
+end
+
+function [y1, y2] &#x3D; name(x)
+	y &#x3D; x;
+	y &#x3D; x;
+end <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>addpath</p>
 
                 
             </div>
@@ -1313,7 +1362,7 @@ IQR(x) = Q_3 - Q_1</script><h2 id="learn-rate">4.4. learn rate</h2><p>确定模�
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">47.2k</span>
+                        class="white-color">47.4k</span>
             
             
             
