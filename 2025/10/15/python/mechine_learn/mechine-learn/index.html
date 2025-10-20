@@ -417,21 +417,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-10-18
+                    2025-10-19
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    1.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    8 分
                 </div>
                 
 
@@ -634,6 +634,80 @@ function [y1, y2] &#x3D; name(x)
 	y &#x3D; x;
 end <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>addpath</p>
+<h1 id="classification">6. classification</h1><p>$y 取值于 {0， 1， 2}$固定值</p>
+<p>预测值$\in [0, 1]$， 使用threshold 区分区间确定类型</p>
+<p>regression问题</p>
+<ol>
+<li><p>预测曲线受极值影响</p>
+<p><img src="/2025/10/15/python/mechine_learn/mechine-learn/image-20251019204259717.png" alt="image-20251019204259717"></p>
+</li>
+<li><p>$y \notin [0, 1]$， </p>
+</li>
+</ol>
+<p>因此使用， Logistic Regression </p>
+<h2 id="logistic-sigmoid-function">6.1. logistic / sigmoid function</h2><script type="math/tex; mode=display">
+g(x) = \frac{1}{1+e^{-x}}</script><p>函数图像，g(x) $\in$ [0,1]</p>
+<p><img src="/2025/10/15/python/mechine_learn/mechine-learn/image-20251019205241683.png" alt="image-20251019205241683"></p>
+<p>h(x) 定义，在输入x 情况，预测为 y = 1的概率，$p(y = 1| x, \theta)$</p>
+<p> y = 0 的概率为 1- h(x)</p>
+<h2 id="decision-boundary">6.2. decision boundary</h2><p>决策边界 由 $\theta$ 参数决定， 计算出$\theta$ 获得决策边界</p>
+<p><img src="/2025/10/15/python/mechine_learn/mechine-learn/image-20251019210727035.png" alt="image-20251019210727035"></p>
+<h2 id="cost-function-1">6.3. cost function</h2><script type="math/tex; mode=display">
+L(x) = \frac{1}{2m} \sum_{i=1}^{m}cost(h_\theta(x), y)</script><p>cost function 尽可能为 convex function ，便于之后梯度优化</p>
+<p><img src="/2025/10/15/python/mechine_learn/mechine-learn/image-20251019212137633.png" alt="image-20251019212137633"></p>
+<p>regression 中 $cost(h(x), y) = (h(x)- y)^2$</p>
+<p>classification 中， 使用 MSE ，不是一个convex function ，不利于之后优化</p>
+<script type="math/tex; mode=display">
+cos(h_\theta(x), y) = \begin{cases}
+    -log(h_\theta(x)) & \text{if } y = 1 \\
+    -log(1 - h_\theta(x)) & \text{if } y = 0 
+\end{cases}</script><p><img src="/2025/10/15/python/mechine_learn/mechine-learn/image-20251019212533349.png" alt="image-20251019212533349"></p>
+<h2 id="gradient-descend-2">6.4. gradient descend</h2><p>cost function 等价为</p>
+<script type="math/tex; mode=display">
+cost(h(x), y) = -y* log(h(x)) -(1-y) log(1-h(x))\\ 
+L(\theta) = -\frac{1}{2m}[\sum_{i=1}^{m}y* log(h(x)) +(1-y) log(1-h(x)) ]</script><p>求导后的结果，求导过程省略，太麻烦了, 求导结果 和 regression cost function 求导结果一致</p>
+<script type="math/tex; mode=display">
+\frac{\partial}{\partial_\theta} L(\theta) = \sum_{i=1}^{m} (h_\theta(x) - y) x</script><p>梯度下降公式</p>
+<script type="math/tex; mode=display">
+\theta = \theta - \alpha * \sum_{i=1}^{m} (h_\theta(x) - y) x</script><h2 id="advanced-optimization">6.5. advanced optimization</h2><ol>
+<li>gradient descent</li>
+<li>conjugate descent</li>
+<li>BFGS</li>
+<li>L-BFGS </li>
+</ol>
+<p>优点： </p>
+<ol>
+<li>自动选择$\alpha $</li>
+<li>优化速度更快</li>
+</ol>
+<p>缺点： 内部复杂</p>
+<h3 id="编写cost-function">6.5.1. 编写cost function</h3><pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">function [jVal, gradient] &#x3D; costFunction(theta)
+% 需要返回函数值，和梯度下降值
+	jVal &#x3D; (theta(1) - 5)^2;
+	gradient &#x3D; zeros(2,1);
+	gradient(1) &#x3D; 2*(theta(1) - 5);
+end
+
+% 编写优化函数
+options &#x3D; optimset(&#39;GradObj&#39;, &#39;on&#39;, &#39;MaxIter&#39;, 100); % 优化选择参数
+initialTheta &#x3D; zeros(2,1); % 初始值
+[optTheta, functionVal , exitFlag] &#x3D; fminunc(@costFunction, initiatTheta, options);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="more-class">6.6. more class</h2><p>one vs all</p>
+<p>分类三种类别 1， 2， 3 拆分为三个分类</p>
+<ol>
+<li>1 - rest</li>
+<li>2 - rest</li>
+<li>3 - rest</li>
+</ol>
+<p><img src="/2025/10/15/python/mechine_learn/mechine-learn/image-20251019221901670.png" alt="image-20251019221901670"></p>
+<p>then , max $h_3(x)$ 作为最终结果</p>
+<h1 id="七">7. 七</h1><h2 id="overfit">7.1. overfit</h2><p><img src="/2025/10/15/python/mechine_learn/mechine-learn/image-20251019223154219.png" alt="image-20251019223154219" style="zoom: 80%;"></p>
+<p>使用test 验证是否出现了过拟合</p>
+<p>一个原因： 数据量 &lt; 特征数量</p>
+<ol>
+<li>人为减少特征数量</li>
+<li>使用正则化，保留特征，减少$ \theta values$</li>
+</ol>
 
                 
             </div>
@@ -1362,7 +1436,7 @@ end <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">47.4k</span>
+                        class="white-color">47.9k</span>
             
             
             
