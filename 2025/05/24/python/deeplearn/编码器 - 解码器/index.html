@@ -5,9 +5,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="编码器 - 解码器, 汤汁小白菜">
-    <meta name="description" content="1. 编码器 - 解码器1.1. 基本框架class Encoder(nn.Module):
+    <meta name="description" content="1. 编码器 - 解码器
+1.1. 基本框架
+class Encoder(nn.Module):
     def __init__(self, **kwargs):
-        super(Encoder, self).__init__(*">
+        super(Encoder, self).__init">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -468,7 +470,9 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="编码器-解码器">1. 编码器 - 解码器</h1><h2 id="基本框架">1.1. 基本框架</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">class Encoder(nn.Module):
+                <h1 id="编码器---解码器">1. 编码器 - 解码器</h1>
+<h2 id="基本框架">1.1. 基本框架</h2>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">class Encoder(nn.Module):
     def __init__(self, **kwargs):
         super(Encoder, self).__init__(**kwargs)
     def forward(self, X, *args):
@@ -493,8 +497,12 @@
         # 编码器的输出最为解码器输入的一部分
         dec_state &#x3D; self.decoder.init_state(enc_outputs, *args)
         return self.decoder(dec_X, dec_state)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="seq2seq">1.2. seq2seq</h2><p><img src="/2025/05/24/python/deeplearn/%E7%BC%96%E7%A0%81%E5%99%A8%20-%20%E8%A7%A3%E7%A0%81%E5%99%A8/image-20250424214252355.png" alt="image-20250424214252355"></p>
-<h3 id="编码器">1.2.1. 编码器</h3><ol>
+<h2 id="seq2seq">1.2. seq2seq</h2>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E7%BC%96%E7%A0%81%E5%99%A8%20-%20%E8%A7%A3%E7%A0%81%E5%99%A8/image-20250424214252355.png" alt="image-20250424214252355"><figcaption aria-hidden="true">image-20250424214252355</figcaption>
+</figure>
+<h3 id="编码器">1.2.1. 编码器</h3>
+<ol type="1">
 <li>将序列(时间步)的数字转换为张量</li>
 <li>通过rnn输出上下文变量C，隐状态</li>
 </ol>
@@ -517,7 +525,8 @@
         # output的形状:(num_steps,batch_size,num_hiddens)
         # state的形状:(num_layers,batch_size,num_hiddens)
         return output, state<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="解码器">1.2.2. 解码器</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python">class Seq2SeqDecoder(nn.Decoder):
+<h3 id="解码器">1.2.2. 解码器</h3>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">class Seq2SeqDecoder(nn.Decoder):
     def __init__(self, vocab_size, embed_size, num_hiddens, num_layers,
                  dropout&#x3D;0, **kwargs):
         super(Seq2SeqDecoder, self).__init__(**kwargs)
@@ -540,29 +549,26 @@
         output &#x3D; self.dense(output).permute(1, 0, 2)
         return output , state
         <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="训练过程">1.2.3. 训练过程</h3><p>不同点：</p>
-<ol>
+<h3 id="训练过程">1.2.3. 训练过程</h3>
+<p>不同点：</p>
+<ol type="1">
 <li>定义使用MarkedSoftmaxCELoss 损失函数</li>
 <li>塑造解码器输入，原序列前增加bos, 删除eos</li>
 </ol>
 <p>相同点：</p>
-<ol>
-<li>apply(init(m)), optimizer , loss,  net.train()</li>
-<li>分epoch, 分批量，optimizer.zero_gred(),  net(x) , l = loss(y_hat, Y), l.backward(),  grad_clipping(net, theta), optimizer.step()</li>
+<ol type="1">
+<li>apply(init(m)), optimizer , loss, net.train()</li>
+<li>分epoch, 分批量，optimizer.zero_gred(), net(x) , l = loss(y_hat, Y), l.backward(), grad_clipping(net, theta), optimizer.step()</li>
 </ol>
-<h3 id="预测过程">1.2.4. 预测过程</h3><ol>
-<li><p>net.eval()</p>
-</li>
-<li><p>准备序列数据</p>
-</li>
-<li><p>对src编码，得到dec_state=context</p>
-</li>
-<li><p>传入一个<bos>数据</bos></p>
-</li>
+<h3 id="预测过程">1.2.4. 预测过程</h3>
+<ol type="1">
+<li><p>net.eval()</p></li>
+<li><p>准备序列数据</p></li>
+<li><p>对src编码，得到dec_state=context</p></li>
+<li><p>传入一个<bos>数据</bos></p></li>
 <li><p>dec_X 的维度为(1, 1)</p>
-<p>​    Y 的维度为(1, 1, embed_size)</p>
-<p>​    每一次更新dec_X, 更新了decodor的隐藏状态</p>
-</li>
+<p>​ Y 的维度为(1, 1, embed_size)</p>
+<p>​ 每一次更新dec_X, 更新了decodor的隐藏状态</p></li>
 </ol>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">def predict_seq2seq(net, src_sentence, src_vocab, tgt_vocab, num_steps,
                    device, save_attention_weights&#x3D;False):
@@ -610,12 +616,11 @@
            break
        output_seq.append(pred)
    return &#39; &#39;.join(tgt_vocab.to_tokens(output_seq)), attention_weight_seq<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>   <strong>这里可以优化使用束搜索</strong></p>
-<h3 id="损失函数">1.2.5. 损失函数</h3><ol>
-<li><p>计算pred与label的Loss</p>
-</li>
-<li><p>计算序列的掩码</p>
-</li>
+<p><strong>这里可以优化使用束搜索</strong></p>
+<h3 id="损失函数">1.2.5. 损失函数</h3>
+<ol type="1">
+<li><p>计算pred与label的Loss</p></li>
+<li><p>计算序列的掩码</p></li>
 <li><p>将loss与序列掩码相乘</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">class MaskedSoftmaxCELoss(nn.CrossEntropyLoss):
     &quot;&quot;&quot;带遮蔽的softmax交叉熵损失函数&quot;&quot;&quot;
@@ -629,10 +634,10 @@
         unweighted_loss &#x3D; super(MaskedSoftmaxCELoss, self).forward(
             pred.permute(0, 2, 1), label)
         weighted_loss &#x3D; (unweighted_loss * weights).mean(dim&#x3D;1)
-        return weighted_loss<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
+        return weighted_loss<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
-<h4 id="掩码">1.2.5.1. 掩码</h4><ol>
+<h4 id="掩码">1.2.5.1. 掩码</h4>
+<ol type="1">
 <li>生成序列掩码，可以使用arrange&lt; valid_len获取</li>
 <li>将所有掩码位置 置为0</li>
 </ol>
@@ -653,14 +658,20 @@
     print(mask)
     X[~mask] &#x3D; value
     return X<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="预测序列评估">1.2.5.2. 预测序列评估</h4><p>我们将BLEU定义为：</p>
-<script type="math/tex; mode=display">
-\exp\left(\min\left(0, 1 - \frac{\mathrm{len}_{\text{label}}}{\mathrm{len}_{\text{pred}}}\right)\right) \prod_{n=1}^k p_n^{1/2^n},</script><h1 id="注意力机制">2. 注意力机制</h1><p>查询值query, 键值对（key, value)，每一个key 对应一个query</p>
-<p>注意力权重计算的是query对key的关注程度，attention(query_num , key_num)，每一行是当前查询对所有键的注意力，然后与query计算，得到每一个查询对query的注意力结果</p>
-<script type="math/tex; mode=display">
+<h4 id="预测序列评估">1.2.5.2. 预测序列评估</h4>
+<p>我们将BLEU定义为： <span class="math display">$$
+\exp\left(\min\left(0, 1 - \frac{\mathrm{len}_{\text{label}}}{\mathrm{len}_{\text{pred}}}\right)\right) \prod_{n=1}^k p_n^{1/2^n},
+$$</span></p>
+<h1 id="注意力机制">2. 注意力机制</h1>
+<p>查询值query, 键值对（key, value)，每一个key 对应一个query</p>
+<p>注意力权重计算的是query对key的关注程度，attention(query_num , key_num)，每一行是当前查询对所有键的注意力，然后与query计算，得到每一个查询对query的注意力结果 <span class="math display">$$
 attention_weight = \alpha(query, key)\\
-f(x) = attention_weight * query</script><h2 id="常见机制">2.1. 常见机制</h2><h3 id="掩蔽注意力机制操作">2.1.1. 掩蔽注意力机制操作</h3><p>对键值中不需要的部分掩蔽为0，具体操作是</p>
-<ol>
+f(x) = attention_weight * query
+$$</span></p>
+<h2 id="常见机制">2.1. 常见机制</h2>
+<h3 id="掩蔽注意力机制操作">2.1.1. 掩蔽注意力机制操作</h3>
+<p>对键值中不需要的部分掩蔽为0，具体操作是</p>
+<ol type="1">
 <li>将atterntion_weight(batch, query, key) 中的key维度数据通过掩码，转换为较小数</li>
 <li>使用softMax，较小数转换为0，key对应此处的权重就是0了</li>
 </ol>
@@ -683,12 +694,12 @@ f(x) = attention_weight * query</script><h2 id="常见机制">2.1. 常见机制<
         X &#x3D; sequence_mask(X.reshape(-1, shape[-1]), valid_lens,values&#x3D;&#x3D; -1e6)
         return nn.functional.softmax(X.shape[shape], dim &#x3D;-1) # 对掩蔽维度归一化
       <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="加性注意力">2.1.2. 加性注意力</h3><p>键，查询有时是矢量<strong>（不同长度）</strong>转换为相同长度的矢量</p>
-<script type="math/tex; mode=display">
-a(\mathbf q, \mathbf k) = \mathbf w_v^\top \text{tanh}(\mathbf W_q\mathbf q + \mathbf W_k \mathbf k) \in \mathbb{R}</script><ol>
+<h3 id="加性注意力">2.1.2. 加性注意力</h3>
+<p>键，查询有时是矢量<strong>（不同长度）</strong>转换为相同长度的矢量 <span class="math display"><em>a</em>(<strong>q</strong>, <strong>k</strong>) = <strong>w</strong><sub><em>v</em></sub><sup>⊤</sup>tanh(<strong>W</strong><sub><em>q</em></sub><strong>q</strong> + <strong>W</strong><sub><em>k</em></sub><strong>k</strong>) ∈ ℝ</span></p>
+<ol type="1">
 <li>线性层操作，query=&gt;(batch ,query, hidden_num),key=&gt;(batch ,key hidden_num)</li>
 <li>得到注意力矩阵，query=&gt;(batch ,query,1 hidden_num)，key=&gt;(batch ,1，key hidden_num)， query+key =&gt;query=&gt;(batch ,query,key, hidden_num)</li>
-<li>$W_t$ 是线性层(hidden_num, 1)， 移除最后一个维度，得到attention_weight =(batch ,query,key,)</li>
+<li><span class="math inline"><em>W</em><sub><em>t</em></sub></span> 是线性层(hidden_num, 1)， 移除最后一个维度，得到attention_weight =(batch ,query,key,)</li>
 <li>使用掩蔽注意力，对key上无用的权重屏蔽</li>
 </ol>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">class AddictiveAttention(nn.Module):
@@ -709,9 +720,11 @@ a(\mathbf q, \mathbf k) = \mathbf w_v^\top \text{tanh}(\mathbf W_q\mathbf q + \m
         self.atterntion_weight &#x3D; masked_softmax(attention, valid_lens)
         return torch.bmm(self.attention_weight, values)
         <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="点积注意力">2.1.3. 点积注意力</h3><p>计算效率高，但是要求query, key具有相同的张量长度，权重函数：</p>
-<script type="math/tex; mode=display">
-a(\mathbf q, \mathbf k) = \mathbf{q}^\top \mathbf{k}  /\sqrt{d}</script><p>方差缩放，防止梯度消失</p>
+<h3 id="点积注意力">2.1.3. 点积注意力</h3>
+<p>计算效率高，但是要求query, key具有相同的张量长度，权重函数： <span class="math display">$$
+a(\mathbf q, \mathbf k) = \mathbf{q}^\top \mathbf{k}  /\sqrt{d}
+$$</span></p>
+<p>方差缩放，防止梯度消失</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">
 class DotProductAttention(nn.Module):
     def __init__(self, dropout, **kwargs):
@@ -724,18 +737,23 @@ class DotProductAttention(nn.Module):
         self.attention_weight &#x3D; masked_softmax(attention, valid_len)
         # 输出(batch_size, query_size, feature_size)
         return torch.bmm(self.dropout(self.attention_weight), values)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="多头注意力">2.1.4. 多头注意力</h3><p>使用多个结构一样，参数不一样的注意力去学习不同的知识</p>
-<p><img src="/2025/05/24/python/deeplearn/%E7%BC%96%E7%A0%81%E5%99%A8%20-%20%E8%A7%A3%E7%A0%81%E5%99%A8/image-20250516113430112.png" alt="image-20250516113430112"></p>
+<h3 id="多头注意力">2.1.4. 多头注意力</h3>
+<p>使用多个结构一样，参数不一样的注意力去学习不同的知识</p>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E7%BC%96%E7%A0%81%E5%99%A8%20-%20%E8%A7%A3%E7%A0%81%E5%99%A8/image-20250516113430112.png" alt="image-20250516113430112"><figcaption aria-hidden="true">image-20250516113430112</figcaption>
+</figure>
 <p>将键值对分为多个子空间，每个注意力机制学习一个子空间的特征，得到H组的注意力权重，然后将注意力权重通过线性层汇聚</p>
-<p><img src="/2025/05/24/python/deeplearn/%E7%BC%96%E7%A0%81%E5%99%A8%20-%20%E8%A7%A3%E7%A0%81%E5%99%A8/image-20250425155705305.png" alt="image-20250425155705305"></p>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E7%BC%96%E7%A0%81%E5%99%A8%20-%20%E8%A7%A3%E7%A0%81%E5%99%A8/image-20250425155705305.png" alt="image-20250425155705305"><figcaption aria-hidden="true">image-20250425155705305</figcaption>
+</figure>
 <p>常规思路：</p>
-<ol>
+<ol type="1">
 <li>将query, key, values映射到子空间，使用不同的Linear映射</li>
 <li>将不同头的注意力结果合并在一起，在feature维度上合并</li>
 <li>再通过一个Linear线性层，连接所有head</li>
 </ol>
 <p>并行思路</p>
-<ol>
+<ol type="1">
 <li>将query,key, values映射到完整空间，然后将完整空间查分成子空间，head与batch组成一个伪batch</li>
 <li>再将子空间的数据通过点积注意力</li>
 <li>将head从batch中分离出来，与feature合并，效果与非并行情况相同</li>
@@ -766,7 +784,9 @@ class DotProductAttention(nn.Module):
         
         output_concat&#x3D;transpose_output(output, self.num_heads)
         return self.W_o(output_concat)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="附录">3. 附录</h1><h2 id="BLEU">3.1. BLEU</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">def bleu(pred_seq, label_seq, k):  #@save
+<h1 id="附录">3. 附录</h1>
+<h2 id="bleu">3.1. BLEU</h2>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">def bleu(pred_seq, label_seq, k):  #@save
     &quot;&quot;&quot;计算BLEU&quot;&quot;&quot;
     pred_tokens, label_tokens &#x3D; pred_seq.split(&#39; &#39;), label_seq.split(&#39; &#39;)
     len_pred, len_label &#x3D; len(pred_tokens), len(label_tokens)
@@ -1482,7 +1502,7 @@ class DotProductAttention(nn.Module):
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">47.9k</span>
+                        class="white-color">48.2k</span>
             
             
             
