@@ -5,14 +5,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="哈希表-字符串, 汤汁小白菜">
-    <meta name="description" content="1. 哈希表
-感谢代码随想录
-1.1. 快乐数
-快乐数
+    <meta name="description" content="1. 哈希表感谢代码随想录
+1.1. 快乐数快乐数
 查找数字是否重复出现，使用哈希表存储
 #include &amp;lt;set&amp;gt;
 set&amp;lt;int&amp;gt; s;
-s.insert(a); &amp;#x2F;&amp;#x2F; 插入数">
+s.insert(a); &amp;#x2F;&amp;#x2F; 插入数据
+if(s.">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -447,7 +446,7 @@ s.insert(a); &amp;#x2F;&amp;#x2F; 插入数">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    595
+                    592
                 </div>
                 
 
@@ -477,10 +476,8 @@ s.insert(a); &amp;#x2F;&amp;#x2F; 插入数">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="哈希表">1. 哈希表</h1>
-<p><strong>感谢<a target="_blank" rel="noopener" href="https://programmercarl.com/">代码随想录</a></strong></p>
-<h2 id="快乐数">1.1. 快乐数</h2>
-<p><a target="_blank" rel="noopener" href="https://programmercarl.com/0202.快乐数.html#思路">快乐数</a></p>
+                <h1 id="哈希表">1. 哈希表</h1><p><strong>感谢<a target="_blank" rel="noopener" href="https://programmercarl.com/">代码随想录</a></strong></p>
+<h2 id="快乐数">1.1. 快乐数</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0202.快乐数.html#思路">快乐数</a></p>
 <p>查找数字是否重复出现，使用哈希表存储</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;set&gt;
 set&lt;int&gt; s;
@@ -489,72 +486,65 @@ if(s.find(a)!&#x3D; s.end())&#123;
     &#x2F;&#x2F; 查找数据是否在s中
     &#x2F;&#x2F;如果出现 !&#x3D; s.end(), 没出现 &#x3D;&#x3D; s.end()
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="两数之和">1.2. 两数之和</h2>
-<p><a target="_blank" rel="noopener" href="https://programmercarl.com/0001.两数之和.html#算法公开课">两数之和</a></p>
-<ol type="1">
+<h2 id="两数之和">1.2. 两数之和</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0001.两数之和.html#算法公开课">两数之和</a></p>
+<ol>
 <li>map存放在之前的数据，也是当前查询中匹配的数据</li>
 <li>map中key对应数值，value对应索引</li>
 <li>unordered_map中使用Hash存储， map中使用红黑树存储</li>
 </ol>
-<h2 id="三数之和">1.3. 三数之和</h2>
-<p><a target="_blank" rel="noopener" href="https://programmercarl.com/0015.三数之和.html#思路">三数之和</a></p>
-<ol type="1">
-<li><p>使用三个指针，查找指针对应的数据之和是否为0</p></li>
-<li><p>指针去重，结果中不能包含统一的数据，所以在取得结果后再去重，而不是先去重再计算结果</p></li>
-</ol>
-<p><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">if(i&gt; 0 &amp;&amp; nums[i]&#x3D;&#x3D; nums[i-1])&#123;
+<h2 id="三数之和">1.3. 三数之和</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0015.三数之和.html#思路">三数之和</a></p>
+<ol>
+<li><p>使用三个指针，查找指针对应的数据之和是否为0</p>
+</li>
+<li><p>指针去重，结果中不能包含统一的数据，所以在取得结果后再去重，而不是先去重再计算结果</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">if(i&gt; 0 &amp;&amp; nums[i]&#x3D;&#x3D; nums[i-1])&#123;
 	continue;&#x2F;&#x2F;对已有结果去重
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></p>
-<ol start="3" type="1">
-<li>vector<int><strong>{</strong>1， 2，3<strong>}</strong>，使用{}作为临时vector</int></li>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>vector<int><strong>{</strong>1， 2，3<strong>}</strong>，使用{}作为临时vector</int></p>
+</li>
 <li><code>for( ; ; )</code> 中第一个式子只对第一次循环有效，循环中赋初值需放在循环内</li>
 </ol>
-<h2 id="两次hash统计">1.4. 两次hash统计</h2>
-<p><a target="_blank" rel="noopener" href="https://programmercarl.com/1207.独一无二的出现次数.html#思路">独一无二出现次数</a></p>
+<h2 id="两次hash统计">1.4. 两次hash统计</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/1207.独一无二的出现次数.html#思路">独一无二出现次数</a></p>
 <p>出现次数只出现一次，返回<code>true</code></p>
-<ol type="1">
+<ol>
 <li><p>先统计<code>数字</code>出现次数</p>
 <blockquote>
 <p>数字中如果有负数，计算次数时， 数组索引需增加最小值</p>
-</blockquote></li>
+</blockquote>
+</li>
 <li><p>统计 <code>出现次数</code>的次数</p>
 <blockquote>
 <p>出现次数为0 的次数，直接跳过</p>
-</blockquote></li>
+</blockquote>
+</li>
 </ol>
-<h1 id="字符串">2. 字符串</h1>
-<h2 id="反转字符串">2.1. 反转字符串</h2>
-<p><a target="_blank" rel="noopener" href="https://programmercarl.com/0541.反转字符串II.html#思路">反转字符串2</a></p>
-<ol type="1">
-<li>对于有规律的计数时，使用i = i+ num，</li>
+<h1 id="字符串">2. 字符串</h1><h2 id="反转字符串">2.1. 反转字符串</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0541.反转字符串II.html#思路">反转字符串2</a></p>
+<ol>
+<li>对于有规律的计数时，使用i = i+ num， </li>
 <li>reverse(begin()+i， begin+k)，反转范围为[i,k）</li>
 </ol>
-<h2 id="花式反转">2.2. 花式反转</h2>
-<p><a target="_blank" rel="noopener" href="https://programmercarl.com/0151.翻转字符串里的单词.html#思路">先反转整体，再反转局部</a></p>
-<ol type="1">
+<h2 id="花式反转">2.2. 花式反转</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0151.翻转字符串里的单词.html#思路">先反转整体，再反转局部</a></p>
+<ol>
 <li>去除空格时，sum值代表字符串的长度</li>
 <li>当s 遍历到结尾时，也是一个反转条件</li>
 </ol>
-<h2 id="kmp算法">2.3. KMP算法</h2>
-<p>获得next数组</p>
-<ol type="1">
+<h2 id="KMP算法">2.3. KMP算法</h2><p>获得next数组</p>
+<ol>
 <li>初始化为0</li>
 <li>如果s[i] 与s[j] 相同，最长的 j +1；</li>
 <li>否则与next[j-1]的字串进行比较；</li>
 </ol>
 <p>比较</p>
-<ol type="1">
+<ol>
 <li>如果s[i] 与t[j] 相同， j++ ，比较下一位</li>
 <li>否则返回到最长的公共子串的下一位， 即next[j-1]比较</li>
 </ol>
 <blockquote>
 <p>next初值赋值为1 时，相当于next 向右移动了一位，此时不相同时，取next[j]即可</p>
 </blockquote>
-<h2 id="重复子串">2.4. 重复子串</h2>
-<p><a target="_blank" rel="noopener" href="https://programmercarl.com/0459.重复的子字符串.html">重复子串</a></p>
-<figure>
-<img src="/2025/08/22/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E5%93%88%E5%B8%8C%E8%A1%A8-%E5%AD%97%E7%AC%A6%E4%B8%B2/20220728104931.png" alt="图二"><figcaption aria-hidden="true">图二</figcaption>
-</figure>
+<h2 id="重复子串">2.4. 重复子串</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0459.重复的子字符串.html">重复子串</a></p>
+<p><img src="/2025/08/22/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E5%93%88%E5%B8%8C%E8%A1%A8-%E5%AD%97%E7%AC%A6%E4%B8%B2/20220728104931.png" alt="图二"></p>
 <p><strong>结论： 如果s是由重复序列组成，那么s+s中一定具有s</strong></p>
 
                 
@@ -1281,7 +1271,7 @@ if(s.find(a)!&#x3D; s.end())&#123;
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">48.2k</span>
+                        class="white-color">48.1k</span>
             
             
             
