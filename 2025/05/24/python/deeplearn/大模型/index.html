@@ -5,15 +5,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="汤汁小白菜">
-    <meta name="description" content="1. 大模型训练流程
+    <meta name="description" content="1. 大模型
+训练流程
 
-1.1. 预训练无监督学习，学习先验的背景知识
-大模型的输出总的概率与原数据比较，不需要
+image-20250516165010562
 
-L(u) =\sum_{i}{\log(p(u_i| u_0,..., u_{i-1})|\theta)}
-数据获取
-
-网页">
+1.1. 预训练
+无监督学习，学习先验的背景知识
+大模型的输出总的概率与原数据比较，不需要 L(u) = ∑ilog (p(ui|u0, ..., u">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -457,315 +456,402 @@ L(u) =\sum_{i}{\log(p(u_i| u_0,..., u_{i-1})|\theta)}
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="大模型">1. 大模型</h1><p>训练流程</p>
-<p><img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250516165010562.png" alt="image-20250516165010562"></p>
-<h2 id="预训练">1.1. 预训练</h2><p>无监督学习，学习先验的背景知识</p>
-<p>大模型的输出总的概率与原数据比较，不需要</p>
-<script type="math/tex; mode=display">
-L(u) =\sum_{i}{\log(p(u_i| u_0,..., u_{i-1})|\theta)}</script><ol>
+                <h1 id="大模型">1. 大模型</h1>
+<p>训练流程</p>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250516165010562.png" alt="image-20250516165010562"><figcaption aria-hidden="true">image-20250516165010562</figcaption>
+</figure>
+<h2 id="预训练">1.1. 预训练</h2>
+<p>无监督学习，学习先验的背景知识</p>
+<p>大模型的输出总的概率与原数据比较，不需要 <span class="math display"><em>L</em>(<em>u</em>) = ∑<sub><em>i</em></sub>log (<em>p</em>(<em>u</em><sub><em>i</em></sub>|<em>u</em><sub>0</sub>, ..., <em>u</em><sub><em>i</em> − 1</sub>)|<em>θ</em>)</span></p>
+<ol type="1">
 <li><p>数据获取</p>
-<ol>
+<ol type="1">
 <li>网页爬取，数据没有处理</li>
 <li>重复</li>
 <li>拼写错误</li>
-</ol>
-</li>
+</ol></li>
 <li><p>数据清洗</p>
-<ol>
-<li><p>转换文本格式</p>
-</li>
+<ol type="1">
+<li><p>转换文本格式</p></li>
 <li><p>去重</p>
-<ol>
+<ol type="1">
 <li>URL爬取的网站去重</li>
 <li>文档的相似度</li>
 <li>对文档分组30M， 超过6次重复， 删除其余5行</li>
 <li>启发式过滤，使用token级的KL散度去重</li>
 </ol>
-<p><img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250516172556394.png" alt="image-20250516172556394"></p>
-<ol>
-<li>数据打包<pre><code> 1. &lt;BOS&gt; &lt;EOS&gt;
- 2. 一行一行的训练，而不是一句一句的训练
-</code></pre></li>
-<li>观测模型，使用测试集对中间模型测试</li>
-<li>数据比例，代码模型中平衡代码补全（中间填充）与代码编写（从前向后编写）的任务，两种数据集都需要</li>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250516172556394.png" alt="image-20250516172556394"><figcaption aria-hidden="true">image-20250516172556394</figcaption>
+</figure></li>
+<li><p>数据打包 1. <bos> <eos> 2. 一行一行的训练，而不是一句一句的训练</eos></bos></p></li>
+<li><p>观测模型，使用测试集对中间模型测试</p></li>
+<li><p>数据比例，代码模型中平衡代码补全（中间填充）与代码编写（从前向后编写）的任务，两种数据集都需要</p></li>
+</ol></li>
 </ol>
-</li>
-</ol>
-</li>
-</ol>
-<h3 id="继续预训练">1.1.1. 继续预训练</h3><p>当前的base model 对于专业领域的效果很差，继续与训练补全知识。</p>
+<h3 id="继续预训练">1.1.1. 继续预训练</h3>
+<p>当前的base model 对于专业领域的效果很差，继续与训练补全知识。</p>
 <p>加入新的数据，调整学习率</p>
-<ol>
+<ol type="1">
 <li>warmup 的步数不会影响最终的结果</li>
 <li>学习率较大，下游任务更好</li>
 <li>对原有模型继续warmup，效果更差</li>
 </ol>
 <p>使用梯形的学习率，保存拐点位置的学习率，继续预训练时候，使用拐点数据预训练，保持较高的搜索速度，拟合新增的数据集</p>
-<p><img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250516173720277.png" alt="image-20250516173720277"></p>
-<h3 id="scaling-up">1.1.2. scaling up</h3><p>扩大模型的参数和容量</p>
-<h3 id="尺度定律">1.1.3. 尺度定律</h3><p>模型的损失是可预测的，与模型的算力，大小，数据集有较大的关系</p>
-<ol>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250516173720277.png" alt="image-20250516173720277"><figcaption aria-hidden="true">image-20250516173720277</figcaption>
+</figure>
+<h3 id="scaling-up">1.1.2. scaling up</h3>
+<p>扩大模型的参数和容量</p>
+<h3 id="尺度定律">1.1.3. 尺度定律</h3>
+<p>模型的损失是可预测的，与模型的算力，大小，数据集有较大的关系</p>
+<ol type="1">
 <li>模型的参数</li>
 <li>数据的大小</li>
 <li>算力</li>
 </ol>
 <p>模型与参数、大小、算力由直接的关系，不需要训练，就能知道最终的训练结果</p>
-<h4 id="尺度定律-1">1.1.3.1. 尺度定律</h4><ol>
+<h4 id="尺度定律-1">1.1.3.1. 尺度定律</h4>
+<ol type="1">
 <li><p>模型与参数、大小、算力由直接的关系，与模型形状弱依赖</p>
-<ol>
+<ol type="1">
 <li>某个网络的占比</li>
 <li>隐层数量的占比</li>
 <li>每个head的大小</li>
 </ol>
-<p>的影响很小，不需要对此调参</p>
-</li>
-<li><p>其他变量充足的时候，我们就知道模型最后的效果</p>
-</li>
+<p>的影响很小，不需要对此调参</p></li>
+<li><p>其他变量充足的时候，我们就知道模型最后的效果</p></li>
 </ol>
-<p><img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250519222325535.png" alt="image-20250519222325535"></p>
-<ol>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250519222325535.png" alt="image-20250519222325535"><figcaption aria-hidden="true">image-20250519222325535</figcaption>
+</figure>
+<ol start="3" type="1">
 <li><p>过拟合的普遍性，一味增加其中一项，模型效果就会进入衰退阶段</p>
-<p><img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250519223024436.png" alt="image-20250519223024436"></p>
-</li>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250519223024436.png" alt="image-20250519223024436"><figcaption aria-hidden="true">image-20250519223024436</figcaption>
+</figure></li>
 <li><p>同等算力下，调整模型大小和数据集的大小</p>
-<p><img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250519223337327.png" alt="image-20250519223337327"></p>
-</li>
-<li><p>模型在训练集与测试集上表现高度相关</p>
-</li>
-<li><p>训练数据有显示，仍然可以重复使用数据进行训练得到可预测的“尺度定律”</p>
-</li>
-<li><p>其他模型（包括transform)都具有尺度定律</p>
-</li>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250519223337327.png" alt="image-20250519223337327"><figcaption aria-hidden="true">image-20250519223337327</figcaption>
+</figure></li>
+<li><p>模型在训练集与测试集上表现高度相关</p></li>
+<li><p>训练数据有显示，仍然可以重复使用数据进行训练得到可预测的“尺度定律”</p></li>
+<li><p>其他模型（包括transform)都具有尺度定律</p></li>
 </ol>
-<h4 id="利用尺度定律">1.1.3.2. 利用尺度定律</h4><ol>
+<h4 id="利用尺度定律">1.1.3.2. 利用尺度定律</h4>
+<ol type="1">
 <li><p>固定模型的大小，更改预训练的数据量</p>
-<p><img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250519224015225.png" alt="image-20250519224015225"></p>
-</li>
-<li><p>规定算力大小，训练不同大小的模型，（训练到模型收敛较难，可以得到算力的大小）</p>
-</li>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250519224015225.png" alt="image-20250519224015225"><figcaption aria-hidden="true">image-20250519224015225</figcaption>
+</figure></li>
+<li><p>规定算力大小，训练不同大小的模型，（训练到模型收敛较难，可以得到算力的大小）</p></li>
 </ol>
-<p><img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250519224308944.png" alt="image-20250519224308944"></p>
-<h3 id="涌现">1.1.4. 涌现</h3><p>大模型在训练数量的规模时，准确率会发生突变</p>
-<h2 id="后训练">1.2. 后训练</h2><p>对齐人类的要求，回答问题有用、无害</p>
-<h3 id="指令微调">1.2.1. 指令微调</h3><p><img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250519225029335.png" alt="image-20250519225029335"></p>
-<ol>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250519224308944.png" alt="image-20250519224308944"><figcaption aria-hidden="true">image-20250519224308944</figcaption>
+</figure>
+<h3 id="涌现">1.1.4. 涌现</h3>
+<p>大模型在训练数量的规模时，准确率会发生突变</p>
+<h2 id="后训练">1.2. 后训练</h2>
+<p>对齐人类的要求，回答问题有用、无害</p>
+<h3 id="指令微调">1.2.1. 指令微调</h3>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250519225029335.png" alt="image-20250519225029335"><figcaption aria-hidden="true">image-20250519225029335</figcaption>
+</figure>
+<ol type="1">
 <li><p>上下文学习</p>
-<ol>
+<ol type="1">
 <li>用户给出例子，模型不更新参数直接学习</li>
 </ol>
-<p>使用例子训练，模型直接输出</p>
-</li>
+<p>使用例子训练，模型直接输出</p></li>
 <li><p>预训练-微调</p>
-<ol>
+<ol type="1">
 <li>在目标任务上进行微调</li>
 </ol>
-<p>给出命令前缀，然后训练</p>
-</li>
+<p>给出命令前缀，然后训练</p></li>
 <li><p>指令微调</p>
-<ol>
+<ol type="1">
 <li>在非目标任务上进行泛化，在任务上泛化很好</li>
-</ol>
-</li>
+</ol></li>
 </ol>
 <p>指令-回答， 对回答的预测计算损失函数</p>
-<h3 id="数据合成">1.2.2. 数据合成</h3><ol>
+<h3 id="数据合成">1.2.2. 数据合成</h3>
+<ol type="1">
 <li>人工构建任务例子</li>
 <li>使用强模型根据种子任务生成指令</li>
 <li>将生成的指令再给另一个强模型，获得指令的回答，得到&lt;指令，回答&gt; 对</li>
 </ol>
-<h3 id="test-scaling">1.2.3. test scaling</h3><p>模型输出多个结果，打分选择结果</p>
+<h3 id="test-scaling">1.2.3. test scaling</h3>
+<p>模型输出多个结果，打分选择结果</p>
 <p>过程奖励模型&gt;结果奖励模型</p>
 <p>选择框架</p>
-<p>   <img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250523163748097.png" alt="image-20250523163748097"></p>
-<h3 id="微调方法">1.2.4. 微调方法</h3><h4 id="lora">1.2.4.1. lora</h4><p>增加低秩矩阵</p>
-<h4 id="前缀调整">1.2.4.2. 前缀调整</h4><p>训练的模型权重不再调整，k,v前分别添加可训练的连续前缀向量</p>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250523163748097.png" alt="image-20250523163748097"><figcaption aria-hidden="true">image-20250523163748097</figcaption>
+</figure>
+<h3 id="微调方法">1.2.4. 微调方法</h3>
+<h4 id="lora">1.2.4.1. lora</h4>
+<p>增加低秩矩阵</p>
+<h4 id="前缀调整">1.2.4.2. 前缀调整</h4>
+<p>训练的模型权重不再调整，k,v前分别添加可训练的连续前缀向量</p>
 <p>冻结原权重，增加可训练模块</p>
-<h4 id="提示调整">1.2.4.3. 提示调整</h4><p>训练文本前增加提示命令</p>
-<h4 id="adapter">1.2.4.4. adapter</h4><p>在前馈神经网络前增加低秩矩阵</p>
-<h4 id="LoRAMoE">1.2.4.5. LoRAMoE</h4><p>微调插入专家模型中的LoRA适配器</p>
-<p><img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250523200928848.png" alt="image-20250523200928848"></p>
-<h2 id="强化学习">1.3. 强化学习</h2><p>最大化智能体获得的期望累计奖励</p>
-<h3 id="PPO函数">1.3.1. PPO函数</h3><p>策略： 大模型生成句子的过程$\pi$</p>
-<p>轨迹： 一系列的动作，大模型生成句子时候，的状态与动作</p>
-<script type="math/tex; mode=display">
-\tau  = s_1, a_1, ..s_n, a_n</script><p>奖励：$R(\tau)$，一整条轨迹的奖励</p>
-<p>基于策略的强化学习的目标：找到一种策略，是在这个策略的轨迹上的奖励分数最大</p>
-<script type="math/tex; mode=display">
+<h4 id="提示调整">1.2.4.3. 提示调整</h4>
+<p>训练文本前增加提示命令</p>
+<h4 id="adapter">1.2.4.4. adapter</h4>
+<p>在前馈神经网络前增加低秩矩阵</p>
+<h4 id="loramoe">1.2.4.5. LoRAMoE</h4>
+<p>微调插入专家模型中的LoRA适配器</p>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250523200928848.png" alt="image-20250523200928848"><figcaption aria-hidden="true">image-20250523200928848</figcaption>
+</figure>
+<h2 id="强化学习">1.3. 强化学习</h2>
+<p>最大化智能体获得的期望累计奖励</p>
+<h3 id="ppo函数">1.3.1. PPO函数</h3>
+<p>策略： 大模型生成句子的过程<span class="math inline"><em>π</em></span></p>
+<p>轨迹： 一系列的动作，大模型生成句子时候，的状态与动作 <span class="math display"><em>τ</em> = <em>s</em><sub>1</sub>, <em>a</em><sub>1</sub>, ..<em>s</em><sub><em>n</em></sub>, <em>a</em><sub><em>n</em></sub></span> 奖励：<span class="math inline"><em>R</em>(<em>τ</em>)</span>，一整条轨迹的奖励</p>
+<p>基于策略的强化学习的目标：找到一种策略，是在这个策略的轨迹上的奖励分数最大 <span class="math display">$$
 \begin{align}
-\underset{\pi_\theta}{argmax} j({\pi_\theta}) &= \underset{\pi_\theta}{argmax}E_{\tau~\pi}|R(\tau)|\\
-& = \sum_\tau R(\tau)P(\tau|\pi_\theta)
-\end{align}</script><p>LOSS函数的梯度：</p>
-<script type="math/tex; mode=display">
+\underset{\pi_\theta}{argmax} j({\pi_\theta}) &amp;= \underset{\pi_\theta}{argmax}E_{\tau~\pi}|R(\tau)|\\
+&amp; = \sum_\tau R(\tau)P(\tau|\pi_\theta)
+\end{align}
+$$</span> LOSS函数的梯度： <span class="math display">$$
 \begin{align*}
-\nabla J(\pi_\theta) &= \sum_\tau R(\tau) \nabla P(\tau|\pi_\theta) \\
-&= \sum_\tau R(\tau) P(\tau|\pi_\theta) \frac{\nabla P(\tau|\pi_\theta)}{P(\tau|\pi_\theta)} \\
-&= \sum_\tau R(\tau) P(\tau|\pi_\theta) \nabla \log(P(\tau|\pi_\theta)) \\
-&= \mathbb{E}_{\tau \sim \pi_\theta} [R(\tau) \nabla \log(P(\tau|\pi_\theta))]
-\end{align*}</script><p>路径的概率，从$s_0$递推，推到T-1,计算出T的概率</p>
-<script type="math/tex; mode=display">
-P(\tau|\pi_\theta) = \rho_0(s_0) \prod_{t=0}^{T-1} P(s_{t+1}|s_t, a_t)\pi_\theta(a_t|s_t)</script><script type="math/tex; mode=display">
-\nabla \log\left(P(\tau|\pi_\theta)\right) = \nabla \left[ \log \rho_0(s_0) + \sum_{t=0}^{T-1} \log P(s_{t+1}|s_t, a_t) + \sum_{t=0}^{T-1} \log \pi_\theta(a_t|s_t) \right]</script><p>前两项和策略模型的参数 $\theta$ 无关，可舍去。于是 </p>
-<script type="math/tex; mode=display">
-\nabla \log\left(P(\tau|\pi_\theta)\right) = \sum_{t=0}^{T-1} \nabla \log \pi_\theta(a_t|s_t)</script><p>带入Loss的梯度中，使用每时刻的奖励函数代替总路径$R(\tau)$</p>
-<script type="math/tex; mode=display">
-\nabla J(\pi_\theta) = \mathbb{E}_{\tau \sim \pi_\theta}\left[ \sum_{t=0}^{T-1} \Psi_t \nabla \log \pi_\theta(a_t|s_t) \right]</script><p>$\psi_t$的组成形式</p>
-<ol>
-<li>$\sum_{t=0}^\infty r_t$                        轨迹的累积奖励   </li>
-<li>$\sum_{t’=t}^\infty \gamma^{t’-t} r_{t’}$                        轨迹的折扣奖励   </li>
-<li>$\sum_{t’=t}^\infty \gamma^{t’-t} r_{t’} - b(s_t)$                        引入基线    </li>
-<li>$Q^\pi(s_t, a_t)$                        动作价值函数   </li>
-<li>$A^\pi(s_t, a_t)$                        优势函数   </li>
-<li>$r_t + V^\pi(s_{t+1}) - V^\pi(s_t)$                        时序差分残差</li>
+\nabla J(\pi_\theta) &amp;= \sum_\tau R(\tau) \nabla P(\tau|\pi_\theta) \\
+&amp;= \sum_\tau R(\tau) P(\tau|\pi_\theta) \frac{\nabla P(\tau|\pi_\theta)}{P(\tau|\pi_\theta)} \\
+&amp;= \sum_\tau R(\tau) P(\tau|\pi_\theta) \nabla \log(P(\tau|\pi_\theta)) \\
+&amp;= \mathbb{E}_{\tau \sim \pi_\theta} [R(\tau) \nabla \log(P(\tau|\pi_\theta))]
+\end{align*}
+$$</span> 路径的概率，从<span class="math inline"><em>s</em><sub>0</sub></span>递推，推到T-1,计算出T的概率 <span class="math display">$$
+P(\tau|\pi_\theta) = \rho_0(s_0) \prod_{t=0}^{T-1} P(s_{t+1}|s_t, a_t)\pi_\theta(a_t|s_t)
+$$</span></p>
+<p><span class="math display">$$
+\nabla \log\left(P(\tau|\pi_\theta)\right) = \nabla \left[ \log \rho_0(s_0) + \sum_{t=0}^{T-1} \log P(s_{t+1}|s_t, a_t) + \sum_{t=0}^{T-1} \log \pi_\theta(a_t|s_t) \right] 
+$$</span></p>
+<p>前两项和策略模型的参数 <span class="math inline"><em>θ</em></span> 无关，可舍去。于是 <span class="math display">$$
+\nabla \log\left(P(\tau|\pi_\theta)\right) = \sum_{t=0}^{T-1} \nabla \log \pi_\theta(a_t|s_t)
+$$</span> 带入Loss的梯度中，使用每时刻的奖励函数代替总路径<span class="math inline"><em>R</em>(<em>τ</em>)</span> <span class="math display">$$
+\nabla J(\pi_\theta) = \mathbb{E}_{\tau \sim \pi_\theta}\left[ \sum_{t=0}^{T-1} \Psi_t \nabla \log \pi_\theta(a_t|s_t) \right]
+$$</span> <span class="math inline"><em>ψ</em><sub><em>t</em></sub></span>的组成形式</p>
+<ol type="1">
+<li><span class="math inline">$\sum_{t=0}^\infty r_t$</span> 轨迹的累积奖励<br>
+</li>
+<li><span class="math inline">$\sum_{t'=t}^\infty \gamma^{t'-t} r_{t'}$</span> 轨迹的折扣奖励<br>
+</li>
+<li><span class="math inline">$\sum_{t'=t}^\infty \gamma^{t'-t} r_{t'} - b(s_t)$</span> 引入基线<br>
+</li>
+<li><span class="math inline"><em>Q</em><sup><em>π</em></sup>(<em>s</em><sub><em>t</em></sub>, <em>a</em><sub><em>t</em></sub>)</span> 动作价值函数<br>
+</li>
+<li><span class="math inline"><em>A</em><sup><em>π</em></sup>(<em>s</em><sub><em>t</em></sub>, <em>a</em><sub><em>t</em></sub>)</span> 优势函数<br>
+</li>
+<li><span class="math inline"><em>r</em><sub><em>t</em></sub> + <em>V</em><sup><em>π</em></sup>(<em>s</em><sub><em>t</em> + 1</sub>) − <em>V</em><sup><em>π</em></sup>(<em>s</em><sub><em>t</em></sub>)</span> 时序差分残差</li>
 </ol>
-<p>累计折扣奖励</p>
-<script type="math/tex; mode=display">
-G_t = r_t + \gamma r_{t+1} + \gamma^2 r_{t+2} + \dots + \gamma^{T-t-1} r_{T-1} = r_t + \gamma G_{t+1}</script><p>动作价值函数：在策略<em>π</em> 下，从状态 <em>s_t</em> 开始并执行动作 <em>a_t</em> 后，未来所有折扣奖励的<strong>期望</strong>。</p>
-<script type="math/tex; mode=display">
+<p>累计折扣奖励 <span class="math display"><em>G</em><sub><em>t</em></sub> = <em>r</em><sub><em>t</em></sub> + <em>γ</em><em>r</em><sub><em>t</em> + 1</sub> + <em>γ</em><sup>2</sup><em>r</em><sub><em>t</em> + 2</sub> + … + <em>γ</em><sup><em>T</em> − <em>t</em> − 1</sup><em>r</em><sub><em>T</em> − 1</sub> = <em>r</em><sub><em>t</em></sub> + <em>γ</em><em>G</em><sub><em>t</em> + 1</sub></span></p>
+<p>动作价值函数：在策略<em>π</em> 下，从状态 <em>s_t</em> 开始并执行动作 <em>a_t</em> 后，未来所有折扣奖励的<strong>期望</strong>。 <span class="math display">$$
 \begin{align}
-Q_\pi(s_t, a_t) &= \mathbb{E}_\pi[G_t | s_t, a_t] \\
-&= \mathbb{E}_\pi\left[\sum_{t=0}^{T-t} \gamma^{t'} r_{t'} | s_t, a_t\right] \\
-&= \mathbb{E}_\pi[r_t | s_t, a_t] + \mathbb{E}_\pi[\gamma V_\pi(S_{t+1}) | s_t, a_t] \\
-&= \sum_{s_{t+1} \in \mathcal{S}} P(s_{t+1}|s_t, a_t)R(s_t, a_t, s_{t+1}) + \gamma \sum_{s_{t+1} \in \mathcal{S}} P(s_{t+1}|s_t, a_t)V_\pi(s_{t+1})  \\
-& 贝尔曼期望方程，将 G_t 拆分为当前奖励和未来价值\\
-&= \mathbb{E}_{s_{t+1} \sim P(\cdot|s_t, a_t)}[r + \gamma V_\pi(s_{t+1})]
-\end{align}</script><p>优势函数:在策略 π<em>π</em> 下，在状态 <em>s_t</em> 执行动作 <em>a_t</em> 相对于在该状态下平均（期望）价值的“优势”或“额外价值”。</p>
-<script type="math/tex; mode=display">
+Q_\pi(s_t, a_t) &amp;= \mathbb{E}_\pi[G_t | s_t, a_t] \\
+&amp;= \mathbb{E}_\pi\left[\sum_{t=0}^{T-t} \gamma^{t'} r_{t'} | s_t, a_t\right] \\
+&amp;= \mathbb{E}_\pi[r_t | s_t, a_t] + \mathbb{E}_\pi[\gamma V_\pi(S_{t+1}) | s_t, a_t] \\
+&amp;= \sum_{s_{t+1} \in \mathcal{S}} P(s_{t+1}|s_t, a_t)R(s_t, a_t, s_{t+1}) + \gamma \sum_{s_{t+1} \in \mathcal{S}} P(s_{t+1}|s_t, a_t)V_\pi(s_{t+1})  \\
+&amp; 贝尔曼期望方程，将 G_t 拆分为当前奖励和未来价值\\
+&amp;= \mathbb{E}_{s_{t+1} \sim P(\cdot|s_t, a_t)}[r + \gamma V_\pi(s_{t+1})]
+\end{align}
+$$</span> 优势函数:在策略 π<em>π</em> 下，在状态 <em>s_t</em> 执行动作 <em>a_t</em> 相对于在该状态下平均（期望）价值的“优势”或“额外价值”。 <span class="math display">$$
 \begin{align}
-A_\pi(s_t, a_t) &= Q_\pi(s_t, a_t) - V_\pi(s_t) \\
-&= \mathbb{E}_{s_{t+1} \sim P(\cdot|s_t, a_t)}[r_t + \gamma V_\pi(s_{t+1})] - \mathbb{E}_{s_{t+1} \sim P(\cdot|s_t, a_t)}[V_\pi(s_t)] \\
-&= \mathbb{E}_{s_{t+1} \sim P(\cdot|s_t, a_t)}[r_t + \gamma V_\pi(s_{t+1}) - V_\pi(s_t)] \\
-&= \mathbb{E}_{s_{t+1} \sim P(\cdot|s_t, a_t)}[\text{TD\_error}]
-\end{align}</script><h3 id="价值损失">1.3.2. 价值损失</h3><p>这里提到的“价值训练过程”通常指的是在强化学习中，<strong>价值函数（Value Function）的估计和更新过程</strong>。这通常通过训练一个神经网络（价值网络/Critic网络）来预测状态的价值 V(s)<em>V</em>(<em>s</em>) 或状态-动作对的价值 Q(s,a)<em>Q</em>(<em>s</em>,<em>a</em>)。最常见的训练方法是使用<strong>均方误差（Mean Squared Error, MSE）损失</strong></p>
+A_\pi(s_t, a_t) &amp;= Q_\pi(s_t, a_t) - V_\pi(s_t) \\
+&amp;= \mathbb{E}_{s_{t+1} \sim P(\cdot|s_t, a_t)}[r_t + \gamma V_\pi(s_{t+1})] - \mathbb{E}_{s_{t+1} \sim P(\cdot|s_t, a_t)}[V_\pi(s_t)] \\
+&amp;= \mathbb{E}_{s_{t+1} \sim P(\cdot|s_t, a_t)}[r_t + \gamma V_\pi(s_{t+1}) - V_\pi(s_t)] \\
+&amp;= \mathbb{E}_{s_{t+1} \sim P(\cdot|s_t, a_t)}[\text{TD\_error}]
+\end{align}
+$$</span></p>
+<h3 id="价值损失">1.3.2. 价值损失</h3>
+<p>这里提到的“价值训练过程”通常指的是在强化学习中，<strong>价值函数（Value Function）的估计和更新过程</strong>。这通常通过训练一个神经网络（价值网络/Critic网络）来预测状态的价值 V(s)<em>V</em>(<em>s</em>) 或状态-动作对的价值 Q(s,a)<em>Q</em>(<em>s</em>,<em>a</em>)。最常见的训练方法是使用<strong>均方误差（Mean Squared Error, MSE）损失</strong></p>
 <p>价值函数 V<strong>ϕ<em>(</em>s</strong>t<em>) 的目标是准确估计<strong>未来累积折扣奖励</strong>。因此，训练它的方法就是让它的预测值 </em>V<strong>ϕ<em>(</em>s</strong>t*) 尽可能接近“真实”的累积折扣奖励 R_t。</p>
-<p>价值损失采用的是MSE损失，最小化如下目标函数： </p>
-<script type="math/tex; mode=display">\mathcal{L}_{\text{critic}}(\phi) = \mathbb{E}_{t}\left[\left(V_\phi(s_t) - R_t\right)^2\right]</script><p>其中$V_\phi(s_t)$为价值模型预测出来的回报，$R_t$为实际得到的回报。</p>
-<p>$R_t$ 是理论标签值，需要计算出来</p>
-<p>如果使用时序差分目标，则 </p>
-<script type="math/tex; mode=display">R_t = r_t + \gamma V_\phi(s_{t+1})</script><p>如果使用GAE目标，则 <script type="math/tex">R_t = \hat{A}^{\text{GAE}}_t + V'_\phi(s_t)</script> </p>
-<h3 id="RLHF">1.3.3. RLHF</h3><h4 id="构建奖励模型">1.3.3.1. 构建奖励模型</h4><ol>
+<p>价值损失采用的是MSE损失，最小化如下目标函数：</p>
+<p><span class="math display">ℒ<sub>critic</sub>(<em>ϕ</em>) = 𝔼<sub><em>t</em></sub>[(<em>V</em><sub><em>ϕ</em></sub>(<em>s</em><sub><em>t</em></sub>)−<em>R</em><sub><em>t</em></sub>)<sup>2</sup>]</span></p>
+<p>其中<span class="math inline"><em>V</em><sub><em>ϕ</em></sub>(<em>s</em><sub><em>t</em></sub>)</span>为价值模型预测出来的回报，<span class="math inline"><em>R</em><sub><em>t</em></sub></span>为实际得到的回报。</p>
+<p><span class="math inline"><em>R</em><sub><em>t</em></sub></span> 是理论标签值，需要计算出来</p>
+<p>如果使用时序差分目标，则</p>
+<p><span class="math display"><em>R</em><sub><em>t</em></sub> = <em>r</em><sub><em>t</em></sub> + <em>γ</em><em>V</em><sub><em>ϕ</em></sub>(<em>s</em><sub><em>t</em> + 1</sub>)</span></p>
+<p>如果使用GAE目标，则 <span class="math display"><em>R</em><sub><em>t</em></sub> = <em>Â</em><sub><em>t</em></sub><sup>GAE</sup> + <em>V</em>′<sub><em>ϕ</em></sub>(<em>s</em><sub><em>t</em></sub>)</span></p>
+<h3 id="rlhf">1.3.3. RLHF</h3>
+<h4 id="构建奖励模型">1.3.3.1. 构建奖励模型</h4>
+<ol type="1">
 <li><p>收集偏好数据，对模型回答的多个数据，评估排序，不是打分</p>
-<p><img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530121011621.png" alt="image-20250530121011621"></p>
-</li>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530121011621.png" alt="image-20250530121011621"><figcaption aria-hidden="true">image-20250530121011621</figcaption>
+</figure></li>
 <li><p>损失函数，max(做好回答- 最差回答)</p>
-<p><img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530121104796.png" alt="image-20250530121104796"></p>
-</li>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530121104796.png" alt="image-20250530121104796"><figcaption aria-hidden="true">image-20250530121104796</figcaption>
+</figure></li>
 <li><p>只获取最后一个token的评估</p>
-<p><img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530121333003.png" alt="image-20250530121333003"></p>
-</li>
-<li><p>使用KL散度，避免与模型的差距较大</p>
-</li>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530121333003.png" alt="image-20250530121333003"><figcaption aria-hidden="true">image-20250530121333003</figcaption>
+</figure></li>
+<li><p>使用KL散度，避免与模型的差距较大</p></li>
 <li><p>使用PPO函数，计算历史和未来的奖励</p>
-<p><img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530121812769.png" alt="image-20250530121812769"></p>
-</li>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530121812769.png" alt="image-20250530121812769"><figcaption aria-hidden="true">image-20250530121812769</figcaption>
+</figure></li>
 </ol>
-<h4 id="总体流程">1.3.3.2. 总体流程</h4><p><img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530121856320.png" alt="image-20250530121856320"></p>
+<h4 id="总体流程">1.3.3.2. 总体流程</h4>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530121856320.png" alt="image-20250530121856320"><figcaption aria-hidden="true">image-20250530121856320</figcaption>
+</figure>
 <p><strong>RLHF实开源链接</strong>：</p>
-<ol>
+<ol type="1">
 <li><code>https://github.com/huggingface/trl</code></li>
 <li><code>https://github.com/OpenRLHF/OpenRLHF</code></li>
 <li><code>https://github.com/hiyouga/LLaMA-Factory</code></li>
 <li><code>https://github.com/WangRongsheng/awesome-LLM-resourses</code></li>
 </ol>
-<h3 id="RLAIF">1.3.4. RLAIF</h3><p>模型选择结果，替换人类标记，同时需要使用双重判断</p>
-<p><img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530170449430.png" alt="image-20250530170449430"></p>
-<ol>
+<h3 id="rlaif">1.3.4. RLAIF</h3>
+<p>模型选择结果，替换人类标记，同时需要使用双重判断</p>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530170449430.png" alt="image-20250530170449430"><figcaption aria-hidden="true">image-20250530170449430</figcaption>
+</figure>
+<ol type="1">
 <li>D-RLAIF，模型直接打分，不再训练</li>
 <li>常规RLAIF，先训练奖励模型</li>
 </ol>
-<h3 id="DPO算法-direct-perference-option">1.3.5. DPO算法(direct perference option)</h3><p>由偏好学习的数据，直接用于模型的训练</p>
+<h3 id="dpo算法direct-perference-option">1.3.5. DPO算法(direct perference option)</h3>
+<p>由偏好学习的数据，直接用于模型的训练</p>
 <p>目标：</p>
-<p><img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530171548497.png" alt="image-20250530171548497"></p>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530171548497.png" alt="image-20250530171548497"><figcaption aria-hidden="true">image-20250530171548497</figcaption>
+</figure>
 <p>损失函数：</p>
-<p><img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530171648715.png" alt="image-20250530171648715"></p>
-<h3 id="SPLN（self-play">1.3.6. SPLN（self play)</h3><p><img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530173051126.png" alt="image-20250530173051126"></p>
-<h4 id="main-play">1.3.6.1. main play</h4><p>区分某个回答是人类的回答</p>
-<p><img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530173622192.png" alt="最大化人类回答与机器回答的区别"></p>
-<h4 id="opponent-play">1.3.6.2. opponent play</h4><p>不需要区分人类回答和LLM回答</p>
-<p><img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530173750170.png" alt="image-20250530173750170"></p>
-<p><img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530173801712.png" alt="image-20250530173801712"></p>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530171648715.png" alt="image-20250530171648715"><figcaption aria-hidden="true">image-20250530171648715</figcaption>
+</figure>
+<h3 id="splnself-play">1.3.6. SPLN（self play)</h3>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530173051126.png" alt="image-20250530173051126"><figcaption aria-hidden="true">image-20250530173051126</figcaption>
+</figure>
+<h4 id="main-play">1.3.6.1. main play</h4>
+<p>区分某个回答是人类的回答</p>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530173622192.png" alt="最大化人类回答与机器回答的区别"><figcaption aria-hidden="true">最大化人类回答与机器回答的区别</figcaption>
+</figure>
+<h4 id="opponent-play">1.3.6.2. opponent play</h4>
+<p>不需要区分人类回答和LLM回答</p>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530173750170.png" alt="image-20250530173750170"><figcaption aria-hidden="true">image-20250530173750170</figcaption>
+</figure>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530173801712.png" alt="image-20250530173801712"><figcaption aria-hidden="true">image-20250530173801712</figcaption>
+</figure>
 <p>得到优化目标</p>
-<p><img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530173906352.png" alt="image-20250530173906352"></p>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530173906352.png" alt="image-20250530173906352"><figcaption aria-hidden="true">image-20250530173906352</figcaption>
+</figure>
 <p>最大化生成与真实标注的信息与自己生成信息的差距</p>
-<h3 id="self-rewarding">1.3.7. self-rewarding</h3><p>模型给自己提供奖励，在优化回复的功能是，优化模型指令遵循与打分的能力</p>
-<ol>
+<h3 id="self-rewarding">1.3.7. self-rewarding</h3>
+<p>模型给自己提供奖励，在优化回复的功能是，优化模型指令遵循与打分的能力</p>
+<ol type="1">
 <li>初始模型，具有基础能力</li>
-<li>种子数据集，少量数据集，<ol>
+<li>种子数据集，少量数据集，
+<ol type="1">
 <li>指令微调，只有回答</li>
 <li>评估微调，回答排序</li>
-</ol>
-</li>
+</ol></li>
 </ol>
 <p>模型使用种子数据集，生成新的prompt，模型自己打分，取最高分与最低分，加入数据集，用于DPO训练。</p>
 <p>不断迭代</p>
-<p><img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530175457392.png" alt="image-20250530175457392"></p>
-<h2 id="微调">1.4. 微调</h2><ol>
-<li>增加参数微调</li>
-</ol>
-<ol>
-<li>软提示微调： 在embeding之前怎么增加soft prompt，训练优化增加的soft prompt ，模型的参数固定<ol>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530175457392.png" alt="image-20250530175457392"><figcaption aria-hidden="true">image-20250530175457392</figcaption>
+</figure>
+<h2 id="微调">1.4. 微调</h2>
+<ol type="1">
+<li><p>增加参数微调</p>
+<ol type="1">
+<li>软提示微调： 在embeding之前怎么增加soft prompt，训练优化增加的soft prompt ，模型的参数固定
+<ol type="1">
 <li>且不同的任务可以使用不同的soft prompt</li>
-</ol>
-</li>
+</ol></li>
 <li>适配器微调： 在模型前后增加一个层</li>
-</ol>
-<ol>
+</ol></li>
 <li><p>选择性微调</p>
-<ol>
+<ol type="1">
 <li>学习优化哪些参数，优化任务结果，使用正则化，惩罚修改较多的参数<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530182117984.png" alt="image-20250530182117984"></li>
 <li>指定修改部分参数</li>
-</ol>
-</li>
+</ol></li>
 <li><p>重参数微调，调整子空间参数</p>
-<p><img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530182340311.png" alt="image-20250530182340311"></p>
-<ol>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530182340311.png" alt="image-20250530182340311"><figcaption aria-hidden="true">image-20250530182340311</figcaption>
+</figure>
+<ol type="1">
 <li><p>Low-Rank Adaption(LoRA)，优化两个低秩矩阵，与原矩阵组合</p>
-<p><img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530182623192.png" alt="image-20250530182623192"></p>
-</li>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530182623192.png" alt="image-20250530182623192"><figcaption aria-hidden="true">image-20250530182623192</figcaption>
+</figure></li>
 <li><p>学习模型的缩放因子</p>
-<p><img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530183050936.png" alt="image-20250530183050936"></p>
-</li>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250530183050936.png" alt="image-20250530183050936"><figcaption aria-hidden="true">image-20250530183050936</figcaption>
+</figure></li>
+</ol></li>
 </ol>
-</li>
-</ol>
-<h2 id="知识蒸馏">1.5. 知识蒸馏</h2><p>教师模型将知识提取出来，学生模型学习其中内容</p>
-<h3 id="基于特征的知识">1.5.1. 基于特征的知识</h3><p><img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250523201806237.png" alt="image-20250523201806237"></p>
-<h4 id="多个教师教学">1.5.1.1. 多个教师教学</h4><h3 id="基于关系的知识">1.5.2. 基于关系的知识</h3><h2 id="模型剪枝">1.6. 模型剪枝</h2><p>删除权重小于一定阈值的连接或神经元节点，获得更加稀疏的矩阵</p>
-<h3 id="结构化剪枝">1.6.1. 结构化剪枝</h3><p>参数从起点到重点，图中有相连，则保留</p>
-<h1 id="简短">2. 简短</h1><h2 id="预训练-1">2.1. 预训练</h2><h3 id="词表化">2.1.1. 词表化</h3><h4 id="BBPE-byte-level-BPE">2.1.1.1. BBPE(byte-level BPE)</h4><p>单词量过大时，每一个单词一个token使用，词表空间较大</p>
+<h2 id="知识蒸馏">1.5. 知识蒸馏</h2>
+<p>教师模型将知识提取出来，学生模型学习其中内容</p>
+<h3 id="基于特征的知识">1.5.1. 基于特征的知识</h3>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/image-20250523201806237.png" alt="image-20250523201806237"><figcaption aria-hidden="true">image-20250523201806237</figcaption>
+</figure>
+<h4 id="多个教师教学">1.5.1.1. 多个教师教学</h4>
+<h3 id="基于关系的知识">1.5.2. 基于关系的知识</h3>
+<h2 id="模型剪枝">1.6. 模型剪枝</h2>
+<p>删除权重小于一定阈值的连接或神经元节点，获得更加稀疏的矩阵</p>
+<h3 id="结构化剪枝">1.6.1. 结构化剪枝</h3>
+<p>参数从起点到重点，图中有相连，则保留</p>
+<h1 id="简短">2. 简短</h1>
+<h2 id="预训练-1">2.1. 预训练</h2>
+<h3 id="词表化">2.1.1. 词表化</h3>
+<h4 id="bbpebyte-level-bpe">2.1.1.1. BBPE(byte-level BPE)</h4>
+<p>单词量过大时，每一个单词一个token使用，词表空间较大</p>
 <p>单词使用字节标识，采用unicode 编码作为最小颗粒度，将单词切割为字节token</p>
 <p>例如，对于不存在的字节“待”，使用3个字节标识(中文在unicode编码中使用三个字节表示)</p>
-<p><img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/v2-4cd433a354233d03bc2aad15745a7285_1440w.jpg" alt="img"></p>
-<p><img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/v2-66a59222fb083b240eac861eb026c73c_r.jpg" alt="img"></p>
-<h3 id="模型预训练">2.1.2. 模型预训练</h3><p>采用无监督学习，学习输入文本的特征，学习语言语法</p>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/v2-4cd433a354233d03bc2aad15745a7285_1440w.jpg" alt="img"><figcaption aria-hidden="true">img</figcaption>
+</figure>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/v2-66a59222fb083b240eac861eb026c73c_r.jpg" alt="img"><figcaption aria-hidden="true">img</figcaption>
+</figure>
+<h3 id="模型预训练">2.1.2. 模型预训练</h3>
+<p>采用无监督学习，学习输入文本的特征，学习语言语法</p>
 <p>输入一堆文本，让模型做 Next Token Prediction 的任务，学习基础语法，初步学习。</p>
 <p>类似与transfomer论文中的对语言的输入学习输出。</p>
-<h2 id="指令微调-1">2.2. 指令微调</h2><p>GPT-3只能完成续写任务,InstructGPT可以根据指令回答问题</p>
-<p><img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/v2-a7a8e7aed0750d189f792b19e8272dfe_r.jpg" alt="img"></p>
-<h3 id="监督学习">2.2.1. 监督学习</h3><p>给出指令问题，并给出答案，监督模型学习</p>
-<ol>
+<h2 id="指令微调-1">2.2. 指令微调</h2>
+<p>GPT-3只能完成续写任务,InstructGPT可以根据指令回答问题</p>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/v2-a7a8e7aed0750d189f792b19e8272dfe_r.jpg" alt="img"><figcaption aria-hidden="true">img</figcaption>
+</figure>
+<h3 id="监督学习">2.2.1. 监督学习</h3>
+<p>给出指令问题，并给出答案，监督模型学习</p>
+<ol type="1">
 <li><p>指令: 在面试中如何回答这个问题？</p>
-<ol>
+<ol type="1">
 <li>输入:当你在车里独处时，你会想些什么？</li>
 <li>输出:如果是在晚上，我通常会考虑我今天所取得的进步，如果是在早上，我会思考如何做到最好。我也会尝试练习感恩和活在当下的状态，以避免分心驾驶。</li>
-</ol>
-</li>
+</ol></li>
 <li><p>指令: 按人口对这些国家进行排名。</p>
-<ol>
+<ol type="1">
 <li>输入:巴西，中国，美国，日本，加拿大，澳大利亚</li>
 <li>输出:中国，美国，巴西，日本，加拿大，澳大利亚</li>
-</ol>
-</li>
+</ol></li>
 </ol>
 <p>模型学习指令回答方式，准确的响应问题</p>
-<h2 id="奖励模型">2.3. 奖励模型</h2><p>之前，模型只是简单学习了语言学习的内容，但是并不知到语言中是否正确，或者错误，这将导致预训练模型中原先「错误」或「有害」的知识没能在 SFT 数据中被纠正。</p>
-<h3 id="利用偏序对训练奖励模型">2.3.1. 利用偏序对训练奖励模型</h3><p><img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/v2-29f8de16d921303fc6ee5c338fc68800_1440w.jpg" alt="img"></p>
+<h2 id="奖励模型">2.3. 奖励模型</h2>
+<p>之前，模型只是简单学习了语言学习的内容，但是并不知到语言中是否正确，或者错误，这将导致预训练模型中原先「错误」或「有害」的知识没能在 SFT 数据中被纠正。</p>
+<h3 id="利用偏序对训练奖励模型">2.3.1. 利用偏序对训练奖励模型</h3>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E5%A4%A7%E6%A8%A1%E5%9E%8B/v2-29f8de16d921303fc6ee5c338fc68800_1440w.jpg" alt="img"><figcaption aria-hidden="true">img</figcaption>
+</figure>
 <p>偏序对是指：不直接为每一个样本直接打分，而是标注这些样本的好坏顺序，标准A比B好多少，而不是具体的分数。</p>
 <blockquote>
-<p>直接打分：A句子（5分），B句子（3分）<br>偏序对标注：A &gt; B</p>
+<p>直接打分：A句子（5分），B句子（3分） 偏序对标注：A &gt; B</p>
 </blockquote>
 <p>模型通过尝试最大化「好句子得分和坏句子得分之间的分差」，从而学会自动给每一个句子判分。</p>
-<h2 id="强化学习（Reinforcement-Learning，PPO）">2.4. 强化学习（Reinforcement Learning，PPO）</h2><p>进行Reward model之后，需要使用RM进化模型</p>
-<ol>
+<h2 id="强化学习reinforcement-learningppo">2.4. 强化学习（Reinforcement Learning，PPO）</h2>
+<p>进行Reward model之后，需要使用RM进化模型</p>
+<ol type="1">
 <li></li>
 </ol>
 
@@ -1477,7 +1563,7 @@ A_\pi(s_t, a_t) &= Q_\pi(s_t, a_t) - V_\pi(s_t) \\
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">48.1k</span>
+                        class="white-color">48.5k</span>
             
             
             

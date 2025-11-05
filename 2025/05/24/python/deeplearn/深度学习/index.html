@@ -5,9 +5,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="深度学习, 汤汁小白菜">
-    <meta name="description" content="1. 深度学习1.1. 数据读取1.1.1. 标签转换为数据迭代器from torch.utils import data
+    <meta name="description" content="1. 深度学习
+1.1. 数据读取
+1.1.1. 标签转换为数据迭代器
+from torch.utils import data
 # 传入多个数据，类似数据压缩 data_arrays，对数据进行解压缩
-dataset &amp;#x3D; data.T">
+dataset &amp;#x3D; ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -421,7 +424,7 @@ dataset &amp;#x3D; data.T">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.1k
+                    4k
                 </div>
                 
 
@@ -451,7 +454,10 @@ dataset &amp;#x3D; data.T">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="深度学习">1. 深度学习</h1><h2 id="数据读取">1.1. 数据读取</h2><h3 id="标签转换为数据迭代器">1.1.1. 标签转换为数据迭代器</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python">from torch.utils import data
+                <h1 id="深度学习">1. 深度学习</h1>
+<h2 id="数据读取">1.1. 数据读取</h2>
+<h3 id="标签转换为数据迭代器">1.1.1. 标签转换为数据迭代器</h3>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">from torch.utils import data
 # 传入多个数据，类似数据压缩 data_arrays，对数据进行解压缩
 dataset &#x3D; data.TensorDataset(data_arrays)
 # 创建迭代器，batch_size
@@ -459,7 +465,8 @@ data.DataLoader(dataset, batch_size, shuffle&#x3D;is_train)
 # iter返回一个迭代器对象， next读取迭代器的下一个数据
 next(iter(data))
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="从torchvision-datasets读取">1.1.2. 从torchvision.datasets读取</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python">from torchvision import transforms
+<h3 id="从torchvision.datasets读取">1.1.2. 从torchvision.datasets读取</h3>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">from torchvision import transforms
 from torch.utils import data
 import torchvision
 def load_data(batch_size, resize &#x3D; None):
@@ -487,44 +494,52 @@ def load_data(batch_size, resize &#x3D; None):
     data &#x3D; data.DataLoader(mnist_train, batch_size, shuffle &#x3D; True,
                           num_workers &#x3D; 3)
        <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="序列数据">1.1.3. 序列数据</h3><p>对于总长度T， 时间$\tau$ ,将数据分为</p>
-<script type="math/tex; mode=display">
+<h3 id="序列数据">1.1.3. 序列数据</h3>
+<p>对于总长度T， 时间<span class="math inline"><em>τ</em></span> ,将数据分为 <span class="math display">$$
 y_t = X_t \\
 x_t = [x_[t-\tau]... x_{t-1}] \\
-但是x_t 相对Y_t少了\tau个，可以舍弃，也可以填充0</script><pre class="line-numbers language-python" data-language="python"><code class="language-python">tau &#x3D; 4
+但是x_t 相对Y_t少了\tau个，可以舍弃，也可以填充0
+$$</span></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">tau &#x3D; 4
 features &#x3D; torch.zeros((T - tau, tau))
 for i in range(tau):
     features[:, i] &#x3D; x[i: T - tau + i]
 labels &#x3D; x[tau:].reshape((-1, 1))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ol>
+<ol type="1">
 <li>读取数据</li>
 <li>词元化（转换为单词或字符）</li>
 <li>转换为词元与数字的映射</li>
 <li>将映射作用在序列数据上，转换为向量表示</li>
 <li><a href="#squence">数据预处理代码</a></li>
 </ol>
-<h3 id="文本序列数据">1.1.4. 文本序列数据</h3><ol>
+<h3 id="文本序列数据">1.1.4. 文本序列数据</h3>
+<ol type="1">
 <li>读取数据到string中</li>
-<li>使用split(\t) 分割为英法双语，然后使用.split(‘ ‘)将单词分割</li>
+<li>使用split( 分割为英法双语，然后使用.split(’ ’)将单词分割</li>
 <li>然后将单词词元，建立词表</li>
 <li>使用词表，转换为向量，对向量进行阶段或填充，然后在向量末尾增加<eos>，再统计序列中有效的单元数量valid_len</eos></li>
 <li>指定批量大小，转换为小批量迭代器</li>
 </ol>
 <p><a href="#读取文本序列数据">读取文本序列代码</a></p>
-<h2 id="模型">1.2. 模型</h2><h3 id="线性模型linear">1.2.1. 线性模型linear</h3><p>第一个指定输入特征形状，即2，第二个指定输出特征形状</p>
+<h2 id="模型">1.2. 模型</h2>
+<h3 id="线性模型linear">1.2.1. 线性模型linear</h3>
+<p>第一个指定输入特征形状，即2，第二个指定输出特征形状</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">from torch import nn
 net &#x3D; nn.Sequential(nn.Linear(2, 1))
 loss &#x3D; nn.MSELoss()
 trainer &#x3D; torch.optim.SGD(net.parameters(), lr&#x3D;0.03)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="展平层">1.2.2. 展平层</h3><p>将(batch_size, channel, height, weight) 转换为(batch_size, channel<em> height</em>weight)</p>
+<h3 id="展平层">1.2.2. 展平层</h3>
+<p>将(batch_size, channel, height, weight) 转换为(batch_size, channel* height*weight)</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">nn.Flatten(start_dim &#x3D; 1, end_dim &#x3D;-1) # 默认保留第一维batch_size
 nn.LogSoftmax(dim&#x3D;1) # 作用于最后一个维度，进行归一化<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h3 id="MLP">1.2.3. MLP</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python">from torch import nn
+<h3 id="mlp">1.2.3. MLP</h3>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">from torch import nn
 net &#x3D; nn.Sequential(nn.Flatten(),
 					nn.Linear(784, 256),
 					nn.ReLU(),
 					nn.Linear(256, 10))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="CNN">1.2.4. CNN</h3><p>不变性：无论使用什么方法找到这个物体，都与物体的位置无关</p>
+<h3 id="cnn">1.2.4. CNN</h3>
+<p>不变性：无论使用什么方法找到这个物体，都与物体的位置无关</p>
 <p>原因：与像素点计算的卷积核都是相同的，不随着位置的改变而改变</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">&#39;&#39;&#39;
 param1: 输入通道
@@ -538,39 +553,45 @@ conv2d &#x3D; nn.Conv2d(1,1, kernel_size&#x3D;(1, 2), bias&#x3D;False)
 每一个卷积核计算的出来都是一个二维图形
 卷积核数量 &#x3D; output_channels
 &#39;&#39;&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="填充padding">1.2.4.1. 填充padding</h4><p>卷积核最好选择奇数</p>
-<p>填充高度与宽度满足$p_h = k_h -1 , p_w = k_w -1$,  在上下填充的高度与宽度分别为 ${p_h}/{2} , p_w/2$</p>
+<h4 id="填充padding">1.2.4.1. 填充padding</h4>
+<p>卷积核最好选择奇数</p>
+<p>填充高度与宽度满足<span class="math inline"><em>p</em><sub><em>h</em></sub> = <em>k</em><sub><em>h</em></sub> − 1, <em>p</em><sub><em>w</em></sub> = <em>k</em><sub><em>w</em></sub> − 1</span>, 在上下填充的高度与宽度分别为 <span class="math inline"><em>p</em><sub><em>h</em></sub>/2, <em>p</em><sub><em>w</em></sub>/2</span></p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">conv2d &#x3D; nn.Conv2d(1,1, kernel_size&#x3D;(3, 3),padding &#x3D; 1, bias&#x3D;False)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="步幅">1.2.4.2. 步幅</h4><p>输出形状公式为</p>
-<script type="math/tex; mode=display">
+<h4 id="步幅">1.2.4.2. 步幅</h4>
+<p>输出形状公式为 <span class="math display">$$
 \lfloor（n_h-k_h-+p_h+s_h)/s_h\rfloor \\
 p_h = k_h-1 \\
 所以结果为（n_h+s_h-1)/s_h, \\
-可以整除情况下，=（n_h+s_h)/s_h</script><pre class="line-numbers language-python" data-language="python"><code class="language-python">conv2d &#x3D; nn.Conv2d(1, 1, kernel_size&#x3D;(3, 5), padding&#x3D;(1, 2), stride&#x3D;(3, 4))<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+可以整除情况下，=（n_h+s_h)/s_h
+$$</span></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">conv2d &#x3D; nn.Conv2d(1, 1, kernel_size&#x3D;(3, 5), padding&#x3D;(1, 2), stride&#x3D;(3, 4))<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ul>
-<li>当以每像素为基础应用时，$1\times 1$卷积层相当于全连接层。</li>
+<li>当以每像素为基础应用时，<span class="math inline">1 × 1</span>卷积层相当于全连接层。</li>
 </ul>
-<h3 id="批量归一化层BatchNorm">1.2.5. 批量归一化层BatchNorm</h3><script type="math/tex; mode=display">
-\mathrm{BN}(\mathbf{x}) = \boldsymbol{\gamma} \odot \frac{\mathbf{x} - \hat{\boldsymbol{\mu}}_\mathcal{B}}{\hat{\boldsymbol{\sigma}}_\mathcal{B}} + \boldsymbol{\beta}.</script><p>对特征维度进行归一化,$\gamma、\beta$ 是拉伸和偏移参数</p>
-<ol>
+<h3 id="批量归一化层batchnorm">1.2.5. 批量归一化层BatchNorm</h3>
+<p><span class="math display">$$
+\mathrm{BN}(\mathbf{x}) = \boldsymbol{\gamma} \odot \frac{\mathbf{x} - \hat{\boldsymbol{\mu}}_\mathcal{B}}{\hat{\boldsymbol{\sigma}}_\mathcal{B}} + \boldsymbol{\beta}.
+$$</span></p>
+<p>对特征维度进行归一化,<span class="math inline"><em>γ</em>、<em>β</em></span> 是拉伸和偏移参数</p>
+<ol type="1">
 <li><p>对特征维度进行归一化</p>
-<pre class="line-numbers language-none"><code class="language-none">mean &#x3D; X.mean(dim &#x3D; 0, keepdim &#x3D; True)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
+<pre class="line-numbers language-none"><code class="language-none">mean &#x3D; X.mean(dim &#x3D; 0, keepdim &#x3D; True)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 <li><p>卷积层</p>
-<ol>
+<ol type="1">
 <li>对通道维度进行归一化</li>
-</ol>
-</li>
-<li><p>训练状态下使用小批次的样本均值与方差，测试状态使用的移动平均估算的均值与方差</p>
-</li>
+</ol></li>
+<li><p>训练状态下使用小批次的样本均值与方差，测试状态使用的移动平均估算的均值与方差</p></li>
 </ol>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">&#39;&#39;&#39;
 param: 输入通道数
 &#39;&#39;&#39;
 nn.BatchNorm2d(6)  
 nn.BatchNorm1d(128)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="残差块">1.2.6. 残差块</h3><p>训练是模型训练出F(X) = H(x)- X</p>
-<p><img src="/2025/05/24/python/deeplearn/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/image-20250423225436209.png" alt="image-20250423225436209"></p>
+<h3 id="残差块">1.2.6. 残差块</h3>
+<p>训练是模型训练出F(X) = H(x)- X</p>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/image-20250423225436209.png" alt="image-20250423225436209"><figcaption aria-hidden="true">image-20250423225436209</figcaption>
+</figure>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">import torch 
 from torch import nn
 from torch.nn import functional as F
@@ -598,7 +619,8 @@ class Residual(nn.Module):
  
 return Y
         <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="池化层pooling">1.2.7. 池化层pooling</h3><p>汇聚卷积层计算出的信息，降低卷积层对位置的敏感性，同时降低对空间降采样表示的敏感性</p>
+<h3 id="池化层pooling">1.2.7. 池化层pooling</h3>
+<p>汇聚卷积层计算出的信息，降低卷积层对位置的敏感性，同时降低对空间降采样表示的敏感性</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">from torch import nn
 nn.MaxPool2d((3,3), padding &#x3D;(0,1), stride &#x3D; (0,1))  # 最大池化层
 nn.AvgPool2d((2, 3), stride&#x3D;(2, 3), padding&#x3D;(0, 1))  # 平均池化层
@@ -609,7 +631,9 @@ param1 : 输出层形状(1,1), 网络自动计算padding, stride ,k ,转化为(1
 nn.AdaptiveAvgPool2d((1,1))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>池化层不需要指出Input_channels, output_channels， <strong>input_channels =output_channels</strong></p>
 <p>例如，Lenet网络</p>
-<p><img src="/2025/05/24/python/deeplearn/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/image-20250423211333286.png" alt="image-20250423211333286"></p>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/image-20250423211333286.png" alt="image-20250423211333286"><figcaption aria-hidden="true">image-20250423211333286</figcaption>
+</figure>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">net &#x3D; nn.Sequential(
     nn.Conv2d(1, 6, kernel_size&#x3D;5, padding&#x3D;2), nn.Sigmoid(),
     nn.AvgPool2d(kernel_size&#x3D;2, stride&#x3D;2),
@@ -619,15 +643,24 @@ nn.AdaptiveAvgPool2d((1,1))<span aria-hidden="true" class="line-numbers-rows"><s
     nn.Linear(16 * 5 * 5, 120), nn.Sigmoid(),
     nn.Linear(120, 84), nn.Sigmoid(),
     nn.Linear(84, 10))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="循环神经网络RNN">1.2.8. 循环神经网络RNN</h3><script type="math/tex; mode=display">
+<h3 id="循环神经网络rnn">1.2.8. 循环神经网络RNN</h3>
+<p><span class="math display">$$
 隐藏输出\\\mathbf{H}_t = \phi(\mathbf{X}_t \mathbf{W}_{xh} + \mathbf{H}_{t-1} \mathbf{W}_{hh}  + \mathbf{b}_h).\\
 输出\\
-\mathbf{O}_t = \mathbf{H}_t \mathbf{W}_{hq} + \mathbf{b}_q.</script><h4 id="深度循环deep-rnn">1.2.8.1. 深度循环deep_rnn</h4><p>RNN相当于Drnn中，$H_{t}^{0} = X_t$</p>
-<script type="math/tex; mode=display">
+\mathbf{O}_t = \mathbf{H}_t \mathbf{W}_{hq} + \mathbf{b}_q.
+$$</span></p>
+<h4 id="深度循环deep_rnn">1.2.8.1. 深度循环deep_rnn</h4>
+<p>RNN相当于Drnn中，<span class="math inline"><em>H</em><sub><em>t</em></sub><sup>0</sup> = <em>X</em><sub><em>t</em></sub></span> <span class="math display">$$
 \mathbf{H}_t^{(l)} = \phi_l(\mathbf{H}_t^{(l-1)} \mathbf{W}_{xh}^{(l)} + \mathbf{H}_{t-1}^{(l)} \mathbf{W}_{hh}^{(l)}  + \mathbf{b}_h^{(l)})\\
-\mathbf{O}_t = \mathbf{H}_t^{(L)} \mathbf{W}_{hq} + \mathbf{b}_q</script><h4 id="双向循环rnn">1.2.8.2. 双向循环rnn</h4><p><img src="/2025/05/24/python/deeplearn/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/image-20250424175214314.png" alt="image-20250424175214314"></p>
+\mathbf{O}_t = \mathbf{H}_t^{(L)} \mathbf{W}_{hq} + \mathbf{b}_q
+$$</span></p>
+<h4 id="双向循环rnn">1.2.8.2. 双向循环rnn</h4>
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/image-20250424175214314.png" alt="image-20250424175214314"><figcaption aria-hidden="true">image-20250424175214314</figcaption>
+</figure>
 <p><strong>多用于对文本的编码，而不是预测文本</strong></p>
-<h4 id="代码介绍">1.2.8.3. 代码介绍</h4><p>输入X = （time_step ,batch_size, feature), output = (time_step ,batch_size, num_hidden*(1/2)), state = (time_step ,batch_size, num_hidden)</p>
+<h4 id="代码介绍">1.2.8.3. 代码介绍</h4>
+<p>输入X = （time_step ,batch_size, feature), output = (time_step ,batch_size, num_hidden*(1/2)), state = (time_step ,batch_size, num_hidden)</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">from torch import nn
 rnn &#x3D; nn.RNN(num_input, num_hiddens)
 gru_layer &#x3D; nn.GRU(num_inputs, num_hiddens)
@@ -642,7 +675,7 @@ bidirectional: 双向循环网络
 &#39;&#39;&#39;
 lstm_layer &#x3D; nn.LSTM(num_inputs, num_hidden, num_layers, bidirectional&#x3D;True)
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>RNN 利用<strong>时间维度</strong>的参数共享实现了对<em>*时间位置</em>，每一个时间步使用的一套参数</p>
+<p>RNN 利用<strong>时间维度</strong>的参数共享实现了对**时间位置*，每一个时间步使用的一套参数</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">def rnn(inputs, state, params):
     # inputs的形状：(时间步数量，批量大小，词表大小)
     W_xh, W_hh, b_h, W_hq, b_q &#x3D; params
@@ -655,28 +688,35 @@ lstm_layer &#x3D; nn.LSTM(num_inputs, num_hidden, num_layers, bidirectional&#x3D
         Y &#x3D; torch.mm(H, W_hq) + b_q
         outputs.append(Y)
     return torch.cat(outputs, dim&#x3D;0), (H,)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="/2025/05/24/python/deeplearn/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/image-20250424173608710.png" alt="image-20250424173608710"></p>
-<h4 id="梯度衰减">1.2.8.4. 梯度衰减</h4><p>减小梯度，避免梯度爆炸，使得梯度始终保持在$\theta$ 以下</p>
-<script type="math/tex; mode=display">
-\mathbf{g} \leftarrow \min\left(1, \frac{\theta}{\|\mathbf{g}\|}\right) \mathbf{g}.</script><p><a href="#grad_clipping">梯度裁剪代码</a></p>
-<h2 id="激活函数">1.3. 激活函数</h2><p>将模型从线性变为非线性</p>
-<h3 id="relu">1.3.1. relu</h3><script type="math/tex; mode=display">
-\operatorname{ReLU}(x) = \max(x, 0).</script><pre class="line-numbers language-python" data-language="python"><code class="language-python">torch.relu(X)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h3 id="sigmod">1.3.2. sigmod</h3><p>特征图像，曲线在（0，1）中，关于0.5对称</p>
-<script type="math/tex; mode=display">
-$$\operatorname{sigmoid}(x) = \frac{1}{1 + \exp(-x)}.</script><script type="math/tex; mode=display">
-
+<figure>
+<img src="/2025/05/24/python/deeplearn/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/image-20250424173608710.png" alt="image-20250424173608710"><figcaption aria-hidden="true">image-20250424173608710</figcaption>
+</figure>
+<h4 id="梯度衰减">1.2.8.4. 梯度衰减</h4>
+<p>减小梯度，避免梯度爆炸，使得梯度始终保持在<span class="math inline"><em>θ</em></span> 以下 <span class="math display">$$
+\mathbf{g} \leftarrow \min\left(1, \frac{\theta}{\|\mathbf{g}\|}\right) \mathbf{g}.
+$$</span> <a href="#grad_clipping">梯度裁剪代码</a></p>
+<h2 id="激活函数">1.3. 激活函数</h2>
+<p>将模型从线性变为非线性</p>
+<h3 id="relu">1.3.1. relu</h3>
+<p><span class="math display">ReLU (<em>x</em>) = max (<em>x</em>, 0).</span></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">torch.relu(X)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="sigmod">1.3.2. sigmod</h3>
+<p>特征图像，曲线在（0，1）中，关于0.5对称 <span class="math display"></span>(x) = .<span class="math display"></span></p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">y &#x3D; torch.sigmod(X)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-### tanh
-
-特征图像，曲线在（-1，1）中，关于0对称</script><script type="math/tex; mode=display">\operatorname{tanh}(x) = \frac{1 - \exp(-2x)}{1 + \exp(-2x)}</script><pre class="line-numbers language-python" data-language="python"><code class="language-python">y &#x3D; torch.tanh(x)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="损失函数">1.4. 损失函数</h2><h3 id="均方误差">1.4.1. 均方误差</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python">loss &#x3D; nn.MSELoss()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h3 id="交叉熵损失">1.4.2. 交叉熵损失</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python">loss &#x3D; nn.CrossEntropyLoss(reduction&#x3D;&#39;none&#39;) 
+<h3 id="tanh">1.3.3. tanh</h3>
+<p>特征图像，曲线在（-1，1）中，关于0对称 <span class="math display"></span>(x) =  $$</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">y &#x3D; torch.tanh(x)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="损失函数">1.4. 损失函数</h2>
+<h3 id="均方误差">1.4.1. 均方误差</h3>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">loss &#x3D; nn.MSELoss()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="交叉熵损失">1.4.2. 交叉熵损失</h3>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">loss &#x3D; nn.CrossEntropyLoss(reduction&#x3D;&#39;none&#39;) 
 # 返回的是一个张量，反向传播需要计算为标量
 # 相当于 NLLLoss(LogSoftmax(logits), target)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h3 id="NLLLoss">1.4.3. NLLLoss</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python">loss &#x3D; nn.NLLLoss()  <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="训练过程">1.5. 训练过程</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">num_epoch &#x3D; 2
+<h3 id="nllloss">1.4.3. NLLLoss</h3>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">loss &#x3D; nn.NLLLoss()  <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="训练过程">1.5. 训练过程</h2>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">num_epoch &#x3D; 2
 for epoch in range(num_epoch):
     for X, y in data_iter :
         l &#x3D; loss(net(X), y)
@@ -691,19 +731,20 @@ for epoch in range(num_epoch):
     
         
         <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="模型问题">1.6. 模型问题</h2><h3 id="复杂性因素">1.6.1. 复杂性因素</h3><ol>
+<h2 id="模型问题">1.6. 模型问题</h2>
+<h3 id="复杂性因素">1.6.1. 复杂性因素</h3>
+<ol type="1">
 <li>可调整参数的数量。当可调整参数的数量（有时称为<strong>自由度</strong>）很大时，模型往往更容易过拟合。</li>
 <li>参数采用的值。当权重的取值范围较大时，模型可能更容易过拟合。</li>
 <li>训练样本的数量。即使模型很简单，也很容易过拟合只包含一两个样本的数据集。而过拟合一个有数百万个样本的数据集则需要一个极其灵活的模型。</li>
 </ol>
-<h3 id="K折交叉验证">1.6.2. K折交叉验证</h3><p>一个epoch中，将训练数据分为K份，在k-1份上进行训练，在第K份上进行验证</p>
-<h3 id="L2正则化">1.6.3. L2正则化</h3><script type="math/tex; mode=display">
-\begin{aligned}
-
-\mathbf{w} & \leftarrow \left(1- \eta\lambda \right) \mathbf{w} - \frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}} \mathbf{x}^{(i)} \left(\mathbf{w}^\top \mathbf{x}^{(i)} + b - y^{(i)}\right).
-
-\end{aligned}</script><p>每次都减小一定的权重，岭回归相对于线性回归增加了L2正则化，LASSO回归相当于增加了L1回归，相当于参数选择</p>
-<ol>
+<h3 id="k折交叉验证">1.6.2. K折交叉验证</h3>
+<p>一个epoch中，将训练数据分为K份，在k-1份上进行训练，在第K份上进行验证</p>
+<h3 id="l2正则化">1.6.3. L2正则化</h3>
+$$
+<p>$$</p>
+<p>每次都减小一定的权重，岭回归相对于线性回归增加了L2正则化，LASSO回归相当于增加了L1回归，相当于参数选择</p>
+<ol type="1">
 <li>选择权重参数，然后正则化</li>
 </ol>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"># 选择参数组
@@ -721,16 +762,17 @@ trainer &#x3D; torch.optim.SGD([
     &#123;&#39;params&#39;: params_with_wd, &#39;weight_decay&#39;: wd&#125;,
     &#123;&#39;params&#39;: params_without_wd, &#39;weight_decay&#39;: 0&#125; # 对偏置项设置 weight_decay 为 0
 ], lr&#x3D;lr)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ol>
+<ol start="2" type="1">
 <li><p>对所有参数进行正则化</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">trainer &#x3D; torch.optim.SGD([
 	net.parameters(), lr &#x3D; lr, weigth_decay &#x3D; wd
-])<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-</li>
+])<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
 </ol>
-<h3 id="暂退法（Dropout">1.6.4. 暂退法（Dropout)</h3><p>随即丢弃部分神经元</p>
+<h3 id="暂退法dropout">1.6.4. 暂退法（Dropout)</h3>
+<p>随即丢弃部分神经元</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">nn.Dropout(ratio)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h3 id="随机初始化">1.6.5. 随机初始化</h3><p>暂退法和随机初始化，都可以减小神经元的对称性</p>
+<h3 id="随机初始化">1.6.5. 随机初始化</h3>
+<p>暂退法和随机初始化，都可以减小神经元的对称性</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">from torch.nn.init as init
 class SimpleMLP(nn.Module):
     def __init__(self):
@@ -754,7 +796,8 @@ class SimpleMLP(nn.Module):
                 # 对线性层的偏置初始化为常数 0
                 if m.bias is not None: # 检查偏置是否存在
                     init.constant_(m.bias, 0)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="附录">1.7. 附录</h2><p><b id="squence"> squence 序列数据预处理 </b></p>
+<h2 id="附录">1.7. 附录</h2>
+<p><b id="squence"> squence 序列数据预处理 </b></p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"># 读取序列数据
 d2l.DATA_HUB[&#39;time_machine&#39;] &#x3D; (d2l.DATA_URL + &#39;timemachine.txt&#39;,
                                 &#39;090b5e7e70c295757f55df93cb0a180b9691891a&#39;)
@@ -859,7 +902,8 @@ def load_corpus_time_machine(max_tokens&#x3D;-1):  #@save
     if norm &gt; theta:
         for param in params:
             param.grad[:] *&#x3D; theta &#x2F; norm<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="读取文本序列数据">1.7.1. 读取文本序列数据</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python">import os
+<h3 id="读取文本序列数据">1.7.1. 读取文本序列数据</h3>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">import os
 import torch
 from d2l import torch as d2l
 
@@ -1642,7 +1686,7 @@ def load_data_nmt(batch_size, num_steps, num_examples&#x3D;600):
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">48.1k</span>
+                        class="white-color">48.5k</span>
             
             
             
