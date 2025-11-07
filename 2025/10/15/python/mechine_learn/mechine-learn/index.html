@@ -417,21 +417,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-11-04
+                    2025-11-06
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.1k
+                    2.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    9 分
+                    10 分
                 </div>
                 
 
@@ -830,6 +830,17 @@ $$</span></p>
 <figure>
 <img src="/2025/10/15/python/mechine_learn/mechine-learn/image-20251104223025190.png" alt="image-20251104223025190"><figcaption aria-hidden="true">image-20251104223025190</figcaption>
 </figure>
+<h1 id="九">8. 九</h1>
+<h2 id="代价函数">8.1. 代价函数</h2>
+<p>神经网络有K个输出， 所有 需要 <span class="math inline"><em>Y</em><sub><em>k</em></sub></span> 进行标识</p>
+<figure>
+<img src="/2025/10/15/python/mechine_learn/mechine-learn/image-20251105211214283.png" alt="image-20251105211214283"><figcaption aria-hidden="true">image-20251105211214283</figcaption>
+</figure>
+<p>所以，交叉熵增加输出维度 K <span class="math display">$$
+J(\theta) = -\frac{1}{m}[\sum_{i=1}^m\sum_{k=1}^k y_k^{(i)}* log(h_\theta(x^{(i)})_k) + (1- y_{k}^{(i)} )log(1-(h_\theta(x^{(i)})_k))] + 多所有权重进行正则化
+$$</span> 所有权重正则化公式： <span class="math display">$$
+\frac{\lambda}{2m}\sum_{l=1}^{l-1} \sum_{i = 1}^{s_l}\sum_{j=1}^{s(l+1)}(\theta_{i,j}^{(l)})^2
+$$</span> 表示 对 第l 层， 第L层中<span class="math inline"><em>θ</em></span> 维度为(sl, sl+1)</p>
 
                 
             </div>
@@ -1532,7 +1543,7 @@ $$</span></p>
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">48.5k</span>
+                        class="white-color">48.7k</span>
             
             
             
