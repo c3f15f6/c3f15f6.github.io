@@ -5,12 +5,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="supervised learn, 汤汁小白菜">
-    <meta name="description" content="1. 一
-1.1. supervised learn
-给出正确答案学习
+    <meta name="description" content="1. 一1.1. supervised learn给出正确答案学习
 分为：1. regressiong ; 2. classification
-1.2. unsupervised learn
-发现数据的不同结构，区分成不同数据">
+1.2. unsupervised learn发现数据的不同结构，区分成不同数据
+2. 二2.1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -454,208 +452,168 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="一">1. 一</h1>
-<h2 id="supervised-learn">1.1. supervised learn</h2>
-<p>给出正确答案学习</p>
+                <h1 id="一">1. 一</h1><h2 id="supervised-learn">1.1. supervised learn</h2><p>给出正确答案学习</p>
 <p>分为：1. regressiong ; 2. classification</p>
-<h2 id="unsupervised-learn">1.2. unsupervised learn</h2>
-<p>发现数据的不同结构，区分成不同数据</p>
-<h1 id="二">2. 二</h1>
-<h2 id="模型">2.1. 模型</h2>
-<p>由 x 推向 y 的引导函数 <span class="math display"><em>h</em><sub><em>θ</em></sub>(<em>x</em>) = <em>θ</em><sub>0</sub> + <em>θ</em><sub>1</sub><em>x</em></span></p>
-<h2 id="cost-function">2.2. cost function</h2>
-<p>均方误差，<span class="math inline">$\frac{1}{2m}$</span> 求导时候消去 1/2， 且 cost funtion 不变 <span class="math display">$$
-\underset{\theta_0， \theta_1}{minimize} \frac{1}{2m} \sum_{i = 1}^{m}(h(x^i) - y^i)^2
-$$</span> 求出使 cost funtions 最小的参数 <span class="math inline"><em>θ</em></span></p>
-<h2 id="gradient-descend">2.3. gradient descend</h2>
-<p><span class="math display">$$
-\theta_j = \theta_j - \alpha \frac{\partial}{\partial_j}J(\theta_0, \theta_1)  \space \space for j = 0 and j = 1
-$$</span></p>
-<p>严格要求计算步骤，优先算完右半部分，在计算左半部分赋值</p>
+<h2 id="unsupervised-learn">1.2. unsupervised learn</h2><p>发现数据的不同结构，区分成不同数据</p>
+<h1 id="二">2. 二</h1><h2 id="模型">2.1. 模型</h2><p>由 x 推向 y 的引导函数</p>
+<script type="math/tex; mode=display">
+h_\theta(x) = \theta_0 + \theta_1 x</script><h2 id="cost-function">2.2. cost function</h2><p>均方误差，$\frac{1}{2m}$ 求导时候消去 1/2， 且 cost funtion 不变</p>
+<script type="math/tex; mode=display">
+\underset{\theta_0， \theta_1}{minimize} \frac{1}{2m} \sum_{i = 1}^{m}(h(x^i) - y^i)^2</script><p>求出使 cost funtions 最小的参数 $\theta$ </p>
+<h2 id="gradient-descend">2.3. gradient descend</h2><script type="math/tex; mode=display">
+\theta_j = \theta_j - \alpha \frac{\partial}{\partial_j}J(\theta_0, \theta_1)  \space \space for j = 0 and j = 1</script><p>严格要求计算步骤，优先算完右半部分，在计算左半部分赋值</p>
 <p><img src="/2025/10/15/python/mechine_learn/mechine-learn/image-20251015202451659.png" alt="image-20251015202451659" style="zoom:100%;"></p>
-<p>$J(_0, _1) $ 是梯度下降的方向， $$ 沿着下降方向下降的幅度</p>
-<p><strong>learn rate <span class="math inline"><em>α</em></span> 不需要不断缩小</strong>， 因为随着靠近局部最小值， 梯度逐渐下降， 逐渐趋近于 0</p>
-<figure>
-<img src="/2025/10/15/python/mechine_learn/mechine-learn/image-20251015204044375.png" alt="image-20251015204044375"><figcaption aria-hidden="true">image-20251015204044375</figcaption>
-</figure>
+<p>$\frac{\partial}{\partial_j}J(\theta_0, \theta_1) $ 是梯度下降的方向， $\alpha $ 沿着下降方向下降的幅度</p>
+<p><strong>learn rate $\alpha$ 不需要不断缩小</strong>， 因为随着靠近局部最小值， 梯度逐渐下降，  逐渐趋近于 0</p>
+<p><img src="/2025/10/15/python/mechine_learn/mechine-learn/image-20251015204044375.png" alt="image-20251015204044375"></p>
 <p>batch 梯度下降 考虑了整体训练集</p>
-<h1 id="三">3. 三</h1>
-<h2 id="matrix">3.1. matrix</h2>
-<h3 id="边界形式">3.1.1. 边界形式</h3>
-<ol type="1">
+<h1 id="三">3. 三</h1><h2 id="matrix">3.1. matrix</h2><h3 id="边界形式">3.1.1. 边界形式</h3><ol>
 <li>pmatrix 小括号</li>
 <li>bmatrix 方括号</li>
 <li>Bmatrix 大括号</li>
 <li>vmatrix 行列式</li>
 <li>Vmatrix 双竖线</li>
-<li>matrix 没有边界符号， 使用 <code>\left[</code> <code>\right]</code> 增加边界</li>
+<li>matrix   没有边界符号， 使用 <code>\left[</code> <code>\right]</code> 增加边界</li>
 </ol>
-<h3 id="元素">3.1.2. 元素</h3>
-<ol type="1">
+<h3 id="元素">3.1.2. 元素</h3><ol>
 <li>&amp; 分割同行元素</li>
 <li><code>\\</code> 分割列元素</li>
-<li>省略号
-<ol type="1">
+<li>省略号<ol>
 <li><code>\dots</code> 水平省略号</li>
 <li><code>\vdots</code> 垂直省略号</li>
 <li><code>\ddots</code> 对角省略号</li>
-</ol></li>
 </ol>
-<p><span class="math display">$$
+</li>
+</ol>
+<script type="math/tex; mode=display">
 \begin{pmatrix}
-a &amp; b &amp; \dots&amp; c \\
-\vdots &amp; \vdots &amp; \ddots  &amp; \vdots\\
-a &amp; b &amp; \dots&amp;c
-\end{pmatrix}
-$$</span></p>
-<h3 id="slice">3.1.3. slice</h3>
-<p>eg : <span class="math display">$$
+a & b & \dots& c \\
+\vdots & \vdots & \ddots  & \vdots\\
+a & b & \dots&c
+\end{pmatrix}</script><h3 id="slice">3.1.3. slice</h3><p> eg : </p>
+<script type="math/tex; mode=display">
 \begin{bmatrix}
-1 &amp; 2 &amp; 3 \\
-11 &amp; 12 &amp; 13 \\
-11 &amp; 12 &amp; 13 \\
-4 &amp; 5 &amp; 6
-\end{bmatrix}
-$$</span></p>
-<ol type="1">
-<li>dim = row * columns ， 即为 4* 3</li>
-<li><span class="math inline"><em>A</em><sub><em>i</em><em>j</em></sub></span> 表示 <span class="math inline"><em>i</em><sub><em>t</em><em>h</em></sub></span> row ，<span class="math inline"><em>j</em><sub><em>t</em><em>h</em></sub></span> columns 的元素</li>
+1 & 2 & 3 \\
+11 & 12 & 13 \\
+11 & 12 & 13 \\
+4 & 5 & 6
+\end{bmatrix}</script><ol>
+<li>dim  = row <em> columns  ， 即为 4</em> 3</li>
+<li>$A_{ij}$ 表示 $i_{th}$ row  ，$j_{th}$ columns 的元素</li>
 </ol>
-<h2 id="compute">3.2. compute</h2>
-<ol type="1">
-<li>scalar multiplication / division / addition / subtraction</li>
+<h2 id="compute">3.2. compute</h2><ol>
+<li>scalar multiplication / division / addition / subtraction </li>
 <li>addtion / subtraction 需要 matrix dim 相同</li>
 </ol>
-<h3 id="matrix-vector">3.2.1. matrix * vector</h3>
-<p><span class="math display"><em>h</em>(<em>x</em>) = <em>θ</em><sub>0</sub> + <em>θ</em><sub>1</sub> * <em>x</em></span></p>
-<p>矩阵乘法表示为 <span class="math display">$$
+<h3 id="matrix-vector">3.2.1. matrix * vector</h3><script type="math/tex; mode=display">
+h(x) = \theta_0 + \theta_1 * x</script><p>矩阵乘法表示为</p>
+<script type="math/tex; mode=display">
 \begin{matrix}
 [1, x]* [\theta_0, \theta_1]^t
-\end{matrix}
-$$</span></p>
-<ol type="1">
-<li>[1, x] 中每组数据与 <span class="math inline"><em>θ</em></span> 相乘，所以 顺序为 <span class="math inline"><em>x</em> * <em>θ</em></span></li>
-<li>常数项 <span class="math inline"><em>θ</em></span> 表示该特征 始终为 1</li>
+\end{matrix}</script><ol>
+<li>[1, x] 中每组数据与 $\theta$ 相乘，所以 顺序为 $x*\theta$</li>
+<li>常数项 $\theta$ 表示该特征 始终为 1 </li>
 </ol>
-<h3 id="matrix-matrix">3.2.2. matrix * matrix</h3>
-<p>有多个 hypothesis 函数 <span class="math display">$$
+<h3 id="matrix-matrix">3.2.2. matrix *  matrix</h3><p>有多个 hypothesis 函数 </p>
+<script type="math/tex; mode=display">
 h_1(x) = \theta_{0,1} + \theta_{1,1} * x \\
 h_2(x) = \theta_{0,2} + \theta_{1,2} * x \\
-h_3(x) = \theta_{0,3} + \theta_{1,3} * x
-$$</span> 参数组成矩阵 <span class="math display">$$
+h_3(x) = \theta_{0,3} + \theta_{1,3} * x</script><p>参数组成矩阵</p>
+<script type="math/tex; mode=display">
 \begin{bmatrix}
-\theta_{0,1} &amp; \theta_{0,2} &amp; \theta_{0,3} \\
-\theta_{1,1} &amp; \theta_{1,2} &amp; \theta_{1,3} \\
-\end{bmatrix}
-$$</span> 使用 matrix 表示 <span class="math display">[1, <em>x</em>] * [<em>t</em><em>h</em><em>e</em><em>t</em><em>a</em><sub>0</sub>, <em>t</em><em>h</em><em>e</em><em>t</em><em>a</em><sub>1</sub>, <em>t</em><em>h</em><em>e</em><em>t</em><em>a</em><sub>2</sub>]<sup><em>T</em></sup></span></p>
-<h1 id="四">4. 四</h1>
-<h2 id="more-feature">4.1. more feature</h2>
-<p><span class="math display"><em>x</em> = [<em>x</em><sub>0</sub>, <em>x</em><sub><em>i</em></sub>, …, <em>x</em><sub><em>n</em></sub>]</span></p>
-<p>hypothesis 修改为 <span class="math inline"><em>h</em>(<em>x</em>) = <em>θ</em><sub>0</sub> + <em>θ</em><sub>1</sub> * <em>x</em><sub>1</sub> + <em>θ</em> * <em>x</em><sub><em>n</em></sub></span>， 其中 define <span class="math inline"><em>x</em><sub>0</sub> = 1</span></p>
-<p>所以，<span class="math inline"><em>h</em>(<em>x</em>) = <em>θ</em><sup><em>t</em></sup> * <em>x</em></span></p>
-<h2 id="gradient-descend-1">4.2. gradient descend</h2>
-<p>$ h(x) = x $ <span class="math display">$$
-L(x) = \underset{\theta}{minimize} = \frac{1}{2m} (\sum{h(x) - y})^2
-$$</span></p>
-<p><span class="math display">$$
-\frac{\partial}{\partial \theta} L(x) =  m(\sum(h(x) -y ))* X
-$$</span></p>
-<p><span class="math display"><em>θ</em> = <em>θ</em> − <em>m</em>(∑(<em>h</em>(<em>x</em>) − <em>y</em>)) * <em>X</em></span></p>
-<h2 id="feature-scaling">4.3. feature scaling</h2>
-<p>数据进行归一化，数据的差距缩小，使用梯度下降速度更快</p>
+\theta_{0,1} & \theta_{0,2} & \theta_{0,3} \\
+\theta_{1,1} & \theta_{1,2} & \theta_{1,3} \\
+\end{bmatrix}</script><p>使用 matrix 表示</p>
+<script type="math/tex; mode=display">
+[1, x] * [theta_0, theta_1, theta_2]^T</script><h1 id="四">4. 四</h1><h2 id="more-feature">4.1. more feature</h2><script type="math/tex; mode=display">
+x = [x_0, x_i, \dots, x_n]</script><p>hypothesis 修改为 $h(x) = \theta_0 + \theta_1<em> x_1 + \theta</em>x_n$， 其中 define $x_0 = 1$</p>
+<p>所以，$h(x) = \theta^t * x$</p>
+<h2 id="gradient-descend-1">4.2. gradient descend</h2><p>$\frac{\partial}{\partial x} h(x) =  x $</p>
+<script type="math/tex; mode=display">
+L(x) = \underset{\theta}{minimize} = \frac{1}{2m} (\sum{h(x) - y})^2</script><script type="math/tex; mode=display">
+\frac{\partial}{\partial \theta} L(x) =  m(\sum(h(x) -y ))* X</script><script type="math/tex; mode=display">
+\theta = \theta -m(\sum(h(x) -y ))* X</script><h2 id="feature-scaling">4.3. feature scaling</h2><p>数据进行归一化，数据的差距缩小，使用梯度下降速度更快</p>
 <p>因此，数据训练前，一定需要对数据进行归一化</p>
-<figure>
-<img src="/2025/10/15/python/mechine_learn/mechine-learn/image-20251016212727906.png" alt="image-20251016212727906"><figcaption aria-hidden="true">image-20251016212727906</figcaption>
-</figure>
-<p>归一化方法 <span class="math display">$$
+<p><img src="/2025/10/15/python/mechine_learn/mechine-learn/image-20251016212727906.png" alt="image-20251016212727906"></p>
+<p>归一化方法</p>
+<script type="math/tex; mode=display">
 minmax = \frac{x - min}{min-max} 缩放到（0，1）\\
-stand = \frac{x - u}{\sigma}，符合正太化分布 \\
-$$</span> 鲁棒归一化 <span class="math display">$$
+stand = \frac{x - u}{\sigma}，符合正太化分布 \\</script><p> 鲁棒归一化</p>
+<script type="math/tex; mode=display">
 robust = \frac{x- median(x)}{IQR(x)}\\
 median(x) 是 x 的中位数 \\
-IQR(x) = Q_3 - Q_1
-$$</span></p>
-<h2 id="learn-rate">4.4. learn rate</h2>
-<p>确定模型收敛情况：</p>
-<ol type="1">
+IQR(x) = Q_3 - Q_1</script><h2 id="learn-rate">4.4. learn rate</h2><p>确定模型收敛情况：</p>
+<ol>
 <li><strong>绘制图形观察</strong></li>
 <li>自收敛测试， 当一次 iteration 收敛到一定值时，自动停止</li>
 </ol>
-<p>测试不同的 $$ , 观测收敛情况</p>
-<h2 id="more-feature-1">4.5. more feature</h2>
-<ol type="1">
-<li>使用更多的 feature ， $ h(x) = _0 + _1 * feature_1 + _2* feature_2$</li>
-<li>使用 polynomial feature 拟合， 使用 feature 的多项式拟合, $ h(x) = _0 + _0 * feature_1 + _2 * feature_1^2 + _3 * $</li>
+<p>测试不同的 $\alpha $ , 观测收敛情况</p>
+<h2 id="more-feature-1">4.5. more feature</h2><ol>
+<li>使用更多的 feature ， $ h(x) = \theta_0 + \theta_1 <em> feature_1 + \theta_2</em> feature_2$</li>
+<li>使用 polynomial feature 拟合， 使用 feature 的多项式拟合, $ h(x) = \theta_0 + \theta_0 <em> feature_1 + \theta_2 </em> feature_1^2 + \theta_3 * \sqrt{feature_1}$</li>
 </ol>
-<h2 id="normal-equation">4.6. normal equation</h2>
-<p>用于求解Loss 函数的最小值<span class="math inline"><em>θ</em></span> ,</p>
+<h2 id="normal-equation">4.6. normal equation</h2><p>用于求解Loss 函数的最小值$\theta$ , </p>
+<div class="table-container">
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th>gradient descend</th>
 <th>normal equation</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>需要 learn rate</td>
 <td></td>
 </tr>
-<tr class="even">
+<tr>
 <td>需要many iterations</td>
 <td>直接计算</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>使用面广</td>
 <td>只适用于较小的feature ,</td>
 </tr>
 </tbody>
 </table>
-<p><span class="math display"><em>θ</em> = (<em>X</em><sup><em>T</em></sup> * <em>X</em>)<sup> − 1</sup><em>X</em><sup><em>T</em></sup> * <em>y</em></span></p>
-<p>难点在于<span class="math inline"><em>X</em><sup><em>T</em></sup> * <em>X</em></span> ， X 是 m * n 矩阵， <span class="math inline"><em>X</em><sup><em>T</em></sup> * <em>X</em></span> 矩阵维度为$n*n $ ，与特征维度有关， 矩阵求逆的复杂度<span class="math inline"><em>O</em>(<em>n</em><sup>3</sup>)</span>， 仅适用于较小feature</p>
-<h3 id="xt-x-non-invertible">4.6.1. Xt * X non-invertible</h3>
-<ol type="1">
+</div>
+<script type="math/tex; mode=display">
+\theta = (X^T * X)^{-1} X^T*y</script><p>难点在于$X^T <em> X$ ， X 是 m </em> n 矩阵， $X^T <em> X$ 矩阵维度为$n</em>n $ ，与特征维度有关， 矩阵求逆的复杂度$O(n^3)$， 仅适用于较小feature</p>
+<h3 id="X-t-X-non-invertible">4.6.1. $X^t* X$ non-invertible</h3><ol>
 <li>redundant feature ，重复相关的feature ，删除相关的feature</li>
-<li>number &lt;= feature ，特征数量较少， 增加数据/减少特征/正则化</li>
+<li>number &lt;= feature ，特征数量较少， 增加数据/减少特征/正则化 </li>
 </ol>
-<h1 id="五">5. 五</h1>
-<h2 id="operation">5.1. operation</h2>
-<ol type="1">
+<h1 id="五">5. 五</h1><h2 id="operation">5.1. operation</h2><ol>
 <li><code>~</code> 非 相当于 <code>!</code></li>
-<li><code>sprintf("string %0.2f", a)</code> 格式化自负床</li>
+<li><code>sprintf(&quot;string %0.2f&quot;, a)</code> 格式化自负床</li>
 </ol>
-<h3 id="生成矩阵">5.1.1. 生成矩阵</h3>
-<ol type="1">
-<li><code></code> 或者’,’ 分割行 [1 2 3]</li>
+<h3 id="生成矩阵">5.1.1. 生成矩阵</h3><ol>
+<li><code> </code> 或者’,’ 分割行 [1 2 3]</li>
 <li>‘；’ 分割列 [1; 2; 3]</li>
 <li><code>v = 1 : 6</code>， 生成【1，6】数组</li>
-<li>ones(2， 3) , zeros(2, 3), rand(2,3), randn(2,100)</li>
+<li>ones(2， 3)  , zeros(2, 3), rand(2,3), randn(2,100)</li>
 <li>eye(2)</li>
 </ol>
 <blockquote>
-<p>hist(data, n), 绘制n 各方格立方图</p>
+<p> hist(data, n), 绘制n 各方格立方图</p>
 <p>help eye</p>
 </blockquote>
-<h3 id="data">5.1.2. data</h3>
-<ol type="1">
+<h3 id="data">5.1.2. data</h3><ol>
 <li>size(data, dim) ，</li>
 <li>length(vector), length(data), 返回最大matrix</li>
-<li>load ‘xxx.mat’, save ‘xxx.mat’ xxx， <strong>文件名只能使用 ’’</strong></li>
+<li>load ‘xxx.mat’, save ‘xxx.mat’ xxx， <strong>文件名只能使用 ‘’</strong></li>
 <li>who 显示变量， whos 显示变量详细</li>
 <li>A() ， 使用() 取出元素， A（[1,2], :) 取出1，2 所有元素</li>
 <li>数组拼接 A = (A, B) , 列拼接， A= （A;B）行拼接</li>
 </ol>
-<h3 id="compute-1">5.1.3. compute</h3>
-<ol type="1">
-<li><span class="math inline">*</span> 矩阵乘法， <span class="math inline">.*</span> 点乘，</li>
+<h3 id="compute-1">5.1.3. compute</h3><ol>
+<li>$<em>$ 矩阵乘法， $.</em>$ 点乘，</li>
 <li>find(A) 矩阵中为1 的元素，</li>
 <li>max(A, []， dim), 默认列方向， sum(A,dim), prod(A)</li>
 <li>float() 抹去小数点， ceil(A) 进位</li>
 </ol>
-<h3 id="section">5.1.4. </h3>
-<p>plot(x, y, ‘color’) , xlabel, ylabel, title(), figure(1), hold on , subplot(1, 2, 1), axis([x1, x2, y1, y2]), imageesc(), colorbar, colormap gray</p>
-<h3 id="control">5.1.5. control</h3>
-<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">for i &#x3D; i :10
+<h3 id>5.1.4.  </h3><p>plot(x, y, ‘color’) , xlabel, ylabel, title(), figure(1), hold on , subplot(1, 2, 1), axis([x1, x2, y1, y2]), imageesc(), colorbar, colormap gray</p>
+<h3 id="control">5.1.5. control</h3><pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">for i &#x3D; i :10
 	pass
 end
 
@@ -674,72 +632,54 @@ function [y1, y2] &#x3D; name(x)
 	y &#x3D; x;
 end <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>addpath</p>
-<h1 id="classification">6. classification</h1>
-<p><span class="math inline"><em>y</em><em>取</em><em>值</em><em>于</em>0，1，2</span>固定值</p>
-<p>预测值<span class="math inline"> ∈ [0, 1]</span>， 使用threshold 区分区间确定类型</p>
+<h1 id="classification">6. classification</h1><p>$y 取值于 {0， 1， 2}$固定值</p>
+<p>预测值$\in [0, 1]$， 使用threshold 区分区间确定类型</p>
 <p>regression问题</p>
-<ol type="1">
+<ol>
 <li><p>预测曲线受极值影响</p>
-<figure>
-<img src="/2025/10/15/python/mechine_learn/mechine-learn/image-20251019204259717.png" alt="image-20251019204259717"><figcaption aria-hidden="true">image-20251019204259717</figcaption>
-</figure></li>
-<li><p><span class="math inline"><em>y</em> ∉ [0, 1]</span>，</p></li>
+<p><img src="/2025/10/15/python/mechine_learn/mechine-learn/image-20251019204259717.png" alt="image-20251019204259717"></p>
+</li>
+<li><p>$y \notin [0, 1]$， </p>
+</li>
 </ol>
-<p>因此使用， Logistic Regression</p>
-<h2 id="logistic-sigmoid-function">6.1. logistic / sigmoid function</h2>
-<p><span class="math display">$$
-g(x) = \frac{1}{1+e^{-x}}
-$$</span></p>
-<p>函数图像，g(x) <span class="math inline">∈</span> [0,1]</p>
-<figure>
-<img src="/2025/10/15/python/mechine_learn/mechine-learn/image-20251019205241683.png" alt="image-20251019205241683"><figcaption aria-hidden="true">image-20251019205241683</figcaption>
-</figure>
-<p>h(x) 定义，在输入x 情况，预测为 y = 1的概率，<span class="math inline"><em>p</em>(<em>y</em> = 1|<em>x</em>, <em>θ</em>)</span></p>
-<p>y = 0 的概率为 1- h(x)</p>
-<h2 id="decision-boundary">6.2. decision boundary</h2>
-<p>决策边界 由 <span class="math inline"><em>θ</em></span> 参数决定， 计算出<span class="math inline"><em>θ</em></span> 获得决策边界</p>
-<figure>
-<img src="/2025/10/15/python/mechine_learn/mechine-learn/image-20251019210727035.png" alt="image-20251019210727035"><figcaption aria-hidden="true">image-20251019210727035</figcaption>
-</figure>
-<h2 id="cost-function-1">6.3. cost function</h2>
-<p><span class="math display">$$
-L(x) = \frac{1}{2m} \sum_{i=1}^{m}cost(h_\theta(x), y)
-$$</span></p>
-<p>cost function 尽可能为 convex function ，便于之后梯度优化</p>
-<figure>
-<img src="/2025/10/15/python/mechine_learn/mechine-learn/image-20251019212137633.png" alt="image-20251019212137633"><figcaption aria-hidden="true">image-20251019212137633</figcaption>
-</figure>
-<p>regression 中 <span class="math inline"><em>c</em><em>o</em><em>s</em><em>t</em>(<em>h</em>(<em>x</em>), <em>y</em>) = (<em>h</em>(<em>x</em>) − <em>y</em>)<sup>2</sup></span></p>
-<p>classification 中， 使用 MSE ，不是一个convex function ，不利于之后优化 <span class="math display">$$
+<p>因此使用， Logistic Regression </p>
+<h2 id="logistic-sigmoid-function">6.1. logistic / sigmoid function</h2><script type="math/tex; mode=display">
+g(x) = \frac{1}{1+e^{-x}}</script><p>函数图像，g(x) $\in$ [0,1]</p>
+<p><img src="/2025/10/15/python/mechine_learn/mechine-learn/image-20251019205241683.png" alt="image-20251019205241683"></p>
+<p>h(x) 定义，在输入x 情况，预测为 y = 1的概率，$p(y = 1| x, \theta)$</p>
+<p> y = 0 的概率为 1- h(x)</p>
+<h2 id="decision-boundary">6.2. decision boundary</h2><p>决策边界 由 $\theta$ 参数决定， 计算出$\theta$ 获得决策边界</p>
+<p><img src="/2025/10/15/python/mechine_learn/mechine-learn/image-20251019210727035.png" alt="image-20251019210727035"></p>
+<h2 id="cost-function-1">6.3. cost function</h2><script type="math/tex; mode=display">
+L(x) = \frac{1}{2m} \sum_{i=1}^{m}cost(h_\theta(x), y)</script><p>cost function 尽可能为 convex function ，便于之后梯度优化</p>
+<p><img src="/2025/10/15/python/mechine_learn/mechine-learn/image-20251019212137633.png" alt="image-20251019212137633"></p>
+<p>regression 中 $cost(h(x), y) = (h(x)- y)^2$</p>
+<p>classification 中， 使用 MSE ，不是一个convex function ，不利于之后优化</p>
+<script type="math/tex; mode=display">
 cos(h_\theta(x), y) = \begin{cases}
-    -log(h_\theta(x)) &amp; \text{if } y = 1 \\
-    -log(1 - h_\theta(x)) &amp; \text{if } y = 0 
-\end{cases}
-$$</span> <img src="/2025/10/15/python/mechine_learn/mechine-learn/image-20251019212533349.png" alt="image-20251019212533349"></p>
-<h2 id="gradient-descend-2">6.4. gradient descend</h2>
-<p>cost function 等价为 <span class="math display">$$
+    -log(h_\theta(x)) & \text{if } y = 1 \\
+    -log(1 - h_\theta(x)) & \text{if } y = 0 
+\end{cases}</script><p><img src="/2025/10/15/python/mechine_learn/mechine-learn/image-20251019212533349.png" alt="image-20251019212533349"></p>
+<h2 id="gradient-descend-2">6.4. gradient descend</h2><p>cost function 等价为</p>
+<script type="math/tex; mode=display">
 cost(h(x), y) = -y* log(h(x)) -(1-y) log(1-h(x))\\ 
-L(\theta) = -\frac{1}{2m}[\sum_{i=1}^{m}y* log(h(x)) +(1-y) log(1-h(x)) ]
-$$</span> 求导后的结果，求导过程省略，太麻烦了, 求导结果 和 regression cost function 求导结果一致 <span class="math display">$$
-\frac{\partial}{\partial_\theta} L(\theta) = \sum_{i=1}^{m} (h_\theta(x) - y) x
-$$</span> 梯度下降公式 <span class="math display">$$
-\theta = \theta - \alpha * \sum_{i=1}^{m} (h_\theta(x) - y) x
-$$</span></p>
-<h2 id="advanced-optimization">6.5. advanced optimization</h2>
-<ol type="1">
+L(\theta) = -\frac{1}{2m}[\sum_{i=1}^{m}y* log(h(x)) +(1-y) log(1-h(x)) ]</script><p>求导后的结果，求导过程省略，太麻烦了, 求导结果 和 regression cost function 求导结果一致</p>
+<script type="math/tex; mode=display">
+\frac{\partial}{\partial_\theta} L(\theta) = \sum_{i=1}^{m} (h_\theta(x) - y) x</script><p>梯度下降公式</p>
+<script type="math/tex; mode=display">
+\theta = \theta - \alpha * \sum_{i=1}^{m} (h_\theta(x) - y) x</script><h2 id="advanced-optimization">6.5. advanced optimization</h2><ol>
 <li>gradient descent</li>
 <li>conjugate descent</li>
 <li>BFGS</li>
-<li>L-BFGS</li>
+<li>L-BFGS </li>
 </ol>
-<p>优点：</p>
-<ol type="1">
-<li>自动选择$$</li>
+<p>优点： </p>
+<ol>
+<li>自动选择$\alpha $</li>
 <li>优化速度更快</li>
 </ol>
 <p>缺点： 内部复杂</p>
-<h3 id="编写cost-function">6.5.1. 编写cost function</h3>
-<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">function [jVal, gradient] &#x3D; costFunction(theta)
+<h3 id="编写cost-function">6.5.1. 编写cost function</h3><pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">function [jVal, gradient] &#x3D; costFunction(theta)
 % 需要返回函数值，和梯度下降值
 	jVal &#x3D; (theta(1) - 5)^2;
 	gradient &#x3D; zeros(2,1);
@@ -750,97 +690,69 @@ end
 options &#x3D; optimset(&#39;GradObj&#39;, &#39;on&#39;, &#39;MaxIter&#39;, 100); % 优化选择参数
 initialTheta &#x3D; zeros(2,1); % 初始值
 [optTheta, functionVal , exitFlag] &#x3D; fminunc(@costFunction, initiatTheta, options);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="more-class">6.6. more class</h2>
-<p>one vs all</p>
+<h2 id="more-class">6.6. more class</h2><p>one vs all</p>
 <p>分类三种类别 1， 2， 3 拆分为三个分类</p>
-<ol type="1">
+<ol>
 <li>1 - rest</li>
 <li>2 - rest</li>
 <li>3 - rest</li>
 </ol>
-<figure>
-<img src="/2025/10/15/python/mechine_learn/mechine-learn/image-20251019221901670.png" alt="image-20251019221901670"><figcaption aria-hidden="true">image-20251019221901670</figcaption>
-</figure>
-<p>then , max <span class="math inline"><em>h</em><sub>3</sub>(<em>x</em>)</span> 作为最终结果</p>
-<h1 id="七">7. 七</h1>
-<h2 id="overfit">7.1. overfit</h2>
-<p><img src="/2025/10/15/python/mechine_learn/mechine-learn/image-20251019223154219.png" alt="image-20251019223154219" style="zoom: 80%;"></p>
+<p><img src="/2025/10/15/python/mechine_learn/mechine-learn/image-20251019221901670.png" alt="image-20251019221901670"></p>
+<p>then , max $h_3(x)$ 作为最终结果</p>
+<h1 id="七">7. 七</h1><h2 id="overfit">7.1. overfit</h2><p><img src="/2025/10/15/python/mechine_learn/mechine-learn/image-20251019223154219.png" alt="image-20251019223154219" style="zoom: 80%;"></p>
 <p>使用test 验证是否出现了过拟合</p>
 <p>一个原因： 数据量 &lt; 特征数量</p>
-<ol type="1">
+<ol>
 <li>人为减少特征数量</li>
-<li>使用正则化，保留特征，减少$ values$</li>
+<li>使用正则化，保留特征，减少$ \theta values$</li>
 </ol>
-<h2 id="regulation">7.2. regulation</h2>
-<p>参数<span class="math inline"><em>θ</em></span> 使用更小的值，</p>
-<ol type="1">
+<h2 id="regulation">7.2. regulation</h2><p>参数$\theta$ 使用更小的值， </p>
+<ol>
 <li>模型更简单</li>
 <li>减少过拟合</li>
 </ol>
-<p>在损失函数中 增加对 <span class="math inline"><em>θ</em></span> 的约束</p>
-<p>$ L() =  [<em>{i=1}<sup>{m}(h_{}(x</sup>{(i)}- y<sup>{(i)})</sup>2 + </em>{j = 1}^{n} _j^2)]$</p>
-<h3 id="使用normal-function">7.2.1. 使用normal function</h3>
-<p>公式如下：$ y = x * ^t$</p>
-<p>求解公式 : <span class="math display">$$
+<p>在损失函数中  增加对 $\theta$ 的约束</p>
+<p>$ L(\theta) = \frac{1}{2m} [\sum_{i=1}^{m}(h_{\theta}(x^{(i)}- y^{(i)})^2 + \lambda * \sum_{j = 1}^{n} \theta_j^2)]$</p>
+<h3 id="使用normal-function">7.2.1. 使用normal function</h3><p>公式如下：$ y = x * \theta^t$</p>
+<p>求解公式 :</p>
+<script type="math/tex; mode=display">
 \theta = (X^T*X + \lambda * \begin{pmatrix}
-                            0 &amp; 0 &amp; \dots&amp; 0 \\
-                            0 &amp; 1 &amp; \dots&amp; 0 \\
-                            \vdots &amp;\vdots &amp; 1 &amp; \vdots \\
-                            0 &amp; 0 &amp; 0 &amp; 1
-                            \end{pmatrix}   
-)^{-1} * X^Ty
-$$</span></p>
-<h2 id="八">7.3. 八</h2>
-<h3 id="神经网路">7.3.1. 神经网路</h3>
-<p>线性回归缺点： 当 特征维度较高时， 特征数量较多</p>
+                            0 & 0 & \dots& 0 \\
+                            0 & 1 & \dots& 0 \\
+                            \vdots &\vdots & 1 & \vdots \\
+                            0 & 0 & 0 & 1
+                            \end{pmatrix}    
+)^{-1} * X^Ty</script><h2 id="八">7.3. 八</h2><h3 id="神经网路">7.3.1. 神经网路</h3><p>线性回归缺点： 当 特征维度较高时， 特征数量较多</p>
 <p>线性回归只适合较为简单的函数，维度较高的函数，二次项组合数量较多</p>
-<figure>
-<img src="/2025/10/15/python/mechine_learn/mechine-learn/image-20251104211423785.png" alt="image-20251104211423785"><figcaption aria-hidden="true">image-20251104211423785</figcaption>
-</figure>
+<p><img src="/2025/10/15/python/mechine_learn/mechine-learn/image-20251104211423785.png" alt="image-20251104211423785"></p>
 <p>neural networks：接收一定信息，通过一定算法训练，能够处理接受的信息</p>
-<h3 id="neuron-model">7.3.2. neuron model</h3>
-<h4 id="神经元">7.3.2.1. 神经元</h4>
-<figure>
-<img src="/2025/10/15/python/mechine_learn/mechine-learn/image-20251104213924342.png" alt="image-20251104213924342"><figcaption aria-hidden="true">image-20251104213924342</figcaption>
-</figure>
-<ol type="1">
+<h3 id="neuron-model">7.3.2. neuron model</h3><h4 id="神经元">7.3.2.1. 神经元</h4><p> <img src="/2025/10/15/python/mechine_learn/mechine-learn/image-20251104213924342.png" alt="image-20251104213924342"></p>
+<ol>
 <li>input: 输入数据</li>
 <li>神经元处理： h(x), 使用激活函数 （sigmoid/ logistic)</li>
 <li>output: 输出结果</li>
 </ol>
-<h4 id="神经网络">7.3.2.2. 神经网络</h4>
-<figure>
-<img src="/2025/10/15/python/mechine_learn/mechine-learn/image-20251104214724745.png" alt="image-20251104214724745"><figcaption aria-hidden="true">image-20251104214724745</figcaption>
-</figure>
-<ol type="1">
+<h4 id="神经网络">7.3.2.2. 神经网络</h4><p><img src="/2025/10/15/python/mechine_learn/mechine-learn/image-20251104214724745.png" alt="image-20251104214724745"></p>
+<ol>
 <li>输入层： 输入数据</li>
 <li>中间层： 中间处理过程</li>
 <li>输出层：输出结果</li>
 </ol>
-<p>每一层之间使用转移矩阵进行连接，例如输入层X, 中间层A <span class="math display">$$
+<p>每一层之间使用转移矩阵进行连接，例如输入层X, 中间层A</p>
+<script type="math/tex; mode=display">
 A = \theta^1* X \\
-\theta^1 \in R^{3,4}
-$$</span></p>
-<h4 id="中间层组合">7.3.2.3. 中间层组合</h4>
-<p>一层神经元可以表示一个神奇的表达式</p>
-<figure>
-<img src="/2025/10/15/python/mechine_learn/mechine-learn/image-20251104220903475.png" alt="image-20251104220903475"><figcaption aria-hidden="true">image-20251104220903475</figcaption>
-</figure>
-<p>多个简单层组合，表示更为复杂的层 <span class="math display"><em>λ</em> * <em>A</em> = <em>λ</em> * <em>α</em></span></p>
-<figure>
-<img src="/2025/10/15/python/mechine_learn/mechine-learn/image-20251104223025190.png" alt="image-20251104223025190"><figcaption aria-hidden="true">image-20251104223025190</figcaption>
-</figure>
-<h1 id="九">8. 九</h1>
-<h2 id="代价函数">8.1. 代价函数</h2>
-<p>神经网络有K个输出， 所有 需要 <span class="math inline"><em>Y</em><sub><em>k</em></sub></span> 进行标识</p>
-<figure>
-<img src="/2025/10/15/python/mechine_learn/mechine-learn/image-20251105211214283.png" alt="image-20251105211214283"><figcaption aria-hidden="true">image-20251105211214283</figcaption>
-</figure>
-<p>所以，交叉熵增加输出维度 K <span class="math display">$$
-J(\theta) = -\frac{1}{m}[\sum_{i=1}^m\sum_{k=1}^k y_k^{(i)}* log(h_\theta(x^{(i)})_k) + (1- y_{k}^{(i)} )log(1-(h_\theta(x^{(i)})_k))] + 多所有权重进行正则化
-$$</span> 所有权重正则化公式： <span class="math display">$$
-\frac{\lambda}{2m}\sum_{l=1}^{l-1} \sum_{i = 1}^{s_l}\sum_{j=1}^{s(l+1)}(\theta_{i,j}^{(l)})^2
-$$</span> 表示 对 第l 层， 第L层中<span class="math inline"><em>θ</em></span> 维度为(sl, sl+1)</p>
+\theta^1 \in R^{3,4}</script><h4 id="中间层组合">7.3.2.3. 中间层组合</h4><p>一层神经元可以表示一个神奇的表达式</p>
+<p><img src="/2025/10/15/python/mechine_learn/mechine-learn/image-20251104220903475.png" alt="image-20251104220903475"></p>
+<p>多个简单层组合，表示更为复杂的层</p>
+<script type="math/tex; mode=display">
+\lambda * A = \lambda * \alpha</script><p><img src="/2025/10/15/python/mechine_learn/mechine-learn/image-20251104223025190.png" alt="image-20251104223025190"></p>
+<h1 id="九">8. 九</h1><h2 id="代价函数">8.1. 代价函数</h2><p>神经网络有K个输出， 所有 需要 $Y_k$ 进行标识</p>
+<p><img src="/2025/10/15/python/mechine_learn/mechine-learn/image-20251105211214283.png" alt="image-20251105211214283"></p>
+<p>所以，交叉熵增加输出维度 K</p>
+<script type="math/tex; mode=display">
+J(\theta) = -\frac{1}{m}[\sum_{i=1}^m\sum_{k=1}^k y_k^{(i)}* log(h_\theta(x^{(i)})_k) + (1- y_{k}^{(i)} )log(1-(h_\theta(x^{(i)})_k))] + 多所有权重进行正则化</script><p>所有权重正则化公式：</p>
+<script type="math/tex; mode=display">
+\frac{\lambda}{2m}\sum_{l=1}^{l-1} \sum_{i = 1}^{s_l}\sum_{j=1}^{s(l+1)}(\theta_{i,j}^{(l)})^2</script><p>表示 对 第l 层， 第L层中$\theta$  维度为(sl, sl+1)</p>
 
                 
             </div>
@@ -1543,7 +1455,7 @@ $$</span> 表示 对 第l 层， 第L层中<span class="math inline"><em>θ</em>
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">48.8k</span>
+                        class="white-color">48.5k</span>
             
             
             
