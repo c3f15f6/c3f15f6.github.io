@@ -5,9 +5,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="图论0, 汤汁小白菜">
-    <meta name="description" content="1. history1.1. 岛屿1.2. 图查找算法1.2.1. 并查集的实现   并查集理论基础 | 代码随想录
+    <meta name="description" content="1. history
+1.1. 岛屿
+1.2. 图查找算法
+1.2.1. 并查集的实现 并查集理论基础 | 代码随想录
+
 并查集，是将一个集合内所有数据放入一个连通图中，即为father[u]= v；
-查询一个并查集，是查询根节点是否相同，fi">
+查询一个并查集，是查询根节">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -472,7 +476,11 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="history">1. history</h1><h2 id="岛屿">1.1. 岛屿</h2><h2 id="图查找算法">1.2. 图查找算法</h2><h3 id="并查集的实现-并查集理论基础-代码随想录">1.2.1. 并查集的实现   并查集理论基础 | 代码随想录</h3><ol>
+                <h1 id="history">1. history</h1>
+<h2 id="岛屿">1.1. 岛屿</h2>
+<h2 id="图查找算法">1.2. 图查找算法</h2>
+<h3 id="并查集的实现-并查集理论基础-代码随想录">1.2.1. 并查集的实现 并查集理论基础 | 代码随想录</h3>
+<ol type="1">
 <li>并查集，是将一个集合内所有数据放入一个连通图中，即为father[u]= v；</li>
 <li>查询一个并查集，是查询根节点是否相同，find(u)== find(v)</li>
 <li>初始化，所有的并查集都指向自身</li>
@@ -510,50 +518,57 @@ void join(int u, int v)&#123;
     return ;
 &#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="prim算法">1.2.2. prim算法</h3><ol>
+<h3 id="prim算法">1.2.2. prim算法</h3>
+<ol type="1">
 <li>选择最小边e,v（e是树中，v是树外的数据）</li>
 <li>将节点v加入树中</li>
-<li>更新与v的节点的权重<ol>
+<li>更新与v的节点的权重
+<ol type="1">
 <li>此处记录树的连接关系，记录当前节点的父亲</li>
+</ol></li>
 </ol>
-</li>
-</ol>
-<h3 id="kruskal-算法">1.2.3. kruskal 算法</h3><ol>
+<h3 id="kruskal-算法">1.2.3. kruskal 算法</h3>
+<ol type="1">
 <li>完成并查集</li>
 <li>对边的权重排序</li>
-<li>选择最小边<ol>
+<li>选择最小边
+<ol type="1">
 <li>如果在并查集中，跳过</li>
 <li>不在并查集中，加入节点树种</li>
+</ol></li>
 </ol>
-</li>
-</ol>
-<h3 id="拓扑排序">1.2.4. 拓扑排序</h3><ol>
+<h3 id="拓扑排序">1.2.4. 拓扑排序</h3>
+<ol type="1">
 <li>计算节点入度</li>
 <li>选择入度为0 的节点，加入处理队列q, 并将入度替换为-1</li>
-<li>处理队列q<ol>
+<li>处理队列q
+<ol type="1">
 <li>cur指向的所有节点，入度减1</li>
 <li>如果入度等于1，加入处理队列q, 并将入度替换为-1</li>
 <li>记录出队元素cur.</li>
-</ol>
-</li>
+</ol></li>
 </ol>
 <blockquote>
 <p>出队元素不等于总元素数量时， <strong>判断有向图中 存在环</strong></p>
 </blockquote>
-<h3 id="dijkstra算法">1.2.5. dijkstra算法</h3><p><strong><u>权值不能为负数，prim算法权值可以是负数，负数情况使用ford算法</u></strong></p>
-<ol>
+<h3 id="dijkstra算法">1.2.5. dijkstra算法</h3>
+<p><strong><u>权值不能为负数，prim算法权值可以是负数，负数情况使用ford算法</u></strong></p>
+<ol type="1">
 <li>选择最小边并且该节点没有被访问过</li>
 <li>标记该节点，已经被访问过</li>
 <li>更新非访问节点到源点的最小距离，同时当前节点的父亲</li>
 </ol>
-<h3 id="使用边权重的dijkstra算法">1.2.6. 使用边权重的dijkstra算法</h3><p>使用边的权值进行计算</p>
-<ol>
+<h3 id="使用边权重的dijkstra算法">1.2.6. 使用边权重的dijkstra算法</h3>
+<p>使用边的权值进行计算</p>
+<ol type="1">
 <li>建立小顶堆</li>
 <li>从小顶堆中选择最小的边</li>
 <li>标记边连线的点已经被访问过了</li>
 <li>更新edge相连的顶点的权重</li>
 </ol>
-<h1 id="附录">2. 附录</h1><h2 id="建立小顶堆">2.1. 建立小顶堆</h2><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">#include &lt;queue&gt;
+<h1 id="附录">2. 附录</h1>
+<h2 id="建立小顶堆">2.1. 建立小顶堆</h2>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">#include &lt;queue&gt;
 class mycomparison&#123;
     bool operator(const pair&lt;int, int&gt;&amp; a, const pair&lt;int, int&gt;&amp; b)&#123;
         return a.second&gt; b.second;
@@ -564,7 +579,8 @@ priority_queue&lt;pair&lt;int, int&gt;, vector&lt;pair&lt;int,int&gt;&gt; , myco
 	a&gt; b时 ，是小顶堆；
 	a&lt; b时， 是大顶堆；
 *&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="对vector数组进行排序">2.2. 对vector数组进行排序</h2><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">#include &lt;algorithm&gt;
+<h2 id="对vector数组进行排序">2.2. 对vector数组进行排序</h2>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">#include &lt;algorithm&gt;
 vector&lt;int&gt; edges;
 sort(edges.begin() , edges.end(), [](const edge&amp; a, const edge&amp; b)&#123;
 	return a&lt; b;
@@ -574,14 +590,18 @@ sort(edges.begin() , edges.end(), [](const edge&amp; a, const edge&amp; b)&#123;
 	a&gt; b， 降序排序；
 	默认情况是升序排序；
 *&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="哈希表">2.3. 哈希表</h2><h3 id="数组作为哈希表">2.3.1. 数组作为哈希表</h3><h3 id="stl中的哈希表">2.3.2. stl中的哈希表</h3><p>此时就要使用另一种结构体了，set ，关于set，C++ 给提供了如下三种可用的数据结构：</p>
+<h2 id="哈希表">2.3. 哈希表</h2>
+<h3 id="数组作为哈希表">2.3.1. 数组作为哈希表</h3>
+<h3 id="stl中的哈希表">2.3.2. stl中的哈希表</h3>
+<p>此时就要使用另一种结构体了，set ，关于set，C++ 给提供了如下三种可用的数据结构：</p>
 <ul>
 <li>std::set</li>
 <li>std::multiset</li>
 <li>std::unordered_set</li>
 </ul>
 <p>std::set和std::multiset底层实现都是红黑树，std::unordered_set的底层实现是哈希表， 使用unordered_set 读写效率是最高的，并不需要对数据进行排序，而且还不要让数据重复，所以选择unordered_set。</p>
-<h2 id="回溯算法">2.4. 回溯算法</h2><p>算法的模板</p>
+<h2 id="回溯算法">2.4. 回溯算法</h2>
+<p>算法的模板</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">void backtracking(参数)&#123;
     if(终止条件）&#123;
         存放结果;
@@ -594,17 +614,19 @@ sort(edges.begin() , edges.end(), [](const edge&amp; a, const edge&amp; b)&#123;
     &#125;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <blockquote>
-<p>vector<int> a </int></p>
+<p>vector<int> a</int></p>
 <p>a.push_back(int b) 压入数据， a.pop_back(), 弹出数据</p>
 <p>还可以采用insert， + ，压入数据，使用erase(begin()+ i ,end())弹出数据</p>
 </blockquote>
 <p>使用切割时候，需要注意下一次开始为本次切割后的下一次位置，此处回溯时候不需要还原，其余元素均需要还原。还原时候注意还原的位置。</p>
 <p><a target="_blank" rel="noopener" href="https://programmercarl.com/0131.分割回文串.html#算法公开课">回溯问题</a></p>
-<h3 id="分割字符串方法">2.4.1. 分割字符串方法</h3><ol>
+<h3 id="分割字符串方法">2.4.1. 分割字符串方法</h3>
+<ol type="1">
 <li>函数传递，参数<code>s + start + end</code></li>
 <li>使用string 切割，<code>string s = s.substr(start, end)</code></li>
 </ol>
-<h3 id="两阶vector初始化方法">2.4.2. 两阶vector初始化方法</h3><p><code>is_palind_rome.resize(s.size(), vector&lt;bool&gt;(s.size(), false));</code></p>
+<h3 id="两阶vector初始化方法">2.4.2. 两阶vector初始化方法</h3>
+<p><code>is_palind_rome.resize(s.size(), vector&lt;bool&gt;(s.size(), false));</code></p>
 
                 
             </div>
@@ -1310,7 +1332,7 @@ sort(edges.begin() , edges.end(), [](const edge&amp; a, const edge&amp; b)&#123;
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">48.5k</span>
+                        class="white-color">48.8k</span>
             
             
             
