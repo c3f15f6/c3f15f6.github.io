@@ -5,13 +5,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="deepseek 调用方法, 汤汁小白菜">
-    <meta name="description" content="1. seqtember
-1.1. deepseek 调用方法
-1.1.1. API_KEY设置
+    <meta name="description" content="1. seqtember1.1. deepseek 调用方法1.1.1. API_KEY设置
+设置URL = &amp;quot;https://deepseek.com/chat/completions/&amp;quot;
 
-设置URL = &#34;https://deepseek.com/chat/completions/&#34;
 导入系统变量，借助os
-os.">
+o">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -476,31 +474,28 @@ os.">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="seqtember">1. seqtember</h1>
-<h2 id="deepseek-调用方法">1.1. deepseek 调用方法</h2>
-<h3 id="api_key设置">1.1.1. API_KEY设置</h3>
-<ol type="1">
-<li><p>设置<code>URL = "https://deepseek.com/chat/completions/"</code></p></li>
+                <h1 id="seqtember">1. seqtember</h1><h2 id="deepseek-调用方法">1.1. deepseek 调用方法</h2><h3 id="API-KEY设置">1.1.1. API_KEY设置</h3><ol>
+<li><p>设置<code>URL = &quot;https://deepseek.com/chat/completions/&quot;</code></p>
+</li>
 <li><p>导入系统变量，借助<code>os</code></p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">os.getenv(&quot;变量名称&quot;, default &#x3D; 默认值)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">os.getenv(&quot;变量名称&quot;, default &#x3D; 默认值)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
 </ol>
-<h3 id="请求头">1.1.2. 请求头</h3>
-<ol type="1">
-<li><code>authorization</code> : Bearer API_KEY， 认证信息</li>
-<li><code>Content-Type: application/json</code>, 请求内容格式，post 仅能使用Json</li>
+<h3 id="请求头">1.1.2. 请求头</h3><ol>
+<li><code>authorization</code> :  Bearer  API_KEY， 认证信息</li>
+<li><code>Content-Type: application/json</code>, 请求内容格式，post 仅能使用Json </li>
 </ol>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">header &#x3D; &#123;
     &quot;authorization&quot;: f&quot;Bearer &#123;API_KEY&#125;&quot;
     &quot;Content-Type&quot;: &quot;application&#x2F;json&quot;,
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="请求内容payload">1.1.3. 请求内容payload</h3>
-<ol type="1">
+<h3 id="请求内容payload">1.1.3. 请求内容payload</h3><ol>
 <li><code>model</code>: 选择模型</li>
-<li><code>messages</code>: 发送的内容数组
-<ol type="1">
+<li><code>messages</code>: 发送的内容数组<ol>
 <li><code>role</code>：角色</li>
 <li><code>content</code>: 内容</li>
-</ol></li>
+</ol>
+</li>
 <li><code>temperature</code>: 设置为 0 ，模型输出更加稳定， 1，模型输出更发散</li>
 </ol>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">payload &#x3D; &#123;
@@ -511,55 +506,57 @@ os.">
         &#123;&quot;role&quot;: &quot;&quot;&#125;
     ]
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="发送请求">1.1.4. 发送请求</h3>
-<p>发送内容，使用<code>post</code>请求</p>
+<h3 id="发送请求">1.1.4. 发送请求</h3><p>发送内容，使用<code>post</code>请求</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">resp &#x3D; requests.post(url, header &#x3D; header, payload &#x3D; payload, timeout &#x3D;timeout)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h3 id="response-返回内容">1.1.5. response 返回内容</h3>
-<p>返回内容在<code>resp.json()['choices'][0]['message']['content']</code>, 提取出结果并返回</p>
-<figure>
-<img src="/2025/09/02/%E6%9D%82%E9%A1%B9/september/image-20250902102742498.png" alt="image-20250902102742498"><figcaption aria-hidden="true">image-20250902102742498</figcaption>
-</figure>
-<h2 id="翻译">1.2. 翻译</h2>
-<ol type="1">
-<li><p>将文本块切分成小段，指定分块大小，存放在数组中</p></li>
+<h3 id="response-返回内容">1.1.5. response 返回内容</h3><p>返回内容在<code>resp.json()[&#39;choices&#39;][0][&#39;message&#39;][&#39;content&#39;]</code>, 提取出结果并返回</p>
+<p><img src="/2025/09/02/%E6%9D%82%E9%A1%B9/september/image-20250902102742498.png" alt="image-20250902102742498"></p>
+<h2 id="翻译">1.2. 翻译</h2><ol>
+<li><p>将文本块切分成小段，指定分块大小，存放在数组中</p>
+</li>
 <li><p>对分段后每一段进行翻译</p>
 <blockquote>
-<h3 id="for-遍历">1.2.1. for 遍历</h3>
-<ol type="1">
-<li><p><code>for i in 迭代器</code></p>
-<p>迭代器: 列表等</p></li>
-<li><p>for idx, ck in enumerate(n):</p></li>
+<h3 id="for-遍历">1.2.1. for 遍历</h3><ol>
+<li><p><code>for i in 迭代器</code> </p>
+<p>迭代器: 列表等</p>
+</li>
+<li><p>for idx, ck in enumerate(n):</p>
+</li>
 <li><p>for i in range(1, n) :</p>
-<p>范围是[1,n）</p></li>
+<p>范围是[1,n）</p>
+</li>
 </ol>
-</blockquote></li>
+</blockquote>
+</li>
 </ol>
-<h2 id="day3">1.3. day3</h2>
-<ol type="1">
-<li><p>输入错误： <code>EOFerror</code></p></li>
-<li><p><code>requests.post</code> 发送请求时，需要包裹在<code>try</code>中</p></li>
+<h2 id="day3">1.3. day3</h2><ol>
+<li><p>输入错误： <code>EOFerror</code></p>
+</li>
+<li><p><code>requests.post</code> 发送请求时，需要包裹在<code>try</code>中</p>
+</li>
 <li><p><code>requests</code>发送数据，解析数据检查</p>
-<ol type="1">
+<ol>
 <li><p>检查requests是否接收</p>
-<p><code>except requests.exception.RequestException as e</code></p></li>
+<p><code>except requests.exception.RequestException as e</code></p>
+</li>
 <li><p>检查网络是否</p>
-<p><code>resp.ok</code></p></li>
+<p><code>resp.ok</code></p>
+</li>
 <li><p>数据转换是否成<code>json</code></p>
-<p><code>except ValueError</code></p></li>
+<p><code>except ValueError</code></p>
+</li>
 <li><p>是否可以从数据中提取出值</p>
-<p>`except {KeyError, IndexError, TypeError}</p></li>
-</ol></li>
+<p>`except {KeyError, IndexError, TypeError}</p>
+</li>
 </ol>
-<h3 id="使用超时重传发送">1.3.1. 使用超时重传发送</h3>
-<p>如果遇到<code>rest</code>请求错误，或者返回的<code>resq</code>状态码有问题，使用退避算法，进行规避<code>n</code>次，超过则返回</p>
-<ol type="1">
+</li>
+</ol>
+<h3 id="使用超时重传发送">1.3.1. 使用超时重传发送</h3><p>如果遇到<code>rest</code>请求错误，或者返回的<code>resq</code>状态码有问题，使用退避算法，进行规避<code>n</code>次，超过则返回</p>
+<ol>
 <li>重复遍历<code>n</code>次</li>
 <li>如果遇到<code>请求错误</code>,查看是否超过重复次数，没有，<code>time.sleep</code>一段时间后，再次运行重传</li>
 <li>超过重复请求后，返回错误</li>
 </ol>
-<h2 id="day4">1.4. day4</h2>
-<h3 id="markdown-渲染">1.4.1. markdown 渲染</h3>
-<p>使用<code>rich</code>库</p>
+<h2 id="day4">1.4. day4</h2><h3 id="markdown-渲染">1.4.1. markdown 渲染</h3><p>使用<code>rich</code>库</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">from rich.console import Console
 from rich.markdown import Markdown
 
@@ -567,51 +564,48 @@ console &#x3D; Console()
 markdown_string &#x3D; &quot;&quot;&quot;&quot;&quot;&quot;
 markdown &#x3D; Markdown(markdown_string)
 console<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="输出markdown-到word-文件中">1.4.2. 输出markdown 到word 文件中</h3>
-<ol type="1">
-<li>首先检查文件目录存在</li>
-</ol>
-<p><pre class="line-numbers language-python" data-language="python"><code class="language-python">import os
+<h3 id="输出markdown-到word-文件中">1.4.2. 输出markdown 到word 文件中</h3><ol>
+<li><p>首先检查文件目录存在</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">import os
 output_dir &#x3D; os.path.dirname(output_file)
 if output_dir and not os.path.exist(output_dir):
-   	os.makedirs(output_dir)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></p>
-<ol start="2" type="1">
-<li>使用<code>pypandoc</code>输出</li>
-</ol>
-<p><pre class="line-numbers language-python" data-language="python"><code class="language-python">import pypandoc
+   	os.makedirs(output_dir)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>使用<code>pypandoc</code>输出</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">import pypandoc
 &quot;&quot;&quot;
 	to: &quot;目标格式&quot;
 	format：&quot;当前格式&quot;
 	outputfile: &quot;输出文件&quot;
 &quot;&quot;&quot;
-pypandoc.convert_text(makedown_string, to&#x3D; &#39;docx&#39;, format &#x3D; &#39;markdown&#39;, outputfile &#x3D; output_filepath)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></p>
-<ol start="3" type="1">
-<li>同时可以尝试检查<code>ImportError , Exception</code>等错误</li>
+pypandoc.convert_text(makedown_string, to&#x3D; &#39;docx&#39;, format &#x3D; &#39;markdown&#39;, outputfile &#x3D; output_filepath)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>同时可以尝试检查<code>ImportError , Exception</code>等错误</p>
+</li>
 </ol>
-<h4 id="直接调用pandoc-命令行工具">1.4.2.1. 直接调用pandoc 命令行工具</h4>
-<ol type="1">
+<h4 id="直接调用pandoc-命令行工具">1.4.2.1. 直接调用pandoc 命令行工具</h4><ol>
 <li><p>创建临时文件.md存储markdown内容</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">temp_md_file &#x3D; &quot;temp.md&quot;
 with open(temp_md_file, &#39;w&#39;, encoding&#x3D; &#39;utf-8&#39;) as f:
-    f.write(m_str)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
+    f.write(m_str)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
 <li><p>使用<code>subprocess.run</code>执行命令</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">import subprocess
 command &#x3D; [&#39;pandoc&#39;, &#39;-f&#39;, &#39;markdown&#39;, &#39;t&#39;,&#39;doc&#39;, &#39;o&#39;, output_filename, temp_md_file]
 result &#x3D; subprocess.run(command, capture_output &#x3D; True, text &#x3D; True, encoding &#x3D; &#39;utf-8&#39;)
 if result.returncode &#x3D;&#x3D; 0:
-    return &quot;转换正确&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+    return &quot;转换正确&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
 <li><p>最后删除临时文件</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">if os.path.exist(temp_md_file):
-    os.remove(temp_md_file)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+    os.remove(temp_md_file)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
 </ol>
-<h2 id="section">1.5. 9.8</h2>
-<p>win11 主要文件夹路径</p>
+<h2 id="9-8">1.5. 9.8</h2><p>win11 主要文件夹路径</p>
 <p>任务栏：<code>C:\Users\用户名\AppData\Roaming\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar</code></p>
 <p>开始菜单：<code>C:\ProgramData\Microsoft\Windows\Start Menu\Programs</code></p>
 <p>IE开始菜单<code>C:\Users\用户名\AppData\Roaming\Microsoft\Internet Explorer\Quick Launch\User Pinned\StartMenu</code></p>
-<h2 id="section-1">1.6. 9.10</h2>
-<h3 id="path类">1.6.1. path类</h3>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">from pathlib import Path
+<h2 id="9-10">1.6. 9.10</h2><h3 id="path类">1.6.1. path类</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python">from pathlib import Path
 p_path &#x3D; Path(路径)
 ## 组合路径
 config_path &#x3D; p_path &#x2F; &quot;config.txt&quot; 
@@ -632,12 +626,9 @@ Path(路径).touch()  ## 创建空文件
 p_path.write_text(str) ## 写入文件
 content &#x3D; file.read_text() ## 读取文件内容
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="vscode-代码补全设置">1.7. 9.11 vscode 代码补全设置</h2>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_51564306/article/details/132461042">开启/关闭VSCode代码提示(补全)_vscode自动提示功能怎么开-CSDN博客</a></p>
-<h2 id="规划">1.8. 9.21 规划</h2>
-<h3 id="运筹学">1.8.1. 运筹学</h3>
-<p><a target="_blank" rel="noopener" href="https://njuwallspider.github.io/IECourseGuide/专业核心课/运筹学Ⅰ/">运筹学Ⅰ - NJU IE学习指南</a></p>
-<ol type="1">
+<h2 id="9-11-vscode-代码补全设置">1.7. 9.11 vscode 代码补全设置</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_51564306/article/details/132461042">开启/关闭VSCode代码提示(补全)_vscode自动提示功能怎么开-CSDN博客</a></p>
+<h2 id="9-21-规划">1.8. 9.21 规划</h2><h3 id="运筹学">1.8.1. 运筹学</h3><p><a target="_blank" rel="noopener" href="https://njuwallspider.github.io/IECourseGuide/专业核心课/运筹学Ⅰ/">运筹学Ⅰ - NJU IE学习指南</a></p>
+<ol>
 <li>运筹学的发展与主要内容</li>
 <li>线性规划初步</li>
 <li>线性规划初步</li>
@@ -652,87 +643,69 @@ content &#x3D; file.read_text() ## 读取文件内容
 <li>图与网络Ⅰ</li>
 <li>图与网络Ⅱ</li>
 </ol>
-<h3 id="日常实习">1.8.2. 日常实习</h3>
-<h3 id="论文复现">1.8.3. 论文复现</h3>
-<h2 id="面试准备">1.9. 9.23 面试准备</h2>
-<h3 id="项目1">1.9.1. 项目1</h3>
-<h4 id="子图匹配在地理位置算法中台的潜在应用场景有哪些">1.9.1.1. 子图匹配在地理位置算法中台的潜在应用场景有哪些？</h4>
-<ol type="1">
+<h3 id="日常实习">1.8.2. 日常实习</h3><h3 id="论文复现">1.8.3. 论文复现</h3><h2 id="9-23-面试准备">1.9. 9.23 面试准备</h2><h3 id="项目1">1.9.1. 项目1</h3><h4 id="子图匹配在地理位置算法中台的潜在应用场景有哪些？">1.9.1.1. 子图匹配在地理位置算法中台的潜在应用场景有哪些？</h4><ol>
 <li>路径规划与导航优化</li>
 <li>POI（兴趣点）推荐与关联</li>
 <li>地理数据质量与一致性检查</li>
 </ol>
-<h4 id="子图匹配np问题你是如何理解的">1.9.1.2. 子图匹配NP问题”你是如何理解的</h4>
-<ol type="1">
+<h4 id="子图匹配NP问题”你是如何理解的">1.9.1.2. 子图匹配NP问题”你是如何理解的</h4><ol>
 <li>组合爆炸</li>
 <li>内存消耗</li>
 </ol>
 <p><strong>解决方法：</strong></p>
-<ol type="1">
+<ol>
 <li>优化顶点识别顺序</li>
 <li>优化节点存储</li>
 </ol>
-<h4 id="目标与衡量方面">1.9.1.3. 目标与衡量方面</h4>
-<ol type="1">
+<h4 id="目标与衡量方面">1.9.1.3. 目标与衡量方面</h4><ol>
 <li><strong>剪枝效果</strong></li>
 <li>候选空间大小</li>
 <li>回溯数量</li>
 </ol>
-<h4 id="基于最小生成树mst的顶点匹配顺序优化方法">1.9.1.4. 基于最小生成树（MST）的顶点匹配顺序优化方法</h4>
-<figure>
-<img src="/2025/09/02/%E6%9D%82%E9%A1%B9/september/image-20250923202903172.png" alt="image-20250923202903172"><figcaption aria-hidden="true">image-20250923202903172</figcaption>
-</figure>
-<h4 id="为什么mst能够帮助尽早过滤假阳性匹配">1.9.1.5. 为什么MST能够帮助尽早过滤假阳性匹配</h4>
-<ol type="1">
+<h4 id="基于最小生成树（MST）的顶点匹配顺序优化方法">1.9.1.4. 基于最小生成树（MST）的顶点匹配顺序优化方法</h4><p><img src="/2025/09/02/%E6%9D%82%E9%A1%B9/september/image-20250923202903172.png" alt="image-20250923202903172"></p>
+<h4 id="为什么MST能够帮助尽早过滤假阳性匹配">1.9.1.5. 为什么MST能够帮助尽早过滤假阳性匹配</h4><ol>
 <li><strong>构建最小生成树（MST）是为了得到一个“最优”的匹配顺序</strong>；匹配错误节点尽可能少，之后优化的结构更加精确</li>
 <li><strong>减少回溯</strong>，优先匹配那些“关键”或“脆弱”的边和顶点</li>
 </ol>
 <p><strong>具体使用的剪枝技术：</strong></p>
-<ol type="1">
+<ol>
 <li>度数剪枝</li>
 <li>标签剪枝</li>
 <li>连接性剪枝</li>
 </ol>
 <p><strong>DFS匹配阶段（MS更新与剪枝）</strong></p>
-<ol type="1">
+<ol>
 <li>连接性剪枝</li>
 <li>动态更新剩余度数</li>
 <li>候选集精炼</li>
 </ol>
-<h3 id="项目2">1.9.2. 项目2</h3>
-<h4 id="串联重复识别">1.9.2.1. 串联重复识别</h4>
-<p>一段短的DNA序列基元（称为重复单元，Repeat Unit）以头尾相连的方式重复多次，并紧密排列在一起的结构</p>
+<h3 id="项目2">1.9.2. 项目2</h3><h4 id="串联重复识别">1.9.2.1. 串联重复识别</h4><p>一段短的DNA序列基元（称为重复单元，Repeat Unit）以头尾相连的方式重复多次，并紧密排列在一起的结构</p>
 <ul>
 <li><strong>疾病研究</strong></li>
 </ul>
-<h4 id="效率低易漏检具体是什么原因导致了这些问题">1.9.2.2. “效率低、易漏检”，具体是什么原因导致了这些问题？</h4>
-<ol type="1">
+<h4 id="“效率低、易漏检”，具体是什么原因导致了这些问题？">1.9.2.2. “效率低、易漏检”，具体是什么原因导致了这些问题？</h4><ol>
 <li>算法复杂度过高（效率低），字符串匹配算法限制要求精度高</li>
 <li>对变异容忍度不高</li>
 </ol>
-<h4 id="这种周期性重复模式的高效定位的思维方式">1.9.2.3. 这种“周期性重复模式的高效定位”的思维方式</h4>
-<ol type="1">
+<h4 id="这种“周期性重复模式的高效定位”的思维方式">1.9.2.3. 这种“周期性重复模式的高效定位”的思维方式</h4><ol>
 <li><strong>轨迹模式识别与预测</strong></li>
 <li><strong>POI周期性访问行为分析：</strong></li>
 </ol>
-<h4 id="评估指标">1.9.2.4. 评估指标</h4>
-<ol type="1">
+<h4 id="评估指标">1.9.2.4. 评估指标</h4><ol>
 <li><strong>精确度 (Precision)：</strong> TP / (TP + FP)。TP为真阳性（正确识别的TRs），FP为假阳性（误报的非TRs）。</li>
 <li><strong>召回率 (Recall)：</strong> TP / (TP + FN)。FN为假阴性（漏报的真实TRs）。</li>
-<li><strong>F1-score：</strong> 2 * (Precision * Recall) / (Precision + Recall)。综合衡量Precision和Recall。</li>
+<li><strong>F1-score：</strong> 2 <em> (Precision </em> Recall) / (Precision + Recall)。综合衡量Precision和Recall。</li>
 </ol>
-<h4 id="minidbg">1.9.2.5. MiniDBG</h4>
-<ul>
+<h4 id="MiniDBG">1.9.2.5. MiniDBG</h4><ul>
 <li><strong>MiniDBG的压缩：</strong> MiniDBG通过<strong>合并非分支节点和边</strong>来压缩图。它将任何不分叉（入度为1，出度为1）的节点序列合并成一个更长的节点（称为<strong>Unitig</strong>或<strong>Contig</strong>）。只有在序列出现分叉（入度或出度大于1）时，才创建新的节点。</li>
-<li><strong>带环边 (Cycle/Loop Edge) 的处理</strong>
-<ul>
+<li><strong>带环边 (Cycle/Loop Edge) 的处理</strong><ul>
 <li><strong>传统DBG与循环：</strong> 传统DBG中，重复序列会形成循环（Cycles）。</li>
 <li>MiniDBG的压缩特性使得它能更清晰地识别出代表重复单元的<strong>“简单循环”或“自环”</strong>。</li>
 <li><strong>变异的容忍</strong>：迁移使用拥塞控制算法，在[0,2]之间TRS窗口指数型增长，[2,5]之间具有增长缓慢，10为上线，超出10后判定错误</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 <h3 id="总结生成自我介绍">1.9.3. 总结生成自我介绍</h3>
-
                 
             </div>
             <hr/>
@@ -1449,7 +1422,7 @@ content &#x3D; file.read_text() ## 读取文件内容
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">48.8k</span>
+                        class="white-color">48.6k</span>
             
             
             

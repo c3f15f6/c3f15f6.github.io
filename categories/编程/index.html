@@ -457,20 +457,20 @@
                 </a>
                 
                 
-                <a href="/categories/hexo/" title="hexo: 3">
+                <a href="/categories/python/" title="python: 6">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #FEF9E7;">hexo
-                        <span class="tag-length">3</span>
+                            style="background-color: #FEF9E7;">python
+                        <span class="tag-length">6</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/python/" title="python: 6">
+                <a href="/categories/hexo/" title="hexo: 3">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F8F9F9;">python
-                        <span class="tag-length">6</span>
+                            style="background-color: #F8F9F9;">hexo
+                        <span class="tag-length">3</span>
                     </span>
                 </a>
                 
@@ -554,14 +554,12 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1. 图论 搜索
-感谢代码随想录
-1.1. 图论基础
-1.1.1. 邻接矩阵
-邻接矩阵使用二维数组保存信息，矩阵中每个节点代表一个元素
+                                1. 图论 搜索感谢代码随想录
+1.1. 图论基础1.1.1. 邻接矩阵邻接矩阵使用二维数组保存信息，矩阵中每个节点代表一个元素
 typedef struct Node&#123;
     int data;
-&#125;N
+&#125;Node;
+typ
                             
                         </div>
                         <div class="publish-info">
@@ -615,8 +613,7 @@ typedef struct Node&#123;
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1. 动态规划
-感谢代码随想录
+                                1. 动态规划感谢代码随想录
 解题思路
 
 确定dp数组及其下标的含义
@@ -628,7 +625,7 @@ typedef struct Node&#123;
 
 打印程序日志
 自行推导dp数组
-检查dp数
+检查dp数组与程序中哪里出现错误，对错
                             
                         </div>
                         <div class="publish-info">
@@ -682,12 +679,10 @@ typedef struct Node&#123;
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1. 贪心算法
-感谢代码随想录
+                                1. 贪心算法感谢代码随想录
 贪心算法——由局部最优推导出全局最优
-1.1. 饼干分配
-按照常识推导，但所用知识需要逻辑正确
-大胃口 吃 大饼干，如果胃口大了，可以换小胃口 大饼干不能喂小胃口，如果饼干小了， 不能喂更小的饼干
+1.1. 饼干分配按照常识推导，但所用知识需要逻辑正确
+大胃口  吃 大饼干，如果胃口大了，可以换小胃口             大饼干不能喂小胃口，如果饼干小了， 不能喂
                             
                         </div>
                         <div class="publish-info">
@@ -741,10 +736,8 @@ typedef struct Node&#123;
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1. 回溯算法
-感谢代码随想录
+                                1. 回溯算法感谢代码随想录
 1.1. 组合问题
-
 终止条件，满足题目条件
 处理逻辑
 
@@ -753,9 +746,11 @@ typedef struct Node&#123;
 结果回溯，弹出函数修改的结果
 在处理中，不合理的情况暂停，减枝
 
+
 函数参数选择
 
-1.2
+1.2. 组合问题2组合问题
+回溯算
                             
                         </div>
                         <div class="publish-info">
@@ -809,18 +804,14 @@ typedef struct Node&#123;
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1. 树
-感谢代码随想录
-1.1. 深度遍历
-1.1.1. 递归
-1. 递归结束条件
+                                1. 树感谢代码随想录
+1.1. 深度遍历1.1.1. 递归1. 递归结束条件
 2. 当前递归操作
 3. 对那些节点进行递归
 4. 确定参数和返回值
-1.1.2. 栈实现
-深度遍历中存在先进后出，所以此处使用栈
+1.1.2. 栈实现深度遍历中存在先进后出，所以此处使用栈
 
-先序
+先序遍历，栈中先进后出，出栈
                             
                         </div>
                         <div class="publish-info">
@@ -874,18 +865,18 @@ typedef struct Node&#123;
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1. 栈
-感谢代码随想录
-1.1. 栈模拟队列
-模拟队列
-
-232.用栈实现队列版本2
+                                1. 栈感谢代码随想录
+1.1. 栈模拟队列模拟队列
 
 使用两个栈模拟队列
 
 入队时， 直接入队
 出队时， 将输入栈的数据放入输出栈中，将顺序倒置为先入先出
-判空时，需要判断两个栈是否
+判空时，需要判断两个栈是否为空
+
+1.2. 栈队列排除元素含有退格的字符串
+
+题目
                             
                         </div>
                         <div class="publish-info">
@@ -939,14 +930,13 @@ typedef struct Node&#123;
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1. 哈希表
-感谢代码随想录
-1.1. 快乐数
-快乐数
+                                1. 哈希表感谢代码随想录
+1.1. 快乐数快乐数
 查找数字是否重复出现，使用哈希表存储
 #include &lt;set&gt;
 set&lt;int&gt; s;
-s.insert(a); &#x2F;&#x2F; 插入数
+s.insert(a); &#x2F;&#x2F; 插入数据
+if(s.
                             
                         </div>
                         <div class="publish-info">
@@ -1000,13 +990,9 @@ s.insert(a); &#x2F;&#x2F; 插入数
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1. history
-1.1. 岛屿
-1.2. 图查找算法
-1.2.1. 并查集的实现 并查集理论基础 | 代码随想录
-
+                                1. history1.1. 岛屿1.2. 图查找算法1.2.1. 并查集的实现   并查集理论基础 | 代码随想录
 并查集，是将一个集合内所有数据放入一个连通图中，即为father[u]= v；
-查询一个并查集，是查询根节
+查询一个并查集，是查询根节点是否相同，fi
                             
                         </div>
                         <div class="publish-info">
@@ -1061,16 +1047,14 @@ s.insert(a); &#x2F;&#x2F; 插入数
                         <div class="summary block-with-text">
                             
                                 感谢代码随想录
-1. 数组
-1.1. 滑动窗口
-不断调整起始位置和终止位置，处理一块区间内的数据。
+1. 数组1.1. 滑动窗口不断调整起始位置和终止位置，处理一块区间内的数据。
 在本题中实现滑动窗口，主要确定如下三点：
 
 窗口内是什么？
 如何移动窗口的起始位置？
 如何移动窗口的结束位置？
 
-窗口就
+窗口就是 满足其和 ≥ s 的
                             
                         </div>
                         <div class="publish-info">
@@ -1188,7 +1172,7 @@ s.insert(a); &#x2F;&#x2F; 插入数
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">48.8k</span>
+                        class="white-color">48.6k</span>
             
             
             

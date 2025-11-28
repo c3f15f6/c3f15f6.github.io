@@ -6,16 +6,14 @@
     <meta charset="utf-8">
     <meta name="keywords" content="数组-链表, 汤汁小白菜">
     <meta name="description" content="感谢代码随想录
-1. 数组
-1.1. 滑动窗口
-不断调整起始位置和终止位置，处理一块区间内的数据。
+1. 数组1.1. 滑动窗口不断调整起始位置和终止位置，处理一块区间内的数据。
 在本题中实现滑动窗口，主要确定如下三点：
 
 窗口内是什么？
 如何移动窗口的起始位置？
 如何移动窗口的结束位置？
 
-窗口就">
+窗口就是 满足其和 ≥ s 的">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -481,9 +479,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p><strong>感谢<a target="_blank" rel="noopener" href="https://programmercarl.com/">代码随想录</a></strong></p>
-<h1 id="数组">1. 数组</h1>
-<h2 id="滑动窗口">1.1. 滑动窗口</h2>
-<p>不断调整起始位置和终止位置，处理一块区间内的数据。</p>
+<h1 id="数组">1. 数组</h1><h2 id="滑动窗口">1.1. 滑动窗口</h2><p>不断调整起始位置和终止位置，处理一块区间内的数据。</p>
 <p>在本题中实现滑动窗口，主要确定如下三点：</p>
 <ul>
 <li><strong>窗口内是什么？</strong></li>
@@ -494,150 +490,139 @@
 <p>窗口的起始位置如何移动：<strong>如果当前窗口的值大于等于s了，窗口就要向前移动了（也就是该缩小了）。</strong>确定好移动的情况，并处理需要优先移动窗口还是先处理窗口中的数据。</p>
 <p><img src="https://code-thinking-1253855093.file.myqcloud.com/pics/20210312160441942.png" alt="滑动窗口" style="zoom:67%;"></p>
 <p>窗口的结束位置如何移动：窗口的结束位置就是遍历数组的指针，也就是for循环里的索引。</p>
-<h2 id="螺旋数组">1.2. 螺旋数组</h2>
-<p><strong>确定边界处理的不变量，确保每个子问题的结构都是相同的</strong></p>
+<h2 id="螺旋数组">1.2. 螺旋数组</h2><p><strong>确定边界处理的不变量，确保每个子问题的结构都是相同的</strong></p>
 <p>然后按照不变量写出每次循环的次数</p>
 <p><img src="/2024/09/24/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8/20220922102236.png" alt="循环数组" style="zoom:50%;"></p>
-<ol type="1">
+<ol>
 <li>尽可能保证每次循环中的 量 是不变的</li>
 <li>进入下一次循环时， 控制这个量发生改变</li>
 <li>尽可能减少控制</li>
 </ol>
-<h1 id="链表">2. 链表</h1>
-<h2 id="删除链表">2.1. 删除链表</h2>
-<p><a target="_blank" rel="noopener" href="https://programmercarl.com/0019.删除链表的倒数第N个节点.html#算法公开课">删除倒数第n值</a></p>
+<h1 id="链表">2. 链表</h1><h2 id="删除链表">2.1. 删除链表</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0019.删除链表的倒数第N个节点.html#算法公开课">删除倒数第n值</a></p>
 <p>删除列表时，最好增加dummy_head节点，删掉头节点更方便</p>
 <blockquote>
-<ol type="1">
+<ol>
 <li>fast 先移动 n+1 个</li>
 <li>然后slow, fast 同时移动，fast始终比slow 快N + 1</li>
 <li>当fast 到达末尾时，slow 与末尾的距离是N</li>
 </ol>
 </blockquote>
-<figure>
-<img src="/2024/09/24/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8/19.%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9.png" alt="增加dummy-head"><figcaption aria-hidden="true">增加dummy-head</figcaption>
-</figure>
-<h2 id="链表相交">2.2. 链表相交</h2>
-<p><a target="_blank" rel="noopener" href="https://programmercarl.com/面试题02.07.链表相交.html#思路">返回相交链表节点</a></p>
-<figure>
-<img src="/2024/09/24/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8/20211219221723.png" alt="img"><figcaption aria-hidden="true">img</figcaption>
-</figure>
-<ol type="1">
-<li><p>求A，B的长度<span class="math inline"><em>l</em><sub><em>A</em></sub>, <em>l</em><sub><em>B</em></sub></span></p></li>
-<li><p>为方便起见，将A始终未较长链表，否则将A，B交换</p></li>
-<li><p>根据<span class="math inline"><em>l</em><sub><em>A</em></sub>, <em>l</em><sub><em>B</em></sub></span> 的差值，将长端链表对齐</p>
+<p><img src="/2024/09/24/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8/19.%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9.png" alt="增加dummy-head"></p>
+<h2 id="链表相交">2.2. 链表相交</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/面试题02.07.链表相交.html#思路">返回相交链表节点</a></p>
+<p><img src="/2024/09/24/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8/20211219221723.png" alt="img"></p>
+<ol>
+<li><p>求A，B的长度$l_A,l_B$</p>
+</li>
+<li><p>为方便起见，将A始终未较长链表，否则将A，B交换 </p>
+</li>
+<li><p>根据$l_A,l_B$ 的差值，将长端链表对齐</p>
 <blockquote>
 <p>使用方法为： 长端先走一些位置</p>
-</blockquote></li>
-<li><p>依次比较</p></li>
+</blockquote>
+</li>
+<li><p>依次比较</p>
+</li>
 </ol>
-<h2 id="环形链表">2.3. 环形链表</h2>
-<figure>
-<img src="/2024/09/24/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8/20220925103433.png" alt="20220925103433"><figcaption aria-hidden="true">20220925103433</figcaption>
-</figure>
-<p><span class="math display">$$
+<h2 id="环形链表">2.3. 环形链表</h2><p><img src="/2024/09/24/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8/20220925103433.png" alt="20220925103433"></p>
+<script type="math/tex; mode=display">
 slow = x+y \\
 fast = x+y+n(y+z) \\
-fast = 2*slow
-$$</span> 计算得到 <span class="math display"><em>x</em> = (<em>n</em> − 1)(<em>y</em> + <em>z</em>) + <em>z</em></span> 代表，<strong>从头节点走向环形入口 = 从相遇点出发走n个节点</strong></p>
+fast = 2*slow</script><p> 计算得到</p>
+<script type="math/tex; mode=display">
+x = (n-1)(y+z)+z</script><p>代表，<strong>从头节点走向环形入口  = 从相遇点出发走n个节点</strong></p>
 <blockquote>
-<p>意味着： 从相遇点触发 一定会遇到从头节点触发的节点</p>
+<p>意味着： 从相遇点触发  一定会遇到从头节点触发的节点</p>
 <p>相遇节点 为 环进入节点</p>
 </blockquote>
-<h2 id="交换链表">2.4. 交换链表</h2>
-<h3 id="交换相邻连个元素链表">2.4.1. 交换相邻连个元素链表</h3>
-<p><a target="_blank" rel="noopener" href="https://programmercarl.com/0024.两两交换链表中的节点.html#思路">交换两个元素</a></p>
+<h2 id="交换链表">2.4. 交换链表</h2><h3 id="交换相邻连个元素链表">2.4.1. 交换相邻连个元素链表</h3><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0024.两两交换链表中的节点.html#思路">交换两个元素</a></p>
 <blockquote>
 <p>链表中，没有头指针，增加一个虚拟头指针dummyhead</p>
 </blockquote>
-<ol type="1">
+<ol>
 <li>获得cur-&gt;next, 因断链，保存cur-&gt;next</li>
-<li>获得cur-&gt;next-&gt;next, 因断链，保存cur-&gt;next-&gt;next-&gt;next</li>
+<li>获得cur-&gt;next-&gt;next,  因断链，保存cur-&gt;next-&gt;next-&gt;next</li>
 <li>获得cur-&gt;next-&gt;next-&gt;next</li>
 </ol>
 <p><img src="/2024/09/24/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8/image-20250917200804409.png" alt="image-20250917200804409" style="zoom:80%;"></p>
-<h3 id="反转链表">2.4.2. 反转链表</h3>
-<p><a target="_blank" rel="noopener" href="https://programmercarl.com/0234.回文链表.html#思路">回文链表</a></p>
-<ol type="1">
+<h3 id="反转链表">2.4.2. 反转链表</h3><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0234.回文链表.html#思路">回文链表</a></p>
+<ol>
 <li><p>使用快慢指针，找到链表中间节点</p>
 <blockquote>
 <p>slow 与 fast 同时指向 head 节点开始</p>
-<ol type="1">
+<ol>
 <li>偶数链表， slow节点在中间靠后节点</li>
 </ol>
 <p><img src="/2024/09/24/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8/image-20250917212330639.png" alt="image-20250917212330639" style="zoom:80%;"></p>
-<ol start="2" type="1">
-<li>奇数链表，slow节点在中间节点</li>
-</ol>
+<ol>
+<li><p>奇数链表，slow节点在中间节点</p>
 <p><img src="/2024/09/24/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8/image-20250917212525497.png" alt="image-20250917212525497" style="zoom:80%;"></p>
-</blockquote></li>
+</li>
+</ol>
+</blockquote>
+</li>
 <li><p>后半段链表翻转</p>
 <blockquote>
-<ol type="1">
+<ol>
 <li>需使用pre节点存放前一节点</li>
 <li>断开链表后，需要存放后一节点</li>
 </ol>
 <p><img src="/2024/09/24/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8/image-20250917213101697.png" alt="image-20250917213101697" style="zoom:80%;"></p>
-</blockquote></li>
-<li><p>前后两端比较，不同则返回错误</p></li>
+</blockquote>
+</li>
+<li><p>前后两端比较，不同则返回错误</p>
+</li>
 </ol>
-<h2 id="前缀和">2.5. 前缀和</h2>
-<p>将之间计算的结果累加保存在数据中，之后使用时使用结算完成的数组</p>
+<h2 id="前缀和">2.5. 前缀和</h2><p>将之间计算的结果累加保存在数据中，之后使用时使用结算完成的数组</p>
 <p><strong>需要更具题目要求，选择计算什么样的前缀数组</strong></p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">while (~scanf(&quot;%d%d&quot;, &amp;a, &amp;b))&#x2F;&#x2F;按位取反，如果结果是eof&#x3D;-1,取反之后结果为0<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h1 id="双指针">3. 双指针</h1>
-<h2 id="双指针指向头尾">3.1. 双指针指向头尾</h2>
-<p><a target="_blank" rel="noopener" href="https://programmercarl.com/1207.独一无二的出现次数.html#思路">有效的山脉数量</a></p>
-<ol type="1">
+<h1 id="双指针">3. 双指针</h1><h2 id="双指针指向头尾">3.1. 双指针指向头尾</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/1207.独一无二的出现次数.html#思路">有效的山脉数量</a></p>
+<ol>
 <li><code>left</code> 与 <code>right</code>分别从前后遍历</li>
 <li>如果二者相遇，则是有效的山脉</li>
 </ol>
-<h2 id="移出元素">3.2. 移出元素</h2>
-<p><a target="_blank" rel="noopener" href="https://programmercarl.com/0283.移动零.html#思路">移出0</a></p>
-<ol type="1">
+<h2 id="移出元素">3.2. 移出元素</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0283.移动零.html#思路">移出0</a></p>
+<ol>
 <li>slow 指向新的指针</li>
 <li>fast 指向旧的指针</li>
 <li>将旧指针的元素放在新指针的位置</li>
 </ol>
-<h2 id="右移元素">3.3. 右移元素</h2>
-<p><a target="_blank" rel="noopener" href="https://programmercarl.com/0189.旋转数组.html#思路">右移数组元素</a></p>
+<h2 id="右移元素">3.3. 右移元素</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0189.旋转数组.html#思路">右移数组元素</a></p>
 <p>依旧可以使用<a href="#移出元素">移动元素</a> 的思想</p>
-<ol type="1">
+<ol>
 <li>slow 指向 新的指针</li>
 <li>fast 指向旧的指针</li>
 </ol>
 <blockquote>
 <p>需要注意：</p>
-<ol type="1">
+<ol>
 <li>移动数据，会对数据进行覆盖，应复制一个元素</li>
 <li>fast指针不能越界，需进行 <code>fast = (fast+1) % nums.size()</code></li>
 </ol>
 </blockquote>
-<h2 id="左右元素相同">3.4. 左右元素相同</h2>
-<ol type="1">
+<h2 id="左右元素相同">3.4. 左右元素相同</h2><ol>
 <li>left, right 分别代替<code>i</code>左右元素之和</li>
 <li><code>right = sum - left - num[i]</code></li>
 </ol>
-<h2 id="排除重复元素">3.5. 排除重复元素</h2>
-<p><a target="_blank" rel="noopener" href="https://programmercarl.com/0925.长按键入.html#思路">长键盘按入</a></p>
+<h2 id="排除重复元素">3.5. 排除重复元素</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0925.长按键入.html#思路">长键盘按入</a></p>
 <blockquote>
 <p>情况较多，需列出可能的情况</p>
 </blockquote>
 <p>比较name[i] 与 <code>type[j]</code> 由两种情况</p>
-<ol type="1">
-<li><p>相同，则<code>i, j</code> 同时向后移动</p></li>
+<ol>
+<li><p>相同，则<code>i, j</code> 同时向后移动</p>
+</li>
 <li><p>不相同， <code>j</code>与 <code>i-1</code>比较，相同，则<code>j</code>向后移动</p>
 <blockquote>
 <p>因为 i = 0 时，不能向前比较，如果结果不同，直接返回错误</p>
-</blockquote></li>
+</blockquote>
+</li>
 </ol>
 <p>比较完成后，<code>name</code>与 <code>typed</code>有可能有剩余</p>
-<ol type="1">
+<ol>
 <li>name有剩余 《=》 <code>i&lt; name.size()</code></li>
 <li>typed有剩余， typed需要与<code>name[end]</code> 作比较</li>
 </ol>
-<h1 id="感谢">4. 感谢</h1>
-<p><a target="_blank" rel="noopener" href="https://programmercarl.com/">代码随想录</a></p>
+<h1 id="感谢">4. 感谢</h1><p><a target="_blank" rel="noopener" href="https://programmercarl.com/">代码随想录</a></p>
 
                 
             </div>
@@ -1351,7 +1336,7 @@ $$</span> 计算得到 <span class="math display"><em>x</em> = (<em>n</em>�
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">48.8k</span>
+                        class="white-color">48.6k</span>
             
             
             
