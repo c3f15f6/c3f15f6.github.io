@@ -5,15 +5,19 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="mit6.S191, 汤汁小白菜">
-    <meta name="description" content="1. 概述1.1. 感知器
-1.2. 激活函数
-1.3. 损失函数1.3.1. 分类
-1.3.2. 定量
-1.4. 梯度下降
-1.5. 反向传播
+    <meta name="description" content="1. 概述
+1.1. 感知器
 
-反向传播（Backpropagation）：
-反向传播是通过计算损失函数关于每个权重的梯度，">
+image-20250302173357938
+
+1.2. 激活函数
+
+image-20250302173418796
+
+1.3. 损失函数
+1.3.1. 分类
+
+image-2025">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -444,14 +448,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    487
+                    540
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -474,58 +478,122 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="概述">1. 概述</h1><h2 id="感知器">1.1. 感知器</h2><p><img src="/2025/03/02/python/deeplearn/mit6-S191/image-20250302173357938.png" alt="image-20250302173357938"></p>
-<h2 id="激活函数">1.2. 激活函数</h2><p><img src="/2025/03/02/python/deeplearn/mit6-S191/image-20250302173418796.png" alt="image-20250302173418796"></p>
-<h2 id="损失函数">1.3. 损失函数</h2><h3 id="分类">1.3.1. 分类</h3><p><img src="/2025/03/02/python/deeplearn/mit6-S191/image-20250302180326931.png" alt="image-20250302180326931"></p>
-<h3 id="定量">1.3.2. 定量</h3><p><img src="/2025/03/02/python/deeplearn/mit6-S191/image-20250302180340787.png" alt="image-20250302180340787"></p>
-<h2 id="梯度下降">1.4. 梯度下降</h2><p><img src="/2025/03/02/python/deeplearn/mit6-S191/image-20250302181222102.png" alt="image-20250302181222102"></p>
-<h2 id="反向传播">1.5. 反向传播</h2><p><img src="/2025/03/02/python/deeplearn/mit6-S191/image-20250302201710606.png" alt="image-20250302201710606"></p>
-<ol>
-<li><strong>反向传播（Backpropagation）</strong>：<ul>
+                <h1 id="概述">1. 概述</h1>
+<h2 id="感知器">1.1. 感知器</h2>
+<figure>
+<img src="/2025/03/02/python/deeplearn/mit6-S191/image-20250302173357938.png" alt="image-20250302173357938"><figcaption aria-hidden="true">image-20250302173357938</figcaption>
+</figure>
+<h2 id="激活函数">1.2. 激活函数</h2>
+<figure>
+<img src="/2025/03/02/python/deeplearn/mit6-S191/image-20250302173418796.png" alt="image-20250302173418796"><figcaption aria-hidden="true">image-20250302173418796</figcaption>
+</figure>
+<h2 id="损失函数">1.3. 损失函数</h2>
+<h3 id="分类">1.3.1. 分类</h3>
+<figure>
+<img src="/2025/03/02/python/deeplearn/mit6-S191/image-20250302180326931.png" alt="image-20250302180326931"><figcaption aria-hidden="true">image-20250302180326931</figcaption>
+</figure>
+<h3 id="定量">1.3.2. 定量</h3>
+<figure>
+<img src="/2025/03/02/python/deeplearn/mit6-S191/image-20250302180340787.png" alt="image-20250302180340787"><figcaption aria-hidden="true">image-20250302180340787</figcaption>
+</figure>
+<h2 id="梯度下降">1.4. 梯度下降</h2>
+<figure>
+<img src="/2025/03/02/python/deeplearn/mit6-S191/image-20250302181222102.png" alt="image-20250302181222102"><figcaption aria-hidden="true">image-20250302181222102</figcaption>
+</figure>
+<h2 id="反向传播">1.5. 反向传播</h2>
+<figure>
+<img src="/2025/03/02/python/deeplearn/mit6-S191/image-20250302201710606.png" alt="image-20250302201710606"><figcaption aria-hidden="true">image-20250302201710606</figcaption>
+</figure>
+<ol type="1">
+<li><strong>反向传播（Backpropagation）</strong>：
+<ul>
 <li>反向传播是通过计算损失函数关于每个权重的梯度，来更新网络的权重。</li>
 <li>从输出层开始，逐步向后（即从神经网络的最后一层到第一层）计算每个神经元对总损失的贡献。这被称为“反向传播”，因为它是沿着网络反向传播误差信号。</li>
-</ul>
-</li>
+</ul></li>
 </ol>
-<h3 id="反向传播的步骤">1.5.1. 反向传播的步骤</h3><ol>
-<li><strong>计算输出层的误差</strong>：<ul>
+<h3 id="反向传播的步骤">1.5.1. 反向传播的步骤</h3>
+<ol type="1">
+<li><strong>计算输出层的误差</strong>：
+<ul>
 <li>比较预测值和真实值，计算输出层的误差。</li>
-</ul>
-</li>
-<li><strong>计算梯度</strong>：<ul>
+</ul></li>
+<li><strong>计算梯度</strong>：
+<ul>
 <li>使用链式法则（Chain Rule）计算每一层的梯度，这样就可以知道每个权重对于损失的影响。</li>
-</ul>
-</li>
-<li><strong>更新权重</strong>：<ul>
+</ul></li>
+<li><strong>更新权重</strong>：
+<ul>
 <li>知道了梯度后，就可以使用一定的学习率（learning rate）来调整权重，使得损失下降。具体来说，如果权重导致了更高的损失，就往反方向调整它。</li>
-</ul>
-</li>
+</ul></li>
 </ol>
-<h2 id="学习率">1.6. 学习率</h2><p>学习率自动调整算法</p>
-<p><img src="/2025/03/02/python/deeplearn/mit6-S191/image-20250302202502602.png" alt="image-20250302202502602"></p>
-<h2 id="分批梯度下降">1.7. 分批梯度下降</h2><p>？</p>
-<h2 id="正则化和早停机制">1.8. 正则化和早停机制</h2><p><img src="/2025/03/02/python/deeplearn/mit6-S191/image-20250302203604219.png" alt="image-20250302203604219"></p>
+<h2 id="学习率">1.6. 学习率</h2>
+<p>学习率自动调整算法</p>
+<figure>
+<img src="/2025/03/02/python/deeplearn/mit6-S191/image-20250302202502602.png" alt="image-20250302202502602"><figcaption aria-hidden="true">image-20250302202502602</figcaption>
+</figure>
+<h2 id="分批梯度下降">1.7. 分批梯度下降</h2>
+<p>？</p>
+<h2 id="正则化和早停机制">1.8. 正则化和早停机制</h2>
+<figure>
+<img src="/2025/03/02/python/deeplearn/mit6-S191/image-20250302203604219.png" alt="image-20250302203604219"><figcaption aria-hidden="true">image-20250302203604219</figcaption>
+</figure>
 <p>随机丢失部分神经元</p>
-<p><img src="/2025/03/02/python/deeplearn/mit6-S191/image-20250302203650285.png" alt="image-20250302203650285"></p>
-<h1 id="RNN">2. RNN</h1><p><img src="/2025/03/02/python/deeplearn/mit6-S191/image-20250302210306088.png" alt="image-20250302210306088"></p>
-<p><img src="/2025/03/02/python/deeplearn/mit6-S191/image-20250302210728169.png" alt="image-20250302210728169"></p>
-<p><img src="/2025/03/02/python/deeplearn/mit6-S191/image-20250302210739335.png" alt="image-20250302210739335"></p>
-<h2 id="顺序建模的设计标准">2.1. 顺序建模的设计标准</h2><p><img src="/2025/03/02/python/deeplearn/mit6-S191/image-20250302211357941.png" alt="image-20250302211357941"></p>
-<p>Word prediction example <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=dqoEU9Ac3ek&amp;t=1910s">31:50</a>  - Backpropagation through time <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=dqoEU9Ac3ek&amp;t=2020s">33:40</a> - Gradient issues <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=dqoEU9Ac3ek&amp;t=2235s">37:15</a> - Long short term memory (LSTM) <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=dqoEU9Ac3ek&amp;t=2400s">40:00</a> - RNN applications <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=dqoEU9Ac3ek&amp;t=2640s">44:00</a>- Attention fundamentals  <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=dqoEU9Ac3ek&amp;t=2806s">46:46</a> - Intuition of attention <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=dqoEU9Ac3ek&amp;t=2953s">49:13</a> - Attention and search relationship <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=dqoEU9Ac3ek&amp;t=3082s">51:22</a> - Learning attention with neural networks <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=dqoEU9Ac3ek&amp;t=3465s">57:45</a> - Scaling attention and applications <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=dqoEU9Ac3ek&amp;t=3608s">1:00:08</a> - Summary</p>
-<h2 id="随着时间反向传播-梯度消失，学习能力下降">2.2. 随着时间反向传播-梯度消失，学习能力下降</h2><h2 id="lstm">2.3. lstm</h2><p>通过忘记一部分</p>
-<p><img src="/2025/03/02/python/deeplearn/mit6-S191/image-20250303154530054.png" alt="image-20250303154530054"></p>
-<h1 id="卷积神经网络">3. 卷积神经网络</h1><p>获取不同框中的物体，两个神经网络共同使用。 </p>
-<p><img src="/2025/03/02/python/deeplearn/mit6-S191/image-20250304202546754.png" alt="image-20250304202546754"></p>
-<h1 id="强化学习">4. 强化学习</h1><h2 id="自动编码器">4.1. 自动编码器</h2><p>将数据编码，降维</p>
-<p><img src="/2025/03/02/python/deeplearn/mit6-S191/image-20250304220654243.png" alt="image-20250304220654243"></p>
+<figure>
+<img src="/2025/03/02/python/deeplearn/mit6-S191/image-20250302203650285.png" alt="image-20250302203650285"><figcaption aria-hidden="true">image-20250302203650285</figcaption>
+</figure>
+<h1 id="rnn">2. RNN</h1>
+<figure>
+<img src="/2025/03/02/python/deeplearn/mit6-S191/image-20250302210306088.png" alt="image-20250302210306088"><figcaption aria-hidden="true">image-20250302210306088</figcaption>
+</figure>
+<figure>
+<img src="/2025/03/02/python/deeplearn/mit6-S191/image-20250302210728169.png" alt="image-20250302210728169"><figcaption aria-hidden="true">image-20250302210728169</figcaption>
+</figure>
+<figure>
+<img src="/2025/03/02/python/deeplearn/mit6-S191/image-20250302210739335.png" alt="image-20250302210739335"><figcaption aria-hidden="true">image-20250302210739335</figcaption>
+</figure>
+<h2 id="顺序建模的设计标准">2.1. 顺序建模的设计标准</h2>
+<figure>
+<img src="/2025/03/02/python/deeplearn/mit6-S191/image-20250302211357941.png" alt="image-20250302211357941"><figcaption aria-hidden="true">image-20250302211357941</figcaption>
+</figure>
+<p>Word prediction example <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=dqoEU9Ac3ek&amp;t=1910s">31:50</a> - Backpropagation through time <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=dqoEU9Ac3ek&amp;t=2020s">33:40</a> - Gradient issues <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=dqoEU9Ac3ek&amp;t=2235s">37:15</a> - Long short term memory (LSTM) <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=dqoEU9Ac3ek&amp;t=2400s">40:00</a> - RNN applications <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=dqoEU9Ac3ek&amp;t=2640s">44:00</a>- Attention fundamentals <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=dqoEU9Ac3ek&amp;t=2806s">46:46</a> - Intuition of attention <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=dqoEU9Ac3ek&amp;t=2953s">49:13</a> - Attention and search relationship <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=dqoEU9Ac3ek&amp;t=3082s">51:22</a> - Learning attention with neural networks <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=dqoEU9Ac3ek&amp;t=3465s">57:45</a> - Scaling attention and applications <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=dqoEU9Ac3ek&amp;t=3608s">1:00:08</a> - Summary</p>
+<h2 id="随着时间反向传播-梯度消失学习能力下降">2.2. 随着时间反向传播-梯度消失，学习能力下降</h2>
+<h2 id="lstm">2.3. lstm</h2>
+<p>通过忘记一部分</p>
+<figure>
+<img src="/2025/03/02/python/deeplearn/mit6-S191/image-20250303154530054.png" alt="image-20250303154530054"><figcaption aria-hidden="true">image-20250303154530054</figcaption>
+</figure>
+<h1 id="卷积神经网络">3. 卷积神经网络</h1>
+<p>获取不同框中的物体，两个神经网络共同使用。</p>
+<figure>
+<img src="/2025/03/02/python/deeplearn/mit6-S191/image-20250304202546754.png" alt="image-20250304202546754"><figcaption aria-hidden="true">image-20250304202546754</figcaption>
+</figure>
+<h1 id="强化学习">4. 强化学习</h1>
+<h2 id="自动编码器">4.1. 自动编码器</h2>
+<p>将数据编码，降维</p>
+<figure>
+<img src="/2025/03/02/python/deeplearn/mit6-S191/image-20250304220654243.png" alt="image-20250304220654243"><figcaption aria-hidden="true">image-20250304220654243</figcaption>
+</figure>
 <p>解码器</p>
-<p><img src="/2025/03/02/python/deeplearn/mit6-S191/image-20250304220912390.png" alt="image-20250304220912390"></p>
+<figure>
+<img src="/2025/03/02/python/deeplearn/mit6-S191/image-20250304220912390.png" alt="image-20250304220912390"><figcaption aria-hidden="true">image-20250304220912390</figcaption>
+</figure>
 <p>增加概率扭曲</p>
-<p><img src="/2025/03/02/python/deeplearn/mit6-S191/image-20250304222137386.png" alt="image-20250304222137386"></p>
-<p><img src="/2025/03/02/python/deeplearn/mit6-S191/image-20250304224849011.png" alt="image-20250304224849011"></p>
-<h2 id="生成式对抗网络">4.2. 生成式对抗网络</h2><p><img src="/2025/03/02/python/deeplearn/mit6-S191/image-20250304225133095.png" alt="image-20250304225133095"></p>
-<h2 id="强化学习-1">4.3. 强化学习</h2><p><img src="/2025/03/02/python/deeplearn/mit6-S191/image-20250322173651016.png" alt="强化学习与无监督学习的区别"></p>
-<h1 id="致谢">5. 致谢</h1><ol>
+<figure>
+<img src="/2025/03/02/python/deeplearn/mit6-S191/image-20250304222137386.png" alt="image-20250304222137386"><figcaption aria-hidden="true">image-20250304222137386</figcaption>
+</figure>
+<figure>
+<img src="/2025/03/02/python/deeplearn/mit6-S191/image-20250304224849011.png" alt="image-20250304224849011"><figcaption aria-hidden="true">image-20250304224849011</figcaption>
+</figure>
+<h2 id="生成式对抗网络">4.2. 生成式对抗网络</h2>
+<figure>
+<img src="/2025/03/02/python/deeplearn/mit6-S191/image-20250304225133095.png" alt="image-20250304225133095"><figcaption aria-hidden="true">image-20250304225133095</figcaption>
+</figure>
+<h2 id="强化学习-1">4.3. 强化学习</h2>
+<figure>
+<img src="/2025/03/02/python/deeplearn/mit6-S191/image-20250322173651016.png" alt="强化学习与无监督学习的区别"><figcaption aria-hidden="true">强化学习与无监督学习的区别</figcaption>
+</figure>
+<h1 id="致谢">5. 致谢</h1>
+<ol type="1">
 <li><a target="_blank" rel="noopener" href="https://introtodeeplearning.com/2021/index.html">MIT Deep Learning 6.S191</a></li>
 </ol>
 
@@ -1233,7 +1301,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">48.6k</span>
+                        class="white-color">48.9k</span>
             
             
             
