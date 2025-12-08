@@ -5,11 +5,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="OR 导论, 汤汁小白菜">
-    <meta name="description" content="1. intruction问题 - 》模型 - 》 算法
+    <meta name="description" content="1. intruction
+问题 - 》模型 - 》 算法
 1.1. 原理 ARRD
+
 A - approximation ， 近似求解
-R - reformulation ,  对问题进行重构
-R - relaxation , 对复杂约束进行">
+R - reformulation , 对问题进行重构
+R - relaxation , ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -427,7 +429,7 @@ R - relaxation , 对复杂约束进行">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    700
+                    717
                 </div>
                 
 
@@ -457,109 +459,132 @@ R - relaxation , 对复杂约束进行">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="intruction">1. intruction</h1><p>问题 - 》模型 - 》 算法</p>
-<h2 id="原理-ARRD">1.1. 原理 ARRD</h2><ul>
+                <h1 id="intruction">1. intruction</h1>
+<p>问题 - 》模型 - 》 算法</p>
+<h2 id="原理-arrd">1.1. 原理 ARRD</h2>
+<ul>
 <li>A - approximation ， 近似求解</li>
-<li>R - reformulation ,  对问题进行重构</li>
+<li>R - reformulation , 对问题进行重构</li>
 <li>R - relaxation , 对复杂约束进行处理 - 线性松弛</li>
 <li>D - Decomposition, 大规模问题分割子问题</li>
 </ul>
-<h1 id="线性导论">2. 线性导论</h1><p>所有的向量都需要使用<code>mathbf</code> 加粗， 且向量均为列向量</p>
-<script type="math/tex; mode=display">
-\mathbf{a}</script><div class="table-container">
+<h1 id="线性导论">2. 线性导论</h1>
+<p>所有的向量都需要使用<code>mathbf</code> 加粗， 且向量均为列向量 <span class="math display"><strong>a</strong></span></p>
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th>类型</th>
 <th>表示方法</th>
 <th>展示</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td>标量</td>
 <td>普通</td>
-<td>$x$</td>
+<td><span class="math inline"><em>x</em></span></td>
 </tr>
-<tr>
+<tr class="even">
 <td>向量</td>
 <td>粗体小写字母，使用<code>\mathbf</code></td>
-<td>$\mathbf{x}$</td>
+<td><span class="math inline"><strong>x</strong></span></td>
 </tr>
-<tr>
+<tr class="odd">
 <td>矩阵</td>
 <td>粗体大写字母，使用<code>mathbf</code></td>
-<td>$\mathbf{X}$</td>
+<td><span class="math inline"><strong>X</strong></span></td>
 </tr>
-<tr>
+<tr class="even">
 <td>张量</td>
 <td>花体字母， 使用<code>\mathcal</code></td>
-<td>$\mathcal{X}$</td>
+<td><span class="math inline">𝒳</span></td>
 </tr>
 </tbody>
 </table>
-</div>
-<h2 id="单纯形法">2.1. 单纯形法</h2><blockquote>
+<h2 id="单纯形法">2.1. 单纯形法</h2>
+<blockquote>
 <p>性质：最优点一定在顶点 / 无穷点 上</p>
 </blockquote>
-<ol>
+<ol type="1">
 <li>从一个顶点开始</li>
 <li>判断是否是最优点，stop， 否则进入3中</li>
 <li>如何移动到相邻顶点</li>
 </ol>
 <p>顶点是由两条边相交形成的，然后形成一个顶点，作为待解点</p>
-<h2 id="stardard-form">2.2. stardard form</h2><ol>
+<h2 id="stardard-form">2.2. stardard form</h2>
+<ol type="1">
 <li>最小化目标函数</li>
 <li>等式约束</li>
 <li>变量非负</li>
 </ol>
-<script type="math/tex; mode=display">
+<p><span class="math display">$$
 \begin{aligned}
-& \min c^T x \\
-& s.t \quad \mathbf{A}\mathbf{x} = \mathbf{b}\\
-& \quad x \geq 0 
-\end{aligned}</script><p>使用乘法，按照元素方式看待模型</p>
-<p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251204204345353.png" alt="image-20251204204345353"></p>
-<h2 id="converting-to-stardard">2.3. converting  to stardard</h2><h3 id="目标中存在绝对值">2.3.1. 目标中存在绝对值</h3><blockquote>
-<p>使用 $x^+. x^-$ 来替换|x|</p>
-</blockquote>
-<p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251204204902956.png" alt="image-20251204204902956"></p>
-<p>按照更换公式, $|x| , x$ 的表示方法如下：</p>
-<script type="math/tex; mode=display">
-|x| = x^+ + x^- \\
-x = x^+ - x^-</script><h3 id="不等式转换为等式">2.3.2. 不等式转换为等式</h3><p>增加 松弛变量</p>
+&amp; \min c^T x \\
+&amp; s.t \quad \mathbf{A}\mathbf{x} = \mathbf{b}\\
+&amp; \quad x \geq 0 
+\end{aligned}
+$$</span></p>
+<p>使用乘法，按照元素方式看待模型</p>
+<figure>
+<img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251204204345353.png" alt="image-20251204204345353"><figcaption aria-hidden="true">image-20251204204345353</figcaption>
+</figure>
+<h2 id="converting-to-stardard">2.3. converting to stardard</h2>
+<h3 id="目标中存在绝对值">2.3.1. 目标中存在绝对值</h3>
 <blockquote>
-<ol>
+<p>使用 <span class="math inline"><em>x</em><sup>+</sup>.<em>x</em><sup>−</sup></span> 来替换|x|</p>
+</blockquote>
+<figure>
+<img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251204204902956.png" alt="image-20251204204902956"><figcaption aria-hidden="true">image-20251204204902956</figcaption>
+</figure>
+<p>按照更换公式, <span class="math inline">|<em>x</em>|,<em>x</em></span> 的表示方法如下： <span class="math display">$$
+|x| = x^+ + x^- \\
+x = x^+ - x^-
+$$</span></p>
+<h3 id="不等式转换为等式">2.3.2. 不等式转换为等式</h3>
+<p>增加 松弛变量</p>
+<blockquote>
+<ol type="1">
 <li>小于时， 加上松弛变量</li>
 <li>大于时， 减去松弛变量</li>
 </ol>
 </blockquote>
-<p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251204205341113.png" alt="image-20251204205341113"></p>
-<h3 id="最大化-gt-最小化">2.3.3. 最大化 - &gt; 最小化</h3><blockquote>
+<figure>
+<img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251204205341113.png" alt="image-20251204205341113"><figcaption aria-hidden="true">image-20251204205341113</figcaption>
+</figure>
+<h3 id="最大化---最小化">2.3.3. 最大化 - &gt; 最小化</h3>
+<blockquote>
 <p>增加 “-”</p>
 </blockquote>
-<script type="math/tex; mode=display">
-\max c^T x = -min -c^T x</script><h2 id="凸函数">2.4. 凸函数</h2><p>凸函数定义：开口向上，具有最小值</p>
-<h3 id="性质">2.4.1. 性质</h3><ol>
-<li><p>$f_1, f_2, \dots, f_n$ 都是凸函数 $y = max(f(x))$ 也是凸函数</p>
-</li>
-<li><p>一堆线性函数求最大值，是凸函数 ，</p>
-<script type="math/tex; mode=display">
-\max\limits_{i = 1 ... m }{c^T x + b }</script><p>一个凸函数可以转换为多个分段线性函数</p>
-<p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251204210755244.png" alt="Piecewise linear convex objective  "></p>
-</li>
+<p><span class="math display">max <em>c</em><sup><em>T</em></sup><em>x</em> =  − <em>m</em><em>i</em><em>n</em> − <em>c</em><sup><em>T</em></sup><em>x</em></span></p>
+<h2 id="凸函数">2.4. 凸函数</h2>
+<p>凸函数定义：开口向上，具有最小值</p>
+<h3 id="性质">2.4.1. 性质</h3>
+<ol type="1">
+<li><p><span class="math inline"><em>f</em><sub>1</sub>, <em>f</em><sub>2</sub>, …, <em>f</em><sub><em>n</em></sub></span> 都是凸函数 <span class="math inline"><em>y</em> = <em>m</em><em>a</em><em>x</em>(<em>f</em>(<em>x</em>))</span> 也是凸函数</p></li>
+<li><p>一堆线性函数求最大值，是凸函数 ， <span class="math display">$$
+\max\limits_{i = 1 ... m }{c^T x + b }
+$$</span> 一个凸函数可以转换为多个分段线性函数</p>
+<figure>
+<img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251204210755244.png" alt="Piecewise linear convex objective"><figcaption aria-hidden="true">Piecewise linear convex objective</figcaption>
+</figure></li>
 </ol>
 <blockquote>
-<p>使用多个线性的max 表示之后，可以使用引入新变量，消除max </p>
+<p>使用多个线性的max 表示之后，可以使用引入新变量，消除max</p>
 </blockquote>
-<p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251204211051471.png" alt="引用新变量，消除max "></p>
+<figure>
+<img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251204211051471.png" alt="引用新变量，消除max"><figcaption aria-hidden="true">引用新变量，消除max</figcaption>
+</figure>
 <p>max 可以引用一个新的变量替换</p>
 <blockquote>
-<p>|X|  = max{x, -x }</p>
+<p>|X| = max{x, -x }</p>
 </blockquote>
-<p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251204211628454.png" alt="image-20251204211628454"></p>
-<h2 id="linear-algebra">2.5. linear algebra</h2><p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251204212120685.png" alt="image-20251204212120685" style="zoom:80%;"></p>
-<h1 id="几何表示">3. 几何表示</h1><p>一个等式 是 一个超平面（对应维度的子空间， 少一个维度的空间）</p>
+<figure>
+<img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251204211628454.png" alt="image-20251204211628454"><figcaption aria-hidden="true">image-20251204211628454</figcaption>
+</figure>
+<h2 id="linear-algebra">2.5. linear algebra</h2>
+<p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251204212120685.png" alt="image-20251204212120685" style="zoom:80%;"></p>
+<h1 id="几何表示">3. 几何表示</h1>
+<p>一个等式 是 一个超平面（对应维度的子空间， 少一个维度的空间）</p>
 <p>可以叫对应的几何空间划分为三个部分，</p>
 <ul>
 <li>上空间</li>
@@ -567,13 +592,17 @@ x = x^+ - x^-</script><h3 id="不等式转换为等式">2.3.2. 不等式转换�
 <li>下空间</li>
 </ul>
 <p>梯度方向是函数增大的方向， - 梯度方向是函数减小的方向</p>
-<h2 id="多面体polyhedron">3.1. 多面体polyhedron</h2><p>一个多面体 = 多个半空间相交 </p>
+<h2 id="多面体polyhedron">3.1. 多面体polyhedron</h2>
+<p>一个多面体 = 多个半空间相交</p>
 <p>顶点 = 极值点 = 基可行解</p>
-<h2 id="代数运算">3.2. 代数运算</h2><p>紧约束： 等式 对 顶点的确定起了作用， 成为紧约束，即 在这里不等式 变为等式</p>
-<p>顶点定义： 紧约束数量  =  dim()</p>
+<h2 id="代数运算">3.2. 代数运算</h2>
+<p>紧约束： 等式 对 顶点的确定起了作用， 成为紧约束，即 在这里不等式 变为等式</p>
+<p>顶点定义： 紧约束数量 = dim()</p>
 <p>等式约束本身就是紧约束，需要再选出部分非等式约束，组成n 个约束</p>
 <p>此时，求得的顶点是基解，但是由于缺少其他约束， 因此不是可行解</p>
-<p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251205174953597.png" alt="image-20251205174953597"></p>
+<figure>
+<img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251205174953597.png" alt="image-20251205174953597"><figcaption aria-hidden="true">image-20251205174953597</figcaption>
+</figure>
 
                 
             </div>
@@ -1261,7 +1290,7 @@ x = x^+ - x^-</script><h3 id="不等式转换为等式">2.3.2. 不等式转换�
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">49.3k</span>
+                        class="white-color">49.6k</span>
             
             
             

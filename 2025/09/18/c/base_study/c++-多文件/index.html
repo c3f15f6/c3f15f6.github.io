@@ -5,7 +5,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="c++ 多文件, 汤汁小白菜">
-    <meta name="description" content="1. c++多文件1.1. 使用g++ 命令
+    <meta name="description" content="1. c++多文件
+1.1. 使用g++ 命令
+
 先 -c生成.o文件，再进行-o链接
 
 g++ -c a.cpp b.cpp
@@ -13,7 +15,7 @@ g++ a.o b.o -o test # 输出.exe名称为test
 
 直接-o编译生成
 
-g++ a.cpp b">
+">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -444,7 +446,7 @@ g++ a.cpp b">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    959
+                    960
                 </div>
                 
 
@@ -474,58 +476,62 @@ g++ a.cpp b">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="c-多文件">1. c++多文件</h1><h2 id="使用g-命令">1.1. 使用g++ 命令</h2><ol>
+                <h1 id="c多文件">1. c++多文件</h1>
+<h2 id="使用g-命令">1.1. 使用g++ 命令</h2>
+<ol type="1">
 <li>先 <code>-c</code>生成<code>.o</code>文件，再进行<code>-o</code>链接</li>
 </ol>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">g++ -c a.cpp b.cpp
 g++ a.o b.o -o test # 输出.exe名称为test<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<ol>
+<ol start="2" type="1">
 <li>直接<code>-o</code>编译生成</li>
 </ol>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">g++ a.cpp b.cpp -o test<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ol>
+<ol start="3" type="1">
 <li>指定头文件位置 <code>-i</code></li>
 </ol>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">g++ a.cpp b.cpp -o test -i include<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <blockquote>
 <pre class="line-numbers language-cmake" data-language="cmake"><code class="language-cmake">target_link_libraries(myproject PRIVATE $&#123;CMAKE_BINARY_DIR&#125;&#x2F;include)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </blockquote>
-<h2 id="相关命令">1.2. 相关命令</h2><h3 id="o优化级别">1.2.1. -o优化级别</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">-o0 默认不优化
+<h2 id="相关命令">1.2. 相关命令</h2>
+<h3 id="o优化级别">1.2.1. -o优化级别</h3>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">-o0 默认不优化
 -o1 基本优化
 -02 高级别优化
 -03 最高级别优化
 -os 优化代码大小
 -ofast 开始所有-03优化<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="g生成调试信息，配合gdb使用">1.2.2. -g生成调试信息，配合gdb使用</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">-o0 -g <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="g生成调试信息配合gdb使用">1.2.2. -g生成调试信息，配合gdb使用</h3>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">-o0 -g <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <blockquote>
 <p>cmake 关系：使用CMAKE_BUILD_TYPE 控制优化级别</p>
-<div class="table-container">
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th>Debug</th>
 <th><code>-o0 -g</code></th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td>Release</td>
 <td>-o2 或 -o3</td>
 </tr>
-<tr>
+<tr class="even">
 <td>RelWithDebInfo</td>
 <td>-o2 -g</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>MinSizeRel</td>
 <td>-os</td>
 </tr>
 </tbody>
 </table>
-</div>
 </blockquote>
-<h3 id="启用警告">1.2.3. 启用警告</h3><ul>
-<li><code>-wall</code>  启用常用警告</li>
+<h3 id="启用警告">1.2.3. 启用警告</h3>
+<ul>
+<li><code>-wall</code> 启用常用警告</li>
 <li><code>-Wextra</code> 启用<code>wall</code>中没有的警告</li>
 <li><code>-Werror</code>所有警告视为错误，有警告就会编译失败</li>
 </ul>
@@ -533,13 +539,15 @@ g++ a.o b.o -o test # 输出.exe名称为test<span aria-hidden="true" class="lin
 <p>cmake 中</p>
 <p>add_compile_options(-Wall -Wextra -Werror)</p>
 </blockquote>
-<h3 id="语言标准">1.2.4. 语言标准</h3><p><code>-std = c++11</code>， 对标准进行选择</p>
+<h3 id="语言标准">1.2.4. 语言标准</h3>
+<p><code>-std = c++11</code>， 对标准进行选择</p>
 <blockquote>
 <pre class="line-numbers language-CMAKE" data-language="CMAKE"><code class="language-CMAKE">set(CAMEK_CXX_STANDARD 14) # 要求使用14
 set(CMAKE_CXX_STANDARD_REQUIRED ON) # 强制使用14
 set(CMAKE_CXX_EXTENSIONS OFF) # 禁用GNU扩展<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 </blockquote>
-<h2 id="CMakeLists-txt示例">1.3. CMakeLists.txt示例</h2><pre class="line-numbers language-cmake" data-language="cmake"><code class="language-cmake">cmake_minimun_required(VERSION 3.10)
+<h2 id="cmakelists.txt示例">1.3. CMakeLists.txt示例</h2>
+<pre class="line-numbers language-cmake" data-language="cmake"><code class="language-cmake">cmake_minimun_required(VERSION 3.10)
 
 project(myproject , cxx) # 名称为myproject, 项目为c++ 项目
 
@@ -554,15 +562,19 @@ add_executable(myproject
 )
 
 target_link_libraries(myproject PRIVATE library)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="编译方法">1.3.1. 编译方法</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">mkdir build
+<h3 id="编译方法">1.3.1. 编译方法</h3>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">mkdir build
 cd build
 cmake .. -G &quot;Ninja&quot; &#x2F; &quot;Make&quot; # 生成器的作用生成系统认识的命令，具有跨平台性
 make<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="添加库">1.3.2. 添加库</h3><h4 id="源文件">1.3.2.1. 源文件</h4><pre class="line-numbers language-cmake" data-language="cmake"><code class="language-cmake">set(SOURCES  src&#x2F;*)
+<h3 id="添加库">1.3.2. 添加库</h3>
+<h4 id="源文件">1.3.2.1. 源文件</h4>
+<pre class="line-numbers language-cmake" data-language="cmake"><code class="language-cmake">set(SOURCES  src&#x2F;*)
 
 add_executable(my_app $&#123;SOURCES&#125;)
 target_include_directories(my_app PUBLIC &quot;$&#123;CMAKE_CURRENT_SOURCE_DIR&#125;&#x2F;include&quot;) # 为目标增加头文件搜索路径<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="库文件">1.3.2.2. 库文件</h4><pre class="line-numbers language-cmake" data-language="cmake"><code class="language-cmake"># 使用GLOB 获取文件
+<h4 id="库文件">1.3.2.2. 库文件</h4>
+<pre class="line-numbers language-cmake" data-language="cmake"><code class="language-cmake"># 使用GLOB 获取文件
 file(GLOB HEADERS &quot;$&#123;CMAKE_CURRENT_SOURCE_DIR&#125;&#x2F;include&#x2F;*.h&quot;) # GLOB 获取include下所有.h文件
 set(HEADERS include&#x2F;*)
 
@@ -578,9 +590,11 @@ target_include_directories(mylib PUBLIC
 
 # 将mylib 链接到 my_app
 target_link_libraries(my_app PRIVATE mylib) <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="添加子目录">1.3.2.3. 添加子目录</h4><pre class="line-numbers language-cmake" data-language="cmake"><code class="language-cmake"># 10. 添加子目录 (如果项目有多个 CMakeLists.txt 文件)
+<h4 id="添加子目录">1.3.2.3. 添加子目录</h4>
+<pre class="line-numbers language-cmake" data-language="cmake"><code class="language-cmake"># 10. 添加子目录 (如果项目有多个 CMakeLists.txt 文件)
 add_subdirectory(sub_project_dir)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h4 id="安装项目位置">1.3.2.4. 安装项目位置</h4><p>install 的 安装路径为<code>CMAKE_INSTALL_PREFIX</code>，通常是软件下载位置，并不是项目所在路径</p>
+<h4 id="安装项目位置">1.3.2.4. 安装项目位置</h4>
+<p>install 的 安装路径为<code>CMAKE_INSTALL_PREFIX</code>，通常是软件下载位置，并不是项目所在路径</p>
 <blockquote>
 <p>指定下载路径</p>
 <p>cmake .. -DCMAKE_INSTALL_PREFIX = 下载路径</p>
@@ -594,7 +608,8 @@ install(DISTECTORY &quot;$&#123;CMAKE_CURRENT_SOURCE_DIR&#125;&#x2F;include&quot
 	DESTINATION include
 	FILES_MATCHING PATTERN &quot;*.h&quot;
 )<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="使用pybind11-创建python-库">1.3.3. 使用pybind11 创建python 库</h3><ol>
+<h3 id="使用pybind11-创建python-库">1.3.3. 使用pybind11 创建python 库</h3>
+<ol type="1">
 <li>创建calculator 库函数</li>
 </ol>
 <pre class="line-numbers language-cmake" data-language="cmake"><code class="language-cmake"># 创建calculator 库函数
@@ -603,12 +618,12 @@ add_library(MyCalculator STATIC
 )
 target_include_directories(MyCalculator PUBLIC &quot;$&#123;CMAKE_CURRENT_SOURCE_DIR&#125;&#x2F;include&quot;)
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ol>
+<ol start="2" type="1">
 <li>创建cpp链接 c 库函数</li>
 </ol>
 <pre class="line-numbers language-cmake" data-language="cmake"><code class="language-cmake">add_executable(my_app src&#x2F;main.cpp)
 target_link_libraries(my_app PRIVATE myCalculator)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<ol>
+<ol start="3" type="1">
 <li>使用pybind11 创建python库</li>
 </ol>
 <pre class="line-numbers language-cmake" data-language="cmake"><code class="language-cmake">add_subdirectory(lib&#x2F;pybind11) # 编译得到目标pybind11::module 库
@@ -1392,7 +1407,7 @@ target_link_libraries($&#123;PROJECT_NAME&#125;
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">49.3k</span>
+                        class="white-color">49.6k</span>
             
             
             
