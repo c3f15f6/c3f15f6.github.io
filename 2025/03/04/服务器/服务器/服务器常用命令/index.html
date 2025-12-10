@@ -5,13 +5,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="服务器常用命令, 汤汁小白菜">
-    <meta name="description" content="1. 一、程序测试的常用命令
-其中top内存监控输出的文件里面，每行对应的数字分别与如下对应。
+    <meta name="description" content="1. 一、程序测试的常用命令其中top内存监控输出的文件里面，每行对应的数字分别与如下对应。
 2. 二、运行的Shell脚本
-
 首先在Linux系统中新建一个文件。
+
 之后在mlcs.sh文件中输入要运行的命令：
-kill -9">
+kill -9 进程id  ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -468,31 +467,30 @@ kill -9">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="一程序测试的常用命令">1. 一、程序测试的常用命令</h1>
-<p>其中<code>top</code>内存监控输出的文件里面，每行对应的数字分别与如下对应。</p>
-<h1 id="二运行的shell脚本">2. 二、运行的Shell脚本</h1>
-<ol type="1">
-<li><p>首先在Linux系统中新建一个文件。</p></li>
+                <h1 id="一、程序测试的常用命令">1. 一、程序测试的常用命令</h1><p>其中<code>top</code>内存监控输出的文件里面，每行对应的数字分别与如下对应。</p>
+<h1 id="二、运行的Shell脚本">2. 二、运行的Shell脚本</h1><ol>
+<li><p>首先在Linux系统中新建一个文件。</p>
+</li>
 <li><p>之后在<code>mlcs.sh</code>文件中输入要运行的命令：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">kill -9 进程id  # 提前杀死进程，只限于咱们自己用户下的进程<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><code>&gt;</code> 将内容输出到文件里面，如果原文件存在，则直接覆盖。</p>
-<p><code>&gt;&gt;</code> 将内容输出到文件里，如果原文件存在则直接追加到原文件中。</p></li>
+<p><code>&gt;&gt;</code> 将内容输出到文件里，如果原文件存在则直接追加到原文件中。</p>
+</li>
 </ol>
-<h2 id="内存监控命令">2.1. 内存监控命令</h2>
-<p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">top -b -c -d 2 | grep &quot;你想监控程序的那个名字，能唯一识别就行&quot; &gt; &quot;输出到的文件名字&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></p>
-<p>例如，我要监控名字里面包括<code>mlcs.exe</code>的这个进程，将信息输出到同级目录下的<code>memory.txt</code>这个文件里面：</p>
-<p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">top -b -c -d 2 | grep &quot;mlcs.exe&quot; &gt; &quot;memory.txt&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></p>
-<p>其中<code>-d</code>参数代表几秒监控一下内存，这里设置每2秒监控一次。</p>
+<h2 id="内存监控命令">2.1. 内存监控命令</h2>   <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">top -b -c -d 2 | grep &quot;你想监控程序的那个名字，能唯一识别就行&quot; &gt; &quot;输出到的文件名字&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>   例如，我要监控名字里面包括<code>mlcs.exe</code>的这个进程，将信息输出到同级目录下的<code>memory.txt</code>这个文件里面：</p>
+   <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">top -b -c -d 2 | grep &quot;mlcs.exe&quot; &gt; &quot;memory.txt&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>   其中<code>-d</code>参数代表几秒监控一下内存，这里设置每2秒监控一次。</p>
 <p>删除所有包名称包括mlsc.exe的进程</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pkill -f me_test.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>断开终端也可运行某程序的命令：</p>
-<p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">nohup 要执行的命令 &gt; output.log 2&gt;&amp;1 &amp;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></p>
-<p>比如我要执行程序的命令是<code>mlcs.exe</code>：</p>
-<p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">nohup .&#x2F;mlcs.exe &gt; output.log 2&gt;&amp;1 &amp;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></p>
-<p>其中<code>output.log</code>就是日志输出，随便什么名字都行，默认存储到当前路径下。</p>
-<p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">touch mlcs.sh  # 其中mlcs是文件名，随便起<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></p>
-<p>比如我要循环执行某一个程序：</p>
-<p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">for ((i &#x3D; 1; i &lt;&#x3D; 12; i++))
+<p>   断开终端也可运行某程序的命令：</p>
+   <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">nohup 要执行的命令 &gt; output.log 2&gt;&amp;1 &amp;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>   比如我要执行程序的命令是<code>mlcs.exe</code>：</p>
+   <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">nohup .&#x2F;mlcs.exe &gt; output.log 2&gt;&amp;1 &amp;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>   其中<code>output.log</code>就是日志输出，随便什么名字都行，默认存储到当前路径下。</p>
+   <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">touch mlcs.sh  # 其中mlcs是文件名，随便起<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>   比如我要循环执行某一个程序：</p>
+   <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">for ((i &#x3D; 1; i &lt;&#x3D; 12; i++))
 do
     for ((j &#x3D; 1; j &lt;&#x3D; 20; j++))
     do
@@ -502,10 +500,10 @@ do
         # 其中结果指的是在命令行输出的结果
         .&#x2F;w_mlcs.exe $&#123;i&#125; &gt;&gt; result.txt
     done
-done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></p>
-<p>一定要在Linux系统中手动输入，不要从在Windows系统下输入，然后将文件传到Linux中，他们两个系统的编码方式不同，否则会运行失败。</p>
-<p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">chmod 777 mlcs.sh
-.&#x2F;mlcs.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></p>
+done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>   一定要在Linux系统中手动输入，不要从在Windows系统下输入，然后将文件传到Linux中，他们两个系统的编码方式不同，否则会运行失败。</p>
+   <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">chmod 777 mlcs.sh
+.&#x2F;mlcs.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -1215,7 +1213,7 @@ done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">49.6k</span>
+                        class="white-color">49.8k</span>
             
             
             
