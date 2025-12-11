@@ -5,26 +5,19 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="transformer, 汤汁小白菜">
-    <meta name="description" content="1. Transformer1.1. 模型基本框架
+    <meta name="description" content="1. Transformer
+1.1. 模型基本框架
+
+image-20250425173522602
+
+
+image-20250516114212148
 
 1.2. 编码器
+
 通过嵌入层
 对位置进行编码
-经过编码器层
-注意力层：
-注意力机制
-残差+ 规范化层
-
-
-前馈网络
-前馈网络
-残差+ 规范化层
-
-
-
-
-
-class Transforme">
+经过编码器">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -455,7 +448,7 @@ class Transforme">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.2k
+                    2.3k
                 </div>
                 
 
@@ -485,24 +478,31 @@ class Transforme">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Transformer">1. Transformer</h1><h2 id="模型基本框架">1.1. 模型基本框架</h2><p><img src="/2025/05/24/python/deeplearn/Transformer/image-20250425173522602.png" alt="image-20250425173522602"></p>
-<p><img src="/2025/05/24/python/deeplearn/Transformer/image-20250516114212148.png" alt="image-20250516114212148"></p>
-<h2 id="编码器">1.2. 编码器</h2><ol>
+                <h1 id="transformer">1. Transformer</h1>
+<h2 id="模型基本框架">1.1. 模型基本框架</h2>
+<figure>
+<img src="/2025/05/24/python/deeplearn/Transformer/image-20250425173522602.png" alt="image-20250425173522602"><figcaption aria-hidden="true">image-20250425173522602</figcaption>
+</figure>
+<figure>
+<img src="/2025/05/24/python/deeplearn/Transformer/image-20250516114212148.png" alt="image-20250516114212148"><figcaption aria-hidden="true">image-20250516114212148</figcaption>
+</figure>
+<h2 id="编码器">1.2. 编码器</h2>
+<ol type="1">
 <li>通过嵌入层</li>
 <li>对位置进行编码</li>
-<li>经过编码器层<ol>
-<li>注意力层：<ol>
+<li>经过编码器层
+<ol type="1">
+<li>注意力层：
+<ol type="1">
 <li>注意力机制</li>
 <li>残差+ 规范化层</li>
-</ol>
-</li>
-<li>前馈网络<ol>
+</ol></li>
+<li>前馈网络
+<ol type="1">
 <li>前馈网络</li>
 <li>残差+ 规范化层</li>
-</ol>
-</li>
-</ol>
-</li>
+</ol></li>
+</ol></li>
 </ol>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">class TransformerEncoder(d2l.Encoder):
     def __init__(self, vocab_size, key_size, query_size, value_size,
@@ -531,18 +531,21 @@ class Transforme">
             self.attention_weights[
                 i] &#x3D; blk.attention.attention.attention_weights
         return X<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="EncoderBlock层">1.2.1. EncoderBlock层</h3><p><img src="/2025/05/24/python/deeplearn/Transformer/image-20250425175900742.png" alt="image-20250425175900742"></p>
-<ol>
-<li>注意力层：<ol>
+<h3 id="encoderblock层">1.2.1. EncoderBlock层</h3>
+<figure>
+<img src="/2025/05/24/python/deeplearn/Transformer/image-20250425175900742.png" alt="image-20250425175900742"><figcaption aria-hidden="true">image-20250425175900742</figcaption>
+</figure>
+<ol type="1">
+<li>注意力层：
+<ol type="1">
 <li>注意力机制</li>
 <li>残差+ 规范化层</li>
-</ol>
-</li>
-<li>前馈网络<ol>
+</ol></li>
+<li>前馈网络
+<ol type="1">
 <li>前馈网络</li>
 <li>残差+ 规范化层</li>
-</ol>
-</li>
+</ol></li>
 </ol>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">class EncoderBlock(nn.Module):
     &quot;&quot;&quot;Transformer编码器块&quot;&quot;&quot;
@@ -560,16 +563,19 @@ class Transforme">
     def forward(self, X, valid_lens):
         Y &#x3D; self.addnorm1(X, self.attention(X, X, X, valid_lens))
         return self.addnorm2(Y, self.ffn(Y))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="多头注意力机制">1.2.1.1. 多头注意力机制</h4><p>将键值对分为多个子空间，每个注意力机制学习一个子空间的特征，得到H组的注意力权重，然后将注意力权重通过线性层汇聚</p>
-<p><img src="/2025/05/24/python/deeplearn/Transformer/image-20250425155705305.png" alt="image-20250425155705305"></p>
+<h4 id="多头注意力机制">1.2.1.1. 多头注意力机制</h4>
+<p>将键值对分为多个子空间，每个注意力机制学习一个子空间的特征，得到H组的注意力权重，然后将注意力权重通过线性层汇聚</p>
+<figure>
+<img src="/2025/05/24/python/deeplearn/Transformer/image-20250425155705305.png" alt="image-20250425155705305"><figcaption aria-hidden="true">image-20250425155705305</figcaption>
+</figure>
 <p>常规思路：</p>
-<ol>
+<ol type="1">
 <li>将query, key, values映射到子空间，使用不同的Linear映射</li>
 <li>将不同头的注意力结果合并在一起，在feature维度上合并</li>
 <li>再通过一个Linear线性层，连接所有head</li>
 </ol>
 <p>并行思路</p>
-<ol>
+<ol type="1">
 <li>将query,key, values映射到完整空间，然后将完整空间查分成子空间，head与batch组成一个伪batch</li>
 <li>再将子空间的数据通过点积注意力</li>
 <li>将head从batch中分离出来，与feature合并，效果与非并行情况相同</li>
@@ -601,7 +607,8 @@ class Transforme">
         output_concat&#x3D;transpose_output(output, self.num_heads)
         # 输出为（batch_size, query_size, hidden_size)
         return self.W_o(output_concat)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="残差-规范化层">1.2.1.2. 残差+规范化层</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python">class AddNorm(nn.Module):
+<h4 id="残差规范化层">1.2.1.2. 残差+规范化层</h4>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">class AddNorm(nn.Module):
     &quot;&quot;&quot;残差连接后进行层规范化&quot;&quot;&quot;
     def __init__(self, normalized_shape, dropout, **kwargs):
         super(AddNorm, self).__init__(**kwargs)
@@ -612,25 +619,31 @@ class Transforme">
         # Y+X 残差网络
         # Ln 层归一化
         return self.ln(self.dropout(Y) + X)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h5 id="残差层">1.2.1.2.1. 残差层</h5><p>训练是模型训练出F(X) = f(x)- X</p>
-<p><img src="/2025/05/24/python/deeplearn/Transformer/image-20250423225436209.png" alt="image-20250423225436209"></p>
+<h5 id="残差层">1.2.1.2.1. 残差层</h5>
+<p>训练是模型训练出F(X) = f(x)- X</p>
+<figure>
+<img src="/2025/05/24/python/deeplearn/Transformer/image-20250423225436209.png" alt="image-20250423225436209"><figcaption aria-hidden="true">image-20250423225436209</figcaption>
+</figure>
 <p>对应模型中 支线 为x ，前馈神经网络中预测是f(X), 相加后得到准确预测的F(X)</p>
-<p><img src="/2025/05/24/python/deeplearn/Transformer/image-20250425181440459.png" alt="image-20250425181440459"></p>
-<h5 id="批量归一化层BatchNorm">1.2.1.2.2. 批量归一化层BatchNorm</h5><script type="math/tex; mode=display">
-\mathrm{BN}(\mathbf{x}) = \boldsymbol{\gamma} \odot \frac{\mathbf{x} - \hat{\boldsymbol{\mu}}_\mathcal{B}}{\hat{\boldsymbol{\sigma}}_\mathcal{B}} + \boldsymbol{\beta}.</script><p>对特征维度进行归一化,$\gamma、\beta$ 是拉伸和偏移参数</p>
-<ol>
+<figure>
+<img src="/2025/05/24/python/deeplearn/Transformer/image-20250425181440459.png" alt="image-20250425181440459"><figcaption aria-hidden="true">image-20250425181440459</figcaption>
+</figure>
+<h5 id="批量归一化层batchnorm">1.2.1.2.2. 批量归一化层BatchNorm</h5>
+<p><span class="math display">$$
+\mathrm{BN}(\mathbf{x}) = \boldsymbol{\gamma} \odot \frac{\mathbf{x} - \hat{\boldsymbol{\mu}}_\mathcal{B}}{\hat{\boldsymbol{\sigma}}_\mathcal{B}} + \boldsymbol{\beta}.
+$$</span></p>
+<p>对特征维度进行归一化,<span class="math inline"><em>γ</em>、<em>β</em></span> 是拉伸和偏移参数</p>
+<ol type="1">
 <li><p>对特征维度进行归一化</p>
-<pre class="line-numbers language-none"><code class="language-none">mean &#x3D; X.mean(dim &#x3D; 0, keepdim &#x3D; True)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
+<pre class="line-numbers language-none"><code class="language-none">mean &#x3D; X.mean(dim &#x3D; 0, keepdim &#x3D; True)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 <li><p>卷积层</p>
-<ol>
+<ol type="1">
 <li>对通道维度进行归一化</li>
+</ol></li>
+<li><p>训练状态下使用小批次的样本均值与方差，测试状态使用的移动平均估算的均值与方差</p></li>
 </ol>
-</li>
-<li><p>训练状态下使用小批次的样本均值与方差，测试状态使用的移动平均估算的均值与方差</p>
-</li>
-</ol>
-<h3 id="前馈网络层">1.2.2. 前馈网络层</h3><p>这里的线性层可以使用1*1cnn网络代替，代替结果</p>
+<h3 id="前馈网络层">1.2.2. 前馈网络层</h3>
+<p>这里的线性层可以使用1*1cnn网络代替，代替结果</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">class PositionWiseFFN(nn.Module):
     &quot;&quot;&quot;基于位置的前馈网络&quot;&quot;&quot;
     def __init__(self, ffn_num_input, ffn_num_hiddens, ffn_num_outputs,
@@ -642,19 +655,22 @@ class Transforme">
 
     def forward(self, X):
         return self.dense2(self.relu(self.dense1(X)))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="解码器">1.3. 解码器</h2><p><img src="/2025/05/24/python/deeplearn/Transformer/image-20250425181429443.png" alt="image-20250425181429443"></p>
-<ol>
+<h2 id="解码器">1.3. 解码器</h2>
+<figure>
+<img src="/2025/05/24/python/deeplearn/Transformer/image-20250425181429443.png" alt="image-20250425181429443"><figcaption aria-hidden="true">image-20250425181429443</figcaption>
+</figure>
+<ol type="1">
 <li>通过嵌入层</li>
 <li>对位置进行编码</li>
-<li>经过解码器层<ol>
+<li>经过解码器层
+<ol type="1">
 <li>第一个注意力层 ， query ,key, value,都是解码器输入</li>
-<li>第二个注意力层， query 来自解码器输入 ， key, values来自编码器输入<ol>
+<li>第二个注意力层， query 来自解码器输入 ， key, values来自编码器输入
+<ol type="1">
 <li>交叉注意力机制中，<strong>key,value</strong>来源使用一致，这里key,values来自编码器输入</li>
-</ol>
-</li>
+</ol></li>
 <li>前馈神经网络</li>
-</ol>
-</li>
+</ol></li>
 <li>全连接层</li>
 </ol>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">class TransformerDecoder(d2l.AttentionDecoder):
@@ -688,8 +704,9 @@ class Transforme">
                 i] &#x3D; blk.attention2.attention.attention_weights
         return self.dense(X), state
             <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="解码器层">1.3.1. 解码器层</h3><p>经过解码器层</p>
-<ol>
+<h3 id="解码器层">1.3.1. 解码器层</h3>
+<p>经过解码器层</p>
+<ol type="1">
 <li>第一个注意力层 ， query ,key, value,都是解码器输入</li>
 <li>第二个注意力层， query 来自解码器输入 ， key, values来自编码器输入</li>
 <li>前馈神经网络</li>
@@ -745,55 +762,83 @@ class Transforme">
         return self.addnorm3(Z, self.ffn(Z)), state
         <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>在transformer结构中，query与key权重对values值进行查询，values值是编码器的输入，为什么就可以查询到解码器想要的结果呢？比如，编码器编码我是李华，解码器对I 查询 我，ji</p>
-<h2 id="优化">1.4. 优化</h2><p>Adam， 自动调整学习率</p>
+<h2 id="优化">1.4. 优化</h2>
+<p>Adam， 自动调整学习率</p>
 <p>warm up 和逆平方根衰减</p>
-<h2 id="BERT">1.5. BERT</h2><h3 id="预训练（无监督-自监督）">1.5.1. 预训练（无监督/自监督）</h3><p>自监督</p>
-<ol>
+<h2 id="bert">1.5. BERT</h2>
+<h3 id="预训练无监督自监督">1.5.1. 预训练（无监督/自监督）</h3>
+<p>自监督</p>
+<ol type="1">
 <li>完形填空</li>
 <li>预测下一句</li>
 </ol>
-<h3 id="微调（有监督）">1.5.2. 微调（有监督）</h3><p>需要根据下游任务添加输出层，添加的层需要重新训练</p>
-<ol>
+<h3 id="微调有监督">1.5.2. 微调（有监督）</h3>
+<p>需要根据下游任务添加输出层，添加的层需要重新训练</p>
+<ol type="1">
 <li>两个句子分类</li>
 <li>单个句子的分类</li>
-<li>问答任务<ol>
+<li>问答任务
+<ol type="1">
 <li>找到答案正确的文本位置</li>
-</ol>
-</li>
-<li>命名实体位置标记<ol>
+</ol></li>
+<li>命名实体位置标记
+<ol type="1">
 <li>标记实体位置（begin ,inside ,O（非实体））</li>
+</ol></li>
 </ol>
-</li>
-</ol>
-<h2 id="Decoder-only">1.6. Decoder_only</h2><p><strong>优点</strong>：</p>
-<ol>
+<h2 id="decoder_only">1.6. Decoder_only</h2>
+<p><strong>优点</strong>：</p>
+<ol type="1">
 <li>Decoder-only的注意力矩阵始终是满秩，表达能力更强</li>
 <li>不会浪费Encoder的参数，输入可以直接作用与decoder</li>
 </ol>
-<h3 id="预训练">1.6.1. 预训练</h3><p>test prediction 预测文本</p>
-<h3 id="微调">1.6.2. 微调</h3><p>test prediction + task classfication 的损失相加</p>
-<p><img src="/2025/05/24/python/deeplearn/Transformer/image-20250516123238590.png" alt="task"></p>
-<h2 id="GPT-2">1.7. GPT-2</h2><p><strong>无需微调，预训练的模型就可以解决下游任务</strong></p>
-<p><img src="/2025/05/24/python/deeplearn/Transformer/image-20250516123552285.png" alt="image-20250516123552285"></p>
+<h3 id="预训练">1.6.1. 预训练</h3>
+<p>test prediction 预测文本</p>
+<h3 id="微调">1.6.2. 微调</h3>
+<p>test prediction + task classfication 的损失相加</p>
+<figure>
+<img src="/2025/05/24/python/deeplearn/Transformer/image-20250516123238590.png" alt="task"><figcaption aria-hidden="true">task</figcaption>
+</figure>
+<h2 id="gpt-2">1.7. GPT-2</h2>
+<p><strong>无需微调，预训练的模型就可以解决下游任务</strong></p>
+<figure>
+<img src="/2025/05/24/python/deeplearn/Transformer/image-20250516123552285.png" alt="image-20250516123552285"><figcaption aria-hidden="true">image-20250516123552285</figcaption>
+</figure>
 <p>Zero-shot, One-shot, Few-shot</p>
 <p>使用任务提示（prompt）和少量示例直接输入</p>
-<h3 id="lay-N放在模块前">1.7.1. lay N放在模块前</h3><ol>
+<h3 id="lay-n放在模块前">1.7.1. lay N放在模块前</h3>
+<ol type="1">
 <li>尺度定律： 模型的大小与Loss线性拟合</li>
 <li>涌现能力： 大模型效果迅速提升</li>
 </ol>
-<h2 id="GPT">1.8. GPT</h2><p>参数数量增多，需要减少计算量。</p>
-<h3 id="sparse-attention">1.8.1. sparse attention</h3><p>减少attention的计算量，只关注临近部分和前面的部分权重</p>
-<p><img src="/2025/05/24/python/deeplearn/Transformer/image-20250516124911687.png" alt="image-20250516124911687"></p>
-<h3 id="chatgpt">1.8.2. chatgpt</h3><p>增加人类反馈强化学习（RLHF) ,与人互动</p>
-<h2 id="LLAMA">1.9. LLAMA</h2><h3 id="swiGLU">1.9.1. swiGLU</h3><p><img src="/2025/05/24/python/deeplearn/Transformer/image-20250516155254082.png" alt="image-20250516155254082"></p>
+<h2 id="gpt">1.8. GPT</h2>
+<p>参数数量增多，需要减少计算量。</p>
+<h3 id="sparse-attention">1.8.1. sparse attention</h3>
+<p>减少attention的计算量，只关注临近部分和前面的部分权重</p>
+<figure>
+<img src="/2025/05/24/python/deeplearn/Transformer/image-20250516124911687.png" alt="image-20250516124911687"><figcaption aria-hidden="true">image-20250516124911687</figcaption>
+</figure>
+<h3 id="chatgpt">1.8.2. chatgpt</h3>
+<p>增加人类反馈强化学习（RLHF) ,与人互动</p>
+<h2 id="llama">1.9. LLAMA</h2>
+<h3 id="swiglu">1.9.1. swiGLU</h3>
+<figure>
+<img src="/2025/05/24/python/deeplearn/Transformer/image-20250516155254082.png" alt="image-20250516155254082"><figcaption aria-hidden="true">image-20250516155254082</figcaption>
+</figure>
 <p>使用swi激活函数，同时使用门控机制（GLU)，选择性激活函数</p>
 <p>优点： swish激活函数更平滑，GLU实现选择性激活</p>
-<h3 id="GQA-grouped-query-attention">1.9.2. GQA-grouped-query attention</h3><p>减少k,v的head 数量，query共享重复的k,v，减少参数</p>
-<p><img src="/2025/05/24/python/deeplearn/Transformer/image-20250516155516226.png" alt="image-20250516155516226"></p>
-<h3 id="layer-norm-变体">1.9.3. layer norm 变体</h3><p>RMSNorm:均方根归一化</p>
+<h3 id="gqa-grouped-query-attention">1.9.2. GQA-grouped-query attention</h3>
+<p>减少k,v的head 数量，query共享重复的k,v，减少参数</p>
+<figure>
+<img src="/2025/05/24/python/deeplearn/Transformer/image-20250516155516226.png" alt="image-20250516155516226"><figcaption aria-hidden="true">image-20250516155516226</figcaption>
+</figure>
+<h3 id="layer-norm-变体">1.9.3. layer norm 变体</h3>
+<p>RMSNorm:均方根归一化</p>
 <p><strong>取出平移，只保留缩放</strong></p>
 <p>优点：计算简单</p>
-<p><img src="/2025/05/24/python/deeplearn/Transformer/image-20250516160128424.png" alt="image-20250516160128424"></p>
+<figure>
+<img src="/2025/05/24/python/deeplearn/Transformer/image-20250516160128424.png" alt="image-20250516160128424"><figcaption aria-hidden="true">image-20250516160128424</figcaption>
+</figure>
 
                 
             </div>
@@ -1495,7 +1540,7 @@ class Transforme">
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">49.8k</span>
+                        class="white-color">50.1k</span>
             
             
             
