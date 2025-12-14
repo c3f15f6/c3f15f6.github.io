@@ -422,21 +422,21 @@ R - relaxation , ">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-12-10
+                    2025-12-13
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    1.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    5 分
                 </div>
                 
 
@@ -667,6 +667,16 @@ $$</span></p>
 <p>$ cost = {c} $ ，所以<span class="math inline"><em>θ</em></span> 步长值 尽可能大</p>
 <p>最大步长受限于 <span class="math inline"><em>X</em><sub><em>B</em></sub> + <em>θ</em><em>d</em><sub><em>B</em></sub></span>， 基变量的值需要满足非负变量</p>
 <p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251209214846730.png" alt="image-20251209214846730" style="zoom:150%;"></p>
+<h2 id="lp-基本矩阵">3.4. LP 基本矩阵</h2>
+<p><span class="math inline"><em>x</em><sub><em>B</em></sub></span> 是基变量， $ x_N $ 是非基变量</p>
+<p>其中<span class="math display">$$Ax = b , A = [B | N] , x =\begin{bmatrix} x_B \\ x_N\end{bmatrix} $$</span></p>
+<p>其中满足 <span class="math inline"><em>A</em><em>x</em> = <em>B</em><em>x</em><sub><em>B</em></sub> + <em>N</em><em>x</em><sub><em>N</em></sub> = <em>b</em></span> ， 计算得到 $ x = [x_B ; x_N] = [B^{-1}b ; 0] $</p>
+<p>式子可以改写为<img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251213214033236.png" alt="image-20251213214033236"></p>
+<p>其中M 成为基本矩阵</p>
+<h2 id="两阶段simplex-method">3.5. 两阶段simplex method</h2>
+<p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251213221428119.png" alt="image-20251213221428119" style="zoom: 67%;"></p>
+<p>原因 ： 当约束中不存在不等式约束 时， 不能增加新的变量， 构成基， 因此不容易找到初始可行解</p>
+<p>方法： 使用两阶段单纯形法</p>
 
                 
             </div>
@@ -1354,7 +1364,7 @@ $$</span></p>
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">50.1k</span>
+                        class="white-color">50.2k</span>
             
             
             
