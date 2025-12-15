@@ -422,21 +422,21 @@ R - relaxation , ">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-12-13
+                    2025-12-15
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.4k
+                    1.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    6 分
                 </div>
                 
 
@@ -677,6 +677,35 @@ $$</span></p>
 <p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251213221428119.png" alt="image-20251213221428119" style="zoom: 67%;"></p>
 <p>原因 ： 当约束中不存在不等式约束 时， 不能增加新的变量， 构成基， 因此不容易找到初始可行解</p>
 <p>方法： 使用两阶段单纯形法</p>
+<h2 id="搜索算法">3.6. 搜索算法</h2>
+<p>梯度方向 = 当前 <span class="math inline"><em>x</em></span> 附近， 函数下降最快的方向 <span class="math display">$$
+目标值的变化值 = f(x + \lambda \Delta x) - f(x) \approx \sum_j (\frac{\partial f}{\partial x_j}) (\lambda \Delta x) = \lambda \Delta f(x) * \Delta x)
+$$</span> 内积最大的情况下， <span class="math inline"><em>Δ</em><em>f</em>(<em>x</em>) = <em>Δ</em><em>x</em></span></p>
+<ol type="1">
+<li>max 变化值最大的$x $ ， 取值 <span class="math inline"><em>Δ</em><em>x</em> = <em>Δ</em><em>f</em>(<em>x</em>)</span></li>
+<li>min 变化值最大的$x $ ， 取值 <span class="math inline"><em>Δ</em><em>x</em> =  − <em>Δ</em><em>f</em>(<em>x</em>)</span></li>
+</ol>
+<h3 id="有约束的搜索方向">3.6.1. 有约束的搜索方向</h3>
+<figure>
+<img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251215113912567.png" alt="图1"><figcaption aria-hidden="true">图1</figcaption>
+</figure>
+<figure>
+<img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251215113930482.png" alt="图2"><figcaption aria-hidden="true">图2</figcaption>
+</figure>
+<ol type="1">
+<li>当$ x = - _i^T$时候， 沿着可行方向的梯度无法下降，找到局部最优点，此时无法再下降</li>
+<li>否则，需要保持上图1 中的约束条件</li>
+</ol>
+<h3 id="解析解">3.6.2. 解析解</h3>
+<p>做出一定的假设，使用解析解进行灵敏度分析</p>
+<figure>
+<img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251215115540793.png" alt="image-20251215115540793"><figcaption aria-hidden="true">image-20251215115540793</figcaption>
+</figure>
+<p>解析解是对输入参数的表示，原有输入参数中使用数值表示，是特定情况下的固定结果</p>
+<p>即将原有的公式中的式子使用代数表示， 如图下所示：</p>
+<figure>
+<img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251215115711185.png" alt="模型求解"><figcaption aria-hidden="true">模型求解</figcaption>
+</figure>
 
                 
             </div>
@@ -1364,7 +1393,7 @@ $$</span></p>
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">50.2k</span>
+                        class="white-color">50.5k</span>
             
             
             
