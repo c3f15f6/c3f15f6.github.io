@@ -422,21 +422,21 @@ R - relaxation , ">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-12-16
+                    2025-12-17
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2k
+                    2.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    8 分
+                    10 分
                 </div>
                 
 
@@ -628,6 +628,59 @@ $$</span> B 是基变量， N 为非基变量</p>
 <img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251209183042320.png" alt="image-20251209183042320"><figcaption aria-hidden="true">image-20251209183042320</figcaption>
 </figure>
 <h2 id="simplex-methed">3.3. simplex methed</h2>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th><span class="math inline"><em>x</em><sub><em>B</em></sub><sup><em>T</em></sup></span></th>
+<th><span class="math inline"><em>x</em><sub><em>N</em></sub><sup><em>T</em></sup></span></th>
+<th>rhs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline"><em>x</em><sub><em>B</em></sub></span></td>
+<td><span class="math inline"><em>B</em></span></td>
+<td><span class="math inline"><em>N</em></span></td>
+<td><span class="math inline"><em>b</em></span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline"><em>r</em><sup><em>T</em></sup></span></td>
+<td><span class="math inline">0<sup><em>T</em></sup></span></td>
+<td><span class="math inline"><em>c</em><sub><em>N</em></sub><sup><em>T</em></sup> − <em>c</em><sub><em>B</em></sub><sup><em>T</em></sup><em>N</em></span></td>
+<td><span class="math inline">0<sup><em>T</em></sup></span></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th><span class="math inline"><em>x</em><sub><em>B</em></sub><sup><em>T</em></sup></span></th>
+<th><span class="math inline"><em>x</em><sub><em>N</em></sub><sup><em>T</em></sup></span></th>
+<th>rhs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline"><em>x</em><sub><em>B</em></sub></span></td>
+<td><span class="math inline"><em>I</em></span></td>
+<td><span class="math inline"><em>B</em><sup> − 1</sup><em>N</em></span></td>
+<td><span class="math inline"><em>B</em><sup> − 1</sup><em>b</em></span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline"><em>r</em><sup><em>T</em></sup></span></td>
+<td><span class="math inline">0<sup><em>T</em></sup></span></td>
+<td><span class="math inline"><em>c</em><sub><em>N</em></sub><sup><em>T</em></sup> − <em>c</em><sub><em>B</em></sub><sup><em>T</em></sup><em>B</em><sup> − 1</sup><em>N</em></span></td>
+<td><span class="math inline"> − <em>c</em><sub><em>B</em></sub><sup><em>T</em></sup><em>B</em><sup> − 1</sup><em>b</em></span></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><span class="math inline"><em>B</em><sup> − 1</sup><em>b</em></span> 代表可行方向， 初始解开始可行，之后变换过程中，始终保持rhs 为正</p>
+<p><span class="math inline"><em>c</em><sub><em>N</em></sub><sup><em>T</em></sup> − <em>c</em><sub><em>B</em></sub><sup><em>T</em></sup><em>B</em><sup> − 1</sup><em>N</em></span> 是最优方向</p>
+</blockquote>
 <p>顶点数量为 <span class="math inline"><em>C</em><sub><em>n</em></sub><sup><em>n</em> − <em>m</em></sup> = <em>C</em><sub><em>n</em></sub><sup><em>m</em></sup></span> ， 数量较大，选择一种有效的方式筛选点</p>
 <ol type="1">
 <li>选择初始点</li>
@@ -779,6 +832,54 @@ $$</span></p>
 <figure>
 <img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251216170426742.png" alt="image-20251216170426742"><figcaption aria-hidden="true">image-20251216170426742</figcaption>
 </figure>
+<h2 id="经济学变量">5.4. 经济学变量</h2>
+<figure>
+<img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251216212935057.png" alt="经济学定义"><figcaption aria-hidden="true">经济学定义</figcaption>
+</figure>
+<h3 id="互补松弛解释">5.4.1. 互补松弛解释</h3>
+<p>​ 见PPT</p>
+<h1 id="integer-programming">6. Integer programming</h1>
+<h2 id="分配问题">6.1. 分配问题</h2>
+<p>好的，我将为你提取图片中展示的三种指派问题（Assignment Problem）的 LaTeX 表达式。</p>
+<hr>
+<h3 id="指派问题-0-1-assignment-problem">6.1.1. 1. 0-1 指派问题 (0-1 Assignment Problem)</h3>
+<p><strong>目标函数：</strong> <span class="math display">$$
+\min \sum_{i=1}^n \sum_{j=1}^n c_{ij}x_{ij}
+\\
+s.t. \quad \sum_{j=1}^n x_{ij} = 1, \quad \forall i
+\\
+\sum_{i=1}^n x_{ij} = 1, \quad \forall j
+\\
+x_{ij} \in \{0,1\}, \quad \forall i, j
+$$</span></p>
+<hr>
+<h3 id="二次指派问题-quadratic-assignment-problem">6.1.2. 2. 二次指派问题 (Quadratic Assignment Problem)</h3>
+<p><strong>目标函数：</strong> <span class="math display">$$
+\min \sum_{i} \sum_{j} \sum_{k&gt;i} \sum_{l \ne j} c_{i,j,k,l} \cdot x_{ij} \cdot x_{kl}
+\\
+s.t. \quad \sum_{j=1}^n x_{ij} = 1, \quad \forall i
+\\
+\sum_{i=1}^n x_{ij} = 1, \quad \forall j
+\\
+x_{ij} \in \{0,1\}, \quad \forall i, j
+$$</span> 分阶段分配：</p>
+<ol type="1">
+<li>从<span class="math inline"><em>x</em><sub><em>i</em><em>j</em></sub></span>表示部门 <span class="math inline"><em>i</em></span> 分配到地点<span class="math inline"><em>j</em></span></li>
+<li>从<span class="math inline"><em>x</em><sub><em>k</em><em>l</em></sub></span>表示部门 <span class="math inline"><em>k</em></span> 分配到地点<span class="math inline"><em>l</em></span></li>
+</ol>
+<p><span class="math inline"><em>c</em><sub><em>i</em>, <em>j</em>, <em>k</em>, <em>l</em></sub></span>， 表示<span class="math inline"><em>i</em>, <em>j</em></span> 在 <span class="math inline"><em>k</em>, <em>l</em></span> 位置交互的cost</p>
+<p><span class="math inline"><em>x</em><sub><em>i</em><em>j</em></sub> * <em>x</em><sub><em>k</em><em>l</em></sub></span>表示只有分配了这条链路， 才会产生cost</p>
+<hr>
+<h3 id="广义指派问题-generalized-assignment-problem">6.1.3. 3. 广义指派问题 (Generalized Assignment Problem)</h3>
+<p><strong>目标函数：</strong> <span class="math display">$$
+\min \sum_{i=1}^m \sum_{j=1}^n c_{ij}x_{ij}
+\\
+s.t. \quad \sum_{j=1}^n x_{ij} = 1, \quad \forall i
+\\
+\sum_{i=1}^m s_{ij}x_{ij} \leq b_j, \quad \forall j
+\\
+x_{ij} \in \{0,1\}, \quad \forall i, j
+$$</span></p>
 
                 
             </div>
@@ -1466,7 +1567,7 @@ $$</span></p>
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">50.9k</span>
+                        class="white-color">51.3k</span>
             
             
             
