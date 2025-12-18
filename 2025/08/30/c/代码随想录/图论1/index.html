@@ -5,14 +5,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="图论, 汤汁小白菜">
-    <meta name="description" content="1. 图论 搜索
-感谢代码随想录
-1.1. 图论基础
-1.1.1. 邻接矩阵
-邻接矩阵使用二维数组保存信息，矩阵中每个节点代表一个元素
+    <meta name="description" content="1. 图论 搜索感谢代码随想录
+1.1. 图论基础1.1.1. 邻接矩阵邻接矩阵使用二维数组保存信息，矩阵中每个节点代表一个元素
 typedef struct Node&amp;#123;
     int data;
-&amp;#125;N">
+&amp;#125;Node;
+typ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -477,17 +475,13 @@ typedef struct Node&amp;#123;
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="图论-搜索">1. 图论 搜索</h1>
-<p><strong>感谢<a target="_blank" rel="noopener" href="https://programmercarl.com/0101.对称二叉树.html#思路">代码随想录</a></strong></p>
-<h2 id="图论基础">1.1. 图论基础</h2>
-<h3 id="邻接矩阵">1.1.1. 邻接矩阵</h3>
-<p>邻接矩阵使用二维数组保存信息，矩阵中每个节点代表一个元素</p>
+                <h1 id="图论-搜索">1. 图论 搜索</h1><p><strong>感谢<a target="_blank" rel="noopener" href="https://programmercarl.com/0101.对称二叉树.html#思路">代码随想录</a></strong></p>
+<h2 id="图论基础">1.1. 图论基础</h2><h3 id="邻接矩阵">1.1.1. 邻接矩阵</h3><p>邻接矩阵使用二维数组保存信息，矩阵中每个节点代表一个元素</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">typedef struct Node&#123;
     int data;
 &#125;Node;
 typedef vector&lt;vector&lt;Node&gt;&gt; Graph;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="邻接表">1.1.2. 邻接表</h3>
-<p>邻接表—— 一个节点连接中存在弧 节点的首指针</p>
+<h3 id="邻接表">1.1.2. 邻接表</h3><p>邻接表—— 一个节点连接中存在弧 节点的首指针</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;&#x2F; 弧节点信息
 typedef struct arc&#123;
 	int info;
@@ -505,128 +499,119 @@ typedef vector&lt;Node&gt; Graph;
 
 &#x2F;&#x2F; 使用链表存放
 typedef link&lt;Node&gt; Graph;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="有向图">1.1.3. 有向图</h3>
-<p>有向图的边<span class="math inline">(<em>a</em>, <em>b</em>)</span>， 其中只存放 a-&gt;b的边</p>
-<h3 id="无向图">1.1.4. 无向图</h3>
-<p>无向图的边(a, b), a 节点中存放一条a-&gt;b的边， b节点存放一条 b-&gt;a的边</p>
-<h3 id="连通分量">1.1.5. 连通分量</h3>
-<p>无向图中 能够从一个节点到所有的节点的 <strong>最大子图</strong></p>
-<figure>
-<img src="/2025/08/30/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E5%9B%BE%E8%AE%BA1/20240511102449.png" alt="123 是连通分量， 12不是连通分量"><figcaption aria-hidden="true">123 是连通分量， 12不是连通分量</figcaption>
-</figure>
-<h3 id="强连通分量">1.1.6. 强连通分量</h3>
-<p>有向图中， 增加了方向，依旧是连通分量成为强连通分量</p>
-<h3 id="弱连通分量">1.1.7. 弱连通分量</h3>
-<p>有向图中，增加了方向，不是连通分量 ； 减少方向，是连通分量，是弱~；</p>
-<figure>
-<img src="/2025/08/30/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E5%9B%BE%E8%AE%BA1/20240511115235.png" alt="img"><figcaption aria-hidden="true">img</figcaption>
-</figure>
-<h2 id="岛屿数量">1.2. 岛屿数量</h2>
-<ol type="1">
+<h3 id="有向图">1.1.3. 有向图</h3><p>有向图的边$(a, b)$， 其中只存放 a-&gt;b的边</p>
+<h3 id="无向图">1.1.4. 无向图</h3><p>无向图的边(a, b),  a 节点中存放一条a-&gt;b的边， b节点存放一条 b-&gt;a的边</p>
+<h3 id="连通分量">1.1.5. 连通分量</h3><p>无向图中 能够从一个节点到所有的节点的 <strong>最大子图</strong></p>
+<p><img src="/2025/08/30/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E5%9B%BE%E8%AE%BA1/20240511102449.png" alt="123 是连通分量， 12不是连通分量"></p>
+<h3 id="强连通分量">1.1.6. 强连通分量</h3><p>有向图中， 增加了方向，依旧是连通分量成为强连通分量</p>
+<h3 id="弱连通分量">1.1.7. 弱连通分量</h3><p>有向图中，增加了方向，不是连通分量 ； 减少方向，是连通分量，是弱~；</p>
+<p><img src="/2025/08/30/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E5%9B%BE%E8%AE%BA1/20240511115235.png" alt="img"></p>
+<h2 id="岛屿数量">1.2. 岛屿数量</h2><ol>
 <li>每次遍历可以得到一个连通分量， 遍历总次数 = 所有连通分量= 岛屿数量</li>
 <li>使用visited 数组标识 已访问节点</li>
 </ol>
-<h3 id="深度搜索dfs">1.2.1. 深度搜索dfs</h3>
-<ol type="1">
+<h3 id="深度搜索dfs">1.2.1. 深度搜索dfs</h3><ol>
 <li><p>中止条件：</p>
-<ol type="1">
+<ol>
 <li>节点访问过 ，<code>visited[i][j]  = true</code></li>
 <li>节点没有相连，<code>g[i][j] = 0</code></li>
-</ol></li>
+</ol>
+</li>
 <li><p>处理逻辑：</p>
-<ol type="1">
-<li><p>开始对其节点遍历，将其标识为<code>true</code></p></li>
+<ol>
+<li><p>开始对其节点遍历，将其标识为<code>true</code></p>
+</li>
 <li><p>对所有相邻节点遍历</p>
 <blockquote>
 <p>图中相邻节点是其上、下、左、右坐标</p>
-</blockquote></li>
-<li><p>对节点遍历之前需要对节点坐标进行检查</p></li>
-</ol></li>
-<li><p>返回值，没有返回值</p></li>
+</blockquote>
+</li>
+<li><p>对节点遍历之前需要对节点坐标进行检查</p>
+</li>
 </ol>
-<h3 id="广度搜索bfs">1.2.2. 广度搜索BFS</h3>
-<ol type="1">
-<li><p>取出队列首元素，将其所有相邻节点加入队列中，依次遍历，直到队列中元素为空</p></li>
+</li>
+<li><p>返回值，没有返回值</p>
+</li>
+</ol>
+<h3 id="广度搜索BFS">1.2.2. 广度搜索BFS</h3><ol>
+<li><p>取出队列首元素，将其所有相邻节点加入队列中，依次遍历，直到队列中元素为空</p>
+</li>
 <li><p>使用<code>visited</code> 数组标识遍历过的节点</p>
-<ol type="1">
+<ol>
 <li><p>在加入队列时，标记已访问</p>
 <blockquote>
 <p>加入队列时没有标记， 出队列时标记，下一个访问当前节点会再次放入队列中，多次遍历</p>
-<figure>
-<img src="/2025/08/30/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E5%9B%BE%E8%AE%BA1/20250124094043.png" alt="img"><figcaption aria-hidden="true">img</figcaption>
-</figure>
-</blockquote></li>
-</ol></li>
+<p><img src="/2025/08/30/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E5%9B%BE%E8%AE%BA1/20250124094043.png" alt="img"></p>
+</blockquote>
+</li>
 </ol>
-<h2 id="岛屿的最大面积">1.3. 岛屿的最大面积</h2>
-<p>一次遍历 = 一个连通分量= 一个岛屿， 统计每次遍历过程中的最大遍历节点数量</p>
+</li>
+</ol>
+<h2 id="岛屿的最大面积">1.3. 岛屿的最大面积</h2><p>一次遍历 = 一个连通分量=  一个岛屿， 统计每次遍历过程中的最大遍历节点数量</p>
 <blockquote>
 <p>写<code>if-else</code>时， 尽可能把结果都包含在内，没有操作时再不写</p>
-<ol type="1">
+<ol>
 <li>有节点遍历时，节点数量 +1</li>
 <li>没有节点遍历时，节点数量初始为0</li>
 </ol>
 </blockquote>
-<ol type="1">
-<li><code>dfs</code>
-<ol type="1">
+<ol>
+<li><code>dfs</code><ol>
 <li>优先处理节点，进入函数后，首先操作本节点， <code>count</code>初始为0</li>
 <li>优先处理相邻节点，须在进入下一节点时，就将下一个节点处理，count 初始为1</li>
-</ol></li>
+</ol>
+</li>
 <li><code>bfs</code>，只有在加入队列时处理，处理的是当前节点，初始化为0</li>
 </ol>
-<h2 id="孤岛的最大面积">1.4. 孤岛的最大面积</h2>
-<p>孤岛 = 四周没有与图的边沿相连</p>
-<ol type="1">
+<h2 id="孤岛的最大面积">1.4. 孤岛的最大面积</h2><p>孤岛 = 四周没有与图的边沿相连</p>
+<ol>
 <li>将所有与陆地相连的岛都置为海洋</li>
 <li>计算剩下岛的面积</li>
 </ol>
 <p>两个边沿， 从四个边沿开始遍历，遍历的节点置为0，使用grid作为标识，此时可不用visited</p>
-<ol type="1">
+<ol>
 <li><code>[0][i]</code>, <code>[n-1][i]</code></li>
 <li><code>[i][0]</code>, <code>[i][m-1]</code></li>
 </ol>
-<h2 id="水流问题">1.5. 水流问题</h2>
-<p><a target="_blank" rel="noopener" href="https://programmercarl.com/kamacoder/0103.水流问题.html#思路">求出能流向低处的节点</a></p>
-<ol type="1">
+<h2 id="水流问题">1.5. 水流问题</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/kamacoder/0103.水流问题.html#思路">求出能流向低处的节点</a></p>
+<ol>
 <li>暴力求解，求当前节点能否到达 边界</li>
 <li>逆推， 从边界向上推，看左边界能到的哪些节点<code>firstBoard</code>，以及有边界<code>secondBoard</code></li>
 <li>左右边界都能到达，为逆推结果</li>
 </ol>
-<h2 id="建造最大岛屿">1.6. 建造最大岛屿</h2>
-<p><a target="_blank" rel="noopener" href="https://programmercarl.com/kamacoder/0104.建造最大岛屿.html#思路">海洋中造出一块岛， 连接其他岛屿，组成最大面积</a></p>
-<ol type="1">
+<h2 id="建造最大岛屿">1.6. 建造最大岛屿</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/kamacoder/0104.建造最大岛屿.html#思路">海洋中造出一块岛， 连接其他岛屿，组成最大面积</a></p>
+<ol>
 <li><p>首先统计每个岛屿的面积，并为每个岛屿附上标识，并建立标识对应的面积</p>
 <blockquote>
 <p>建立标识后，可以标识当前节点已被访问，可以用这个标识代替<code>visited</code></p>
-</blockquote></li>
-<li><p>统计 0 值附近所有岛屿面积的和，不同的岛屿需要去重</p></li>
-<li><p>比较出最大值</p></li>
+</blockquote>
+</li>
+<li><p>统计 0 值附近所有岛屿面积的和，不同的岛屿需要去重</p>
+</li>
+<li><p>比较出最大值</p>
+</li>
 </ol>
-<h2 id="岛屿的周长">1.7. 岛屿的周长</h2>
-<p><a target="_blank" rel="noopener" href="https://programmercarl.com/kamacoder/0106.岛屿的周长.html#思路">岛屿与海相邻的周长</a></p>
+<h2 id="岛屿的周长">1.7. 岛屿的周长</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/kamacoder/0106.岛屿的周长.html#思路">岛屿与海相邻的周长</a></p>
 <p>岛的陆地是一个正方形，每一条边，与海洋相连都是陆地周长，因此可以<strong>使用图论的方法</strong>，而不是总时搜索</p>
-<ol type="1">
+<ol>
 <li><p>陆地地界的边沿是有一块海洋，边长加1</p>
 <blockquote>
 <p>矩阵边沿也是海洋，也要统计</p>
-</blockquote></li>
-<li><p>每两块相邻的陆地都需要减去2个边沿，= 每相邻一块陆地，需要减去一个边沿</p>
+</blockquote>
+</li>
+<li><p>每两块相邻的陆地都需要减去2个边沿，=  每相邻一块陆地，需要减去一个边沿</p>
 <p>统计所有陆地<code>sum</code>,总边数<code>4*sum</code> ，统计相邻陆地数<code>cover</code>,减去边沿<code>cover</code></p>
-<p>陆地边沿 = <code>sum*4 - cover</code></p></li>
+<p>陆地边沿 = <code>sum*4 - cover</code></p>
+</li>
 </ol>
-<h2 id="字符串接龙">1.8. 字符串接龙</h2>
-<p><a target="_blank" rel="noopener" href="https://kamacoder.com/problempage.php?pid=1183">字符串作为路径，广度搜索</a></p>
-<figure>
-<img src="/2025/08/30/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E5%9B%BE%E8%AE%BA1/20250317105155.png" alt="字符串接龙是无向图"><figcaption aria-hidden="true">字符串接龙是无向图</figcaption>
-</figure>
-<ol type="1">
+<h2 id="字符串接龙">1.8. 字符串接龙</h2><p><a target="_blank" rel="noopener" href="https://kamacoder.com/problempage.php?pid=1183">字符串作为路径，广度搜索</a></p>
+<p><img src="/2025/08/30/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E5%9B%BE%E8%AE%BA1/20250317105155.png" alt="字符串接龙是无向图"></p>
+<ol>
 <li>无向图中可以使用<code>广度搜索</code>，找打目标节点，即为<code>最短路径</code></li>
 <li>遍历时需要使用<code>visited</code>标识节点，避免循环，此时<code>visited</code>可以使用<code>set</code>标识，也可以使用<code>map</code>，同时标识走到这里的最短路径</li>
 <li>对字符串的替换是对图可行路径的查找，找到了在集合中，标识找到了一条可行路径</li>
 </ol>
-<h2 id="邻接表遍历">1.9. 邻接表遍历</h2>
-<p>邻接表中是以，节点作为数组元素，同时还有节点后指向 一个链表，指向与节点相连的节点</p>
+<h2 id="邻接表遍历">1.9. 邻接表遍历</h2><p>邻接表中是以，节点作为数组元素，同时还有节点后指向 一个链表，指向与节点相连的节点</p>
 <p><code>vector&lt;list&lt;int&gt;&gt; g(n+1)</code>，以数组序号作为节点元素，数组的<code>list</code>作为相邻链表</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;&#x2F; 深搜和广搜中都需要对相邻节点的列表进行遍历
 &#x2F;&#x2F; list的遍历方法
@@ -637,20 +622,18 @@ for(auto it &#x3D; list.begin() ; it !&#x3D;  list.end() ; i++)&#123;&#125;
 &#x2F;&#x2F; 使用遍历
 for(auto i : list)&#123;&#125;
 &#x2F;&#x2F; 不能使用类似vector 的for(int i &#x3D; 0 ; i &lt; vector.size() ;i++)&#123;&#125;，list不能使用下标去访问<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="算法">2. 算法</h1>
-<h2 id="并查集">2.1. 并查集</h2>
-<p>含义： 一个集合中的元素指向同一个根节点， 根节点指向自身</p>
-<ol type="1">
+<h1 id="算法">2. 算法</h1><h2 id="并查集">2.1. 并查集</h2><p>含义： 一个集合中的元素指向同一个根节点， 根节点指向自身</p>
+<ol>
 <li>初始化，所有节点指向自身</li>
-<li>插入时，将节点 -&gt; 该集合的<code>根节点</code>
-<ol type="1">
+<li>插入时，将节点 -&gt; 该集合的<code>根节点</code><ol>
 <li>如果是集合 插入 集合， 需要将集合 的<code>根节点</code> 指向 另一个集合的 <code>根节点</code></li>
-</ol></li>
+</ol>
+</li>
 <li>比较时，比较两个元素的根节点是否相同</li>
-<li>查找， 迭代查找根节点(指向自身的 节点)
-<ol type="1">
+<li>查找， 迭代查找根节点(指向自身的 节点)<ol>
 <li>并查集的缩小： 在查找到根节点时， 将当前元素的<code>父节点</code>指向<code>根节点</code>，减少深度，加快查询</li>
-</ol></li>
+</ol>
+</li>
 </ol>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">n &#x3D; 1000;
 vector&lt;int&gt; father &#x3D; vector&lt;int&gt;(1000, 0);
@@ -684,39 +667,36 @@ void join(vector&lt;int&gt; father, int u , int v)&#123;
     &#x2F;&#x2F; 注意这里插入时，插入的是根节点，不是将u,v 插入
     else father[v_father] &#x3D; u_father;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="无向图中是否有路径">2.2. 无向图中是否有路径</h2>
-<ol type="1">
+<h2 id="无向图中是否有路径">2.2. 无向图中是否有路径</h2><ol>
 <li>将所有的节点加入并查集中</li>
 <li>查看节点<code>i, j</code> 是否重复出现在并查集中，如果是，那就有路径</li>
 </ol>
-<h2 id="无向图中冗余连接">2.3. 无向图中冗余连接</h2>
-<ol type="1">
+<h2 id="无向图中冗余连接">2.3. 无向图中冗余连接</h2><ol>
 <li>如果边<code>i, j</code> 冗余，=》 顶点<code>i,j</code>之前就插入在并查集中，具有相同的根</li>
 <li>删除最后一个并查集相同根 的 两个节点组成的边</li>
 </ol>
-<h2 id="有向图中的冗余连接">2.4. 有向图中的冗余连接</h2>
-<p>与<a href="#无向图中冗余连接">无向图</a> 不同，有向图冗余边有以下情况：</p>
-<ol type="1">
-<li>入度为2 的节点， 一定会有两个边，删除其中1条</li>
+<h2 id="有向图中的冗余连接">2.4. 有向图中的冗余连接</h2><p>与<a href="#无向图中冗余连接">无向图</a> 不同，有向图冗余边有以下情况：</p>
+<ol>
+<li>入度为2 的节点， 一定会有两个边，删除其中1条<ol>
 <li>如果删除只有还是一个树 ， 这条边可以删除， = 所有节点可以组成并查集</li>
 <li>如果不能构成树，那一定是一个环， 这个边就不是应该删除的边，应是零一条边</li>
-<li>如果没有入度为1的节点，一定是有环图
-<ol type="1">
+</ol>
+</li>
+<li>如果没有入度为1的节点，一定是有环图<ol>
 <li>将节点依次加入并查集中，删除最后一个形成环的节点</li>
-</ol></li>
+</ol>
+</li>
 </ol>
 <blockquote>
 <p>删除冗余的最后一条边</p>
-<ol type="1">
+<ol>
 <li>成环的最后一条边 -&gt; 最后使得并查集冗余的边</li>
 <li>节点度为2的边，二选一，选择最后一个插入列表的进行判断</li>
 </ol>
 </blockquote>
-<h2 id="最小生成树">2.5. 最小生成树</h2>
-<h3 id="prim">2.5.1. prim</h3>
-<p>算法步骤：</p>
+<h2 id="最小生成树">2.5. 最小生成树</h2><h3 id="prim">2.5.1. prim</h3><p>算法步骤：</p>
 <p>初始化： <code>minDist</code>中<code>默认权重</code>不要超过 <code>最大值</code>，否则无法选择节点</p>
-<ol type="1">
+<ol>
 <li>选择距离最小生成树最小的节点</li>
 <li>将节点加入树中</li>
 <li>更新其他节点到最小生成的距离</li>
@@ -729,25 +709,23 @@ void join(vector&lt;int&gt; father, int u , int v)&#123;
 <li>parent 记录与其相连的节点， 记录生成树边</li>
 </ul>
 </blockquote>
-<h3 id="kruscal">2.5.2. kruscal</h3>
-<p>对所有边操作，之前邻接表，邻接矩阵都是对顶点的描述，这里需要定义关于边的数据结构</p>
+<h3 id="kruscal">2.5.2. kruscal</h3><p>对所有边操作，之前邻接表，邻接矩阵都是对顶点的描述，这里需要定义关于边的数据结构</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">typedef struct edge&#123;
     int e1;
     int e2;
     int w;
 &#125;Edge ; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ol type="1">
+<ol>
 <li>将所有边保存</li>
 <li>按照权重对边，从小到大<strong>排序</strong></li>
-<li>对所有边遍历
-<ol type="1">
+<li>对所有边遍历<ol>
 <li>在同一个并查集中，跳过</li>
 <li>在不同集合中，加入结果，并加入在同一个并查集中</li>
-</ol></li>
 </ol>
-<h2 id="拓扑排序">2.6. 拓扑排序</h2>
-<p><a target="_blank" rel="noopener" href="https://programmercarl.com/kamacoder/0047.参会dijkstra朴素.html#思路">topology_sort</a></p>
-<p>对于一个给定的有向图，转换为线性的排序； 图中有环时，不能做线性排序</p>
+</li>
+</ol>
+<h2 id="拓扑排序">2.6. 拓扑排序</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/kamacoder/0047.参会dijkstra朴素.html#思路">topology_sort</a></p>
+<p>对于一个给定的有向图，转换为线性的排序； 图中有环时，不能做线性排序 </p>
 <p>=&gt; 节点入度为<code>0</code> 的时候，没有依赖，选择作为结果</p>
 <blockquote>
 <ul>
@@ -755,56 +733,62 @@ void join(vector&lt;int&gt; father, int u , int v)&#123;
 <li><code>无向图</code>的环判断可以使用<code>并查集</code>判断</li>
 </ul>
 </blockquote>
-<ol type="1">
-<li><p>统计所有边入度， a-&gt;b， 统计<code>b</code>节点的度</p></li>
-<li><p>选择度为0 的节点，加入待处理集中，可以使用<code>queue</code>作为待处理</p></li>
+<ol>
+<li><p>统计所有边入度， a-&gt;b， 统计<code>b</code>节点的度</p>
+</li>
+<li><p>选择度为0 的节点，加入待处理集中，可以使用<code>queue</code>作为待处理</p>
+</li>
 <li><p>删除节点<code>i</code>，并将其加入结果集中</p>
 <blockquote>
 <p>删除节点<code>i</code>，是删除与其相邻的节点，此时入度为0 ，只有<code>i-&gt;j</code>的边，将节点<code>j</code>入度 -1 即可</p>
-</blockquote></li>
+</blockquote>
+</li>
 </ol>
-<h1 id="最短路径">3. 最短路径</h1>
-<h2 id="单源最短路径dijkstra">3.1. 单源最短路径Dijkstra</h2>
-<p>选择 节点<code>i</code> 到<strong>原点</strong>的最近距离</p>
+<h1 id="最短路径">3. 最短路径</h1><h2 id="单源最短路径Dijkstra">3.1. 单源最短路径Dijkstra</h2><p>选择 节点<code>i</code> 到<strong>原点</strong>的最近距离</p>
 <blockquote>
 <p>prim 寻找节点<code>i</code>到<strong>生成树</strong>的最近距离，原理相同，不过<code>minDist</code>存放值不同1</p>
 </blockquote>
-<ol type="1">
+<ol>
 <li><p>选择距离源点最近的节点</p>
 <blockquote>
 <p>dijkstra 的源点到 源点的距离为<code>0</code>，初始化源点为0</p>
 <p>prim 初始树没有生成，初始节点均为<code>INT_MAIX-1</code>(方便选择第一个节点)</p>
-</blockquote></li>
-<li><p>将节点插入结果集中，标志为已访问</p></li>
-<li><p>更新节点相邻节点 的 <code>minDist</code></p></li>
+</blockquote>
+</li>
+<li><p>将节点插入结果集中，标志为已访问</p>
+</li>
+<li>更新节点相邻节点 的 <code>minDist</code></li>
 </ol>
 <p>借助三个数组：</p>
-<ol type="1">
+<ol>
 <li><code>minDist[j]</code>: <code>j</code>到源点的最小值</li>
 <li><code>visited[j]</code>： <code>j</code>是否已找到最小值</li>
 <li><code>parent[j]</code>: 与<code>j</code>相连的父节点，每次更新最小值时，更新</li>
 </ol>
-<h3 id="使用边进行dijkstra">3.1.1. 使用边进行Dijkstra</h3>
-<p>其中有两处修改</p>
-<ol type="1">
-<li><p>使用邻接表代替邻接矩阵</p></li>
+<h3 id="使用边进行Dijkstra">3.1.1. 使用边进行Dijkstra</h3><p>其中有两处修改</p>
+<ol>
+<li><p>使用邻接表代替邻接矩阵</p>
+</li>
 <li><p>使用堆排序选择 距离源点最近的节点</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">cur &#x3D; q.top() ;&#x2F;&#x2F; 最小的距离节点
 q.pop();<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>替换掉使用<code>for</code>对<code>minDist</code>的遍历，查找最小距离节点</p></li>
+<p>替换掉使用<code>for</code>对<code>minDist</code>的遍历，查找最小距离节点</p>
+</li>
 <li><p>遍历中，使用对边遍历，代替对节点遍历，</p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">while(!q.empty()) &#x2F;&#x2F; 所有的边都保存在q中<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">while(!q.empty()) &#x2F;&#x2F; 所有的边都保存在q中<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
 </ol>
 <p>修改之后使用的数据结构：</p>
-<ol type="1">
-<li><code>priority_queue&lt;Arc, vector&lt;Arc&gt; , greater&lt;Arc&gt;&gt;</code> 对边权重的小顶堆</li>
-</ol>
+<ol>
+<li><p><code>priority_queue&lt;Arc, vector&lt;Arc&gt; , greater&lt;Arc&gt;&gt;</code> 对边权重的小顶堆</p>
 <blockquote>
 <p>小顶堆中a &lt; b，需要使用 &gt;</p>
-<ol type="1">
-<li><p>重定义Arc中的<code>&gt;</code> ，使其能够 <code>&gt;</code>比较运算</p></li>
+<ol>
+<li><p>重定义Arc中的<code>&gt;</code> ，使其能够 <code>&gt;</code>比较运算</p>
+</li>
 <li><p>使用greater<arc> ，使用<code>&gt;</code></arc></p>
-<p>也可以重定义一个比较类，替换2</p></li>
+<p>也可以重定义一个比较类，替换2</p>
+</li>
 </ol>
 <p>比较类写法：</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">class Arc&#123;
@@ -819,87 +803,93 @@ public:
     &#125;
 &#125;; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </blockquote>
-<h2 id="bellman-ford算法">3.2. Bellman-ford算法</h2>
-<p>可以用于解决具有负权边的结果 ， 对边进行缩放，此时可以只存储边</p>
+</li>
+</ol>
+<h2 id="Bellman-ford算法">3.2. Bellman-ford算法</h2><p>可以用于解决具有负权边的结果 ， 对边进行缩放，此时可以只存储边</p>
 <blockquote>
 <p>dijskra不能处理具有负权边的结果， 使用的是贪心算法，选择当前最近的边，对 负权边忽视最优结果</p>
 </blockquote>
-<p>Bellman-ford算法类似于动态规划的算法， <code>minDist[i] = min(minDist[i] ,  minDist[j-1] + value)</code>,</p>
+<p>Bellman-ford算法类似于动态规划的算法， <code>minDist[i] = min(minDist[i] ,  minDist[j-1] + value)</code>, </p>
 <p>通过<code>n-1</code> 次迭代， 一定能找到最小边</p>
-<ol type="1">
-<li><p>遍历<code>n-1</code>次</p></li>
+<ol>
+<li><p>遍历<code>n-1</code>次</p>
+</li>
 <li><p>对所有边进行一次修改，每次修改更新最小边</p>
-<p>如果<code>from</code> 节点 = <code>INT_MAX</code> ，没有到达<code>from</code> 节点，此时不修改<code>MinDist</code>结果</p></li>
+<p>如果<code>from</code> 节点 = <code>INT_MAX</code> ，没有到达<code>from</code> 节点，此时不修改<code>MinDist</code>结果</p>
+</li>
 </ol>
-<h3 id="动态规划思想">3.2.1. 动态规划思想</h3>
-<p><code>dp[k][j]</code> 是最多 <code>k</code>条边经过的最短路径，有两种计算结果</p>
-<ol type="1">
+<h3 id="动态规划思想">3.2.1. 动态规划思想</h3><p><code>dp[k][j]</code> 是最多 <code>k</code>条边经过的最短路径，有两种计算结果</p>
+<ol>
 <li>刚好<code>k</code>次到达最短路径，<code>dp[k-1][v] +  weight</code>， <code>v</code>是能到达 <code>j</code>的节点</li>
 <li>前<code>k-1</code>次已经到达最短路径， <code>dp[k-1][j]</code></li>
 </ol>
 <blockquote>
-<p><code>dp[k][j] = min(dp[k-1][j] , min(dp[k-1][v]))</code></p>
+<p> <code>dp[k][j] = min(dp[k-1][j] , min(dp[k-1][v]))</code></p>
 </blockquote>
-<h3 id="bellman-ford-队列优化算法">3.2.2. Bellman-ford 队列优化算法</h3>
-<p>边<code>i-j</code> 中，只有<code>minDist[i]</code> 的权重发生改变，相邻的<code>minDist[j]</code>才需要发生改变， 与<code>i</code>相邻的所有节点都需要更新，此时使用<code>邻接表</code>存储图效果最好</p>
+<h3 id="Bellman-ford-队列优化算法">3.2.2. Bellman-ford 队列优化算法</h3><p>边<code>i-j</code> 中，只有<code>minDist[i]</code> 的权重发生改变，相邻的<code>minDist[j]</code>才需要发生改变， 与<code>i</code>相邻的所有节点都需要更新，此时使用<code>邻接表</code>存储图效果最好</p>
 <p>此时，使用队列<code>queue</code>存放节点<code>i</code>， 作为待处理节点</p>
 <p>同一节点可能未处理之前，可能被修改对此，因此使用<code>visited</code>数组，标识节点是否在队列中，在队列中不需要重复加入</p>
 <blockquote>
 <p>注意： 优化算法只对较少边的情况进行优化， 如果边的数量较多时，优化算法因为<code>queue</code>操作不适合优化</p>
 </blockquote>
-<h3 id="bellman-ford-判断负权回路">3.2.3. Bellman-ford 判断负权回路</h3>
-<p><a target="_blank" rel="noopener" href="https://programmercarl.com/kamacoder/0095.城市间货物运输II.html#思路">判断是否有回路，且值为负数权重</a></p>
-<ol type="1">
+<h3 id="Bellman-ford-判断负权回路">3.2.3. Bellman-ford 判断负权回路</h3><p><a target="_blank" rel="noopener" href="https://programmercarl.com/kamacoder/0095.城市间货物运输II.html#思路">判断是否有回路，且值为负数权重</a></p>
+<ol>
 <li>由<a href="#Bellman-ford算法"><code>Bellman_ford</code>算法原理</a> 中， 松弛<code>n-1</code>次后， <code>minDist</code>结果不再发生改变</li>
 <li>所有再多遍历一次，如果在第<code>n</code>后，还发生改变，那么一定出现了<code>负权回路</code></li>
 </ol>
-<h3 id="有限制的最短路径">3.2.4. 有限制的最短路径</h3>
-<p><a target="_blank" rel="noopener" href="https://programmercarl.com/kamacoder/0096.城市间货物运输III.html#思路">从<code>i- j</code> 限制经过<code>k</code>个节点</a> = 可以经过<code>k+1</code>条边</p>
+<h3 id="有限制的最短路径">3.2.4. 有限制的最短路径</h3><p><a target="_blank" rel="noopener" href="https://programmercarl.com/kamacoder/0096.城市间货物运输III.html#思路">从<code>i- j</code> 限制经过<code>k</code>个节点</a>  = 可以经过<code>k+1</code>条边</p>
 <p><code>minDist</code>经过<code>k</code>轮松弛，得到最大长度为<code>k</code>的最短路径， 因此原题 = 经过<code>k+1</code>次最短路径得到的结果</p>
 <p>但是由于算法采用了滚动数组， 导致第<code>i</code>条边应在第<code>i</code>轮更改，却在之前轮数中，修改，因此需要保留上一轮的数据，下一轮必须使用上一轮进行修改，保证结果正确性。</p>
-<ol type="1">
+<ol>
 <li>使用缓存数组 存放 上一组中的最短路径</li>
 <li>下一组计算时，需使用上一组的数据进行修改</li>
 </ol>
-<h4 id="dp-求解">3.2.4.1. DP 求解</h4>
-<ol type="1">
-<li><p><code>dp[i][j]</code> 标识经历<code>i</code>条边，到达第<code>j</code>点的最短路径</p></li>
+<h4 id="DP-求解">3.2.4.1. DP 求解</h4><ol>
+<li><p><code>dp[i][j]</code> 标识经历<code>i</code>条边，到达第<code>j</code>点的最短路径</p>
+</li>
 <li><p><code>dp[i][j]</code>的计算方式</p>
-<ol type="1">
+<ol>
 <li>不经历 第<code>i</code>条边，可以到达<code>j</code>点， <code>dp[i-1][j]</code></li>
 <li>经历第<code>i</code>条边，遍历所有<code>from-&gt;j</code>的边, 因<code>from</code>是到达的第<code>i-1</code>条边， 结果为<code>dp[i-1][from] + w</code></li>
 </ol>
-<p>两者最选择，取最小值</p></li>
-<li><p>初始化，起始节点第<code>0</code>轮一定为0，其余初始化为<code>INT_MAX</code>,便于遍历</p></li>
-<li><p>遍历顺序： 第一轮迭代次数 = 经历<code>k</code>条边，第二轮遍历所有节点即可</p></li>
+<p>两者最选择，取最小值</p>
+</li>
+<li><p>初始化，起始节点第<code>0</code>轮一定为0，其余初始化为<code>INT_MAX</code>,便于遍历</p>
+</li>
+<li><p>遍历顺序： 第一轮迭代次数 = 经历<code>k</code>条边，第二轮遍历所有节点即可</p>
+</li>
 </ol>
-<h4 id="使用queue优化">3.2.4.2. 使用queue优化</h4>
-<p>最主要问题： 统计迭代次数，并且使用上一次的计算结果算本次的更新结果</p>
-<ol type="1">
+<h4 id="使用queue优化">3.2.4.2. 使用queue优化</h4><p>最主要问题： 统计迭代次数，并且使用上一次的计算结果算本次的更新结果</p>
+<ol>
 <li>使用<code>old_minDist</code>, <code>q_size</code>在每次迭代之前，统计上一次的迭代结果</li>
 <li>结束上一次迭代中待更新的所有节点后，停止本次迭代， 迭代数量-1， 统计下一个迭代</li>
 </ol>
-<h2 id="多源最短路径算法floyd">3.3. 多源最短路径算法Floyd</h2>
-<p>算法可以同时计算出<code>多个起源</code>到<code>各个终点</code>的距离，使用动态规划的思想</p>
-<ol type="1">
-<li><p><code>dp[i][j][k]</code> 节点<code>i</code> -&gt; <code>j</code>经过经过<code>[0,k]</code>中节点的最短路径</p></li>
-<li><p><code>dp[i][j][k]</code> 中<code>i-&gt;j</code>最短路径有两种计算方法：</p></li>
-<li><p>经过<code>k</code>节点， 即分为两段<code>i-&gt;k-&gt;j</code>， 计算公式为<code>dp[i][k][k-1] + dp[k][j][k-1]</code></p></li>
+<h2 id="多源最短路径算法Floyd">3.3. 多源最短路径算法Floyd</h2><p>算法可以同时计算出<code>多个起源</code>到<code>各个终点</code>的距离，使用动态规划的思想</p>
+<ol>
+<li><p><code>dp[i][j][k]</code> 节点<code>i</code> -&gt; <code>j</code>经过经过<code>[0,k]</code>中节点的最短路径</p>
+</li>
+<li><p><code>dp[i][j][k]</code> 中<code>i-&gt;j</code>最短路径有两种计算方法：</p>
+<ol>
+<li><p>经过<code>k</code>节点， 即分为两段<code>i-&gt;k-&gt;j</code>， 计算公式为<code>dp[i][k][k-1] + dp[k][j][k-1]</code></p>
+</li>
 <li><p>不经过<code>k</code>节点，从<code>k-1</code>节点经过，计算公式为<code>dp[i][j][k-1]</code></p>
-<p>从中选择最优方案，<code>min(1, 2)</code></p></li>
-<li><p>初始化：</p>
-<ol type="1">
+<p>从中选择最优方案，<code>min(1, 2)</code></p>
+</li>
+</ol>
+</li>
+<li><p>初始化： </p>
+<ol>
 <li>dp 有<code>k=0</code>时计算，初始<code>dp[i][j][0]</code>，经过0个节点，即为初始图路径值</li>
 <li><code>dp[i][j][0]</code>其余边初始为最大值，便于比较出最小值</li>
-</ol></li>
-<li><p>遍历顺序：</p>
-<ol type="1">
-<li><code>k</code>层计算依赖于<code>k-1</code>，所有优先计算出<code>k-1</code>层，<code>k</code>在第一层，从小向大遍历</li>
-</ol></li>
 </ol>
-<h1 id="搜索算法">4. 搜索算法</h1>
-<h2 id="a算法">4.1. A*算法</h2>
-<ol type="1">
+</li>
+<li><p>遍历顺序：</p>
+<ol>
+<li><code>k</code>层计算依赖于<code>k-1</code>，所有优先计算出<code>k-1</code>层，<code>k</code>在第一层，从小向大遍历</li>
+</ol>
+</li>
+</ol>
+<h1 id="搜索算法">4. 搜索算法</h1><h2 id="A-算法">4.1. A*算法</h2><ol>
 <li>设计启发函数，由启发函数计算值为节点的选取增加权重</li>
 <li>每次选择节点时，依照权重选择节点</li>
 </ol>
@@ -907,7 +897,7 @@ public:
 <blockquote>
 <p>广度搜索算法，每次出队相当于取出节点，在这里为出队的节点增加权重，每次出队按照权重低的出队</p>
 </blockquote>
-<ol type="1">
+<ol>
 <li>建立优先队列，从小到大排序，每次取出权重最小的节点</li>
 <li>每次加入队列时，计算启发函数作为权重值</li>
 </ol>
@@ -1624,7 +1614,7 @@ public:
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">51.3k</span>
+                        class="white-color">51.4k</span>
             
             
             

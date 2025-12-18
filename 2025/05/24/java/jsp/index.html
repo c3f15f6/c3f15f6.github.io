@@ -5,13 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="jsp+servlet, 汤汁小白菜">
-    <meta name="description" content="1. java基础
-1.1. 修饰符
-1.1.1. final
-2. servlet
-2.1. http协议
-http:&amp;#x2F;&amp;#x2F;ip:端口&amp;#x2F;资源路径?name&amp;#x3D; 
-eg : http:&amp;#x2F">
+    <meta name="description" content="1. java基础1.1. 修饰符1.1.1. final2. servlet2.1. http协议http:&amp;#x2F;&amp;#x2F;ip:端口&amp;#x2F;资源路径?name&amp;#x3D; 
+eg : http:&amp;#x2F;&amp;#x2F;127">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -453,7 +448,7 @@ eg : http:&amp;#x2F">
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    11 分
+                    10 分
                 </div>
                 
 
@@ -476,53 +471,45 @@ eg : http:&amp;#x2F">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="java基础">1. java基础</h1>
-<h2 id="修饰符">1.1. 修饰符</h2>
-<h3 id="final">1.1.1. final</h3>
-<h1 id="servlet">2. servlet</h1>
-<h2 id="http协议">2.1. http协议</h2>
-<pre class="line-numbers language-http" data-language="http"><code class="language-http">http:&#x2F;&#x2F;ip:端口&#x2F;资源路径?name&#x3D; 
+                <h1 id="java基础">1. java基础</h1><h2 id="修饰符">1.1. 修饰符</h2><h3 id="final">1.1.1. final</h3><h1 id="servlet">2. servlet</h1><h2 id="http协议">2.1. http协议</h2><pre class="line-numbers language-http" data-language="http"><code class="language-http">http:&#x2F;&#x2F;ip:端口&#x2F;资源路径?name&#x3D; 
 eg : http:&#x2F;&#x2F;127.0.0.1&#x2F;myweb&#x2F;servlet?name &#x3D; zhangsan<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<ol type="1">
+<ol>
 <li>支持客户/服务端</li>
 <li>支持get ,post请求</li>
 <li>传输内容，类型可以有Content-Type</li>
 <li>http无连接，http1.1之后支持可持续连接</li>
 <li>http无状态信息</li>
 </ol>
-<h3 id="请求和responce">2.1.1. 请求和responce</h3>
-<h4 id="请求request">2.1.1.1. 请求request</h4>
-<ol type="1">
+<h3 id="请求和responce">2.1.1. 请求和responce</h3><h4 id="请求request">2.1.1.1. 请求request</h4><ol>
 <li><p>请求行</p>
 <blockquote>
 <p>get的请求放在请求行中</p>
 </blockquote>
-<p>method Request_url http_version 换行</p></li>
+<p>method Request_url http_version 换行</p>
+</li>
 <li><p>请求头</p>
-<ol type="1">
+<ol>
 <li>键值对</li>
-</ol></li>
-<li><p>请求体</p>
-<ol type="1">
-<li>get没有请求行</li>
-</ol></li>
 </ol>
-<h4 id="response">2.1.1.2. response</h4>
-<ol type="1">
+</li>
+<li><p>请求体</p>
+<ol>
+<li>get没有请求行</li>
+</ol>
+</li>
+</ol>
+<h4 id="response">2.1.1.2. response</h4><ol>
 <li>状态行</li>
 <li>响应头</li>
 <li>响应正文</li>
 </ol>
-<h3 id="消息头">2.1.2. 消息头</h3>
-<ul>
+<h3 id="消息头">2.1.2. 消息头</h3><ul>
 <li><em>referer</em>: 请求前来位置</li>
 <li><em>Location</em>: 请求达到位置</li>
 <li><em>refresh</em>: 自动跳转时间</li>
 </ul>
-<h2 id="服务器">2.2. 服务器</h2>
-<p>接受客户端的请求,调用程序处理,返回程序数据</p>
-<h3 id="tomcat目录">2.2.1. tomcat目录</h3>
-<ul>
+<h2 id="服务器">2.2. 服务器</h2><p>接受客户端的请求,调用程序处理,返回程序数据</p>
+<h3 id="tomcat目录">2.2.1. tomcat目录</h3><ul>
 <li>bin: 启动或关闭的配置文件</li>
 <li>conf: 配置servel端口号等信息文件</li>
 <li>lib: 运行时使用的java包</li>
@@ -530,47 +517,36 @@ eg : http:&#x2F;&#x2F;127.0.0.1&#x2F;myweb&#x2F;servlet?name &#x3D; zhangsan<spa
 <li>webapps: web应用</li>
 <li>works: 工作目录</li>
 </ul>
-<h3 id="使用idea-集成tomcat">2.2.2. 使用idea 集成tomcat</h3>
-<h2 id="servlet实现">2.3. servlet实现</h2>
-<ol type="1">
+<h3 id="使用idea-集成tomcat">2.2.2. 使用idea 集成tomcat</h3><h2 id="servlet实现">2.3. servlet实现</h2><ol>
 <li>创建java类</li>
 <li>实现servlet规范, 继承HttpServlet类</li>
 <li>重写service 方法,用于处理请求</li>
 <li>设置注释,指定访问方法的路径</li>
 </ol>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">@Webservlet(name &#x3D; , value &#x3D;&#123; , &#125;) value可以指定多个名称<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h3 id="servlet执行流程">2.3.1. servlet执行流程</h3>
-<ol type="1">
+<h3 id="servlet执行流程">2.3.1. servlet执行流程</h3><ol>
 <li>从请求头中找到主机</li>
 <li>访问请求头中的资源,第一次访问创建一个对象</li>
 <li>将参数交给req, 通过resp响应参数</li>
 </ol>
-<h3 id="三种访问方式">2.3.2. 三种访问方式</h3>
-<p>继承方式</p>
+<h3 id="三种访问方式">2.3.2. 三种访问方式</h3><p>继承方式</p>
 <p>HttpServlet -&gt; GenericServlet &gt; Servlet</p>
-<h3 id="service-dopost-doget">2.3.3. service ,doPost, doGet</h3>
-<p>调用service 实际上调用doPost, doGet</p>
+<h3 id="service-doPost-doGet">2.3.3. service ,doPost, doGet</h3><p>调用service 实际上调用doPost, doGet</p>
 <blockquote>
 <p>不知道post 或 get ,写service</p>
 </blockquote>
-<h3 id="servlet生命周期">2.3.4. servlet生命周期</h3>
-<p>请求访问servlet容器时候,检查容器中是否存在该资源对象,没有调用init方法,第二次访问时,调用service.程序停止售,调用destory方法</p>
-<figure>
-<img src="/2025/05/24/java/jsp/image-20250503221820723.png" alt="image-20250503221820723"><figcaption aria-hidden="true">image-20250503221820723</figcaption>
-</figure>
-<h3 id="httpservletrequest-获取请求">2.3.5. HttpServletRequest 获取请求</h3>
-<p>HTTp的请求都封装在Req对象中</p>
+<h3 id="servlet生命周期">2.3.4. servlet生命周期</h3><p>请求访问servlet容器时候,检查容器中是否存在该资源对象,没有调用init方法,第二次访问时,调用service.程序停止售,调用destory方法</p>
+<p><img src="/2025/05/24/java/jsp/image-20250503221820723.png" alt="image-20250503221820723"></p>
+<h3 id="HttpServletRequest-获取请求">2.3.5. HttpServletRequest 获取请求</h3><p>HTTp的请求都封装在Req对象中</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">String value &#x3D; Req.getParameter(&quot;&quot;) 获取名称对应的值
 
 String[] values &#x3D; Req.getParameterValues(&quot;&quot;) 同一个name存在多个值<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h4 id="请求乱码问题">2.3.5.1. 请求乱码问题</h4>
-<p>乱码原因: request 封装时候,使用的ISO ,不支持中文编码</p>
+<h4 id="请求乱码问题">2.3.5.1. 请求乱码问题</h4><p>乱码原因: request 封装时候,使用的ISO ,不支持中文编码</p>
 <p>get 不会乱码，post有乱码</p>
 <p>解决办法: 设置请求的编码方式</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">req.sertCharacterEncoding(&quot;utf-8&quot;) &#x2F;&#x2F; 只值对post代码<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">String name &#x3D; new String(req.getParameter(name)).getBytes(&#39;ISO-8859-1&#39;, charameter &#x3D; &#39;utf-8&#39;) &#x2F;&#x2F;适用于所有get 与post<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="请求转发">2.3.5.2. 请求转发</h4>
-<ol type="1">
+<h4 id="请求转发">2.3.5.2. 请求转发</h4><ol>
 <li>服务器行为</li>
 <li>前台地址栏不发生改变,只产生输出</li>
 <li>只有一个请求</li>
@@ -580,15 +556,13 @@ String[] values &#x3D; Req.getParameterValues(&quot;&quot;) 同一个name存在�
 req.setAttribute(String name , Object value);&#x2F;&#x2F;设置新的对象值
 req.getAttribute(String name);
 req.removeAttribute(String name);&#x2F;&#x2F;删除对象值<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="httpservletresponse-响应请求">2.3.6. HttpServletResponse 响应请求</h3>
-<p>使用流输出方法响应</p>
-<ol type="1">
+<h3 id="HttpServletResponse-响应请求">2.3.6. HttpServletResponse 响应请求</h3><p>使用流输出方法响应</p>
+<ol>
 <li>getWritter() 字符输出流(输出字符串)</li>
 <li>getOutputStream(), 字节输出流(输出任意数据)</li>
 </ol>
 <p><strong>两种流不能同时使用</strong></p>
-<h4 id="响应乱码">2.3.6.1. 响应乱码</h4>
-<p><strong>原因</strong>： 服务端和客户端的编码格式一致</p>
+<h4 id="响应乱码">2.3.6.1. 响应乱码</h4><p><strong>原因</strong>： 服务端和客户端的编码格式一致</p>
 <p>解决办法：同时设置服务端和客户端的编码，保证编码格式一致</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">&#x2F;&#x2F; 设置服务端的编码格式
 response.setCharacterEncoding(&quot;UTF-8&quot;);
@@ -596,8 +570,7 @@ response.setCharacterEncoding(&quot;UTF-8&quot;);
 response.setHeader(&quot;content_type&quot;, &quot;text&#x2F;html; charset&#x3D; UTF-8&quot;);
 &#x2F;&#x2F; 同时设置编码格式
 response.setContentType(&quot;text&#x2F;html; charset&#x3D; UTF-8&quot;);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="客户端重定向">2.3.6.2. 客户端重定向</h4>
-<p>服务端指导客户端的行为</p>
+<h4 id="客户端重定向">2.3.6.2. 客户端重定向</h4><p>服务端指导客户端的行为</p>
 <blockquote>
 <p>地址栏发生改变，写入location</p>
 <p>服务器接受location</p>
@@ -607,31 +580,31 @@ response.setContentType(&quot;text&#x2F;html; charset&#x3D; UTF-8&quot;);<span a
 <p>请求对象不共享</p>
 </blockquote>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">response.sendRedirect(&quot;s05&quot;);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="请求转发与重定向的区别">2.3.6.3. 请求转发与重定向的区别</h4>
+<h4 id="请求转发与重定向的区别">2.3.6.3. 请求转发与重定向的区别</h4><div class="table-container">
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th>请求转发</th>
 <th>重定向</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>一次请求，request数据共享</td>
 <td>两次请求</td>
 </tr>
-<tr class="even">
+<tr>
 <td>服务端跳转</td>
 <td>客户端跳转</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>绝对地址到当前项目中，不能向外跳转</td>
 <td>可以向域外跳转</td>
 </tr>
 </tbody>
 </table>
-<h2 id="cookie对象">2.4. Cookie对象</h2>
-<p>浏览器中将数据存放在客户端中，在客户端中处理数据，减少网络传输与数据库查询</p>
+</div>
+<h2 id="Cookie对象">2.4. Cookie对象</h2><p>浏览器中将数据存放在客户端中，在客户端中处理数据，减少网络传输与数据库查询</p>
 <p>由服务器写入客户端</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">&#x2F;&#x2F; 服务器写入Cookie 到客户端中，客户端保存Cookie
 Cookie cookie &#x3D; new Cookie(name &#x3D; &quot;a&quot;, value &#x3D; &#39;b&#39;);
@@ -639,16 +612,14 @@ response.addCookie(cookie)
 &#x2F;&#x2F; 获取Cookie
 Cookie[] conkie &#x3D; request.getCookies(); &#x2F;&#x2F; 获取客户端路径下所有的Cookie对象
 &#x2F;&#x2F;将Cookie 的name 与需要查找的Cookie作比较<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="设置对象存在时间">2.4.1. 设置对象存在时间</h3>
-<p>设置maxAge存活时间 ，从创建Cookie对象开始</p>
+<h3 id="设置对象存在时间">2.4.1. 设置对象存在时间</h3><p>设置maxAge存活时间 ，从创建Cookie对象开始</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">cookie.setMaxAge(time);
 &#x2F;*
 1. 负整数，只在浏览器内存中存在
 2. 正整数，保存磁盘对应的时间，关闭后依旧计数，时间为s
 3. 0 ： 删除这个Cookie
 *&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="注意点">2.4.2. 注意点</h3>
-<ol type="1">
+<h3 id="注意点">2.4.2. 注意点</h3><ol>
 <li>Cookie 只在当前浏览器中有效，不跨浏览器和及其</li>
 <li>Cookie不支持存放中文，使用时候需要编码/解码</li>
 <li>新的同名name Cookie 将覆盖之前的Cookie</li>
@@ -661,8 +632,7 @@ name &#x3D; URLEncoder.encoder(name);
 
 &#x2F;&#x2F; 使用时，需URLDecoder.decoder()解码
 name &#x3D; URLDecoder.decoder(name);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="cookie的访问路径">2.4.3. Cookie的访问路径</h3>
-<ol type="1">
+<h3 id="Cookie的访问路径">2.4.3. Cookie的访问路径</h3><ol>
 <li>当前浏览器下如何项目任何资源都可以获取Cookie</li>
 </ol>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">cookie.setPath(&quot;&#x2F;&quot;);
@@ -673,33 +643,24 @@ cookie.setPaht(&quot;&#x2F;s02&quot;);
 cookie.setPath(&quot;&#x2F;sc03&quot;);
 &#x2F;&#x2F; 指定项目的指定资源访问cookie
 cookie.setPaht(&quot;s03&#x2F;co1&quot;);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>只有访问的路径包括 <em>cookie的路径</em> 时， 能够获取这个cookie</p>
-<h2 id="httpsession-对象">2.5. HttpSession 对象</h2>
-<p>属于服务器对象， 标识一次对话，确定是否为一个用户的数据</p>
+<p>只有访问的路径包括  <em>cookie的路径</em> 时， 能够获取这个cookie</p>
+<h2 id="HttpSession-对象">2.5. HttpSession 对象</h2><p>属于服务器对象， 标识一次对话，确定是否为一个用户的数据</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">HttpSession session &#x3D; request.getSession(); &#x2F;&#x2F; 如session 对象存在，则获取 ；否则第一次创建对象<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>一次请求到了服务器，标识启动了会话，客户端向服务器传递JSESSIONID的cookie，用于标识服务器中对应的session， 如果有，则共享数据，没有创建sesion,同时给客户端创建JSESSIONID的cookie.</p>
-<h3 id="设置域对象">2.5.1. 设置域对象</h3>
-<p>HttpSession 与 request 的区别</p>
+<h3 id="设置域对象">2.5.1. 设置域对象</h3><p>HttpSession 与 request 的区别</p>
 <p>重定向： 只要session会话不是小，session一直共享数据</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">HttpSession session &#x3D; request.getSession();
 session.setAttribute(&quot;name&quot;, &quot;hello&quot;);
 session.getAttribute(&quot;name&quot;);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h3 id="session-对象的销毁">2.5.2. session 对象的销毁</h3>
-<p>默认是30min， 一旦有操作，session 重新计时</p>
+<h3 id="session-对象的销毁">2.5.2. session 对象的销毁</h3><p>默认是30min， 一旦有操作，session 重新计时</p>
 <blockquote>
 <p>在conf/web.xml中修改session_config中timeout,单位为1min</p>
 </blockquote>
-<h4 id="设置到期时间">2.5.2.1. 设置到期时间</h4>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">session.setMaxInactiveInterval(15); &#x2F;&#x2F;单位为s<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="立即销毁">2.5.2.2. 立即销毁</h4>
-<p>退出登录，立马销毁</p>
+<h4 id="设置到期时间">2.5.2.1. 设置到期时间</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java">session.setMaxInactiveInterval(15); &#x2F;&#x2F;单位为s<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="立即销毁">2.5.2.2. 立即销毁</h4><p>退出登录，立马销毁</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">session.invalidate(); <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="关闭浏览器cookie对象销毁">2.5.2.3. 关闭浏览器，Cookie对象销毁</h4>
-<p>session 需要JSESSIONID ，JSESSIONID默认在浏览器内存中有效，Cookie消失后，session 结束</p>
-<h4 id="关闭服务器失效">2.5.2.4. 关闭服务器失效</h4>
-<h2 id="servletcontext对象">2.6. ServletContext对象</h2>
-<h3 id="获取对象">2.6.1. 获取对象</h3>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">ServletContext servletContext1 &#x3D; request.getServletContext();
+<h4 id="关闭浏览器，Cookie对象销毁">2.5.2.3. 关闭浏览器，Cookie对象销毁</h4><p>session 需要JSESSIONID ，JSESSIONID默认在浏览器内存中有效，Cookie消失后，session 结束</p>
+<h4 id="关闭服务器失效">2.5.2.4. 关闭服务器失效</h4><h2 id="ServletContext对象">2.6. ServletContext对象</h2><h3 id="获取对象">2.6.1. 获取对象</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java">ServletContext servletContext1 &#x3D; request.getServletContext();
 
 &#x2F;&#x2F; session对象获取
 ServletContext servletContext2 &#x3D; request.getSession().getServletContext();
@@ -712,32 +673,30 @@ ServletContext servletContext4 &#x3D; getServletContext();<span aria-hidden="tru
 String serverInfo &#x3D; request.getServletContext().getServerInfo();
 &#x2F;&#x2F; 获取项目路径
 String realPath &#x3D; request.getServletContext().getRealPath(&quot;&#x2F;&quot;);&#x2F;&#x2F; 从根目录下获取<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="servlet-域对象">2.6.2. Servlet 域对象</h3>
-<ol type="1">
+<h3 id="Servlet-域对象">2.6.2. Servlet 域对象</h3><ol>
 <li><p>request 域对象</p>
-<p>再一次请求中有效，请求转发有效，重定向无效</p></li>
+<p>再一次请求中有效，请求转发有效，重定向无效</p>
+</li>
 <li><p>session 对象</p>
-<p>一次会话中有效，session销毁后无效</p></li>
+<p>一次会话中有效，session销毁后无效</p>
+</li>
 <li><p>servletContext 对象</p>
-<p>服务器中始终有效</p></li>
+<p>服务器中始终有效</p>
+</li>
 </ol>
-<h2 id="文件上传下载">2.7. 文件上传下载</h2>
-<h3 id="上传">2.7.1. 上传</h3>
-<h4 id="前端实现">2.7.1.1. 前端实现</h4>
-<ol type="1">
+<h2 id="文件上传下载">2.7. 文件上传下载</h2><h3 id="上传">2.7.1. 上传</h3><h4 id="前端实现">2.7.1.1. 前端实现</h4><ol>
 <li>准备表单form</li>
-<li>设置表单的请求类型 ‘method =“post”</li>
+<li>设置表单的请求类型 ‘method =”post”</li>
 <li>设置表达类型为文件上传类型 enctype = “multipart/form-data”</li>
 <li>设置文件提交的地址 active = “提交路径”</li>
-<li>准备表单元素
-<ol type="1">
+<li>准备表单元素<ol>
 <li>普通的表单项 type = “text”</li>
 <li>文件项 type = “file”</li>
 <li>设置表单元素的name值</li>
-</ol></li>
 </ol>
-<h4 id="后端实现">2.7.1.2. 后端实现</h4>
-<p>添加注解<code>MultipartConfig</code>, servlet将 multipart/form-data 的post封装在part对象中</p>
+</li>
+</ol>
+<h4 id="后端实现">2.7.1.2. 后端实现</h4><p>添加注解<code>MultipartConfig</code>, servlet将 multipart/form-data 的post封装在part对象中</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">@MultipartConfig
 Part part &#x3D; request.getPart(&quot;name&quot;);
 String fileName &#x3D; part.getSubmittedFileName(); &#x2F;&#x2F; 获取提交文件名称；
@@ -745,52 +704,53 @@ String realPath &#x3D; request.getServletContext().getRealPath(&quot;&#x2F;&quot
 &#x2F;&#x2F; 需要自行指定保存路径
 String saveName&#x3D; fileName+&#39;&#x2F;&#39;+ realPath;
 part.write(saveName);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="文件下载">2.7.2. 文件下载</h3>
-<h4 id="超链接下载">2.7.2.1. 超链接下载</h4>
-<ol type="1">
-<li>没有download属性
-<ol type="1">
+<h3 id="文件下载">2.7.2. 文件下载</h3><h4 id="超链接下载">2.7.2.1. 超链接下载</h4><ol>
+<li>没有download属性<ol>
 <li>浏览器识别文件，跳转显示，否则下载</li>
-</ol></li>
-<li>有download属性
-<ol type="1">
+</ol>
+</li>
+<li>有download属性<ol>
 <li>指定属性值，为下载名</li>
-</ol></li>
+</ol>
+</li>
 </ol>
 <pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>download/text.png<span class="token punctuation">"</span></span><span class="token punctuation">></span></span> 图片文件<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>download/text.png<span class="token punctuation">"</span></span> <span class="token attr-name">download</span><span class="token punctuation">></span></span>图片文件<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h4 id="后端下载">2.7.2.2. 后端下载</h4>
-<ol type="1">
+<h4 id="后端下载">2.7.2.2. 后端下载</h4><ol>
 <li><p>设置request和response的编码类型</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">request.setCharacterEncoding(&quot;UTF-8&quot;);
-response.setContentType(&quot;text&#x2F;html; charset &#x3D; UTF-8&quot;);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
-<li><p>获取文件名称</p></li>
-</ol>
-<p><pre class="line-numbers language-java" data-language="java"><code class="language-java">String fileName &#x3D; request.getParameter(&quot;name&quot;)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></p>
-<ol start="3" type="1">
+response.setContentType(&quot;text&#x2F;html; charset &#x3D; UTF-8&quot;);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li><p>获取文件名称</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">String fileName &#x3D; request.getParameter(&quot;name&quot;)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
 <li><p>判断文件名称是否为空</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">&#x2F;&#x2F; 文件名&#x3D; null 或者全是空格
 if(fileName &#x3D;&#x3D; null || &quot;&quot;.equals(fileName.trim()))&#123;
     response.getWritter().write(&quot;输出提示信息&quot;);
     response.getWritter().close();&#x2F;&#x2F; 关闭信息
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
 <li><p>将路径转换为file 对象</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">String path &#x3D; request.getServletContext().getRealPath(&quot;&#x2F;download&#x2F;&quot;);
 File file &#x3D; new File(path+ fileName);
 &#x2F;&#x2F; 检查文件存在&#x2F;&#x2F;是否为文件夹
 if(file.exist()&amp;&amp; file.isFile())&#123;
     
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
 <li><p>输出</p>
-<ol type="1">
+<ol>
 <li><p>设置响应类型， 浏览器无法解析的MINE类型 “application/x-msdoanload”, “application/octet-stream”</p>
-<ol type="1">
+<ol>
 <li>response.setContentType(“application/x-msdoanload”)</li>
-</ol></li>
+</ol>
+</li>
 <li><p>设置响应头，下载文件筐和文件名</p>
-<ol type="1">
-<li>response.setHeader(“Content_Dispostion”, ”attachment;filename="+ fileName);</li>
-</ol></li>
+<ol>
+<li>response.setHeader(“Content_Dispostion”, ”attachment;filename=”+ fileName);</li>
+</ol>
+</li>
 <li><p>输出流和输入流</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">InputStream in &#x3D;  new FileInputSream(file);
 ServletOutputSream out &#x3D; response.getOutputStream();
@@ -801,7 +761,8 @@ while((len &#x3D; in.read(byte))!&#x3D; -1)&#123;
 &#125;
 &#x2F;&#x2F; 关闭资源
 out.close();
-in.close();<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+in.close();<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
 <li><p>简便实现</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">response.setContentType(&quot;application&#x2F;octet-stream&quot;); &#x2F;&#x2F; 设置为通用的二进制流类型
 response.setHeader(&quot;Content-Disposition&quot;, &quot;attachment; filename&#x3D;\&quot;&quot; + fileName + &quot;\&quot;&quot;); &#x2F;&#x2F; 提示浏览器下载文件
@@ -817,8 +778,10 @@ try (InputStream in &#x3D; new FileInputStream(file);
     &#x2F;&#x2F; 处理可能的 IO 异常
     e.printStackTrace(); &#x2F;&#x2F; 在实际应用中应该记录日志或返回更友好的错误信息
     response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, &quot;文件读取或传输失败&quot;);
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-</ol></li>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ol>
+</li>
 </ol>
 
                 
@@ -1529,7 +1492,7 @@ try (InputStream in &#x3D; new FileInputStream(file);
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">51.3k</span>
+                        class="white-color">51.4k</span>
             
             
             
