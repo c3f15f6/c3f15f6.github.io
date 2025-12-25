@@ -5,11 +5,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="OR 导论, 汤汁小白菜">
-    <meta name="description" content="1. intruction问题 - 》模型 - 》 算法
+    <meta name="description" content="1. intruction
+问题 - 》模型 - 》 算法
 1.1. 原理 ARRD
+
 A - approximation ， 近似求解
-R - reformulation ,  对问题进行重构
-R - relaxation , 对复杂约束进行">
+R - reformulation , 对问题进行重构
+R - relaxation , ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -434,7 +436,7 @@ R - relaxation , 对复杂约束进行">
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    12 分
+                    11 分
                 </div>
                 
 
@@ -457,109 +459,144 @@ R - relaxation , 对复杂约束进行">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="intruction">1. intruction</h1><p>问题 - 》模型 - 》 算法</p>
-<h2 id="原理-ARRD">1.1. 原理 ARRD</h2><ul>
+                <h1 id="intruction">1. intruction</h1>
+<p>问题 - 》模型 - 》 算法</p>
+<h2 id="原理-arrd">1.1. 原理 ARRD</h2>
+<ul>
 <li>A - approximation ， 近似求解</li>
-<li>R - reformulation ,  对问题进行重构</li>
+<li>R - reformulation , 对问题进行重构</li>
 <li>R - relaxation , 对复杂约束进行处理 - 线性松弛</li>
 <li>D - Decomposition, 大规模问题分割子问题</li>
 </ul>
-<h1 id="线性导论">2. 线性导论</h1><p>所有的向量都需要使用 <code>mathbf</code> 加粗， 且向量均为列向量</p>
-<script type="math/tex; mode=display">
-\mathbf{a}</script><div class="table-container">
+<h1 id="线性导论">2. 线性导论</h1>
+<p>所有的向量都需要使用 <code>mathbf</code> 加粗， 且向量均为列向量
+<span class="math display"><strong>a</strong></span></p>
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th>类型</th>
 <th>表示方法</th>
 <th>展示</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td>标量</td>
 <td>普通</td>
-<td>$x$</td>
+<td><span class="math inline"><em>x</em></span></td>
 </tr>
-<tr>
+<tr class="even">
 <td>向量</td>
 <td>粗体小写字母，使用 <code>\mathbf</code></td>
-<td>$\mathbf{x}$</td>
+<td><span class="math inline"><strong>x</strong></span></td>
 </tr>
-<tr>
+<tr class="odd">
 <td>矩阵</td>
 <td>粗体大写字母，使用 <code>mathbf</code></td>
-<td>$\mathbf{X}$</td>
+<td><span class="math inline"><strong>X</strong></span></td>
 </tr>
-<tr>
+<tr class="even">
 <td>张量</td>
 <td>花体字母， 使用 <code>\mathcal</code></td>
-<td>$\mathcal{X}$</td>
+<td><span class="math inline">𝒳</span></td>
 </tr>
 </tbody>
 </table>
-</div>
-<h2 id="单纯形法">2.1. 单纯形法</h2><blockquote>
+<h2 id="单纯形法">2.1. 单纯形法</h2>
+<blockquote>
 <p>性质：最优点一定在顶点 / 无穷点 上</p>
 </blockquote>
-<ol>
+<ol type="1">
 <li>从一个顶点开始</li>
 <li>判断是否是最优点，stop， 否则进入 3 中</li>
 <li>如何移动到相邻顶点</li>
 </ol>
 <p>顶点是由两条边相交形成的，然后形成一个顶点，作为待解点</p>
-<h2 id="stardard-form">2.2. stardard form</h2><ol>
+<h2 id="stardard-form">2.2. stardard form</h2>
+<ol type="1">
 <li>最小化目标函数</li>
 <li>等式约束</li>
 <li>变量非负</li>
 </ol>
-<script type="math/tex; mode=display">
+<p><span class="math display">$$
 \begin{aligned}
-& \min c^T x \\
-& s.t \quad \mathbf{A}\mathbf{x} = \mathbf{b}\\
-& \quad x \geq 0 
-\end{aligned}</script><p>使用乘法，按照元素方式看待模型</p>
-<p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251204204345353.png" alt="image-20251204204345353"></p>
-<h2 id="converting-to-stardard">2.3. converting  to stardard</h2><h3 id="目标中存在绝对值">2.3.1. 目标中存在绝对值</h3><blockquote>
-<p>使用 $x^+. x^-$ 来替换|x|</p>
-</blockquote>
-<p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251204204902956.png" alt="image-20251204204902956"></p>
-<p>按照更换公式, $|x| , x$ 的表示方法如下：</p>
-<script type="math/tex; mode=display">
-|x| = x^+ + x^- \\
-x = x^+ - x^-</script><h3 id="不等式转换为等式">2.3.2. 不等式转换为等式</h3><p>增加 松弛变量</p>
+&amp; \min c^T x \\
+&amp; s.t \quad \mathbf{A}\mathbf{x} = \mathbf{b}\\
+&amp; \quad x \geq 0
+\end{aligned}
+$$</span></p>
+<p>使用乘法，按照元素方式看待模型</p>
+<figure>
+<img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251204204345353.png" alt="image-20251204204345353">
+<figcaption aria-hidden="true">image-20251204204345353</figcaption>
+</figure>
+<h2 id="converting-to-stardard">2.3. converting to stardard</h2>
+<h3 id="目标中存在绝对值">2.3.1. 目标中存在绝对值</h3>
 <blockquote>
-<ol>
+<p>使用 <span class="math inline"><em>x</em><sup>+</sup>.<em>x</em><sup>−</sup></span>
+来替换|x|</p>
+</blockquote>
+<figure>
+<img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251204204902956.png" alt="image-20251204204902956">
+<figcaption aria-hidden="true">image-20251204204902956</figcaption>
+</figure>
+<p>按照更换公式, <span class="math inline">|<em>x</em>|, <em>x</em></span> 的表示方法如下：
+<span class="math display">$$
+|x| = x^+ + x^- \\
+x = x^+ - x^-
+$$</span></p>
+<h3 id="不等式转换为等式">2.3.2. 不等式转换为等式</h3>
+<p>增加 松弛变量</p>
+<blockquote>
+<ol type="1">
 <li>小于时， 加上松弛变量</li>
 <li>大于时， 减去松弛变量</li>
 </ol>
 </blockquote>
-<p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251204205341113.png" alt="image-20251204205341113"></p>
-<h3 id="最大化-gt-最小化">2.3.3. 最大化 - &gt; 最小化</h3><blockquote>
+<figure>
+<img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251204205341113.png" alt="image-20251204205341113">
+<figcaption aria-hidden="true">image-20251204205341113</figcaption>
+</figure>
+<h3 id="最大化---最小化">2.3.3. 最大化 - &gt; 最小化</h3>
+<blockquote>
 <p>增加 “-”</p>
 </blockquote>
-<script type="math/tex; mode=display">
-\max c^T x = -min -c^T x</script><h2 id="凸函数">2.4. 凸函数</h2><p>凸函数定义：开口向上，具有最小值</p>
-<h3 id="性质">2.4.1. 性质</h3><ol>
-<li><p>$f_1, f_2, \dots, f_n$ 都是凸函数 $y = max(f(x))$ 也是凸函数</p>
-</li>
-<li><p>一堆线性函数求最大值，是凸函数 ，</p>
-<script type="math/tex; mode=display">
-\max\limits_{i = 1 ... m }{c^T x + b }</script><p>一个凸函数可以转换为多个分段线性函数</p>
-<p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251204210755244.png" alt="Piecewise linear convex objective  "></p>
-</li>
+<p><span class="math display">max <em>c</em><sup><em>T</em></sup><em>x</em> =  − <em>m</em><em>i</em><em>n</em> − <em>c</em><sup><em>T</em></sup><em>x</em></span></p>
+<h2 id="凸函数">2.4. 凸函数</h2>
+<p>凸函数定义：开口向上，具有最小值</p>
+<h3 id="性质">2.4.1. 性质</h3>
+<ol type="1">
+<li><p><span class="math inline"><em>f</em><sub>1</sub>, <em>f</em><sub>2</sub>, …, <em>f</em><sub><em>n</em></sub></span>
+都是凸函数 <span class="math inline"><em>y</em> = <em>m</em><em>a</em><em>x</em>(<em>f</em>(<em>x</em>))</span>
+也是凸函数</p></li>
+<li><p>一堆线性函数求最大值，是凸函数 ， <span class="math display">$$
+\max\limits_{i = 1 ... m }{c^T x + b }
+$$</span> 一个凸函数可以转换为多个分段线性函数</p>
+<figure>
+<img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251204210755244.png" alt="Piecewise linear convex objective">
+<figcaption aria-hidden="true">Piecewise linear convex
+objective</figcaption>
+</figure></li>
 </ol>
 <blockquote>
-<p>使用多个线性的 max 表示之后，可以使用引入新变量，消除 max </p>
+<p>使用多个线性的 max 表示之后，可以使用引入新变量，消除 max</p>
 </blockquote>
-<p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251204211051471.png" alt="引用新变量，消除 max "></p>
+<figure>
+<img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251204211051471.png" alt="引用新变量，消除 max">
+<figcaption aria-hidden="true">引用新变量，消除 max</figcaption>
+</figure>
 <p>max 可以引用一个新的变量替换</p>
 <blockquote>
-<p>|X|  = max{x, -x }</p>
+<p>|X| = max{x, -x }</p>
 </blockquote>
-<p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251204211628454.png" alt="image-20251204211628454"></p>
-<h2 id="linear-algebra">2.5. linear algebra</h2><p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251204212120685.png" alt="image-20251204212120685" style="zoom:80%;"></p>
-<h1 id="几何表示">3. 几何表示</h1><p>一个等式 是 一个超平面（对应维度的子空间， 少一个维度的空间）</p>
+<figure>
+<img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251204211628454.png" alt="image-20251204211628454">
+<figcaption aria-hidden="true">image-20251204211628454</figcaption>
+</figure>
+<h2 id="linear-algebra">2.5. linear algebra</h2>
+<p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251204212120685.png" alt="image-20251204212120685" style="zoom:80%;"></p>
+<h1 id="几何表示">3. 几何表示</h1>
+<p>一个等式 是 一个超平面（对应维度的子空间， 少一个维度的空间）</p>
 <p>可以叫对应的几何空间划分为三个部分，</p>
 <ul>
 <li>上空间</li>
@@ -567,287 +604,417 @@ x = x^+ - x^-</script><h3 id="不等式转换为等式">2.3.2. 不等式转换�
 <li>下空间</li>
 </ul>
 <p>梯度方向是函数增大的方向， - 梯度方向是函数减小的方向</p>
-<h2 id="多面体-polyhedron">3.1. 多面体 polyhedron</h2><p>一个多面体 = 多个半空间相交 </p>
+<h2 id="多面体-polyhedron">3.1. 多面体 polyhedron</h2>
+<p>一个多面体 = 多个半空间相交</p>
 <p>顶点 = 极值点 = 基可行解</p>
-<h2 id="代数运算">3.2. 代数运算</h2><h3 id="求基解">3.2.1. 求基解</h3><p>紧约束： 等式 对 顶点的确定起了作用， 成为紧约束，即 在这里不等式 变为等式</p>
-<p>顶点定义： 紧约束数量  =  dim()</p>
+<h2 id="代数运算">3.2. 代数运算</h2>
+<h3 id="求基解">3.2.1. 求基解</h3>
+<p>紧约束： 等式 对 顶点的确定起了作用， 成为紧约束，即 在这里不等式
+变为等式</p>
+<p>顶点定义： 紧约束数量 = dim()</p>
 <p>等式约束本身就是紧约束，需要再选出部分非等式约束，组成 n 个约束</p>
 <p>此时，求得的顶点是基解，但是由于缺少其他约束， 因此不是可行解</p>
-<p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251205174953597.png" alt="image-20251205174953597"></p>
-<ol>
-<li>线性约束数量 为 m ,  变量数量为 n </li>
+<figure>
+<img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251205174953597.png" alt="image-20251205174953597">
+<figcaption aria-hidden="true">image-20251205174953597</figcaption>
+</figure>
+<ol type="1">
+<li>线性约束数量 为 m , 变量数量为 n</li>
 <li>M &lt; n</li>
-<li>此时将 <code>n - m</code> 个  $ x_i \geq 0$ 变为紧约束，可以求解了</li>
+<li>此时将 <code>n - m</code> 个 $ x_i $ 变为紧约束，可以求解了</li>
 </ol>
-<p>求出的 x 是基解 ， 即所有线段相交的节点</p>
-<script type="math/tex; mode=display">
+<p>求出的 x 是基解 ， 即所有线段相交的节点 <span class="math display">$$
 Ax = b \\
-\begin{bmatrix} B & N \end{bmatrix} \begin{bmatrix} x_B \\ x_N \end{bmatrix} = b \\
+\begin{bmatrix} B &amp; N \end{bmatrix} \begin{bmatrix} x_B \\ x_N
+\end{bmatrix} = b \\
 Bx_B + Nx_N = b \\
-Bx_B = b \rightarrow x_B = B^{-1}b</script><p>B 是基变量， N 为非基变量</p>
-<h3 id="基解退化">3.2.2. 基解退化</h3><h4 id="几何">3.2.2.1. 几何</h4><p>其他约束在这里也是紧约束，有一个新的约束也是紧约束，是多余的紧约束， 反映在代数中有一个基解为 0 .</p>
+Bx_B = b \rightarrow x_B = B^{-1}b
+$$</span> B 是基变量， N 为非基变量</p>
+<h3 id="基解退化">3.2.2. 基解退化</h3>
+<h4 id="几何">3.2.2.1. 几何</h4>
+<p>其他约束在这里也是紧约束，有一个新的约束也是紧约束，是多余的紧约束，
+反映在代数中有一个基解为 0 .</p>
 <p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251209182132499.png" alt="基解几何表示" style="zoom:150%;"></p>
-<h4 id="代数">3.2.2.2. 代数</h4><p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251209182538869.png" alt="image-20251209182538869" style="zoom: 150%;"></p>
-<p>多个基  可能会对应一个基解</p>
+<h4 id="代数">3.2.2.2. 代数</h4>
+<p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251209182538869.png" alt="image-20251209182538869" style="zoom: 150%;"></p>
+<p>多个基 可能会对应一个基解</p>
 <p>= 》 变换不同的解，但是相交的节点相同</p>
-<h4 id="基解与节点坐标关系">3.2.2.3. 基解与节点坐标关系</h4><p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251209183042320.png" alt="image-20251209183042320"></p>
-<h2 id="simplex-methed">3.3. simplex methed</h2><div class="table-container">
+<h4 id="基解与节点坐标关系">3.2.2.3. 基解与节点坐标关系</h4>
+<figure>
+<img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251209183042320.png" alt="image-20251209183042320">
+<figcaption aria-hidden="true">image-20251209183042320</figcaption>
+</figure>
+<h2 id="simplex-methed">3.3. simplex methed</h2>
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th></th>
-<th>$x_B^T$</th>
-<th>$x_N^T$</th>
+<th><span class="math inline"><em>x</em><sub><em>B</em></sub><sup><em>T</em></sup></span></th>
+<th><span class="math inline"><em>x</em><sub><em>N</em></sub><sup><em>T</em></sup></span></th>
 <th>rhs</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>$x_B$</td>
-<td>$B$</td>
-<td>$N$</td>
-<td>$b$</td>
+<tr class="odd">
+<td><span class="math inline"><em>x</em><sub><em>B</em></sub></span></td>
+<td><span class="math inline"><em>B</em></span></td>
+<td><span class="math inline"><em>N</em></span></td>
+<td><span class="math inline"><em>b</em></span></td>
 </tr>
-<tr>
-<td>$r^T$</td>
-<td>$0^T$</td>
-<td>$c_N^T - c_B^T N$</td>
-<td>$0^T$</td>
+<tr class="even">
+<td><span class="math inline"><em>r</em><sup><em>T</em></sup></span></td>
+<td><span class="math inline">0<sup><em>T</em></sup></span></td>
+<td><span class="math inline"><em>c</em><sub><em>N</em></sub><sup><em>T</em></sup> − <em>c</em><sub><em>B</em></sub><sup><em>T</em></sup><em>N</em></span></td>
+<td><span class="math inline">0<sup><em>T</em></sup></span></td>
 </tr>
 </tbody>
 </table>
-</div>
 <hr>
-<div class="table-container">
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th></th>
-<th>$x_B^T$</th>
-<th>$x_N^T$</th>
+<th><span class="math inline"><em>x</em><sub><em>B</em></sub><sup><em>T</em></sup></span></th>
+<th><span class="math inline"><em>x</em><sub><em>N</em></sub><sup><em>T</em></sup></span></th>
 <th>rhs</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>$x_B$</td>
-<td>$I$</td>
-<td>$B^{-1} N$</td>
-<td>$B^{-1} b$</td>
+<tr class="odd">
+<td><span class="math inline"><em>x</em><sub><em>B</em></sub></span></td>
+<td><span class="math inline"><em>I</em></span></td>
+<td><span class="math inline"><em>B</em><sup>−1</sup><em>N</em></span></td>
+<td><span class="math inline"><em>B</em><sup>−1</sup><em>b</em></span></td>
 </tr>
-<tr>
-<td>$r^T$</td>
-<td>$0^T$</td>
-<td>$c_N^T - c_B^T B^{-1} N$</td>
-<td>$- c_B^T B^{-1} b$</td>
+<tr class="even">
+<td><span class="math inline"><em>r</em><sup><em>T</em></sup></span></td>
+<td><span class="math inline">0<sup><em>T</em></sup></span></td>
+<td><span class="math inline"><em>c</em><sub><em>N</em></sub><sup><em>T</em></sup> − <em>c</em><sub><em>B</em></sub><sup><em>T</em></sup><em>B</em><sup>−1</sup><em>N</em></span></td>
+<td><span class="math inline"> − <em>c</em><sub><em>B</em></sub><sup><em>T</em></sup><em>B</em><sup>−1</sup><em>b</em></span></td>
 </tr>
 </tbody>
 </table>
-</div>
 <blockquote>
-<p>$B^{-1} b$ 代表可行方向， 初始解开始可行，之后变换过程中，始终保持 rhs 为正</p>
-<p>$c_N^T - c_B^T B^{-1} N$ 是最优方向</p>
+<p><span class="math inline"><em>B</em><sup>−1</sup><em>b</em></span>
+代表可行方向， 初始解开始可行，之后变换过程中，始终保持 rhs 为正</p>
+<p><span class="math inline"><em>c</em><sub><em>N</em></sub><sup><em>T</em></sup> − <em>c</em><sub><em>B</em></sub><sup><em>T</em></sup><em>B</em><sup>−1</sup><em>N</em></span>
+是最优方向</p>
 </blockquote>
-<p>顶点数量为 $C_{n}^{n-m} =  C_{n}^{m}$ ， 数量较大，选择一种有效的方式筛选点</p>
-<ol>
+<p>顶点数量为 <span class="math inline"><em>C</em><sub><em>n</em></sub><sup><em>n</em> − <em>m</em></sup> = <em>C</em><sub><em>n</em></sub><sup><em>m</em></sup></span>
+， 数量较大，选择一种有效的方式筛选点</p>
+<ol type="1">
 <li>选择初始点</li>
 <li>从起始点 -》 最优点</li>
 </ol>
-<p>对于线性规划， 是一个凸函数问题， <strong>局部最优点  =  全局最优</strong></p>
-<ol>
+<p>对于线性规划， 是一个凸函数问题， <strong>局部最优点 =
+全局最优</strong></p>
+<ol type="1">
 <li>选择可行方向</li>
 <li>选择最好的方向</li>
 <li>方向上行动的距离</li>
 </ol>
-<h3 id="可行方向">3.3.1. 可行方向</h3><p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251209211842303.png" alt="image-20251209211842303" style="zoom: 80%;"></p>
-<ol>
-<li><p>开始 $ Ax = b$</p>
-</li>
-<li><p>移动 x 到 下一个顶点， 为 $ x + \theta d$</p>
-</li>
-<li><p>依旧满足顶点公式， $A(x + \theta d)  = b$,  得到 $A \theta d = 0$</p>
-</li>
-<li><script type="math/tex; mode=display">
+<h3 id="可行方向">3.3.1. 可行方向</h3>
+<p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251209211842303.png" alt="image-20251209211842303" style="zoom: 80%;"></p>
+<ol type="1">
+<li><p>开始 $ Ax = b$</p></li>
+<li><p>移动 x 到 下一个顶点， 为 $ x + d$</p></li>
+<li><p>依旧满足顶点公式， <span class="math inline"><em>A</em>(<em>x</em>+<em>θ</em><em>d</em>) = <em>b</em></span>,
+得到 <span class="math inline"><em>A</em><em>θ</em><em>d</em> = 0</span></p></li>
+<li><p><span class="math display">$$
 A = \begin{bmatrix}
 B, N
-\end{bmatrix} , d = \begin{bmatrix} d_B \\ d_N \end{bmatrix}</script><p>其中 $ d_N$ 仅 修改 $ d_j$ ， $d_B$ 作为待修改对象（人为规定，不要问为什么）</p>
-<p>计算得到 </p>
-<script type="math/tex; mode=display">
-d_B = -B^{-1} * A_j</script></li>
+\end{bmatrix} , d = \begin{bmatrix} d_B \\ d_N \end{bmatrix}
+$$</span></p>
+<p>其中 $ d_N$ 仅 修改 $ d_j$ ， <span class="math inline"><em>d</em><sub><em>B</em></sub></span>
+作为待修改对象（人为规定，不要问为什么）</p>
+<p>计算得到 <span class="math display"><em>d</em><sub><em>B</em></sub> =  − <em>B</em><sup>−1</sup> * <em>A</em><sub><em>j</em></sub></span></p></li>
 </ol>
-<p>可行方向 $[d_B, d_N]$ ， 对于非退化解， 方向一定是可行，否则，不可行</p>
-<h3 id="好的方向">3.3.2. 好的方向</h3><p>原目标函数 </p>
-<script type="math/tex; mode=display">
-C^T x ，转换为 C^T（x + \theta d)</script><p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251209213512392.png" alt="image-20251209213512392" style="zoom: 100%;"></p>
-<p>reduced_cost 需要保证 $\bar{c}_j = c_j - c_B^T B^{-1} A_J$  , 结果值 要小于 0</p>
-<h3 id="最优条件">3.3.3. 最优条件</h3><ol>
-<li>所有的基 向量大于 0 </li>
-<li>所有非基变量的 reduced cost 大于 0 ，没有可以下降的非基 时候， </li>
+<p>可行方向 <span class="math inline">[<em>d</em><sub><em>B</em></sub>,<em>d</em><sub><em>N</em></sub>]</span>
+， 对于非退化解， 方向一定是可行，否则，不可行</p>
+<h3 id="好的方向">3.3.2. 好的方向</h3>
+<p>原目标函数 <span class="math display"><em>C</em><sup><em>T</em></sup><em>x</em>，<em>转</em><em>换</em><em>为</em><em>C</em><sup><em>T</em></sup>（<em>x</em> + <em>θ</em><em>d</em>)</span>
+<img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251209213512392.png" alt="image-20251209213512392" style="zoom: 100%;"></p>
+<p>reduced_cost 需要保证 <span class="math inline"><em>c̄</em><sub><em>j</em></sub> = <em>c</em><sub><em>j</em></sub> − <em>c</em><sub><em>B</em></sub><sup><em>T</em></sup><em>B</em><sup>−1</sup><em>A</em><sub><em>J</em></sub></span>
+, 结果值 要小于 0</p>
+<h3 id="最优条件">3.3.3. 最优条件</h3>
+<ol type="1">
+<li>所有的基 向量大于 0</li>
+<li>所有非基变量的 reduced cost 大于 0 ，没有可以下降的非基 时候，</li>
 </ol>
 <p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251209213930140.png" alt="image-20251209213930140" style="zoom: 150%;"></p>
-<h3 id="行动的步长">3.3.4. 行动的步长</h3><p>$ cost = \theta * \bar{c} $ ，所以 $\theta$ 步长值 尽可能大</p>
-<p>最大步长受限于 $X_B + \theta d_B$， 基变量的值需要满足非负变量</p>
+<h3 id="行动的步长">3.3.4. 行动的步长</h3>
+<p>$ cost = {c} $ ，所以 <span class="math inline"><em>θ</em></span>
+步长值 尽可能大</p>
+<p>最大步长受限于 <span class="math inline"><em>X</em><sub><em>B</em></sub> + <em>θ</em><em>d</em><sub><em>B</em></sub></span>，
+基变量的值需要满足非负变量</p>
 <p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251209214846730.png" alt="image-20251209214846730" style="zoom:150%;"></p>
-<h2 id="LP-基本矩阵">3.4. LP 基本矩阵</h2><p>$x_B$ 是基变量， $ x_N $ 是非基变量</p>
-<p>其中 <script type="math/tex">Ax = b , A = [B | N] , x =\begin{bmatrix} x_B \\ x_N\end{bmatrix}</script></p>
-<p>其中满足 $Ax = Bx_B + Nx_N  = b$ ， 计算得到 $ x = [x_B ;  x_N] = [B^{-1}b ; 0] $</p>
+<h2 id="lp-基本矩阵">3.4. LP 基本矩阵</h2>
+<p><span class="math inline"><em>x</em><sub><em>B</em></sub></span>
+是基变量， $ x_N $ 是非基变量</p>
+<p>其中 <span class="math display">$$Ax = b , A = [B | N] , x
+=\begin{bmatrix} x_B \\ x_N\end{bmatrix} $$</span></p>
+<p>其中满足 <span class="math inline"><em>A</em><em>x</em> = <em>B</em><em>x</em><sub><em>B</em></sub> + <em>N</em><em>x</em><sub><em>N</em></sub> = <em>b</em></span>
+， 计算得到 $ x = [x_B ; x_N] = [B^{-1}b ; 0] $</p>
 <p>式子可以改写为 <img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251213214033236.png" alt="image-20251213214033236"></p>
 <p>其中 M 成为基本矩阵</p>
-<h2 id="两阶段-simplex-method">3.5. 两阶段 simplex method</h2><p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251213221428119.png" alt="image-20251213221428119" style="zoom: 67%;"></p>
-<p>原因 ： 当约束中不存在不等式约束 时， 不能增加新的变量， 构成基， 因此不容易找到初始可行解</p>
+<h2 id="两阶段-simplex-method">3.5. 两阶段 simplex method</h2>
+<p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251213221428119.png" alt="image-20251213221428119" style="zoom: 67%;"></p>
+<p>原因 ： 当约束中不存在不等式约束 时， 不能增加新的变量， 构成基，
+因此不容易找到初始可行解</p>
 <p>方法： 使用两阶段单纯形法</p>
-<h1 id="搜索算法">4. 搜索算法</h1><p>梯度方向 = 当前 $x$  附近， 函数下降最快的方向</p>
-<script type="math/tex; mode=display">
-目标值的变化值 = f(x + \lambda \Delta x) - f(x) \approx \sum_j (\frac{\partial f}{\partial x_j}) (\lambda \Delta x) = \lambda \Delta f(x) * \Delta x)</script><p>内积最大的情况下， $\Delta f(x) = \Delta x$</p>
-<ol>
-<li>max 变化值最大的 $\Delta x $ ， 取值 $\Delta x = \Delta f(x)$</li>
-<li>min 变化值最大的 $\Delta x $ ， 取值 $\Delta x = -\Delta f(x)$</li>
+<h1 id="搜索算法">4. 搜索算法</h1>
+<p>梯度方向 = 当前 <span class="math inline"><em>x</em></span> 附近，
+函数下降最快的方向 <span class="math display">$$
+目标值的变化值 = f(x + \lambda \Delta x) - f(x) \approx \sum_j
+(\frac{\partial f}{\partial x_j}) (\lambda \Delta x) = \lambda \Delta
+f(x) * \Delta x)
+$$</span> 内积最大的情况下， <span class="math inline"><em>Δ</em><em>f</em>(<em>x</em>) = <em>Δ</em><em>x</em></span></p>
+<ol type="1">
+<li>max 变化值最大的 $x $ ， 取值 <span class="math inline"><em>Δ</em><em>x</em> = <em>Δ</em><em>f</em>(<em>x</em>)</span></li>
+<li>min 变化值最大的 $x $ ， 取值 <span class="math inline"><em>Δ</em><em>x</em> =  − <em>Δ</em><em>f</em>(<em>x</em>)</span></li>
 </ol>
-<h2 id="有约束的搜索方向">4.1. 有约束的搜索方向</h2><p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251215113912567.png" alt="图 1"></p>
-<p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251215113930482.png" alt="图 2"></p>
-<ol>
-<li>当 $ \Delta x = - \alpha_i^T$ 时候， 沿着可行方向的梯度无法下降，找到局部最优点，此时无法再下降</li>
+<h2 id="有约束的搜索方向">4.1. 有约束的搜索方向</h2>
+<figure>
+<img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251215113912567.png" alt="图 1">
+<figcaption aria-hidden="true">图 1</figcaption>
+</figure>
+<figure>
+<img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251215113930482.png" alt="图 2">
+<figcaption aria-hidden="true">图 2</figcaption>
+</figure>
+<ol type="1">
+<li>当 $ x = - _i^T$ 时候，
+沿着可行方向的梯度无法下降，找到局部最优点，此时无法再下降</li>
 <li>否则，需要保持上图 1 中的约束条件</li>
 </ol>
-<h2 id="解析解">4.2. 解析解</h2><p>做出一定的假设，使用解析解进行灵敏度分析</p>
-<p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251215115540793.png" alt="image-20251215115540793"></p>
+<h2 id="解析解">4.2. 解析解</h2>
+<p>做出一定的假设，使用解析解进行灵敏度分析</p>
+<figure>
+<img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251215115540793.png" alt="image-20251215115540793">
+<figcaption aria-hidden="true">image-20251215115540793</figcaption>
+</figure>
 <p>解析解是对输入参数的表示，原有输入参数中使用数值表示，是特定情况下的固定结果</p>
 <p>即将原有的公式中的式子使用代数表示， 如图下所示：</p>
-<p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251215115711185.png" alt="模型求解"></p>
-<h1 id="dual-method">5. dual method</h1><p>pinal - &gt; dual</p>
+<figure>
+<img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251215115711185.png" alt="模型求解">
+<figcaption aria-hidden="true">模型求解</figcaption>
+</figure>
+<h1 id="dual-method">5. dual method</h1>
+<p>pinal - &gt; dual</p>
 <p>reformation 一个心得问题，通过 relation 的方式实现</p>
-<ol>
+<ol type="1">
 <li>提供新的求解方案</li>
 <li>提供另一个求解思路</li>
 </ol>
-<h2 id="legrengean-relation">5.1. legrengean relation</h2><script type="math/tex; mode=display">
+<h2 id="legrengean-relation">5.1. legrengean relation</h2>
+<p><span class="math display">$$
 min \space x^2+y^2 \\
-s.t. \space  x+ y = 1</script><p>对不满足约束的情况增加惩罚 $p$, 得到</p>
-<script type="math/tex; mode=display">
-min \space  x^2 + y^2 + p(x+y-1)</script><p>希望惩罚越来越小，所有 $()$ 内式子会趋近于 0</p>
-<h2 id="Pinal-gt-dual">5.2. Pinal - &gt; dual</h2><p>$g(p) = c^Tx + p^t(b- Ax)$ 是松弛后的问题，每一 $g(P)$ 对应 原函数 $P$ 的下界，目标转换为对求解 $max \space g(p)$</p>
-<p>然后通过推导，</p>
-<script type="math/tex; mode=display">
-min \space g(p)= min \space c^Tx + p^T b - p^T Ax =  min \space( p^Tb + (c^T - p^T A)x)</script><p>因为 min 对 x 变量求最小值， 对 $P^T b$ 是常量，得到</p>
-<script type="math/tex; mode=display">
-min \space g(p) = p^T b + min \space (c^T-p^TA) x</script><p>因为 $x \geq 0$ ，所以，当 $c^T - p^TA \geq 0$ 时， min 可以取得最小值 0 ， 函数值取值为 $p^T b$</p>
-<p>最终问题转换为</p>
-<script type="math/tex; mode=display">
+s.t. \space  x+ y = 1
+$$</span></p>
+<p>对不满足约束的情况增加惩罚 <span class="math inline"><em>p</em></span>, 得到 <span class="math display">$$
+min \space  x^2 + y^2 + p(x+y-1)
+$$</span> 希望惩罚越来越小，所有 <span class="math inline">()</span>
+内式子会趋近于 0</p>
+<h2 id="pinal---dual">5.2. Pinal - &gt; dual</h2>
+<p><span class="math inline"><em>g</em>(<em>p</em>) = <em>c</em><sup><em>T</em></sup><em>x</em> + <em>p</em><sup><em>t</em></sup>(<em>b</em>−<em>A</em><em>x</em>)</span>
+是松弛后的问题，每一 <span class="math inline"><em>g</em>(<em>P</em>)</span> 对应 原函数 <span class="math inline"><em>P</em></span> 的下界，目标转换为对求解 <span class="math inline">$max \space g(p)$</span></p>
+<p>然后通过推导， <span class="math display">$$
+min \space g(p)= min \space c^Tx + p^T b - p^T Ax =  min \space( p^Tb +
+(c^T - p^T A)x)
+$$</span> 因为 min 对 x 变量求最小值， 对 <span class="math inline"><em>P</em><sup><em>T</em></sup><em>b</em></span>
+是常量，得到 <span class="math display">$$
+min \space g(p) = p^T b + min \space (c^T-p^TA) x
+$$</span> 因为 <span class="math inline"><em>x</em> ≥ 0</span>
+，所以，当 <span class="math inline"><em>c</em><sup><em>T</em></sup> − <em>p</em><sup><em>T</em></sup><em>A</em> ≥ 0</span>
+时， min 可以取得最小值 0 ， 函数值取值为 <span class="math inline"><em>p</em><sup><em>T</em></sup><em>b</em></span></p>
+<p>最终问题转换为 <span class="math display">$$
 max \space p^T b \\
-s.t. \space p^T A \leq c^T</script><p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251216152503376.png" alt="p-&gt; d 纸质推导过程"></p>
-<h3 id="剩余形式约束转换">5.2.1. 剩余形式约束转换</h3><p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251216152607748.png" alt="对偶问题约束转换"></p>
-<h2 id="dualtiy-theory">5.3. dualtiy theory</h2><ol>
+s.t. \space p^T A \leq c^T
+$$</span> <img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251216152503376.png" alt="p-&gt; d 纸质推导过程"></p>
+<h3 id="剩余形式约束转换">5.2.1. 剩余形式约束转换</h3>
+<figure>
+<img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251216152607748.png" alt="对偶问题约束转换">
+<figcaption aria-hidden="true">对偶问题约束转换</figcaption>
+</figure>
+<h2 id="dualtiy-theory">5.3. dualtiy theory</h2>
+<ol type="1">
 <li>weak duality</li>
 <li>strong duality</li>
 <li>complementary slackness</li>
 </ol>
-<p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251216162952255.png" alt="对偶性"></p>
-<h3 id="weak-duality">5.3.1. weak duality</h3><script type="math/tex; mode=display">
-c^T X > b^T w</script><h3 id="strong-duality">5.3.2. strong duality</h3><script type="math/tex; mode=display">
+<figure>
+<img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251216162952255.png" alt="对偶性">
+<figcaption aria-hidden="true">对偶性</figcaption>
+</figure>
+<h3 id="weak-duality">5.3.1. weak duality</h3>
+<p><span class="math display"><em>c</em><sup><em>T</em></sup><em>X</em> &gt; <em>b</em><sup><em>T</em></sup><em>w</em></span></p>
+<h3 id="strong-duality">5.3.2. strong duality</h3>
+<p><span class="math display">$$
 c^T x = c_B^T x_B \\
 = c_B^T B^{-1} b\\
 = w^T b \\
-= b w^T</script><p>所以，得到 $w^T = c_B^TB^{-1}$</p>
-<p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251216163421611.png" alt="image-20251216163421611"></p>
+= b w^T
+$$</span></p>
+<p>所以，得到 <span class="math inline"><em>w</em><sup><em>T</em></sup> = <em>c</em><sub><em>B</em></sub><sup><em>T</em></sup><em>B</em><sup>−1</sup></span></p>
+<figure>
+<img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251216163421611.png" alt="image-20251216163421611">
+<figcaption aria-hidden="true">image-20251216163421611</figcaption>
+</figure>
 <p>对偶问题可行 -》 原问题最优</p>
-<h3 id="对偶理论">5.3.3. 对偶理论</h3><p>P 问题 f-b(feasible - bounded)  与 对应 D 问题的 f-b</p>
-<p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251216163754240.png" alt="image-20251216163754240"></p>
-<h3 id="互补松弛理论">5.3.4. 互补松弛理论</h3><p>互补定义： </p>
-<ol>
+<h3 id="对偶理论">5.3.3. 对偶理论</h3>
+<p>P 问题 f-b(feasible - bounded) 与 对应 D 问题的 f-b</p>
+<figure>
+<img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251216163754240.png" alt="image-20251216163754240">
+<figcaption aria-hidden="true">image-20251216163754240</figcaption>
+</figure>
+<h3 id="互补松弛理论">5.3.4. 互补松弛理论</h3>
+<p>互补定义：</p>
+<ol type="1">
 <li>P 的松弛 * D 和可行解 = 0</li>
 <li>D 的松弛 * P 的可行解 = 0</li>
 </ol>
 <p>互补松弛理论： 满足互补松弛理论时 = 》 x 时最优解， w 也是最优解</p>
-<p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251216170315772.png" alt="对偶松弛理论"></p>
-<h3 id="KKT-条件">5.3.5. KKT 条件</h3><p>对于线性问题， 满足互补松弛理论，即可获得问题的最优解</p>
-<p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251216170426742.png" alt="image-20251216170426742"></p>
-<h2 id="经济学变量">5.4. 经济学变量</h2><p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251216212935057.png" alt="经济学定义"></p>
-<h3 id="互补松弛解释">5.4.1. 互补松弛解释</h3><p>​    见 PPT</p>
-<h1 id="Integer-programming">6. Integer programming</h1><h2 id="分配问题">6.1. 分配问题</h2><p>好的，我将为你提取图片中展示的三种指派问题（Assignment Problem）的 LaTeX 表达式。</p>
+<figure>
+<img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251216170315772.png" alt="对偶松弛理论">
+<figcaption aria-hidden="true">对偶松弛理论</figcaption>
+</figure>
+<h3 id="kkt-条件">5.3.5. KKT 条件</h3>
+<p>对于线性问题， 满足互补松弛理论，即可获得问题的最优解</p>
+<figure>
+<img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251216170426742.png" alt="image-20251216170426742">
+<figcaption aria-hidden="true">image-20251216170426742</figcaption>
+</figure>
+<h2 id="经济学变量">5.4. 经济学变量</h2>
+<figure>
+<img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251216212935057.png" alt="经济学定义">
+<figcaption aria-hidden="true">经济学定义</figcaption>
+</figure>
+<h3 id="互补松弛解释">5.4.1. 互补松弛解释</h3>
+<p>​ 见 PPT</p>
+<h1 id="integer-programming">6. Integer programming</h1>
+<h2 id="分配问题">6.1. 分配问题</h2>
+<p>好的，我将为你提取图片中展示的三种指派问题（Assignment Problem）的
+LaTeX 表达式。</p>
 <hr>
-<h3 id="指派问题-0-1-Assignment-Problem">6.1.1. 指派问题 (0-1 Assignment Problem)</h3><p><strong>目标函数：</strong></p>
-<script type="math/tex; mode=display">
+<h3 id="指派问题-0-1-assignment-problem">6.1.1. 指派问题 (0-1 Assignment
+Problem)</h3>
+<p><strong>目标函数：</strong> <span class="math display">$$
 \min \sum_{i = 1}^n \sum_{j = 1}^n c_{ij}x_{ij}
 \\
 s.t. \quad \sum_{j = 1}^n x_{ij} = 1, \quad \forall i
 \\
 \sum_{i = 1}^n x_{ij} = 1, \quad \forall j
 \\
-x_{ij} \in \{0,1\}, \quad \forall i, j</script><hr>
-<h3 id="二次指派问题-Quadratic-Assignment-Problem">6.1.2. 二次指派问题 (Quadratic Assignment Problem)</h3><p><strong>目标函数：</strong></p>
-<script type="math/tex; mode=display">
-\min \sum_{i} \sum_{j} \sum_{k > i} \sum_{l \ne j} c_{i, j, k, l} \cdot x_{ij} \cdot x_{kl}
+x_{ij} \in \{0,1\}, \quad \forall i, j
+$$</span></p>
+<hr>
+<h3 id="二次指派问题-quadratic-assignment-problem">6.1.2. 二次指派问题
+(Quadratic Assignment Problem)</h3>
+<p><strong>目标函数：</strong> <span class="math display">$$
+\min \sum_{i} \sum_{j} \sum_{k &gt; i} \sum_{l \ne j} c_{i, j, k, l}
+\cdot x_{ij} \cdot x_{kl}
 \\
 s.t. \quad \sum_{j = 1}^n x_{ij} = 1, \quad \forall i
 \\
 \sum_{i = 1}^n x_{ij} = 1, \quad \forall j
 \\
-x_{ij} \in \{0,1\}, \quad \forall i, j</script><p>分阶段分配：</p>
-<ol>
-<li>从 $x_{ij}$ 表示部门 $i$ 分配到地点 $j$</li>
-<li>从 $x_{kl}$ 表示部门 $k$ 分配到地点 $l$</li>
+x_{ij} \in \{0,1\}, \quad \forall i, j
+$$</span> 分阶段分配：</p>
+<ol type="1">
+<li>从 <span class="math inline"><em>x</em><sub><em>i</em><em>j</em></sub></span>
+表示部门 <span class="math inline"><em>i</em></span> 分配到地点 <span class="math inline"><em>j</em></span></li>
+<li>从 <span class="math inline"><em>x</em><sub><em>k</em><em>l</em></sub></span>
+表示部门 <span class="math inline"><em>k</em></span> 分配到地点 <span class="math inline"><em>l</em></span></li>
 </ol>
-<p>$c_{i,j,k,l}$， 表示 $i ,j$ 在 $k, l$ 位置交互的 cost</p>
-<p>$x_{ij} * x_{kl}$ 表示只有分配了这条链路， 才会产生 cost</p>
+<p><span class="math inline"><em>c</em><sub><em>i</em>, <em>j</em>, <em>k</em>, <em>l</em></sub></span>，
+表示 <span class="math inline"><em>i</em>, <em>j</em></span> 在 <span class="math inline"><em>k</em>, <em>l</em></span> 位置交互的 cost</p>
+<p><span class="math inline"><em>x</em><sub><em>i</em><em>j</em></sub> * <em>x</em><sub><em>k</em><em>l</em></sub></span>
+表示只有分配了这条链路， 才会产生 cost</p>
 <hr>
-<h3 id="广义指派问题-Generalized-Assignment-Problem">6.1.3. 广义指派问题 (Generalized Assignment Problem)</h3><p><strong>目标函数：</strong></p>
-<script type="math/tex; mode=display">
+<h3 id="广义指派问题-generalized-assignment-problem">6.1.3. 广义指派问题
+(Generalized Assignment Problem)</h3>
+<p><strong>目标函数：</strong> <span class="math display">$$
 \min \sum_{i = 1}^m \sum_{j = 1}^n c_{ij}x_{ij}
 \\
 s.t. \quad \sum_{j = 1}^n x_{ij} = 1, \quad \forall i
 \\
 \sum_{i = 1}^m s_{ij}x_{ij} \leq b_j, \quad \forall j
 \\
-x_{ij} \in \{0,1\}, \quad \forall i, j</script><h2 id="IP-solution">6.2. IP solution</h2><ol>
+x_{ij} \in \{0,1\}, \quad \forall i, j
+$$</span></p>
+<h2 id="ip-solution">6.2. IP solution</h2>
+<ol type="1">
 <li>LP 问题近似， 先视为连续问题，再求解</li>
 <li>启发式算法，求解质量无保证</li>
 <li>近似算法，求解质量具有保证</li>
 </ol>
-<h2 id="classic-problem">6.3. classic  problem</h2><h3 id="几何覆盖问题">6.3.1. 几何覆盖问题</h3><p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251218095654943.png" alt="几何覆盖定义"></p>
-<h3 id="设施选择问题">6.3.2. 设施选择问题</h3><p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251218100252960.png" alt="设施选择"></p>
-<ol>
-<li>变量：有两类，<ol>
+<h2 id="classic-problem">6.3. classic problem</h2>
+<h3 id="几何覆盖问题">6.3.1. 几何覆盖问题</h3>
+<figure>
+<img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251218095654943.png" alt="几何覆盖定义">
+<figcaption aria-hidden="true">几何覆盖定义</figcaption>
+</figure>
+<h3 id="设施选择问题">6.3.2. 设施选择问题</h3>
+<figure>
+<img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251218100252960.png" alt="设施选择">
+<figcaption aria-hidden="true">设施选择</figcaption>
+</figure>
+<ol type="1">
+<li>变量：有两类，
+<ol type="1">
 <li>整数Y ，用于控制某个站点被建立，</li>
 <li>实数X，表示建立的站点i 对 节点J 的服务比例</li>
+</ol></li>
 </ol>
-</li>
-</ol>
-<h3 id="网络问题">6.3.3. 网络问题</h3><h3 id="车间调度问题">6.3.4. 车间调度问题</h3><p>决策变量: $x_{j,k}$  工作j 在设备K 上工作</p>
+<h3 id="网络问题">6.3.3. 网络问题</h3>
+<h3 id="车间调度问题">6.3.4. 车间调度问题</h3>
+<p>决策变量: <span class="math inline"><em>x</em><sub><em>j</em>, <em>k</em></sub></span>
+工作j 在设备K 上工作</p>
 <p>约束：</p>
-<ol>
-<li><p>$j, j’$ 约束 ， j 必须在 $j’$之前</p>
-<script type="math/tex; mode=display">
-x_{j,k} + p_{j, k} \leq x_{j',k}</script></li>
-<li><p>$j, j’$ 共同使用设备 $K $, 同一台机器不能同时服务同一个设备</p>
-<ol>
-<li><p>$j’$ 的开始时间需要小于 $j$的结束时间，严格约束</p>
-<script type="math/tex; mode=display">
-x_{j,k} + p_{j,k} \leq x_{j',k} + M(1 - y_{j,j',k})</script><p>当$y_{j,j’,k}$表示 作业 j 在 $j’$之前使用k ，值为1，表示可以使用</p>
-</li>
-<li><p>当$y_{j,j’,k}$ 为0 时， 约束生效，表示 $j’$必须在$j $之前完成</p>
-<script type="math/tex; mode=display">
-x_{j',k}+p_{j',k} \leq x_{j,k}+ My_{j, j',k}</script><blockquote>
-<p>$y_{j,j’,k}$， 表示 j ,j’ 在k 上具有冲突</p>
+<ol type="1">
+<li><p><span class="math inline"><em>j</em>, <em>j</em>′</span> 约束 ，
+j 必须在 <span class="math inline"><em>j</em>′</span>之前 <span class="math display"><em>x</em><sub><em>j</em>, <em>k</em></sub> + <em>p</em><sub><em>j</em>, <em>k</em></sub> ≤ <em>x</em><sub><em>j</em>′, <em>k</em></sub></span></p></li>
+<li><p><span class="math inline"><em>j</em>, <em>j</em>′</span>
+共同使用设备 $K $, 同一台机器不能同时服务同一个设备</p>
+<ol type="1">
+<li><p><span class="math inline"><em>j</em>′</span> 的开始时间需要小于
+<span class="math inline"><em>j</em></span>的结束时间，严格约束 <span class="math display"><em>x</em><sub><em>j</em>, <em>k</em></sub> + <em>p</em><sub><em>j</em>, <em>k</em></sub> ≤ <em>x</em><sub><em>j</em>′, <em>k</em></sub> + <em>M</em>(1−<em>y</em><sub><em>j</em>, <em>j</em>′, <em>k</em></sub>)</span>
+当<span class="math inline"><em>y</em><sub><em>j</em>, <em>j</em>′, <em>k</em></sub></span>表示
+作业 j 在 <span class="math inline"><em>j</em>′</span>之前使用k
+，值为1，表示可以使用</p></li>
+<li><p>当<span class="math inline"><em>y</em><sub><em>j</em>, <em>j</em>′, <em>k</em></sub></span>
+为0 时， 约束生效，表示 <span class="math inline"><em>j</em>′</span>必须在$j <span class="math inline"><em>之</em><em>前</em><em>完</em><em>成</em></span>$
+x_{j’,k}+p_{j’,k} x_{j,k}+ My_{j, j’,k} $$</p>
+<blockquote>
+<p><span class="math inline"><em>y</em><sub><em>j</em>, <em>j</em>′, <em>k</em></sub></span>，
+表示 j ,j’ 在k 上具有冲突</p>
 <p>M 的约束作用， 当y 生效时，等式松弛，约束不起作用</p>
-<p>当y =  0 时，约束严格作用</p>
-</blockquote>
-</li>
+<p>当y = 0 时，约束严格作用</p>
+</blockquote></li>
+</ol></li>
 </ol>
-</li>
-</ol>
-<h2 id="0-1-modeling">6.4. 0-1 modeling</h2><ol>
+<h2 id="modeling">6.4. 0-1 modeling</h2>
+<ol type="1">
 <li><p>0-1选择问题，是否选择</p>
-<p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251218160554039.png" alt="image-20251218160554039"></p>
-</li>
+<figure>
+<img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251218160554039.png" alt="image-20251218160554039">
+<figcaption aria-hidden="true">image-20251218160554039</figcaption>
+</figure></li>
 <li><p>关联约束</p>
-<p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251218160612332.png" alt="image-20251218160612332"></p>
-</li>
+<figure>
+<img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251218160612332.png" alt="image-20251218160612332">
+<figcaption aria-hidden="true">image-20251218160612332</figcaption>
+</figure></li>
 <li><p>组合中选择一个</p>
-<p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251218160705405.png" alt="image-20251218160705405"></p>
-</li>
+<figure>
+<img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251218160705405.png" alt="image-20251218160705405">
+<figcaption aria-hidden="true">image-20251218160705405</figcaption>
+</figure></li>
 <li><p>选择约束条件</p>
-<p><img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251218160802044.png" alt="image-20251218160802044"></p>
-</li>
+<figure>
+<img src="/2025/12/01/%E7%A0%940/operation/OR_intruction/image-20251218160802044.png" alt="image-20251218160802044">
+<figcaption aria-hidden="true">image-20251218160802044</figcaption>
+</figure></li>
 </ol>
 
                 
@@ -1227,18 +1394,17 @@ x_{j',k}+p_{j',k} \leq x_{j,k}+ My_{j, j',k}</script><blockquote>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2025/12/01/%E7%A0%940/operation/OR_intruction/">
+                <a href="/2025/12/21/%E7%A0%940/operation/learn_trace/k2/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="OR 导论">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
                         
-                        <span class="card-title">OR 导论</span>
+                        <span class="card-title"></span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1248,9 +1414,9 @@ x_{j',k}+p_{j',k} \leq x_{j,k}+ My_{j, j',k}</script><blockquote>
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-12-01
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2025-12-21
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -1258,15 +1424,6 @@ x_{j',k}+p_{j',k} \leq x_{j,k}+ My_{j, j',k}</script><blockquote>
                             
                         </span>
                     </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E8%BF%90%E7%AD%B9/">
-                        <span class="chip bg-color">运筹</span>
-                    </a>
-                    
                 </div>
                 
             </div>
@@ -1536,7 +1693,7 @@ x_{j',k}+p_{j',k} \leq x_{j,k}+ My_{j, j',k}</script><blockquote>
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">51.4k</span>
+                        class="white-color">72k</span>
             
             
             
