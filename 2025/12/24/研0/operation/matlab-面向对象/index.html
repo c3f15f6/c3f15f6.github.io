@@ -6,7 +6,6 @@
     <meta charset="utf-8">
     <meta name="keywords" content="matlab 面向对象, 汤汁小白菜">
     <meta name="description" content="1. matlab 面向对象
-
 每个类定义在单独的.m 文件中， 文件名与类名相同
 
 
@@ -14,7 +13,7 @@ classdef test_class
 
     % 定义属性
     properties(Access &amp;#x3D; private)
- ">
+      ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -421,21 +420,21 @@ classdef test_class
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-12-25
+                    2025-12-28
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    278
+                    554
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -458,8 +457,7 @@ classdef test_class
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="matlab-面向对象">1. matlab 面向对象</h1>
-<blockquote>
+                <h1 id="matlab-面向对象">1. matlab 面向对象</h1><blockquote>
 <p>每个类定义在单独的.m 文件中， 文件名与类名相同</p>
 </blockquote>
 <pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">
@@ -513,10 +511,7 @@ classdef test_inherit &lt; test_class
         end
     end
 end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="appdesigner">2. appdesigner</h1>
-<h2 id="绘图">2.1. 绘图</h2>
-<p><code>plot</code>, <code>hold</code>
-都需要指定图像画布位置，即第一参数设置为<code>app.UIAxes</code></p>
+<h1 id="appdesigner">2. appdesigner</h1><h2 id="绘图">2.1. 绘图</h2><p><code>plot</code>, <code>hold</code> 都需要指定图像画布位置，即第一参数设置为<code>app.UIAxes</code></p>
 <pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">x &#x3D; 1: 0.01 : 10;
 y &#x3D; sin(x);
 y1 &#x3D; cos(x);
@@ -528,6 +523,46 @@ plot(app.UIAxes, x, y1, &#39;LineStyle&#39;,&#39;-&#39;, &#39;Color&#39;,&#39;b&
 xlabel(app.UIAxes, &quot;时间&quot;);
 ylabel(app.UIAxes, &quot;幅度&quot;);
 title(app.UIAxes, &quot;时域分析&quot;);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="run">2.2. run</h2><p>使用’run’ 命令启动一个m 脚本</p>
+<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">delete(app.UIFigure) ; % 关闭当前文件
+run new_app.mlapp; % 启动新的app<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="uigetfile">2.3. uigetfile</h2><p>打开文件管理器，选择文件</p>
+<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">[filename, pathname] &#x3D; uigetfile(&#123;&#39;*.png; *.jpg&#39; ; &#39;*.*&#39;&#125;, &#39;选择图片&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="readtable">2.4. readtable</h2><p>读取数据，返回table 类型</p>
+<h2 id="，-（）">2.5. {} ， （）</h2><ol>
+<li>{} 返回元素的属性值</li>
+<li>（） 返回元素的子集</li>
+</ol>
+<h2 id="addpath">2.6. addpath</h2><p>在脚本中增加环境变量</p>
+<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">addpath(&quot;D:\soft\&quot;)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="保存数据">2.7. 保存数据</h2><ol>
+<li><p>assignin 数据保存在工作区中</p>
+<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">assignin(&#39;base&#39;, &#39;x&#39;, x);
+% &#39;base&#39; 保存的工作区, 或者&#39;caller&#39;
+% &#39;x&#39; 导入工作区名称
+% x 变量名称<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>save 保存数据到磁盘中</p>
+<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">save filename x<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+</ol>
+<h2 id="使用摄像头">2.8. 使用摄像头</h2><ol>
+<li><p>附加功能中选择下载使用webcams</p>
+<p><img src="/2025/12/24/%E7%A0%940/operation/matlab-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/image-20251228224632005.png" alt="image-20251228224632005"></p>
+</li>
+<li><p>使用webcam 调取</p>
+<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">a &#x3D; webcam ; % 默认第一个摄像头
+cam &#x3D; webcam(2) ; % 选择第二个摄像头<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li><p>使用snapshot(cam) ， 抓取一张图片</p>
+</li>
+<li><p>preview(cam) 显示视频</p>
+</li>
+</ol>
+<blockquote>
+<p>在调用后需要清楚cam 对象，避免影响之后调用</p>
+<p>一般放在appdesigner 中，声明为属性， 使用析构函数删除</p>
+</blockquote>
 
                 
             </div>
@@ -902,18 +937,17 @@ title(app.UIAxes, &quot;时域分析&quot;);<span aria-hidden="true" class="line
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2025/12/24/%E7%A0%940/operation/matlab-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
+                <a href="/2025/12/28/%E7%A0%940/operation/learn_trace/base_learn/data/README/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="matlab 面向对象">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
                         
-                        <span class="card-title">matlab 面向对象</span>
+                        <span class="card-title"></span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -923,9 +957,9 @@ title(app.UIAxes, &quot;时域分析&quot;);<span aria-hidden="true" class="line
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-12-24
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2025-12-28
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -934,7 +968,6 @@ title(app.UIAxes, &quot;时域分析&quot;);<span aria-hidden="true" class="line
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
@@ -1194,7 +1227,7 @@ title(app.UIAxes, &quot;时域分析&quot;);<span aria-hidden="true" class="line
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2024-2025</span>
+                <span id="year">2024-2026</span>
             
             <a href="/about" target="_blank">小白菜</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
@@ -1203,7 +1236,7 @@ title(app.UIAxes, &quot;时域分析&quot;);<span aria-hidden="true" class="line
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">72k</span>
+                        class="white-color">73.2k</span>
             
             
             
