@@ -5,13 +5,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="汤汁小白菜">
-    <meta name="description" content="1. MLApp 登录系统使用说明1.1. 文件说明
+    <meta name="description" content="1. MLApp 登录系统使用说明
+1.1. 文件说明
+
 LoginApp.m - 登录界面主程序
 registerUser.m - 用户注册函数
 setup.m - 初始化设置脚本
-createLoginApp.m - 启动登录界面
-
-1.2">
+createLoginApp.m - 启动登">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -455,51 +455,59 @@ createLoginApp.m - 启动登录界面
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="MLApp-登录系统使用说明">1. MLApp 登录系统使用说明</h1><h2 id="文件说明">1.1. 文件说明</h2><ul>
+                <h1 id="mlapp-登录系统使用说明">1. MLApp 登录系统使用说明</h1>
+<h2 id="文件说明">1.1. 文件说明</h2>
+<ul>
 <li><code>LoginApp.m</code> - 登录界面主程序</li>
 <li><code>registerUser.m</code> - 用户注册函数</li>
 <li><code>setup.m</code> - 初始化设置脚本</li>
 <li><code>createLoginApp.m</code> - 启动登录界面</li>
 </ul>
-<h2 id="快速开始">1.2. 快速开始</h2><h3 id="方式一：运行设置脚本（推荐）">1.2.1. 方式一：运行设置脚本（推荐）</h3><pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">setup()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="快速开始">1.2. 快速开始</h2>
+<h3 id="方式一运行设置脚本推荐">1.2.1. 方式一：运行设置脚本（推荐）</h3>
+<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">setup()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>按提示输入用户名和密码，系统会自动创建配置文件。</p>
-<h3 id="方式二：手动注册用户">1.2.2. 方式二：手动注册用户</h3><pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">registerUser(&#39;admin&#39;, &#39;your_password&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h3 id="方式三：使用环境变量（最安全）">1.2.3. 方式三：使用环境变量（最安全）</h3><pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">setenv(&#39;MLAPP_USERNAME&#39;, &#39;admin&#39;);
+<h3 id="方式二手动注册用户">1.2.2. 方式二：手动注册用户</h3>
+<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">registerUser(&#39;admin&#39;, &#39;your_password&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="方式三使用环境变量最安全">1.2.3. 方式三：使用环境变量（最安全）</h3>
+<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">setenv(&#39;MLAPP_USERNAME&#39;, &#39;admin&#39;);
 setenv(&#39;MLAPP_PASSWORD&#39;, &#39;your_password&#39;);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h2 id="启动登录界面">1.3. 启动登录界面</h2><pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">app &#x3D; LoginApp;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="启动登录界面">1.3. 启动登录界面</h2>
+<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">app &#x3D; LoginApp;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>或</p>
 <pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">createLoginApp()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="密码存放方案">1.4. 密码存放方案</h2><div class="table-container">
+<h2 id="密码存放方案">1.4. 密码存放方案</h2>
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th>方案</th>
 <th>安全等级</th>
 <th>适用场景</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td>环境变量</td>
 <td>⭐⭐⭐⭐⭐</td>
 <td>生产环境</td>
 </tr>
-<tr>
+<tr class="even">
 <td>加密MAT文件</td>
 <td>⭐⭐⭐⭐</td>
 <td>开发/测试</td>
 </tr>
 </tbody>
 </table>
-</div>
-<h2 id="功能特性">1.5. 功能特性</h2><ul>
+<h2 id="功能特性">1.5. 功能特性</h2>
+<ul>
 <li>用户名/密码登录验证</li>
 <li>记住密码功能（加密存储）</li>
 <li>新用户注册功能</li>
 <li>环境变量支持</li>
 <li>SHA-256 密码哈希</li>
 </ul>
-<h2 id="注意事项">1.6. 注意事项</h2><ul>
+<h2 id="注意事项">1.6. 注意事项</h2>
+<ul>
 <li>密码长度至少 6 位</li>
 <li>credentials.mat 包含记住的密码，请妥善保管</li>
 <li>user_config.mat 包含用户数据，请勿删除</li>
@@ -1177,7 +1185,7 @@ setenv(&#39;MLAPP_PASSWORD&#39;, &#39;your_password&#39;);<span aria-hidden="tru
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">73.2k</span>
+                        class="white-color">73.5k</span>
             
             
             
