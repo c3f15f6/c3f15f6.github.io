@@ -5,18 +5,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="树, 汤汁小白菜">
-    <meta name="description" content="1. 树
-感谢代码随想录
-1.1. 深度遍历
-1.1.1. 递归
-1. 递归结束条件
+    <meta name="description" content="1. 树感谢代码随想录
+1.1. 深度遍历1.1.1. 递归1. 递归结束条件
 2. 当前递归操作
 3. 对那些节点进行递归
 4. 确定参数和返回值
-1.1.2. 栈实现
-深度遍历中存在先进后出，所以此处使用栈
+1.1.2. 栈实现深度遍历中存在先进后出，所以此处使用栈
 
-先序">
+先序遍历，栈中先进后出，出栈">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -481,258 +477,208 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="树">1. 树</h1>
-<p><strong>感谢<a target="_blank" rel="noopener" href="https://programmercarl.com/0101.对称二叉树.html#思路">代码随想录</a></strong></p>
-<h2 id="深度遍历">1.1. 深度遍历</h2>
-<h3 id="递归">1.1.1. 递归</h3>
-<pre class="line-numbers language-none"><code class="language-none">1. 递归结束条件
+                <h1 id="树">1. 树</h1><p><strong>感谢<a target="_blank" rel="noopener" href="https://programmercarl.com/0101.对称二叉树.html#思路">代码随想录</a></strong></p>
+<h2 id="深度遍历">1.1. 深度遍历</h2><h3 id="递归">1.1.1. 递归</h3><pre class="line-numbers language-none"><code class="language-none">1. 递归结束条件
 2. 当前递归操作
 3. 对那些节点进行递归
 4. 确定参数和返回值<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="栈实现">1.1.2. 栈实现</h3>
-<p>深度遍历中存在先进后出，所以此处使用栈</p>
-<ol type="1">
-<li>先序遍历，栈中先进后出，出栈顺序为3，2
-<ol type="1">
+<h3 id="栈实现">1.1.2. 栈实现</h3><p>深度遍历中存在先进后出，所以此处使用栈</p>
+<ol>
+<li>先序遍历，栈中先进后出，出栈顺序为3，2<ol>
 <li>中间节点</li>
 <li>右节点</li>
 <li>左节点</li>
-</ol></li>
-<li>中序遍历，当左节点与栈同时为空时，遍历结束
-<ol type="1">
+</ol>
+</li>
+<li>中序遍历，当左节点与栈同时为空时，遍历结束<ol>
 <li>将所有左节点压入栈中</li>
 <li>左节点为空时，将栈中节点弹出，处理中间节点</li>
 <li><code>cur= cur-&gt;right</code>， 处理右节点</li>
-</ol></li>
+</ol>
+</li>
 <li>后序遍历，参照1， 然后reverse</li>
 </ol>
-<h3 id="null-bool表示">1.1.3. NULL/ bool表示</h3>
-<p>先序遍历，中左右，</p>
-<ol type="1">
+<h3 id="NULL-bool表示">1.1.3. NULL/ bool表示</h3><p>先序遍历，中左右，</p>
+<ol>
 <li>加入栈中顺序为右左中，标识当前节点需处理时在栈后加入一个NULL</li>
 <li>如果访问到NULL节点，需将下一节点弹出</li>
 </ol>
-<h2 id="反转二叉树">1.2. 反转二叉树</h2>
-<p><a target="_blank" rel="noopener" href="https://programmercarl.com/0226.翻转二叉树.html">反转二叉树</a></p>
+<h2 id="反转二叉树">1.2. 反转二叉树</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0226.翻转二叉树.html">反转二叉树</a></p>
 <p>中序遍历不能反转二叉树，较为困难</p>
-<h2 id="对称二叉树">1.3. 对称二叉树</h2>
-<p><a target="_blank" rel="noopener" href="https://programmercarl.com/0101.对称二叉树.html#思路">对称二叉树</a></p>
-<ol type="1">
+<h2 id="对称二叉树">1.3. 对称二叉树</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0101.对称二叉树.html#思路">对称二叉树</a></p>
+<ol>
 <li>确定返回条件</li>
 <li>当前节点比较左右字树是否相同</li>
 <li>比较的是节点的内侧(left的右， right的左)，节点的外侧</li>
 </ol>
-<h2 id="树的最大深度">1.4. 树的最大深度</h2>
-<p><a target="_blank" rel="noopener" href="https://programmercarl.com/0104.二叉树的最大深度.html">树的最大深度</a></p>
-<ol type="1">
+<h2 id="树的最大深度">1.4. 树的最大深度</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0104.二叉树的最大深度.html">树的最大深度</a></p>
+<ol>
 <li>后序遍历： 回溯，从后面的节点结算，得到当前节点的结果</li>
-<li>前序遍历：
-迭代，先计算当前节点，再依次计算后续节点，计算下一个节点时需要回溯</li>
+<li>前序遍历： 迭代，先计算当前节点，再依次计算后续节点，计算下一个节点时需要回溯</li>
 </ol>
-<h2 id="树的最小深度">1.5. 树的最小深度</h2>
-<p><a target="_blank" rel="noopener" href="https://programmercarl.com/0111.二叉树的最小深度.html">二叉树的最小深度</a></p>
+<h2 id="树的最小深度">1.5. 树的最小深度</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0111.二叉树的最小深度.html">二叉树的最小深度</a></p>
 <p>当节点的左右节点为都为NULL时，节点为叶子节点</p>
-<ol type="1">
-<li><p>终止条件：节点为叶子节点时</p></li>
+<ol>
+<li><p>终止条件：节点为叶子节点时</p>
+</li>
 <li><p>后序遍历，</p>
 <blockquote>
 <p>注意：此时depth != 左右子树最小的节点，有可能左右子树有空子树</p>
 <p>解决方法： 空子树设置深度初始值为最大值</p>
-</blockquote></li>
+</blockquote>
+</li>
 </ol>
-<h2 id="返回树的所有路径">1.6. 返回树的所有路径</h2>
-<p><a target="_blank" rel="noopener" href="https://programmercarl.com/0257.二叉树的所有路径.html#思路">树的所有路径</a></p>
-<ol type="1">
+<h2 id="返回树的所有路径">1.6. 返回树的所有路径</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0257.二叉树的所有路径.html#思路">树的所有路径</a></p>
+<ol>
 <li>路径的终止条件为达到叶子节点： 左右节点均为NULL;</li>
-<li>此时对left与right递归时需要对left,
-right做检查，同时中间节点的初始需要放在if判断之前；</li>
+<li>此时对left与right递归时需要对left, right做检查，同时中间节点的初始需要放在if判断之前；</li>
 </ol>
 <p>两种方法回溯：</p>
-<ol type="1">
+<ol>
 <li>使用vector存放路径，回溯时弹出最后一个元素；</li>
 <li>使用参数对路径修改，回溯时参数不变，等于回溯；</li>
 </ol>
-<h2 id="左叶子之和">1.7. 左叶子之和</h2>
-<p><a target="_blank" rel="noopener" href="https://programmercarl.com/0404.左叶子之和.html#思路">左叶子之和</a></p>
-<ol type="1">
-<li>终止条件：
-<ol type="1">
+<h2 id="左叶子之和">1.7. 左叶子之和</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0404.左叶子之和.html#思路">左叶子之和</a></p>
+<ol>
+<li>终止条件：<ol>
 <li>当前节点为空</li>
 <li>是叶子节点</li>
-</ol></li>
-<li>当前逻辑：
-<ol type="1">
+</ol>
+</li>
+<li>当前逻辑：<ol>
 <li>获取左子树的做叶子之和</li>
 <li>当左子树为左叶子时，单独计算</li>
 <li>获取右子树的左叶子之和</li>
-</ol></li>
+</ol>
+</li>
 <li>求和相加，返回</li>
 </ol>
-<h2 id="路径之和">1.8. 路径之和</h2>
-<p>递归函数是否有返回值，分为三种情况</p>
-<ol type="1">
-<li>需要对树的所有路径遍历且不用处理递归返回值，
-递归函数没有返回值void</li>
+<h2 id="路径之和">1.8. 路径之和</h2><p>递归函数是否有返回值，分为三种情况</p>
+<ol>
+<li>需要对树的所有路径遍历且不用处理递归返回值， 递归函数没有返回值void</li>
 <li>需要对树的所有路径遍历且需要对递归返回值进行处理，递归函数有返回值int</li>
 <li>之搜索一条符合条件的路径，则需要返回返回值，返回值通常为bool</li>
 </ol>
-<h3 id="找到路径即可">1.8.1. 找到路径即可</h3>
-<p><a target="_blank" rel="noopener" href="https://programmercarl.com/0112.路径总和.html#思路">找到路径即可</a></p>
-<ol type="1">
-<li>终止条件为找到叶节点
-<ol type="1">
+<h3 id="找到路径即可">1.8.1. 找到路径即可</h3><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0112.路径总和.html#思路">找到路径即可</a></p>
+<ol>
+<li>终止条件为找到叶节点<ol>
 <li>如果符合条件，返回true</li>
 <li>不符合条件，返回false;</li>
-</ol></li>
+</ol>
+</li>
 <li>如果左子树已经满足条件，返回true，不再搜索</li>
 <li>对右子树进行搜索</li>
 </ol>
-<h3 id="找到所有可能的路径">1.8.2. 找到所有可能的路径</h3>
-<p><a target="_blank" rel="noopener" href="https://programmercarl.com/0112.路径总和.html#思路">找到所有可能的路径</a></p>
-<ol type="1">
-<li>终止条件为找到叶节点
-<ol type="1">
+<h3 id="找到所有可能的路径">1.8.2. 找到所有可能的路径</h3><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0112.路径总和.html#思路">找到所有可能的路径</a></p>
+<ol>
+<li>终止条件为找到叶节点<ol>
 <li>符合条件，加入结果集中</li>
-</ol></li>
+</ol>
+</li>
 <li>找完左子树，再找右子树</li>
 </ol>
-<h2 id="前序中序创建二叉树">1.9. 前序/中序创建二叉树</h2>
-<ol type="1">
+<h2 id="前序-中序创建二叉树">1.9. 前序/中序创建二叉树</h2><ol>
 <li><p>终止条件：</p>
-<ol type="1">
+<ol>
 <li>数组为空时，返回NULL</li>
 <li>数组为1个时，返回节点r</li>
-</ol></li>
+</ol>
+</li>
 <li><p>处理逻辑：</p>
-<ol type="1">
+<ol>
 <li>pre的第一个节点作为root节点</li>
-<li>从中序in中找到与root相同的节点，以此为分割点，找到left
-,right数组的长度</li>
+<li>从中序in中找到与root相同的节点，以此为分割点，找到left ,right数组的长度</li>
 <li>前序left, right与中序长度相同，所有区间为左开右闭</li>
 </ol>
-<table>
-<colgroup>
-<col style="width: 4%">
-<col style="width: 48%">
-<col style="width: 47%">
-</colgroup>
-<thead>
-<tr class="header">
-<th></th>
-<th>left</th>
-<th>right</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>pre</td>
-<td>[leftPreorder+1, leftPreorder+1+left_size]</td>
-<td>[ leftPreorder+1+left_size,rightPreorder]</td>
-</tr>
-<tr class="even">
-<td>In</td>
-<td>[ leftInorder, break_point]</td>
-<td>[break_point+1, rightInorder]</td>
-</tr>
-</tbody>
-</table></li>
-<li><p>参数中包含数组分割节点</p></li>
+<p>|      | left                                       | right                                     |<br>| —— | ————————————————————— | ————————————————————- |<br>| pre  | [leftPreorder+1, leftPreorder+1+left_size] | [ leftPreorder+1+left_size,rightPreorder] |<br>| In   | [ leftInorder, break_point]                | [break_point+1, rightInorder]             |</p>
+</li>
+<li><p>参数中包含数组分割节点</p>
+</li>
 </ol>
-<h2 id="创建最大树">1.10. 创建最大树</h2>
-<ol type="1">
+<h2 id="创建最大树">1.10. 创建最大树</h2><ol>
 <li>终止条件：可为叶子节点，也可以是NULL</li>
-<li>处理逻辑：
-<ol type="1">
+<li>处理逻辑：<ol>
 <li>找到最大值索引，</li>
 <li>使用索引分割两区间</li>
-</ol></li>
 </ol>
-<h2 id="二叉搜索树">1.11. 二叉搜索树</h2>
-<p><a target="_blank" rel="noopener" href="https://programmercarl.com/0700.二叉搜索树中的搜索.html">二叉搜索树</a></p>
-<p>左子树 &lt; 中间 &lt; 右子树</p>
+</li>
+</ol>
+<h2 id="二叉搜索树">1.11. 二叉搜索树</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0700.二叉搜索树中的搜索.html">二叉搜索树</a></p>
+<p>左子树 &lt; 中间 &lt; 右子树 </p>
 <p>由中间值比较，确定对左子树/ 右子树一棵树进行搜索</p>
-<h2 id="验证二叉搜索树">1.12. 验证二叉搜索树</h2>
-<p>左子树的所有值 &lt; 中间 &lt; 右子树的所有值， 所以不能单独比较
-左节点 &lt; 中间 &lt; 右节点</p>
+<h2 id="验证二叉搜索树">1.12. 验证二叉搜索树</h2><p>左子树的所有值 &lt; 中间 &lt; 右子树的所有值， 所以不能单独比较 左节点 &lt; 中间 &lt; 右节点</p>
 <p>使用中序遍历，左中右，比较结果</p>
-<ol type="1">
+<ol>
 <li>中序遍历，得到数组，检查数组是否是从小到大</li>
 <li>中序遍历，保存遍历过程的做大值，保证遍历中的最大值&lt; 当前值</li>
 </ol>
-<h2 id="二叉树的最小差">1.13. 二叉树的最小差</h2>
-<p>二叉树所有数的最小值是相邻两个遍历节点的差值最小</p>
-<ol type="1">
-<li><p>中序遍历，得到数组后，求数组相邻数据的差值</p></li>
+<h2 id="二叉树的最小差">1.13. 二叉树的最小差</h2><p>二叉树所有数的最小值是相邻两个遍历节点的差值最小</p>
+<ol>
+<li><p>中序遍历，得到数组后，求数组相邻数据的差值</p>
+</li>
 <li><p>中序遍历，保存上一个节点pre， 每次使用cur与pre做差值</p>
 <blockquote>
 <p>在中序结束后，将pre = cur， 将cur保存为下一变量的前一个节点</p>
-</blockquote></li>
+</blockquote>
+</li>
 </ol>
-<h2 id="找到最近公共祖先">1.14. 找到最近公共祖先</h2>
-<p><a target="_blank" rel="noopener" href="https://programmercarl.com/0236.二叉树的最近公共祖先.html#思路">最近公共祖先</a>从下向上查询路径，后序遍历</p>
-<ol type="1">
-<li>终止条件：
-<ol type="1">
+<h2 id="找到最近公共祖先">1.14. 找到最近公共祖先</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0236.二叉树的最近公共祖先.html#思路">最近公共祖先</a>从下向上查询路径，后序遍历</p>
+<ol>
+<li>终止条件：<ol>
 <li>节点为NULL， 返回NULL</li>
 <li>找到确定节点，返回true ,将result修改为当前路径；</li>
-</ol></li>
-<li>处理逻辑：
-<ol type="1">
+</ol>
+</li>
+<li>处理逻辑：<ol>
 <li>如果p，q是不同树，那么更新result结果；</li>
 <li>如果只有q，在路径上，不更新result;(因为可能出现q是p的父节点，由终止条件2修正)</li>
-</ol></li>
 </ol>
-<h2 id="二叉搜索树的最近公共祖先">1.15. 二叉搜索树的最近公共祖先</h2>
-<p><a target="_blank" rel="noopener" href="https://programmercarl.com/0235.二叉搜索树的最近公共祖先.html#思路">二叉搜索树</a></p>
+</li>
+</ol>
+<h2 id="二叉搜索树的最近公共祖先">1.15. 二叉搜索树的最近公共祖先</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0235.二叉搜索树的最近公共祖先.html#思路">二叉搜索树</a></p>
 <p>二叉树有序，所以p,q的祖先节点位于[p,q]之间，且最近公共祖先是其遍历中的第一个，也只有这一个满足[p,q]条件</p>
-<h2 id="二叉搜索树的插入">1.16. 二叉搜索树的插入</h2>
-<p><a target="_blank" rel="noopener" href="https://programmercarl.com/0701.二叉搜索树中的插入操作.html#思路">插入</a></p>
-<ol type="1">
+<h2 id="二叉搜索树的插入">1.16. 二叉搜索树的插入</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0701.二叉搜索树中的插入操作.html#思路">插入</a></p>
+<ol>
 <li>终止条件： 遇到空节点，新建一个节点，并加入在parent节点左/右</li>
-<li>操作逻辑：
-<ol type="1">
+<li>操作逻辑： <ol>
 <li>val大于节点，进入右子树</li>
 <li>val小于节点，进入左子树</li>
-</ol></li>
+</ol>
+</li>
 </ol>
 <blockquote>
 <p>也可以不使用parent节点，终止条件中返回创建的节点，在操作时将返回的节点插入</p>
 </blockquote>
-<h2 id="二叉搜索树的删除">1.17. 二叉搜索树的删除</h2>
-<p><a target="_blank" rel="noopener" href="https://programmercarl.com/0450.删除二叉搜索树中的节点.html#算法公开课">删除</a></p>
+<h2 id="二叉搜索树的删除">1.17. 二叉搜索树的删除</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0450.删除二叉搜索树中的节点.html#算法公开课">删除</a></p>
 <p>终止条件：删除时如果左右子树都在，需要将左子树放在右子树的最左节点的最左侧</p>
-<h2 id="二叉树的修剪">1.18. 二叉树的修剪</h2>
-<p><a target="_blank" rel="noopener" href="https://programmercarl.com/0669.修剪二叉搜索树.html#思路">二叉树的修剪</a></p>
-<ol type="1">
+<h2 id="二叉树的修剪">1.18. 二叉树的修剪</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0669.修剪二叉搜索树.html#思路">二叉树的修剪</a></p>
+<ol>
 <li>终止条件： 如果root==NULL时，返回NULL;</li>
-<li>处理逻辑：
-<ol type="1">
-<li>中： 如果root &lt; left
-,修建左子树，将左子树合适节点代替root返回，反之亦然</li>
+<li>处理逻辑： <ol>
+<li>中： 如果root &lt; left ,修建左子树，将左子树合适节点代替root返回，反之亦然</li>
 <li>左： 对左子树修剪，返回结果赋值给root的左子树</li>
 <li>右：同上</li>
-</ol></li>
 </ol>
-<h2 id="有序数组-二叉搜索树">1.19. 有序数组-&gt;二叉搜索树</h2>
-<p><a target="_blank" rel="noopener" href="https://programmercarl.com/0108.将有序数组转换为二叉搜索树.html#算法公开课">有序数组构建二叉搜索树</a></p>
-<ol type="1">
+</li>
+</ol>
+<h2 id="有序数组-gt-二叉搜索树">1.19. 有序数组-&gt;二叉搜索树</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0108.将有序数组转换为二叉搜索树.html#算法公开课">有序数组构建二叉搜索树</a></p>
+<ol>
 <li>终止条件： 节点为空</li>
-<li>处理逻辑：
-<ol type="1">
+<li>处理逻辑：<ol>
 <li>有序数组的中间位置为根节点</li>
 <li>左子树，调用区间构建左子树</li>
 <li>右同上</li>
-</ol></li>
 </ol>
-<h2 id="二叉搜索树求和">1.20. 二叉搜索树求和</h2>
-<p><a target="_blank" rel="noopener" href="https://programmercarl.com/0538.把二叉搜索树转换为累加树.html#算法公开课">二叉搜索树转换为累加树</a></p>
-<ol type="1">
+</li>
+</ol>
+<h2 id="二叉搜索树求和">1.20. 二叉搜索树求和</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0538.把二叉搜索树转换为累加树.html#算法公开课">二叉搜索树转换为累加树</a></p>
+<ol>
 <li>终止条件： ~</li>
-<li>处理逻辑：
-<ol type="1">
+<li>处理逻辑： <ol>
 <li>二叉树有序，选择右中左遍历</li>
 <li>每次遍历时，需使用pre保存前一节点的累加和</li>
-</ol></li>
+</ol>
+</li>
 </ol>
 
                 
@@ -1459,7 +1405,7 @@ right做检查，同时中间节点的初始需要放在if判断之前；</li>
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">73.5k</span>
+                        class="white-color">73.2k</span>
             
             
             
