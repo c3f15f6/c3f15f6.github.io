@@ -5,9 +5,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="汤汁小白菜">
-    <meta name="description" content="1. 数据结构1.1. list#include &amp;lt;list&amp;gt;
+    <meta name="description" content="1. 数据结构
+1.1. list
+#include &amp;lt;list&amp;gt;
 List&amp;lt;int&amp;gt; mylist;
-list&amp;lt;string&amp;gt; names&amp;#x3D; &amp;#123;&amp;quot;a&amp;quot;,&amp;quot;b">
+list&amp;lt;string&amp;gt; names&amp;#x3D; &amp;#123;&amp;quot;a&amp;quot;,&amp;qu">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -451,13 +453,16 @@ list&amp;lt;string&amp;gt; names&amp;#x3D; &amp;#123;&amp;quot;a&amp;quot;,&amp;
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="数据结构">1. 数据结构</h1><h2 id="list">1.1. list</h2><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;list&gt;
+                <h1 id="数据结构">1. 数据结构</h1>
+<h2 id="list">1.1. list</h2>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;list&gt;
 List&lt;int&gt; mylist;
 list&lt;string&gt; names&#x3D; &#123;&quot;a&quot;,&quot;b&quot;,&quot;c&quot;&#125;;
 list&lt;int&gt; list(my_list.begin(), mylist.end());
 list&lt;int&gt; tenZeros(10);&#x2F;&#x2F; 初始化十个数，默认为0
 list&lt;int&gt; tenSeverns(10,7); &#x2F;&#x2F; 初始化十个7<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="添加元素">1.1.1. 添加元素</h3><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">mylist.push_back(10);
+<h3 id="添加元素">1.1.1. 添加元素</h3>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">mylist.push_back(10);
 
 mylist.push_front(10);
 
@@ -469,17 +474,20 @@ mylist.insert(it+1, 15);
 mylist.insert(it, vec.begin() ,vec.end());
 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="访问">1.1.2. 访问</h3><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">mylist.enpty()
+<h3 id="访问">1.1.2. 访问</h3>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">mylist.enpty()
 mylist.front()
 mylist.back()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h3 id="删除元素">1.1.3. 删除元素</h3><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">mylist.pop_front(); &#x2F;&#x2F;有返回吗
+<h3 id="删除元素">1.1.3. 删除元素</h3>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">mylist.pop_front(); &#x2F;&#x2F;有返回吗
 mylist.pop_back();
 auto it &#x3D; mylist.begin();
 it &#x3D; mylist.erase(it);
 
 mylist.erase(mylist.begin()+1, mylist.end());
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="遍历">1.1.4. 遍历</h3><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">for(auto it &#x3D; mylist.begin(); it !&#x3D; mylist.end() ;it++)&#123;
+<h3 id="遍历">1.1.4. 遍历</h3>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">for(auto it &#x3D; mylist.begin(); it !&#x3D; mylist.end() ;it++)&#123;
 	(*it) ++; 
 &#125;
 
@@ -490,14 +498,16 @@ for(auto num : mylist)&#123;
 for(auto&amp; num :mylist)&#123;
 	num ++; &#x2F;&#x2F;修改值时使用引用   
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="合并">1.1.5. 合并</h3><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">mylist.sort(); &#x2F;&#x2F; 默认从小到大排序
+<h3 id="合并">1.1.5. 合并</h3>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">mylist.sort(); &#x2F;&#x2F; 默认从小到大排序
 mylist.sort([](int a, int b)&#123;
     return a&gt;b;
 &#125;);&#x2F;&#x2F;a&gt;b 从大到小排序
 
 &#x2F;&#x2F; 合并 ,要求list1, list2都需要排序
 list1.merge(list2)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="唯一化">1.1.6. 唯一化</h3><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">mylist.unique();
+<h3 id="唯一化">1.1.6. 唯一化</h3>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">mylist.unique();
 
 &#x2F;&#x2F; 自定义相等
 mylist.unique([](int a, int b)&#123;
@@ -506,21 +516,25 @@ mylist.unique([](int a, int b)&#123;
 
 &#x2F;&#x2F; 反转 
 revList.reverse();<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="拼接">1.1.7. 拼接</h3><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">std::list&lt;int&gt; listA &#x3D; &#123;1, 2&#125;;
+<h3 id="拼接">1.1.7. 拼接</h3>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">std::list&lt;int&gt; listA &#x3D; &#123;1, 2&#125;;
 std::list&lt;int&gt; listB &#x3D; &#123;3, 4, 5&#125;;
 listA.splice(listA.end(), listB); &#x2F;&#x2F; listA: &#123;1, 2, 3, 4, 5&#125;, listB: &#123;&#125;
 listX.splice(listX.end(), listY, it_y); &#x2F;&#x2F; listX: &#123;10, 20, 30&#125;, listY: &#123;40, 50&#125;
 listP.splice(listP.end(), listQ, first_q, last_q);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="vector">1.2. vector</h2><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;vector&gt;
+<h2 id="vector">1.2. vector</h2>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;vector&gt;
 vector&lt;int&gt; myv;
 
 &#x2F;&#x2F; 从数组中创建vector
 arr &#x3D; &#123;1,2,3,4&#125;;
 myv &#x3D; vector&lt;int&gt; (arr, arr+ sizeof(arr)&#x2F; sizeof(arr[0]));<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="插入数据">1.2.1. 插入数据</h3><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">myv.push_back(value);
+<h3 id="插入数据">1.2.1. 插入数据</h3>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">myv.push_back(value);
 
 myv.emplace_back(value1, value2);&#x2F;&#x2F; value1 ,value2 可以组成结构体数据<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h3 id="访问元素">1.2.2. 访问元素</h3><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">myv[0] ;
+<h3 id="访问元素">1.2.2. 访问元素</h3>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">myv[0] ;
 
 try&#123;
     myv.at(0);
@@ -534,7 +548,8 @@ auto it &#x3D; myv.back();
 
 
 int* data&#x3D; myv.data();&#x2F;&#x2F; 返回数据数组指针<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="排序">1.2.3. 排序</h3><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;algorithm&gt;
+<h3 id="排序">1.2.3. 排序</h3>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;algorithm&gt;
 sort(my.begin() , my.end());&#x2F;&#x2F; 从小到大排序
 
 sort(my.begin(), my.end(), [](int a, int b)&#123;
@@ -543,12 +558,14 @@ sort(my.begin(), my.end(), [](int a, int b)&#123;
 
 
 sort(my.begin(), my.end(), greater&lt;int&gt;());&#x2F;&#x2F; 从大到小排序<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="合并-1">1.2.4. 合并</h3><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">vector&lt;int&gt; merge(v1.size() + v2.size());
+<h3 id="合并-1">1.2.4. 合并</h3>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">vector&lt;int&gt; merge(v1.size() + v2.size());
 
 &#x2F;&#x2F; v1，v2完成排序，合并结果在merge中
 merger(v1.begin, v1.end() ,v2.begin(), v2.end(), merge.begin());
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="stack-and-queue">1.3. stack and queue</h2><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;stack&gt;
+<h2 id="stack-and-queue">1.3. stack and queue</h2>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;stack&gt;
 stack&lt;int&gt; mys &#x3D; stack&lt;int, vector&lt;int&gt;&gt; (vec); &#x2F;&#x2F; 指定底层容器有什么效果
 
 
@@ -564,8 +581,10 @@ queue&lt;int, list&lt;int&gt;&gt; myq(vec);
 myq.push();
 myq.front(); &#x2F;&#x2F; 对头使用front, 栈顶使用top
 myq.back(); <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="deque">1.4. deque</h2><p>使用方法与vector类似，存储使用块与链表链接，比vector的性能好</p>
-<h2 id="map">1.5. map</h2><p>数据有序排列</p>
+<h2 id="deque">1.4. deque</h2>
+<p>使用方法与vector类似，存储使用块与链表链接，比vector的性能好</p>
+<h2 id="map">1.5. map</h2>
+<p>数据有序排列</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;map&gt;
 map&lt;string, age&gt; mymap &#x3D;&#123;&#123;&quot;a&quot;,20&#125;&#125;;
 
@@ -573,7 +592,8 @@ mymap[&quot;b&quot;]&#x3D;20;
 auto [it, inserted] &#x3D; mymap.insert&#123;&#123;&quot;c&quot;,10&#125;&#125;;
 mymap.emplace(&quot;c&quot;,10);
 &#x2F;&#x2F; 如果插入已存在，inserted值为false<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="访问-1">1.5.1. 访问</h3><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">mymap[&quot;a&quot;]; &#x2F;&#x2F; 没有自动创建元素
+<h3 id="访问-1">1.5.1. 访问</h3>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">mymap[&quot;a&quot;]; &#x2F;&#x2F; 没有自动创建元素
 mymap.at[&quot;b&quot;];&#x2F;&#x2F; 没有抛出异常out_of_range
 
 
@@ -592,21 +612,27 @@ for(auto&amp; pair: mymap)&#123;
 &#125;
 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="unordered-map">1.5.2. unordered_map</h3><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;unordered_map&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="unordered_map">1.5.2. unordered_map</h3>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;unordered_map&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>使用Hash表映射</p>
-<h3 id="multimap">1.5.3. multimap</h3><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">multimap&lt;string, int&gt; mymap;
+<h3 id="multimap">1.5.3. multimap</h3>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">multimap&lt;string, int&gt; mymap;
 
 &#x2F;&#x2F; 不可以使用[], at()
 
 &#x2F;&#x2F;find()， 返回一个迭代器
 &#x2F;&#x2F;equal_range(key), 返回一个pair, 包含两个迭代器，表示所有具有该键的元素的范围（[first, last)）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="unordered-multimap">1.5.4. unordered_multimap</h3><p>使用方法与multimap相同</p>
-<h2 id="pair">1.6. pair</h2><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;utility&gt;
+<h3 id="unordered_multimap">1.5.4. unordered_multimap</h3>
+<p>使用方法与multimap相同</p>
+<h2 id="pair">1.6. pair</h2>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;utility&gt;
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="set">1.7. set</h2><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;set&gt;
+<h2 id="set">1.7. set</h2>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;set&gt;
 set&lt;int, [](int a, int b)&#123;
     return a&gt;b&#125;&gt; set1 &#x3D; &#123;1,2,3,4&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h2 id="使用红黑树，自定义操作符">1.8. 使用红黑树，自定义操作符</h2><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">struct person&#123;
+<h2 id="使用红黑树自定义操作符">1.8. 使用红黑树，自定义操作符</h2>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">struct person&#123;
     int age;
     
     bool operator&lt;(const Person&amp; other) const&#123;
@@ -633,7 +659,8 @@ struct PointCompare &#123;
 &#125;;
 std::map&lt;Point, std::string, PointCompare&gt; pointMap;
 &#x2F;&#x2F; 这里不能使用out<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="priority-queue">1.9. priority_queue</h2><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F; 只能使用仿函数类型
+<h2 id="priority_queue">1.9. priority_queue</h2>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F; 只能使用仿函数类型
 class mycomparison&#123;
     public:
     bool operator()(const int&amp; a,const int&amp; b)const&#123;
@@ -648,7 +675,8 @@ class mycomparison&#123;
 
 priority_queue&lt;int&gt; q;&#x2F;&#x2F; 大顶堆，数据大的在顶端
 priority_queue&lt;int, vector&lt;int&gt;, mycomparison&gt; min_pq; &#x2F;&#x2F;小顶堆，小数据在顶端<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="numeric">1.10. numeric</h2><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;numeric&gt;
+<h2 id="numeric">1.10. numeric</h2>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;numeric&gt;
 
 int sum &#x3D; std::accumulate(numbers.begin(), numbers.end(), 0);&#x2F;&#x2F; 默认求和
 int product &#x3D; std::accumulate(numbers.begin(), numbers.end(), 1, std::multiplies&lt;int&gt;());
@@ -1353,7 +1381,7 @@ auto minmax &#x3D; minmax_element(number.begin(), number.end(),mycomparison);
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">73.1k</span>
+                        class="white-color">74.2k</span>
             
             
             
