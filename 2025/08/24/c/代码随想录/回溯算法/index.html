@@ -447,21 +447,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2026-02-04
+                    2026-02-05
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.7k
+                    3.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    11 分
+                    14 分
                 </div>
                 
 
@@ -856,6 +856,76 @@ def combinationSum3(self, k: int, n: int) -&gt; List[List[int]]:
 </ol></li>
 </ol>
 <p>详细代码注释如<a href="D:\code\leetcode\37.解数独.cpp">代码及注释</a></p>
+<h3 id="python">1.15.1. python</h3>
+<p>使用set() 集合，帮助查找，速度更快,O(1) &lt; O(n)</p>
+<blockquote>
+<p>对于i, j ，转换为一列的数据</p>
+<p>可以采用二维转一维的方式， 使用 len(i)* i +j ，转换到一列</p>
+</blockquote>
+<ol type="1">
+<li><p>终止条件：</p>
+<p>进入到第10列的时候</p></li>
+<li><p>判断值是否可以插入， 可以，将当前位置插入值，</p>
+<p>找到下一个开始位置，这样速度会更快，这里寻找下一个开始位置比较困难</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">next_row, next_col &#x3D; (row, col+1) if col &lt; 8 else (row+1, 0)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><p>结果进行回溯</p></li>
+</ol>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:
+    def backtracing(self, board: list[list[str]], result: list[list[list[str]]], 
+                    row_used: list[set], col_used: list[set], box_used: list[set]
+                    , row:int, col: int)-&gt;bool:
+        board_size &#x3D; len(board)
+        if row &gt;&#x3D; 9 :
+            return True
+        next_row, next_col &#x3D; (row, col+1) if col &lt; 8 else (row+1, 0)
+
+        if board[row][col] !&#x3D; &#39;.&#39;:
+            return self.backtracing(board, result, row_used, col_used , box_used, next_row, next_col)
+        for num in map(str, range(1,10)):
+            if (num in row_used[row] or
+                    num in col_used[col] or
+                num in box_used[row&#x2F;&#x2F;3 *3 + col&#x2F;&#x2F;3]):
+                continue
+                
+            board[row][col] &#x3D; num
+            row_used[row].add(num)
+            col_used[col].add(num)
+            box_used[row&#x2F;&#x2F;3 *3 + col&#x2F;&#x2F;3].add(num)
+
+            can &#x3D; self.backtracing(board, result,row_used, col_used, box_used, next_row, next_col)
+            # 遍历完所有，没有返回false, 找到了结果
+            if can &#x3D;&#x3D; True:
+                return True
+            # 回溯
+            board[row][col] &#x3D; &#39;.&#39;
+            row_used[row].discard(num)
+            col_used[col].discard(num)
+            box_used[row&#x2F;&#x2F;3 *3 + col&#x2F;&#x2F;3].discard(num)
+
+        return False
+
+        
+    def solveSudoku(self, board: List[List[str]]) -&gt; None:
+        &quot;&quot;&quot;
+        Do not return anything, modify board in-place instead.
+        &quot;&quot;&quot;
+        # 创建行、列，表格的哈希set
+        row_used &#x3D; [set() for _ in range(9)]
+        col_used &#x3D; [set() for _ in range(9)]
+        box_used &#x3D; [set() for _ in range(9)]
+        
+        for i in range(len(board)):
+            for j in range(len(board)):
+                if board[i][j] &#x3D;&#x3D; &#39;.&#39;:
+                    continue
+                row_used[i].add(board[i][j])
+                col_used[j].add(board[i][j])
+                box_used[i&#x2F;&#x2F;3 *3 + j&#x2F;&#x2F;3].add(board[i][j]) ## 表格i,j 映射为 len(j)*i + j
+        
+        result &#x3D; []
+
+        self.backtracing(board, result, row_used, col_used, box_used, 0, 0)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -1581,7 +1651,7 @@ def combinationSum3(self, k: int, n: int) -&gt; List[List[int]]:
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">74.2k</span>
+                        class="white-color">75.1k</span>
             
             
             
