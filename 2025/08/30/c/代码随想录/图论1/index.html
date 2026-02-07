@@ -440,21 +440,21 @@ typedef struct Node&amp;#123;
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-09-05
+                    2026-02-06
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.2k
+                    4.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    16 分
+                    19 分
                 </div>
                 
 
@@ -527,6 +527,106 @@ b-&gt;a的边</p>
 <img src="/2025/08/30/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E5%9B%BE%E8%AE%BA1/20240511115235.png" alt="img">
 <figcaption aria-hidden="true">img</figcaption>
 </figure>
+<h3 id="深度搜索--回溯位置的选择">1.1.8. 深度搜索- 回溯位置的选择</h3>
+<p><a target="_blank" rel="noopener" href="https://kamacoder.com/problempage.php?pid=1170#">查找从1-n
+的可达路径</a></p>
+<p>使用python，由于path的数据结构list， 在函数传参中相当于引用，
+所以如果在递归中增加节点，依旧会改变原有参数，所以需要在最后进行回溯，c++
+中不需要，因为参数修改，不影响回溯前结果</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">def dfs(graph: list[list[int]], startnode: int, path: list[int] , path_used: set, result:list[list[int]]):
+    # 环路检测， 如果path中出现了新的路径，证明有问题
+    if startnode in path_used:
+        print(f&quot;图中存在环路：&#123;path&#125; &quot;+str(startnode))
+        return
+    path.append(startnode)
+    path_used.add(startnode)
+
+    if startnode &#x3D;&#x3D; len(graph) -1 :
+        result.append(path.copy())
+       
+    else:
+        for i in range(len(graph[startnode])):
+            if graph[startnode][i] &#x3D;&#x3D; 1:
+
+                # 只能保证没有环的时候，不会有问题
+                dfs(graph, i , path, path_used, result)
+
+    path.pop()
+    path_used.discard(startnode)
+    return 
+def main():
+    n, m &#x3D; map(int, input().split())
+    # 创建二位矩阵
+    Graph &#x3D; [[0]*(n+1) for _ in range(n+1)]
+    
+    for i in range(m):
+        a, b &#x3D; map(int, input().split())
+        Graph[a][b] &#x3D; 1 # 有向图，a-&gt;b
+
+    path_used &#x3D; set()
+    path &#x3D; []
+    result &#x3D; []
+
+    dfs(Graph, 1, path_used &#x3D; path_used , path &#x3D; path, result &#x3D; result)
+    if len(result) &#x3D;&#x3D; 0:
+        print(-1)
+    else:
+        for i in range(len(result)):
+            # 使用join函数时候，要求list 中必须是str
+            print(&#39; &#39;.join(map(str, result[i])))
+
+if __name__ &#x3D;&#x3D; &#39;__main__&#39;:
+    main()
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>例如，在c++
+中不用在最后进行回溯，因为c++特性，参数的改变，不应先函数回溯前的数据</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+
+vector&lt;vector&lt;int&gt;&gt; result;
+void dfs(const vector&lt;vector&lt;int&gt;&gt;&amp; graph, vector&lt;int&gt; path, int startnode)&#123;
+
+    path.push_back(startnode);
+    if(startnode &#x3D;&#x3D; graph.size() -1 )&#123;
+        result.push_back(path);
+        return;
+    &#125;
+
+    for(int i &#x3D; 1 ; i &lt; graph[startnode].size() ; i++)&#123;
+        int arc &#x3D; graph[startnode][i];
+        if(arc &#x3D;&#x3D; 1)&#123;
+            dfs(graph, path, i);
+        &#125;
+    &#125;
+&#125;
+
+int main()&#123;
+    int n, m ;
+    cin &gt;&gt; n &gt;&gt; m;
+    vector&lt;vector&lt;int&gt;&gt; graph(n+1, vector&lt;int&gt;(n+1, 0));
+
+    for(int i &#x3D; 0 ; i &lt; m ; i++)&#123;
+        int a, b;
+        cin &gt;&gt; a &gt;&gt; b;
+        graph[a][b] &#x3D; 1;
+    &#125;
+
+    dfs(graph, vector&lt;int&gt;(), 1);
+    if(result.size()&#x3D;&#x3D; 0)&#123;
+        cout&lt;&lt; -1 &lt;&lt; endl;
+    &#125;else&#123;
+        for(auto res: result)&#123;
+            for(int i &#x3D; 0 ; i &lt; res.size() -1 ; i++)&#123;
+                cout &lt;&lt; res[i] &lt;&lt; &#39; &#39;;
+            &#125;
+            cout &lt;&lt; res[res.size() -1]&lt;&lt; endl;
+        &#125;
+    &#125;
+    return 0 ;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>当然，也可以查用在调用函数前处理输出，不过此时需要在深搜之后回溯，参考回溯算法，这里不再列代码</p>
 <h2 id="岛屿数量">1.2. 岛屿数量</h2>
 <ol type="1">
 <li>每次遍历可以得到一个连通分量， 遍历总次数 = 所有连通分量=
@@ -1687,7 +1787,7 @@ public:
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">75.1k</span>
+                        class="white-color">76.4k</span>
             
             
             
