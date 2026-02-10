@@ -5,8 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="cutting_plane, 汤汁小白菜">
-    <meta name="description" content="1. 割平面
-目标： 切割松弛问题的可行域，加快搜索
+    <meta name="description" content="1. 割平面目标： 切割松弛问题的可行域，加快搜索
 要求：
 
 不能将原问题的可行域切掉
@@ -14,9 +13,10 @@
 
 
 1.1. 分割的步骤
+在分支前采用有效的不等式进行切割可行域
 
 
-仅有batch bound的">
+1.2. 两">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -439,7 +439,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    427
+                    383
                 </div>
                 
 
@@ -469,81 +469,48 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="割平面">1. 割平面</h1>
-<p>目标： 切割松弛问题的可行域，加快搜索</p>
+                <h1 id="割平面">1. 割平面</h1><p>目标： 切割松弛问题的可行域，加快搜索</p>
 <p>要求：</p>
-<ol type="1">
+<ol>
 <li>不能将原问题的可行域切掉</li>
 <li>需要切割松弛问题，如果可以切割松弛问题的最优解（非原问题可行解）最好</li>
 </ol>
 <p><img src="/2026/02/05/%E7%A0%940/operation/cutting_plane/image-20260205175504624.png" alt="约束作用" style="zoom: 33%;"></p>
-<h2 id="分割的步骤">1.1. 分割的步骤</h2>
-<figure>
-<img src="/2026/02/05/%E7%A0%940/operation/cutting_plane/image-20260205175755750.png" alt="仅有batch bound的步骤">
-<figcaption aria-hidden="true">仅有batch bound的步骤</figcaption>
-</figure>
+<h2 id="分割的步骤">1.1. 分割的步骤</h2><p><img src="/2026/02/05/%E7%A0%940/operation/cutting_plane/image-20260205175755750.png" alt="仅有batch bound的步骤"></p>
 <p>在分支前采用有效的不等式进行切割可行域</p>
-<figure>
-<img src="/2026/02/05/%E7%A0%940/operation/cutting_plane/image-20260205175850847.png" alt="batch_cutting">
-<figcaption aria-hidden="true">batch_cutting</figcaption>
-</figure>
+<p><img src="/2026/02/05/%E7%A0%940/operation/cutting_plane/image-20260205175850847.png" alt="batch_cutting"></p>
 <p><img src="/2026/02/05/%E7%A0%940/operation/cutting_plane/image-20260205175528252.png" alt="约束作用后的batch tree图" style="zoom:33%;"></p>
-<h2 id="两种方法">1.2. 两种方法</h2>
-<h3 id="gomony-cutting">1.2.1. Gomony cutting</h3>
-<ol type="1">
+<h2 id="两种方法">1.2. 两种方法</h2><h3 id="Gomony-cutting">1.2.1. Gomony cutting</h3><ol>
 <li><p>将所有系数向下取整</p>
-<p>成立：因为原可行解，在新的割中依然成立，不改变原解</p></li>
+<p>成立：因为原可行解，在新的割中依然成立，不改变原解</p>
+</li>
 <li><p>右值也向下取整</p>
-<p>成立：系数为整数，所以结果必须是整数</p></li>
+<p>成立：系数为整数，所以结果必须是整数</p>
+</li>
 </ol>
-<figure>
-<img src="/2026/02/05/%E7%A0%940/operation/cutting_plane/image-20260205234330247.png" alt="分割方法">
-<figcaption aria-hidden="true">分割方法</figcaption>
-</figure>
-<h4 id="单纯行表使用">1.2.1.1. 单纯行表使用</h4>
-<p>对于IP 问题，使用LP 问题求解的optimal
-中有分数，所有不是最优解，且其中的分式中有分数</p>
-<p>将其中的分数式子，使用Gomony cutting，
-将这个分式转换为有效的割平面</p>
-<figure>
-<img src="/2026/02/05/%E7%A0%940/operation/cutting_plane/image-20260205235537726.png" alt="单纯性表中有分数">
-<figcaption aria-hidden="true">单纯性表中有分数</figcaption>
-</figure>
-<figure>
-<img src="/2026/02/05/%E7%A0%940/operation/cutting_plane/image-20260205235803949.png" alt="image-20260205235803949">
-<figcaption aria-hidden="true">image-20260205235803949</figcaption>
-</figure>
-<h4 id="增强割平面">1.2.1.2. 增强割平面</h4>
-<p>对于 <span class="math display"><em>a</em><em>x</em> &lt; <em>b</em></span> 如果ax
-靠近b，那么约束更加有效，所以，可以抬升a， 对约束是有效的</p>
+<p><img src="/2026/02/05/%E7%A0%940/operation/cutting_plane/image-20260205234330247.png" alt="分割方法"></p>
+<h4 id="单纯行表使用">1.2.1.1. 单纯行表使用</h4><p>对于IP 问题，使用LP 问题求解的optimal 中有分数，所有不是最优解，且其中的分式中有分数</p>
+<p>将其中的分数式子，使用Gomony cutting， 将这个分式转换为有效的割平面</p>
+<p><img src="/2026/02/05/%E7%A0%940/operation/cutting_plane/image-20260205235537726.png" alt="单纯性表中有分数"></p>
+<p><img src="/2026/02/05/%E7%A0%940/operation/cutting_plane/image-20260205235803949.png" alt="image-20260205235803949"></p>
+<h4 id="增强割平面">1.2.1.2. 增强割平面</h4><p>对于</p>
+<script type="math/tex; mode=display">
+ ax < b</script><p>如果ax 靠近b，那么约束更加有效，所以，可以抬升a， 对约束是有效的</p>
 <p>当 x 前的系数 小于b 的时候， a 可以向上取整，实现约束的增强</p>
-<h3 id="cover-cutting">1.2.2. cover cutting</h3>
-<p>增加一个不等式，对 <strong>部分约束</strong>的集合进行约束</p>
-<figure>
-<img src="/2026/02/05/%E7%A0%940/operation/cutting_plane/image-20260206000208976.png" alt="覆盖约束适用范围">
-<figcaption aria-hidden="true">覆盖约束适用范围</figcaption>
-</figure>
-<h4 id="解题步骤">1.2.2.1. 解题步骤</h4>
-<ol type="1">
+<h3 id="cover-cutting">1.2.2. cover cutting</h3><p>增加一个不等式，对 <strong>部分约束</strong>的集合进行约束</p>
+<p><img src="/2026/02/05/%E7%A0%940/operation/cutting_plane/image-20260206000208976.png" alt="覆盖约束适用范围"></p>
+<h4 id="解题步骤">1.2.2.1. 解题步骤</h4><ol>
 <li>求一个系数 a 对 b的最大覆盖集合</li>
-<li>选择集合中的系数，构建约束 ,右值小于 |c|-1</li>
+<li>选择集合中的系数，构建约束  ,右值小于 |c|-1</li>
 </ol>
-<figure>
-<img src="/2026/02/05/%E7%A0%940/operation/cutting_plane/image-20260206000414801.png" alt="集合约束示例">
-<figcaption aria-hidden="true">集合约束示例</figcaption>
-</figure>
-<h3 id="割平面强度">1.2.3. 割平面强度</h3>
-<ol type="1">
+<p><img src="/2026/02/05/%E7%A0%940/operation/cutting_plane/image-20260206000414801.png" alt="集合约束示例"></p>
+<h3 id="割平面强度">1.2.3. 割平面强度</h3><ol>
 <li><p>切割的维度越高越好</p>
-<figure>
-<img src="/2026/02/05/%E7%A0%940/operation/cutting_plane/image-20260206000955186.png" alt="切割维度">
-<figcaption aria-hidden="true">切割维度</figcaption>
-</figure></li>
+<p><img src="/2026/02/05/%E7%A0%940/operation/cutting_plane/image-20260206000955186.png" alt="切割维度"></p>
+</li>
 <li><p>切割越靠近conv() 越好</p>
-<figure>
-<img src="/2026/02/05/%E7%A0%940/operation/cutting_plane/image-20260206001044421.png" alt="image-20260206001044421">
-<figcaption aria-hidden="true">image-20260206001044421</figcaption>
-</figure></li>
+<p><img src="/2026/02/05/%E7%A0%940/operation/cutting_plane/image-20260206001044421.png" alt="image-20260206001044421"></p>
+</li>
 </ol>
 
                 

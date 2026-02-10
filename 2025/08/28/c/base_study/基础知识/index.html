@@ -5,14 +5,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="c++基础, 汤汁小白菜">
-    <meta name="description" content="1. c++基础
-1.1. Union联合体
-union&amp;#123;
+    <meta name="description" content="1. c++基础1.1. Union联合体union&amp;#123;
 	linkNode link;
 	NetNode net;
 &amp;#125;LinkOrNet
 结构体中有两个变量，但是只能有一个变量占据内存
-c++17 中替代方案">
+c++17 中替代方案varian">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -443,7 +441,7 @@ c++17 中替代方案">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    256
+                    253
                 </div>
                 
 
@@ -473,9 +471,7 @@ c++17 中替代方案">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="c基础">1. c++基础</h1>
-<h2 id="union联合体">1.1. Union联合体</h2>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">union&#123;
+                <h1 id="c-基础">1. c++基础</h1><h2 id="Union联合体">1.1. Union联合体</h2><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">union&#123;
 	linkNode link;
 	NetNode net;
 &#125;LinkOrNet<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
@@ -485,30 +481,30 @@ c++17 中替代方案">
 varient&lt;linkNode, NetNode&gt; a; 
 LinkNode b;
 a&#x3D; b; &#x2F;&#x2F; 自动追踪<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="string">1.2. string</h2>
-<h3 id="构造函数">1.2.1. 构造函数</h3>
-<ol type="1">
+<h2 id="string">1.2. string</h2><h3 id="构造函数">1.2.1. 构造函数</h3><ol>
 <li><p><code>char*</code>转换<code>string(const char* s, size_type n)</code></p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">char c &#x3D; &#39;a&#39;;
-string s(&amp;c);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+string s(&amp;c);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
 <li><p><code>char</code>转换<code>std::string(size_type n, char c)</code></p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">char c &#x3D; &#39;a&#39;;
-string s(4, c); &#x2F;&#x2F; 生成4个c<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+string s(4, c); &#x2F;&#x2F; 生成4个c<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
 <li><p>子字符串构建<code>string(s, start_pos, len)</code></p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">string s &#x3D; &quot;aaaaaaaaaaa&quot;;
 string s1(s, 3, 4); &#x2F;&#x2F; 从3 开始字符串长度4
 
 &#x2F;&#x2F;类似切割字串
-string s2 &#x3D; s.substr(3, 4);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+string s2 &#x3D; s.substr(3, 4);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
 <li><p>迭代器构造<code>string(start_pos, end_pos)</code></p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">char c[] &#x3D; &quot;aaaaa&quot;;
 string s1(c, c+3); &#x2F;&#x2F; 起始位置为c， 终止c+3;
 vector&lt;char&gt; v &#x3D; &#123;&#39;a&#39;, &#39;b&#39;&#125;;
-string s2(v.begin(), v.end());<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></li>
+string s2(v.begin(), v.end());<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
 </ol>
-<h3 id="查找函数finds-start_pos">1.2.2. 查找函数find(s,  start_pos)</h3>
-<h3 id="字符串比较-s-t">1.2.3. 字符串比较 s , t</h3>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">s &#x3D;&#x3D; t &#x2F;&#x2F; string中具有运算符重载<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="查找函数find-s-start-pos">1.2.2. 查找函数find(s,  start_pos)</h3><h3 id="字符串比较-s-t">1.2.3. 字符串比较 s , t</h3><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">s &#x3D;&#x3D; t &#x2F;&#x2F; string中具有运算符重载<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
                 
             </div>

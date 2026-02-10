@@ -5,15 +5,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Bender cutting, 汤汁小白菜">
-    <meta name="description" content="1. Bender cutting
-核心思想：并不是所有的割平面都有效。 将问题分解，减少约束，
-然后逐步增加约束割平面，实现求解
+    <meta name="description" content="1. Bender cutting核心思想：并不是所有的割平面都有效。 将问题分解，减少约束， 然后逐步增加约束割平面，实现求解
 
-
-主问题与子问题联系
-
-主问题从子问题中获得information ,
-然后创建割，求解问">
+主问题从子问题中获得information , 然后创建割，求解问题，求解后的结果再传入子问题中
+1.1. ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -436,7 +431,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    308
+                    293
                 </div>
                 
 
@@ -466,40 +461,19 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="bender-cutting">1. Bender cutting</h1>
-<p>核心思想：并不是所有的割平面都有效。 将问题分解，减少约束，
-然后逐步增加约束割平面，实现求解</p>
-<figure>
-<img src="/2026/02/07/%E7%A0%940/operation/Bender-cutting/image-20260207001847530.png" alt="主问题与子问题联系">
-<figcaption aria-hidden="true">主问题与子问题联系</figcaption>
-</figure>
-<p>主问题从子问题中获得information ,
-然后创建割，求解问题，求解后的结果再传入子问题中</p>
-<h2 id="子问题划分">1.1. 子问题划分</h2>
-<p>固定 y 之后，原问题变成关于 x 的函数，Q(x)，
-所以可以先优化子问题得到，需要关于Y的函数，然后在对函数q(y)
-进行最小化，得到最优解</p>
-<p>这里，就产生了两个问题，主问题q(y), 子问题Q(x)
-，同时，子问题设置为LP问题， 主问题是IP问题，更好求解</p>
-<figure>
-<img src="/2026/02/07/%E7%A0%940/operation/Bender-cutting/image-20260207003131779.png" alt="image-20260207003131779">
-<figcaption aria-hidden="true">image-20260207003131779</figcaption>
-</figure>
-<p>由于子问题 约束受 y 改变影响，不便求解。
-将子问题转换为对偶问题求解</p>
-<figure>
-<img src="/2026/02/07/%E7%A0%940/operation/Bender-cutting/image-20260207004108234.png" alt="image-20260207004108234">
-<figcaption aria-hidden="true">image-20260207004108234</figcaption>
-</figure>
+                <h1 id="Bender-cutting">1. Bender cutting</h1><p>核心思想：并不是所有的割平面都有效。 将问题分解，减少约束， 然后逐步增加约束割平面，实现求解</p>
+<p><img src="/2026/02/07/%E7%A0%940/operation/Bender-cutting/image-20260207001847530.png" alt="主问题与子问题联系"></p>
+<p>主问题从子问题中获得information , 然后创建割，求解问题，求解后的结果再传入子问题中</p>
+<h2 id="子问题划分">1.1. 子问题划分</h2><p>固定 y 之后，原问题变成关于 x 的函数，Q(x)， 所以可以先优化子问题得到，需要关于Y的函数，然后在对函数q(y) 进行最小化，得到最优解</p>
+<p>这里，就产生了两个问题，主问题q(y), 子问题Q(x)  ，同时，子问题设置为LP问题， 主问题是IP问题，更好求解</p>
+<p><img src="/2026/02/07/%E7%A0%940/operation/Bender-cutting/image-20260207003131779.png" alt="image-20260207003131779"></p>
+<p>由于子问题 约束受 y 改变影响，不便求解。 将子问题转换为对偶问题求解</p>
+<p><img src="/2026/02/07/%E7%A0%940/operation/Bender-cutting/image-20260207004108234.png" alt="image-20260207004108234"></p>
 <p>求解子问题，得到上限</p>
-<p>对偶问题的结果信息 =
-子问题的结果信息，可以反馈给主问题，向主问题中增加约束，缩小下限</p>
+<p>对偶问题的结果信息 = 子问题的结果信息，可以反馈给主问题，向主问题中增加约束，缩小下限</p>
 <p>两者相交时候，得到最优解</p>
 <p>一下是对偶子问题的信息反馈给原问题的，详细解题思路</p>
-<figure>
-<img src="/2026/02/07/%E7%A0%940/operation/Bender-cutting/image-20260207004300092.png" alt="image-20260207004300092">
-<figcaption aria-hidden="true">image-20260207004300092</figcaption>
-</figure>
+<p><img src="/2026/02/07/%E7%A0%940/operation/Bender-cutting/image-20260207004300092.png" alt="image-20260207004300092"></p>
 
                 
             </div>
@@ -874,18 +848,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2026/02/07/%E7%A0%940/operation/Bender-cutting/">
+                <a href="/2026/02/10/%E7%A0%940/operation/lagranre-relation/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Bender cutting">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="lagranre relation">
                         
-                        <span class="card-title">Bender cutting</span>
+                        <span class="card-title">lagranre relation</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -895,9 +868,9 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2026-02-07
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2026-02-10
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -910,7 +883,6 @@
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>

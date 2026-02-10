@@ -5,15 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="启发式算法, 汤汁小白菜">
-    <meta name="description" content="1. 启发式算法
-1.1. 构造方法
-​ x = [x1,x2,x3,…xn]
-， 逐步修改xn
-的数据，选择xn
-时候，可以采用一定的优化策略进行选择，实现优化
-1.2. 搜索方法
-$ x = x + x$, 在x
-相近的">
+    <meta name="description" content="1. 启发式算法1.1. 构造方法​    $x = [x_1 , x_2, x_3 , \dots x_n]$ ， 逐步修改$x_n$ 的数据，选择$x_n$ 时候，可以采用一定的优化策略进行选择，实现优化
+1.2. 搜索方法$ x = ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -436,7 +429,7 @@ $ x = x + x$, 在x
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    406
+                    403
                 </div>
                 
 
@@ -466,51 +459,25 @@ $ x = x + x$, 在x
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="启发式算法">1. 启发式算法</h1>
-<h2 id="构造方法">1.1. 构造方法</h2>
-<p>​ <span class="math inline"><em>x</em> = [<em>x</em><sub>1</sub>,<em>x</em><sub>2</sub>,<em>x</em><sub>3</sub>,…<em>x</em><sub><em>n</em></sub>]</span>
-， 逐步修改<span class="math inline"><em>x</em><sub><em>n</em></sub></span>
-的数据，选择<span class="math inline"><em>x</em><sub><em>n</em></sub></span>
-时候，可以采用一定的优化策略进行选择，实现优化</p>
-<h2 id="搜索方法">1.2. 搜索方法</h2>
-<p>$ x = x + x$, 在x
-相近的领域中移动，移动采用一定的优化策略，实现优化</p>
-<p><a href="#%20构造方法">构造方法</a> 与 <a href="搜索方法">搜索方法</a> 都有可能陷入局部最优解，解决方法：
-多个初始解 / 元启发式算法</p>
+                <h1 id="启发式算法">1. 启发式算法</h1><h2 id="构造方法">1.1. 构造方法</h2><p>​    $x = [x_1 , x_2, x_3 , \dots x_n]$ ， 逐步修改$x_n$ 的数据，选择$x_n$ 时候，可以采用一定的优化策略进行选择，实现优化</p>
+<h2 id="搜索方法">1.2. 搜索方法</h2><p>$ x = x + \nabla x$,  在x 相近的领域中移动，移动采用一定的优化策略，实现优化</p>
+<p><a href="# 构造方法">构造方法</a> 与 <a href="搜索方法">搜索方法</a>  都有可能陷入局部最优解，解决方法： 多个初始解 / 元启发式算法</p>
 <p><img src="/2026/02/02/%E7%A0%940/operation/%E5%90%AF%E5%8F%91%E5%BC%8F%E7%AE%97%E6%B3%95/image-20260203162458764.png" alt="打孔问题" style="zoom: 33%;"></p>
-<p><span class="math inline"><em>y</em><sub><em>i</em>, <em>k</em></sub></span>，
-表示第i 次，打第 k 个孔， <span class="math inline"><em>y</em><sub><em>k</em> + 1，<em>i</em></sub> * <em>y</em><sub><em>k</em>, <em>j</em></sub></span>
-表示第K次打孔， 从j到i 之间是否被打孔，如果都被打孔，则i -&gt; j
-之间有一条路径</p>
-<h1 id="元启发式算法">2. 元启发式算法</h1>
-<p>采用一定方法，跳出局部最优解，方法：
-接受不好的值，获得更多的可能性</p>
-<h2 id="禁忌搜索">2.1. 禁忌搜索</h2>
-<p>允许向不好的方向进行移动，但是可以进入不断循环中，因此</p>
+<p>$y_{i,k}$， 表示第i 次，打第 k 个孔， $y_{k+1，i}* y_{k, j}$ 表示第K次打孔， 从j到i 之间是否被打孔，如果都被打孔，则i -&gt; j 之间有一条路径</p>
+<h1 id="元启发式算法">2. 元启发式算法</h1><p>采用一定方法，跳出局部最优解，方法： 接受不好的值，获得更多的可能性</p>
+<h2 id="禁忌搜索">2.1. 禁忌搜索</h2><p>允许向不好的方向进行移动，但是可以进入不断循环中，因此</p>
 <p>对之前搜索过的位置加一些禁制，避免重复移动，打破循环</p>
-<h2 id="模拟退化算法">2.2. 模拟退化算法</h2>
-<p>对不好的移动方向有一定的容忍度，<strong>这是与禁忌搜索算法的不同</strong>，容忍度计算公式
-<span class="math display">$$
-prob = e^{\frac{\nabla obj}{q}}
-$$</span> <img src="/2026/02/02/%E7%A0%940/operation/%E5%90%AF%E5%8F%91%E5%BC%8F%E7%AE%97%E6%B3%95/image-20260203163945585.png" alt="prob 关于 值变化曲线"></p>
+<h2 id="模拟退化算法">2.2. 模拟退化算法</h2><p>对不好的移动方向有一定的容忍度，<strong>这是与禁忌搜索算法的不同</strong>，容忍度计算公式</p>
+<script type="math/tex; mode=display">
+prob = e^{\frac{\nabla obj}{q}}</script><p><img src="/2026/02/02/%E7%A0%940/operation/%E5%90%AF%E5%8F%91%E5%BC%8F%E7%AE%97%E6%B3%95/image-20260203163945585.png" alt="prob 关于 值变化曲线"></p>
 <ul>
 <li>p 越大，prob值越大，对不好方向容忍度越高</li>
-<li>当<span class="math inline">∇<em>o</em><em>b</em><em>j</em></span>
-为正数的时候，Prob &gt; 1 ，一定接受好的方向</li>
+<li>当$\nabla obj$ 为正数的时候，Prob &gt; 1 ，一定接受好的方向</li>
 <li>在搜索中，控制P，逐渐由大变小，控制容忍度</li>
 </ul>
-<h2 id="遗传-算法">2.3. 遗传 算法</h2>
-<p><a href="#%20模拟退火算法">模拟退火</a> 与 <a href="#%20禁忌搜索">禁忌搜索</a> 都是single 搜索算法，遗传算法是
-Population 算法</p>
-<figure>
-<img src="/2026/02/02/%E7%A0%940/operation/%E5%90%AF%E5%8F%91%E5%BC%8F%E7%AE%97%E6%B3%95/image-20260203164510584.png" alt="image-20260203164510584">
-<figcaption aria-hidden="true">image-20260203164510584</figcaption>
-</figure>
-<h3 id="编码">2.3.1. 编码</h3>
-<figure>
-<img src="/2026/02/02/%E7%A0%940/operation/%E5%90%AF%E5%8F%91%E5%BC%8F%E7%AE%97%E6%B3%95/image-20260203164557420.png" alt="间接转换原序列">
-<figcaption aria-hidden="true">间接转换原序列</figcaption>
-</figure>
+<h2 id="遗传-算法">2.3. 遗传 算法</h2><p><a href="# 模拟退火算法">模拟退火</a> 与 <a href="# 禁忌搜索">禁忌搜索</a> 都是single 搜索算法，遗传算法是 Population 算法</p>
+<p><img src="/2026/02/02/%E7%A0%940/operation/%E5%90%AF%E5%8F%91%E5%BC%8F%E7%AE%97%E6%B3%95/image-20260203164510584.png" alt="image-20260203164510584"></p>
+<h3 id="编码">2.3.1. 编码</h3><p><img src="/2026/02/02/%E7%A0%940/operation/%E5%90%AF%E5%8F%91%E5%BC%8F%E7%AE%97%E6%B3%95/image-20260203164557420.png" alt="间接转换原序列"></p>
 
                 
             </div>

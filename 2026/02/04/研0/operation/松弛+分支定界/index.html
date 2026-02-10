@@ -5,14 +5,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="松弛+分支定界, 汤汁小白菜">
-    <meta name="description" content="1. 松弛+分支定界
-1.1. 松弛
-方式：
+    <meta name="description" content="1. 松弛+分支定界1.1. 松弛方式：
 
 削弱目标函数
 削弱约束（多为削弱约束）
-
 线性松弛，将整数变量约束，削弱为连续变量约束
+
 
 
 要求：
@@ -20,7 +18,8 @@
 原问题所有可行解必须保留
 新的问题比原问题更好解
 
-1.1.">
+1.1.1. 作用
+松弛模型证明元模型的可">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -443,7 +442,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    305
+                    301
                 </div>
                 
 
@@ -473,48 +472,42 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="松弛分支定界">1. 松弛+分支定界</h1>
-<h2 id="松弛">1.1. 松弛</h2>
-<p>方式：</p>
-<ol type="1">
+                <h1 id="松弛-分支定界">1. 松弛+分支定界</h1><h2 id="松弛">1.1. 松弛</h2><p>方式：</p>
+<ol>
 <li>削弱目标函数</li>
-<li>削弱约束（多为削弱约束）
-<ol type="1">
+<li>削弱约束（多为削弱约束）<ol>
 <li>线性松弛，将整数变量约束，削弱为连续变量约束</li>
-</ol></li>
+</ol>
+</li>
 </ol>
 <p>要求：</p>
-<ol type="1">
+<ol>
 <li>原问题所有可行解必须保留</li>
 <li>新的问题比原问题更好解</li>
 </ol>
-<h3 id="作用">1.1.1. 作用</h3>
-<ol type="1">
-<li><p>松弛模型证明元模型的可行性</p></li>
+<h3 id="作用">1.1.1. 作用</h3><ol>
+<li><p>松弛模型证明元模型的可行性</p>
+</li>
 <li><p>给出原模型目标值的界</p>
-<ol type="1">
+<ol>
 <li><p>对于min 问题， 松弛模型确定下届，取整数确定上届</p>
-<figure>
-<img src="/2026/02/04/%E7%A0%940/operation/%E6%9D%BE%E5%BC%9B+%E5%88%86%E6%94%AF%E5%AE%9A%E7%95%8C/image-20260204230318403.png" alt="模型上下界">
-<figcaption aria-hidden="true">模型上下界</figcaption>
-</figure></li>
-</ol></li>
-<li><p>采用更强的线性规划松弛</p></li>
-<li><p>使用大M 常量，是0-1变量与 普通变量联系起来 <span class="math display">$$
-x_i &lt; 100*y_i, \space y_i 是0-1变量， x_i 是对应y=1时候的数值
-$$</span></p></li>
+<p><img src="/2026/02/04/%E7%A0%940/operation/%E6%9D%BE%E5%BC%9B+%E5%88%86%E6%94%AF%E5%AE%9A%E7%95%8C/image-20260204230318403.png" alt="模型上下界"></p>
+</li>
+</ol>
+</li>
+<li><p>采用更强的线性规划松弛</p>
+</li>
+<li><p>使用大M 常量，是0-1变量与 普通变量联系起来</p>
+<script type="math/tex; mode=display">
+x_i < 100*y_i, \space y_i 是0-1变量， x_i 是对应y=1时候的数值</script></li>
 </ol>
 <blockquote>
-<p>数学中，松弛模型使用表示， <span class="math inline"><em>x̃</em></span>，估计值使用， <span class="math inline"><em>x̂</em></span></p>
+<p>数学中，松弛模型使用\tilde 表示， $\tilde{x}$，估计值使用\hat， $\hat{x}$</p>
 </blockquote>
-<h2 id="分支定界">1.2. 分支定界</h2>
-<p>对于线性问题，逐步增加约束，树枝上每一步确定约束生效时候，值应该取多少</p>
-<figure>
-<img src="/2026/02/04/%E7%A0%940/operation/%E6%9D%BE%E5%BC%9B+%E5%88%86%E6%94%AF%E5%AE%9A%E7%95%8C/image-20260204231219055.png" alt="分支">
-<figcaption aria-hidden="true">分支</figcaption>
-</figure>
+<h2 id="分支定界">1.2. 分支定界</h2><p>对于线性问题，逐步增加约束，树枝上每一步确定约束生效时候，值应该取多少</p>
+<p><img src="/2026/02/04/%E7%A0%940/operation/%E6%9D%BE%E5%BC%9B+%E5%88%86%E6%94%AF%E5%AE%9A%E7%95%8C/image-20260204231219055.png" alt="分支"></p>
 <p>对min问题，定界的三种情况</p>
-<ol type="1">
+<ol>
 <li>解出整数解， 停止，尝试更新上界（这是已经探明的最好的可行解）</li>
 <li>某个松弛条件 &gt; 上界，没有松弛必要，停止搜索</li>
 <li>某个问题不可行，停止搜索</li>
