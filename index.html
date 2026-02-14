@@ -626,22 +626,21 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1. 网络流问题最小网络流问题：
+                                1. 网络流问题
+最小网络流问题：
+
+
+决策变量
 
 约束：
 
 流平衡约束
 
 
+image-20260210230333268
+
 弧的可承担约束
-
-总供给 &gt; 总需求时候，新增一个节点，节点需求 = 总供给 - 总需求
-
-
-
-1.1. 网路问题求解方法
-1.1.1. 初始化可行流
-1.1.2. 好的方
+总供给 &gt; 总需求时候，新增一个节点，节点需求 = 总供给 -
                             
                         </div>
                         <div class="publish-info">
@@ -682,12 +681,14 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1. 拉格朗日松弛原理： 约束难以求解，通过乘子，将约束转换到目标函数中，再转换为dual 问题，将问题重构
+                                1. 拉格朗日松弛
+原理： 约束难以求解，通过乘子，将约束转换到目标函数中，再转换为dual
+问题，将问题重构
 方法：
 
 加入惩罚因子，确定惩罚因子的正负范围
-
-寻找最紧的松弛，例如primal min 问题， g(P)是其下界限，寻找最优g
+寻找最紧的松弛，例如primal min 问题，
+g(P)是其下界
                             
                         </div>
                         <div class="publish-info">
@@ -728,10 +729,15 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1. Bender cutting核心思想：并不是所有的割平面都有效。 将问题分解，减少约束， 然后逐步增加约束割平面，实现求解
+                                1. Bender cutting
+核心思想：并不是所有的割平面都有效。 将问题分解，减少约束，
+然后逐步增加约束割平面，实现求解
 
-主问题从子问题中获得information , 然后创建割，求解问题，求解后的结果再传入子问题中
-1.1. 
+
+主问题与子问题联系
+
+主问题从子问题中获得information ,
+然后创建割，求解问
                             
                         </div>
                         <div class="publish-info">
@@ -772,7 +778,8 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1. 割平面目标： 切割松弛问题的可行域，加快搜索
+                                1. 割平面
+目标： 切割松弛问题的可行域，加快搜索
 要求：
 
 不能将原问题的可行域切掉
@@ -780,10 +787,9 @@
 
 
 1.1. 分割的步骤
-在分支前采用有效的不等式进行切割可行域
 
 
-1.2. 两
+仅有batch bound的
                             
                         </div>
                         <div class="publish-info">
@@ -824,12 +830,14 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1. 松弛+分支定界1.1. 松弛方式：
+                                1. 松弛+分支定界
+1.1. 松弛
+方式：
 
 削弱目标函数
 削弱约束（多为削弱约束）
-线性松弛，将整数变量约束，削弱为连续变量约束
 
+线性松弛，将整数变量约束，削弱为连续变量约束
 
 
 要求：
@@ -837,8 +845,7 @@
 原问题所有可行解必须保留
 新的问题比原问题更好解
 
-1.1.1. 作用
-松弛模型证明元模型的可
+1.1.
                             
                         </div>
                         <div class="publish-info">
@@ -879,8 +886,15 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1. 启发式算法1.1. 构造方法​    $x = [x_1 , x_2, x_3 , \dots x_n]$ ， 逐步修改$x_n$ 的数据，选择$x_n$ 时候，可以采用一定的优化策略进行选择，实现优化
-1.2. 搜索方法$ x = 
+                                1. 启发式算法
+1.1. 构造方法
+​ x = [x1,x2,x3,…xn]
+， 逐步修改xn
+的数据，选择xn
+时候，可以采用一定的优化策略进行选择，实现优化
+1.2. 搜索方法
+$ x = x + x$, 在x
+相近的
                             
                         </div>
                         <div class="publish-info">
@@ -924,6 +938,7 @@
                         <div class="summary block-with-text">
                             
                                 1. matlab 面向对象
+
 每个类定义在单独的.m 文件中， 文件名与类名相同
 
 
@@ -931,7 +946,7 @@ classdef test_class
 
     % 定义属性
     properties(Access &#x3D; private)
-      
+ 
                             
                         </div>
                         <div class="publish-info">
@@ -972,15 +987,15 @@ classdef test_class
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1. yalmip1.1. 常用流程
+                                1. yalmip
+1.1. 常用流程
+
 创建变量
 x &#x3D; sdpvar(1, 2, 3, &#39;full&#39;) % 这里全部使用&#39;
 
 ? 为什么maltab 中’’ 与 “” 不同呢？
 
-
 优化
-d &#x3D; 
                             
                         </div>
                         <div class="publish-info">
@@ -1017,10 +1032,12 @@ d &#x3D;
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1. matlab1.1. 匿名函数首先传入两个变量后，另一个变量自动绑定
+                                1. matlab
+1.1. 匿名函数
+首先传入两个变量后，另一个变量自动绑定
 a &#x3D; 2;
 b &#x3D; 5;
-g &#x3D; @(x) myfun(x, a, b);  % 快捷方式：自动带 a&#x3D;2, b&#x3D
+g &#x3D; @(x) myfun(x, a, b);  % 快捷方式：自动带 a&#x3D;2, b
                             
                         </div>
                         <div class="publish-info">
@@ -1148,7 +1165,7 @@ g &#x3D; @(x) myfun(x, a, b);  % 快捷方式：自动带 a&#x3D;2, b&#x3D
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">76.5k</span>
+                        class="white-color">76.9k</span>
             
             
             
