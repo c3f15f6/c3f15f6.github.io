@@ -6,11 +6,8 @@
     <meta charset="utf-8">
     <meta name="keywords" content="汤汁小白菜">
     <meta name="description" content="
-0.1. 第一阶段：环境搭建与认知重构（第1-3天）
-0.1.1. 第一天：理解”优化”本质与工具链定位
-0.1.1.1. 上午（2小时）：概念认知重塑
-1.1 什么是优化问题？（从生活实例讲起）
-想象你在超市购物，手里有200">
+0.1. 第一阶段：环境搭建与认知重构（第1-3天）0.1.1. 第一天：理解”优化”本质与工具链定位0.1.1.1. 上午（2小时）：概念认知重塑1.1 什么是优化问题？（从生活实例讲起）
+想象你在超市购物，手里有200元预算，要买10">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -431,7 +428,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    85 分
+                    86 分
                 </div>
                 
 
@@ -455,17 +452,20 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <hr>
-<h2 id="第一阶段环境搭建与认知重构第1-3天">0.1. 第一阶段：环境搭建与认知重构（第1-3天）</h2>
-<h3 id="第一天理解优化本质与工具链定位">0.1.1. 第一天：理解”优化”本质与工具链定位</h3>
-<h4 id="上午2小时概念认知重塑">0.1.1.1. 上午（2小时）：概念认知重塑</h4>
-<p><strong>1.1 什么是优化问题？（从生活实例讲起）</strong></p>
-<p>想象你在超市购物，手里有200元预算，要买10种商品。每种商品有： -
-价格（成本） - 营养价值（收益） - 保质期（约束条件）</p>
+<h2 id="第一阶段：环境搭建与认知重构（第1-3天）">0.1. 第一阶段：环境搭建与认知重构（第1-3天）</h2><h3 id="第一天：理解”优化”本质与工具链定位">0.1.1. 第一天：理解”优化”本质与工具链定位</h3><h4 id="上午（2小时）：概念认知重塑">0.1.1.1. 上午（2小时）：概念认知重塑</h4><p><strong>1.1 什么是优化问题？（从生活实例讲起）</strong></p>
+<p>想象你在超市购物，手里有200元预算，要买10种商品。每种商品有：</p>
+<ul>
+<li>价格（成本）</li>
+<li>营养价值（收益）</li>
+<li>保质期（约束条件）</li>
+</ul>
 <p>目标：在预算内买到营养最高的组合，且每种商品至少买1件。</p>
-<p><strong>这就是优化问题的三要素：</strong> -
-<strong>决策变量</strong>：每种商品买多少（x₁, x₂, …, x₁₀） -
-<strong>目标函数</strong>：最大化营养价值（或最小化成本） -
-<strong>约束条件</strong>：总预算≤200元，每种商品≥1件</p>
+<p><strong>这就是优化问题的三要素：</strong></p>
+<ul>
+<li><strong>决策变量</strong>：每种商品买多少（x₁, x₂, …, x₁₀）</li>
+<li><strong>目标函数</strong>：最大化营养价值（或最小化成本）</li>
+<li><strong>约束条件</strong>：总预算≤200元，每种商品≥1件</li>
+</ul>
 <pre class="line-numbers language-wolfram" data-language="wolfram"><code class="language-wolfram">数学表达：
 maximize: Σ(营养值ᵢ × xᵢ)
 subject to: Σ(价格ᵢ × xᵢ) ≤ 200
@@ -482,14 +482,11 @@ subject to: Σ(价格ᵢ × xᵢ) ≤ 200
 └─────────────────────────────────────────────────────────┘<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><strong>MATLAB</strong>：你的”操作系统”。所有操作都在这里完成，负责数据预处理、结果可视化、脚本管理</li>
-<li><strong>YALMIP</strong>：你的”智能翻译秘书”。她懂数学语言（≤, ≥,
-Σ），会把你的数学公式翻译成Gurobi能听懂的机器语言</li>
+<li><strong>YALMIP</strong>：你的”智能翻译秘书”。她懂数学语言（≤, ≥, Σ），会把你的数学公式翻译成Gurobi能听懂的机器语言</li>
 <li><strong>Gurobi</strong>：你的”超级计算苦力”。他只做一件事：快速解方程，但需要你告诉他方程长什么样</li>
 </ul>
-<p><strong>关键认知</strong>：<strong>千万不要跳过YALMIP直接学Gurobi！</strong>
-就像你不会为了学英语直接去读莎士比亚原著，而是应该先学语法。YALMIP就是那个”语法老师”。</p>
-<h4 id="下午3小时软件安装实战">0.1.1.2. 下午（3小时）：软件安装实战</h4>
-<p><strong>1.3 MATLAB安装与基础配置</strong></p>
+<p><strong>关键认知</strong>：<strong>千万不要跳过YALMIP直接学Gurobi！</strong> 就像你不会为了学英语直接去读莎士比亚原著，而是应该先学语法。YALMIP就是那个”语法老师”。</p>
+<h4 id="下午（3小时）：软件安装实战">0.1.1.2. 下午（3小时）：软件安装实战</h4><p><strong>1.3 MATLAB安装与基础配置</strong></p>
 <pre class="line-numbers language-none"><code class="language-none">【安装步骤】
 1. 获取安装包：
    - 学校版：通过学校软件中心，使用校园邮箱注册MathWorks账号
@@ -547,16 +544,14 @@ subject to: Σ(价格ᵢ × xᵢ) ≤ 200
 【验证安装】
 在MATLAB命令行输入：
 &gt;&gt; yalmiptest<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><strong>预期输出应包含：</strong> <pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<p><strong>预期输出应包含：</strong><br><pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 |       Test|   CPLEX|   GUROBI|   MOSEK|   SDPT3|   SEDUMI|   FMINCON|
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 |    Linear |    OK  |    OK   |   OK   |   OK   |   OK    |    OK    |
 |      SOCP |    OK  |    OK   |   OK   |   OK   |   OK    |    OK    |
 |   InfeasLP|    OK  |    OK   |   OK   |   OK   |   OK    |    OK    |
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<strong>关键</strong>：Gurobi栏必须显示”OK”，否则需检查许可证或路径。</p>
-<h4 id="晚上1小时环境测试与第一个程序">0.1.1.3. 晚上（1小时）：环境测试与第一个程序</h4>
-<p><strong>1.6 运行你的第一个优化问题</strong></p>
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br><strong>关键</strong>：Gurobi栏必须显示”OK”，否则需检查许可证或路径。</p>
+<h4 id="晚上（1小时）：环境测试与第一个程序">0.1.1.3. 晚上（1小时）：环境测试与第一个程序</h4><p><strong>1.6 运行你的第一个优化问题</strong></p>
 <pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">% 文件名：test_optimization.m
 % 问题描述：minimize x^2 + y^2，满足 x + y &#x3D; 1
 
@@ -589,14 +584,14 @@ if result.problem &#x3D;&#x3D; 0  % 求解成功
 else
     fprintf(&#39;求解失败，错误代码: %d\n&#39;, result.problem);
 end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><strong>常见问题排查：</strong> - 错误”Undefined function
-‘sdpvar’“：YALMIP路径未添加成功，重新addpath - 错误”Gurobi license
-error”：许可证未激活或过期，重新运行grbgetkey - 错误”Infeasible
-model”：约束矛盾，检查==和&lt;=的使用</p>
+<p><strong>常见问题排查：</strong></p>
+<ul>
+<li>错误”Undefined function ‘sdpvar’”：YALMIP路径未添加成功，重新addpath</li>
+<li>错误”Gurobi license error”：许可证未激活或过期，重新运行grbgetkey</li>
+<li>错误”Infeasible model”：约束矛盾，检查==和&lt;=的使用</li>
+</ul>
 <hr>
-<h3 id="第二天数学基础补全与yalmip核心语法">0.1.2. 第二天：数学基础补全与YALMIP核心语法</h3>
-<h4 id="上午2.5小时优化问题的数学分类">0.1.2.1. 上午（2.5小时）：优化问题的数学分类</h4>
-<p><strong>2.1 问题的分类体系（必须理解）</strong></p>
+<h3 id="第二天：数学基础补全与YALMIP核心语法">0.1.2. 第二天：数学基础补全与YALMIP核心语法</h3><h4 id="上午（2-5小时）：优化问题的数学分类">0.1.2.1. 上午（2.5小时）：优化问题的数学分类</h4><p><strong>2.1 问题的分类体系（必须理解）</strong></p>
 <pre class="line-numbers language-none"><code class="language-none">优化问题分类树：
 
                优化问题
@@ -610,29 +605,34 @@ model”：约束矛盾，检查==和&lt;=的使用</p>
         ┌─────┴─────┐
     凸QP          非凸QP<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>详细解释（逐项拆解）：</strong></p>
-<p><strong>① 线性规划 (LP - Linear Programming)</strong> -
-<strong>数学形式</strong>：所有表达式都是线性的（变量的1次方）
-<pre class="line-numbers language-wolfram" data-language="wolfram"><code class="language-wolfram">minimize: c₁x₁ + c₂x₂ + ... + cₙxₙ
+<p><strong>① 线性规划 (LP - Linear Programming)</strong></p>
+<ul>
+<li><strong>数学形式</strong>：所有表达式都是线性的（变量的1次方）<pre class="line-numbers language-wolfram" data-language="wolfram"><code class="language-wolfram">minimize: c₁x₁ + c₂x₂ + ... + cₙxₙ
 subject to: a₁₁x₁ + a₁₂x₂ + ... + a₁ₙxₙ ≤ b₁
             a₂₁x₁ + a₂₂x₂ + ... + a₂ₙxₙ ≤ b₂
-            xᵢ ≥ 0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre> -
-<strong>YALMIP特点</strong>：使用<code>sdpvar</code>定义变量，目标函数和约束都是线性表达式
--
-<strong>求解难度</strong>：★☆☆☆☆（Gurobi可在毫秒级求解百万变量问题）</p>
-<p><strong>② 混合整数线性规划 (MILP - Mixed Integer LP)</strong> -
-<strong>数学形式</strong>：LP + 部分变量必须是整数（通常是0或1）
-<pre class="line-numbers language-wolfram" data-language="wolfram"><code class="language-wolfram">xᵢ ∈ &#123;0,1&#125; 表示&quot;是否选择i&quot;，或 xᵢ ∈ ℤ 表示&quot;整数个&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre> -
-<strong>YALMIP特点</strong>：使用<code>binvar</code>或<code>intvar</code>定义变量
-- <strong>求解难度</strong>：★★★★☆（NP-hard问题，Gurobi的最强项）</p>
-<p><strong>③ 二次规划 (QP - Quadratic Programming)</strong> -
-<strong>数学形式</strong>：目标函数是二次的，约束是线性的 <pre class="line-numbers language-wolfram" data-language="wolfram"><code class="language-wolfram">minimize: xᵀQx + cᵀx  (Q是二次项系数矩阵)
-subject to: Ax ≤ b<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-- <strong>YALMIP特点</strong>：目标函数可写为<code>x'*Q*x + c'*x</code>
-- <strong>求解难度</strong>：★★★☆☆（凸QP易解，非凸QP极难）</p>
-<p><strong>④ 二阶锥规划 (SOCP - Second Order Cone Programming)</strong>
-- <strong>数学形式</strong>：包含范数约束 <pre class="line-numbers language-wolfram" data-language="wolfram"><code class="language-wolfram">||Ax + b||₂ ≤ cᵀx + d<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre> -
-<strong>YALMIP特点</strong>：可写为<code>norm(A*x + b) &lt;= c'*x + d</code>
-- <strong>求解难度</strong>：★★★☆☆</p>
+            xᵢ ≥ 0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><strong>YALMIP特点</strong>：使用<code>sdpvar</code>定义变量，目标函数和约束都是线性表达式</li>
+<li><strong>求解难度</strong>：★☆☆☆☆（Gurobi可在毫秒级求解百万变量问题）</li>
+</ul>
+<p><strong>② 混合整数线性规划 (MILP - Mixed Integer LP)</strong></p>
+<ul>
+<li><strong>数学形式</strong>：LP + 部分变量必须是整数（通常是0或1）<pre class="line-numbers language-wolfram" data-language="wolfram"><code class="language-wolfram">xᵢ ∈ &#123;0,1&#125; 表示&quot;是否选择i&quot;，或 xᵢ ∈ ℤ 表示&quot;整数个&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><strong>YALMIP特点</strong>：使用<code>binvar</code>或<code>intvar</code>定义变量</li>
+<li><strong>求解难度</strong>：★★★★☆（NP-hard问题，Gurobi的最强项）</li>
+</ul>
+<p><strong>③ 二次规划 (QP - Quadratic Programming)</strong></p>
+<ul>
+<li><strong>数学形式</strong>：目标函数是二次的，约束是线性的<pre class="line-numbers language-wolfram" data-language="wolfram"><code class="language-wolfram">minimize: xᵀQx + cᵀx  (Q是二次项系数矩阵)
+subject to: Ax ≤ b<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<li><strong>YALMIP特点</strong>：目标函数可写为<code>x&#39;*Q*x + c&#39;*x</code></li>
+<li><strong>求解难度</strong>：★★★☆☆（凸QP易解，非凸QP极难）</li>
+</ul>
+<p><strong>④ 二阶锥规划 (SOCP - Second Order Cone Programming)</strong></p>
+<ul>
+<li><strong>数学形式</strong>：包含范数约束<pre class="line-numbers language-wolfram" data-language="wolfram"><code class="language-wolfram">||Ax + b||₂ ≤ cᵀx + d<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><strong>YALMIP特点</strong>：可写为<code>norm(A*x + b) &lt;= c&#39;*x + d</code></li>
+<li><strong>求解难度</strong>：★★★☆☆</li>
+</ul>
 <p><strong>2.2 YALMIP核心语法深度解析</strong></p>
 <p><strong>语法1：定义变量（sdpvar/binvar/intvar）</strong></p>
 <pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">% 1. 实数变量（sdpvar）
@@ -751,70 +751,49 @@ else
             error(&#39;求解失败，错误代码: %d&#39;, result.problem);
     end
 end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="下午2小时yalmip调试技巧与常见错误">0.1.2.2. 下午（2小时）：YALMIP调试技巧与常见错误</h4>
-<p><strong>2.3 调试工具箱</strong></p>
-<p>你的问题非常好！你提供的代码片段反映了你在使用
-<strong>YALMIP</strong> 进行建模和调试，但其中确实 <strong>混入了一些非
-YALMIP 的函数或用法错误</strong>。下面我将：</p>
-<ol type="1">
+<h4 id="下午（2小时）：YALMIP调试技巧与常见错误">0.1.2.2. 下午（2小时）：YALMIP调试技巧与常见错误</h4><p><strong>2.3 调试工具箱</strong></p>
+<p>你的问题非常好！你提供的代码片段反映了你在使用 <strong>YALMIP</strong> 进行建模和调试，但其中确实 <strong>混入了一些非 YALMIP 的函数或用法错误</strong>。下面我将：</p>
+<ol>
 <li><strong>逐条分析你例子中的问题</strong>；</li>
 <li><strong>系统介绍 YALMIP 正确的调试方法</strong>；</li>
 <li><strong>提供修正后的可运行示例</strong>。</li>
 </ol>
 <hr>
-<h3 id="一你例子中的问题分析">0.1.3. 一、你例子中的问题分析</h3>
-<h4 id="analyzec">0.1.3.1. ❌ analyze(C)</h4>
-<ul>
-<li><strong>问题</strong>：YALMIP <strong>没有</strong>名为
-<code>analyze</code> 的函数。</li>
-<li><strong>正确做法</strong>：可用 <code>sdisplay(C)</code>
-查看约束表达式，或用 <code>depends(C)</code> 查看涉及的变量，但
-<strong>没有一键显示变量数、约束数、问题类型的函数</strong>。</li>
-<li>若想查看模型结构，推荐使用： <pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">% 查看约束内容
+<h3 id="一、你例子中的问题分析">0.1.3. 一、你例子中的问题分析</h3><h4 id="❌-analyze-C">0.1.3.1. ❌ analyze(C)</h4><ul>
+<li><strong>问题</strong>：YALMIP <strong>没有</strong>名为 <code>analyze</code> 的函数。</li>
+<li><strong>正确做法</strong>：可用 <code>sdisplay(C)</code> 查看约束表达式，或用 <code>depends(C)</code> 查看涉及的变量，但 <strong>没有一键显示变量数、约束数、问题类型的函数</strong>。</li>
+<li>若想查看模型结构，推荐使用：<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">% 查看约束内容
 sdisplay(C)
 % 查看所有变量
 all_vars &#x3D; allvariables(C, obj);  % obj 是目标函数
-disp([&#39;Number of variables: &#39;, num2str(length(all_vars))]);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+disp([&#39;Number of variables: &#39;, num2str(length(all_vars))]);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
 </ul>
-<h4 id="assignx5-checkc">0.1.3.2. ❌ assign(x,5); check(C)</h4>
-<ul>
-<li><strong>问题 1</strong>：你定义的是
-<code>n = binvar(10...</code>，但后面用
-<code>assign(x,5)</code>，变量名不一致（<code>x</code> 未定义）。</li>
+<h4 id="❌-assign-x-5-check-C">0.1.3.2. ❌ assign(x,5); check(C)</h4><ul>
+<li><strong>问题 1</strong>：你定义的是 <code>n = binvar(10...</code>，但后面用 <code>assign(x,5)</code>，变量名不一致（<code>x</code> 未定义）。</li>
 <li><strong>问题 2</strong>：<code>check</code> 不是 YALMIP 函数。</li>
-<li><strong>正确做法</strong>： <pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">assign(n, some_binary_vector);  % 必须是 0&#x2F;1 向量，长度1000
+<li><strong>正确做法</strong>：<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">assign(n, some_binary_vector);  % 必须是 0&#x2F;1 向量，长度1000
 value(C)  % 返回每个约束的数值（如 sum(n) &lt;&#x3D; 500 的左边值）
-% 检查是否满足：所有 value(C) &lt;&#x3D; 0（因为 YALMIP 把约束表示为 &lt;&#x3D; 0 形式）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
+% 检查是否满足：所有 value(C) &lt;&#x3D; 0（因为 YALMIP 把约束表示为 &lt;&#x3D; 0 形式）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
 </ul>
-<h4 id="feasibility-optimizecops">0.1.3.3. ❌
-feasibility = optimize(C,[],ops);</h4>
-<ul>
-<li><strong>语法问题</strong>：YALMIP 的 <code>optimize</code>
-<strong>不能接受空目标（[]）</strong>。</li>
-<li><strong>正确做法</strong>：使用 <code>0</code> 作为目标（常数）：
-<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">feasibility &#x3D; optimize(C, 0, ops);  % 仅求可行解<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<h4 id="❌-feasibility-optimize-C-ops">0.1.3.3. ❌ feasibility = optimize(C,[],ops);</h4><ul>
+<li><strong>语法问题</strong>：YALMIP 的 <code>optimize</code> <strong>不能接受空目标（[]）</strong>。</li>
+<li><strong>正确做法</strong>：使用 <code>0</code> 作为目标（常数）：<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">feasibility &#x3D; optimize(C, 0, ops);  % 仅求可行解<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
 </ul>
-<h4 id="dispvalueobj-但-obj-未定义">0.1.3.4. ❌ disp(value(obj)); 但
-obj 未定义</h4>
-<ul>
-<li>在工具1和工具4中你都没有定义
-<code>obj</code>，但工具5却用了它。</li>
+<h4 id="❌-disp-value-obj-但-obj-未定义">0.1.3.4. ❌ disp(value(obj)); 但 obj 未定义</h4><ul>
+<li>在工具1和工具4中你都没有定义 <code>obj</code>，但工具5却用了它。</li>
 <li>这会导致运行错误。</li>
 </ul>
-<h4 id="saveinput-参数拼写错误">0.1.3.5. ❌ saveinput
-参数拼写错误</h4>
-<ul>
-<li>正确参数是 <code>'savesolverinput'</code> 或
-<code>'saveduals'</code>，但 <strong>YALMIP 没有
-<code>'saveinput'</code></strong>。</li>
-<li>若想导出 <code>.lp</code> 文件，应使用： <pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">ops &#x3D; sdpsettings(&#39;solver&#39;,&#39;gurobi&#39;, &#39;savesolverinput&#39;, &#39;debug.lp&#39;);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre> 或更推荐用：
-<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">export(C, obj, &#39;debug.lp&#39;);  % 直接导出模型，不求解<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<h4 id="❌-saveinput-参数拼写错误">0.1.3.5. ❌ saveinput 参数拼写错误</h4><ul>
+<li>正确参数是 <code>&#39;savesolverinput&#39;</code> 或 <code>&#39;saveduals&#39;</code>，但 <strong>YALMIP 没有 <code>&#39;saveinput&#39;</code></strong>。</li>
+<li>若想导出 <code>.lp</code> 文件，应使用：<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">ops &#x3D; sdpsettings(&#39;solver&#39;,&#39;gurobi&#39;, &#39;savesolverinput&#39;, &#39;debug.lp&#39;);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+或更推荐用：<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">export(C, obj, &#39;debug.lp&#39;);  % 直接导出模型，不求解<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
 </ul>
 <hr>
-<h3 id="二yalmip-正确的调试方法系统总结">0.1.4. 二、YALMIP
-正确的调试方法（系统总结）</h3>
-<h4 id="检查模型结构">0.1.4.1. ✅ 1. 检查模型结构</h4>
-<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">n &#x3D; binvar(1000,1);
+<h3 id="二、YALMIP-正确的调试方法（系统总结）">0.1.4. 二、YALMIP 正确的调试方法（系统总结）</h3><h4 id="✅-1-检查模型结构">0.1.4.1. ✅ 1. 检查模型结构</h4><pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">n &#x3D; binvar(1000,1);
 C &#x3D; [sum(n) &lt;&#x3D; 500];
 obj &#x3D; sum(n);  % 示例目标
 
@@ -827,38 +806,27 @@ fprintf(&#39;变量数量: %d (应为1000)\n&#39;, length(vars));
 
 % 查看问题是否为混合整数
 is_mip &#x3D; any([vars(:).binvar]) || any([vars(:).intvar]);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="导出模型为-lpmps-文件">0.1.4.2. ✅ 2. 导出模型为 LP/MPS
-文件</h4>
-<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">export(C, obj, &#39;model.lp&#39;);  % 不求解，仅导出
+<h4 id="✅-2-导出模型为-LP-MPS-文件">0.1.4.2. ✅ 2. 导出模型为 LP/MPS 文件</h4><pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">export(C, obj, &#39;model.lp&#39;);  % 不求解，仅导出
 % 然后用文本编辑器打开 model.lp<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h4 id="手动赋值并验证约束">0.1.4.3. ✅ 3.
-手动赋值并验证约束</h4>
-<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">% 构造一个可行解：前500个为1，其余为0
+<h4 id="✅-3-手动赋值并验证约束">0.1.4.3. ✅ 3. 手动赋值并验证约束</h4><pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">% 构造一个可行解：前500个为1，其余为0
 test_val &#x3D; [ones(500,1); zeros(500,1)];
 assign(n, test_val);
 con_vals &#x3D; value(C);  % 例如返回 -1（表示 sum(n)-500 &#x3D; -1 &lt;&#x3D; 0）
 fprintf(&#39;约束值: %.2f (应 &lt;&#x3D; 0)\n&#39;, con_vals);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <blockquote>
-<p>⚠️ 注意：<code>assign</code> 只用于调试，<strong>不会影响 optimize
-的求解</strong>。求解时 YALMIP 会忽略手动赋值。</p>
+<p>⚠️ 注意：<code>assign</code> 只用于调试，<strong>不会影响 optimize 的求解</strong>。求解时 YALMIP 会忽略手动赋值。</p>
 </blockquote>
-<h4 id="仅求可行解feasibility-check">0.1.4.4. ✅ 4.
-仅求可行解（Feasibility Check）</h4>
-<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">ops &#x3D; sdpsettings(&#39;verbose&#39;, 1);  % 显示求解器输出
+<h4 id="✅-4-仅求可行解（Feasibility-Check）">0.1.4.4. ✅ 4. 仅求可行解（Feasibility Check）</h4><pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">ops &#x3D; sdpsettings(&#39;verbose&#39;, 1);  % 显示求解器输出
 feas &#x3D; optimize(C, 0, ops);       % 目标为 0
 if feas.problem &#x3D;&#x3D; 0
     disp(&#39;找到可行解&#39;);
 else
     disp(&#39;问题不可行&#39;);
 end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="检查目标函数值在某赋值下">0.1.4.5. ✅ 5.
-检查目标函数值（在某赋值下）</h4>
-<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">assign(n, test_val);
+<h4 id="✅-5-检查目标函数值（在某赋值下）">0.1.4.5. ✅ 5. 检查目标函数值（在某赋值下）</h4><pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">assign(n, test_val);
 obj_val &#x3D; value(obj);
 disp([&#39;目标值: &#39;, num2str(obj_val)]);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h4 id="查看求解器返回信息">0.1.4.6. ✅ 6.
-查看求解器返回信息</h4>
-<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">sol &#x3D; optimize(C, obj, ops);
+<h4 id="✅-6-查看求解器返回信息">0.1.4.6. ✅ 6. 查看求解器返回信息</h4><pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">sol &#x3D; optimize(C, obj, ops);
 if sol.problem ~&#x3D; 0
     disp([&#39;求解失败，错误代码: &#39;, num2str(sol.problem)]);
     % 常见：1&#x3D;不可行，2&#x3D;无界，3&#x3D;求解失败
@@ -866,15 +834,12 @@ else
     optimal_n &#x3D; value(n);
     optimal_obj &#x3D; value(obj);
 end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="使用-spy-查看稀疏结构对大型问题">0.1.4.7. ✅ 7. 使用
-spy 查看稀疏结构（对大型问题）</h4>
-<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">% 查看约束矩阵结构（需先构造内部模型）
+<h4 id="✅-7-使用-spy-查看稀疏结构（对大型问题）">0.1.4.7. ✅ 7. 使用 spy 查看稀疏结构（对大型问题）</h4><pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">% 查看约束矩阵结构（需先构造内部模型）
 diagnostic &#x3D; optimize(C, obj, sdpsettings(&#39;solver&#39;,&#39;gurobi&#39;,&#39;debug&#39;,1));
 % 或使用 internal model
 [F, f] &#x3D; model(C, obj);  % 不推荐直接用，但可用于分析<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <hr>
-<h3 id="三修正后的完整示例">0.1.5. 三、修正后的完整示例</h3>
-<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">% 定义变量
+<h3 id="三、修正后的完整示例">0.1.5. 三、修正后的完整示例</h3><pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">% 定义变量
 n &#x3D; binvar(1000, 1);
 
 % 约束
@@ -913,89 +878,81 @@ else
     error(&#39;求解失败&#39;);
 end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <hr>
-<h3 id="总结">0.1.6. 总结</h3>
-<ul>
+<h3 id="总结">0.1.6. 总结</h3><ul>
 <li><code>analyze</code>, <code>check</code> 不是 YALMIP 函数；</li>
 <li>空目标 <code>[]</code> 应替换为 <code>0</code>；</li>
 <li>变量名要一致（你用了 <code>n</code> 但赋值 <code>x</code>）；</li>
-<li>使用 <code>assign</code> + <code>value</code>
-是调试赋值的有效方法；</li>
-<li>用 <code>export</code> 导出 <code>.lp</code> 文件，比
-<code>saveinput</code> 更可靠；</li>
+<li>使用 <code>assign</code> + <code>value</code> 是调试赋值的有效方法；</li>
+<li>用 <code>export</code> 导出 <code>.lp</code> 文件，比 <code>saveinput</code> 更可靠；</li>
 <li>始终检查 <code>sol.problem</code> 判断求解状态。</li>
 </ul>
 <p>如果你有具体的模型不可行、求解慢、结果异常等问题，也可以贴出来，我可以帮你进一步诊断。</p>
 <p><strong>2.4 十个新手必犯错误与解决方案</strong></p>
+<div class="table-container">
 <table>
-<colgroup>
-<col style="width: 35%">
-<col style="width: 25%">
-<col style="width: 39%">
-</colgroup>
 <thead>
-<tr class="header">
+<tr>
 <th>错误现象</th>
 <th>原因分析</th>
 <th>解决方案</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td><code>Undefined function 'sdpvar'</code></td>
+<tr>
+<td><code>Undefined function &#39;sdpvar&#39;</code></td>
 <td>YALMIP路径未添加</td>
-<td><code>addpath('.../yalmip'); savepath</code></td>
+<td><code>addpath(&#39;.../yalmip&#39;); savepath</code></td>
 </tr>
-<tr class="even">
+<tr>
 <td><code>Gurobi license error 10009</code></td>
 <td>学术许可证未激活</td>
 <td>重新运行<code>grbgetkey</code>，检查系统时间</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><code>Model is infeasible</code></td>
 <td>约束矛盾</td>
 <td>用<code>relax(C)</code>或逐个注释约束排查</td>
 </tr>
-<tr class="even">
+<tr>
 <td><code>Matrix dimensions must agree</code></td>
 <td>矩阵维度不匹配</td>
 <td>用<code>size()</code>检查变量和系数矩阵维度</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><code>Objective must be scalar</code></td>
 <td>目标函数是向量</td>
 <td>使用<code>sum()</code>或<code>square_pos()</code>转换</td>
 </tr>
-<tr class="even">
+<tr>
 <td><code>Cannot convert sdpvar to double</code></td>
 <td>在optimize前使用value()</td>
 <td>只在求解后使用value()提取结果</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><code>Solver not found</code></td>
 <td>Gurobi未正确安装</td>
 <td>运行<code>gurobi_setup</code>，检查MATLAB路径</td>
 </tr>
-<tr class="even">
+<tr>
 <td><code>Out of memory</code></td>
 <td>问题规模太大</td>
 <td>使用<code>sparse()</code>创建稀疏矩阵</td>
 </tr>
-<tr class="odd">
-<td><code>Undefined operator '*'</code></td>
+<tr>
+<td><code>Undefined operator &#39;*&#39;</code></td>
 <td>非线性项错误</td>
-<td>检查二次项是否写成<code>x'*Q*x</code>形式</td>
+<td>检查二次项是否写成<code>x&#39;*Q*x</code>形式</td>
 </tr>
-<tr class="even">
+<tr>
 <td><code>Warning: Solver not applicable</code></td>
 <td>问题类型与求解器不匹配</td>
 <td>检查是否是MILP却用了不支持整数求解器</td>
 </tr>
 </tbody>
 </table>
+</div>
 <hr>
-<h3 id="第三天问题类型实战与参数调优">0.1.7. 第三天：问题类型实战与参数调优</h3>
-<h4 id="上午2.5小时参数调优详解">0.1.7.1. 上午（2.5小时）：参数调优详解</h4>
-<p><strong>3.1 Gurobi参数体系（性能调优关键）</strong></p>
+<h3 id="第三天：问题类型实战与参数调优">0.1.7. 第三天：问题类型实战与参数调优</h3><h4 id="上午（2-5小时）：参数调优详解">0.1.7.1. 上午（2.5小时）：参数调优详解</h4><p><strong>3.1 Gurobi参数体系（性能调优关键）</strong></p>
 <pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">% 参数设置结构
 ops &#x3D; sdpsettings(...
     &#39;solver&#39;,&#39;gurobi&#39;,...
@@ -1072,8 +1029,7 @@ for i &#x3D; 1:length(param_sets)
     end
 end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <hr>
-<h4 id="下午2.5小时第一阶段总结与实战检验">0.1.7.2. 下午（2.5小时）：第一阶段总结与实战检验</h4>
-<p><strong>3.3 第一阶段综合测试题</strong></p>
+<h4 id="下午（2-5小时）：第一阶段总结与实战检验">0.1.7.2. 下午（2.5小时）：第一阶段总结与实战检验</h4><p><strong>3.3 第一阶段综合测试题</strong></p>
 <pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">% 任务：生产排程问题
 % 工厂生产A、B两种产品，需要经过机器M1、M2
 % 数据：
@@ -1106,7 +1062,7 @@ if result.problem &#x3D;&#x3D; ____
     fprintf(&#39;最优生产：A&#x3D;%.0f件, B&#x3D;%.0f件\n&#39;, ______, ______);
     fprintf(&#39;最大利润：%.0f元\n&#39;, ______);
 end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><strong>答案与解析：</strong> <pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">% 答案：
+<p><strong>答案与解析：</strong><br><pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">% 答案：
 x_A &#x3D; sdpvar(1,1);
 x_B &#x3D; sdpvar(1,1);
 C &#x3D; [2*x_A + 4*x_B &lt;&#x3D; 120,
@@ -1121,21 +1077,18 @@ if result.problem &#x3D;&#x3D; 0
 end
 % 最优解：A&#x3D;20件, B&#x3D;20件, 利润&#x3D;1600元<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></p>
 <p><strong>3.4 第一阶段学习检查清单</strong></p>
-<ul class="task-list">
-<li><label><input type="checkbox">能独立安装MATLAB、Gurobi、YALMIP</label></li>
-<li><label><input type="checkbox">运行yalmiptest显示Gurobi为OK</label></li>
-<li><label><input type="checkbox">理解sdpvar/binvar/intvar的区别</label></li>
-<li><label><input type="checkbox">能写出至少3种约束条件</label></li>
-<li><label><input type="checkbox">会设置目标函数（最小化和最大化）</label></li>
-<li><label><input type="checkbox">会调用optimize并提取value</label></li>
-<li><label><input type="checkbox">能读懂Gurobi求解日志</label></li>
-<li><label><input type="checkbox">遇到”Infeasible”知道如何排查</label></li>
+<ul>
+<li>[ ] 能独立安装MATLAB、Gurobi、YALMIP</li>
+<li>[ ] 运行yalmiptest显示Gurobi为OK</li>
+<li>[ ] 理解sdpvar/binvar/intvar的区别</li>
+<li>[ ] 能写出至少3种约束条件</li>
+<li>[ ] 会设置目标函数（最小化和最大化）</li>
+<li>[ ] 会调用optimize并提取value</li>
+<li>[ ] 能读懂Gurobi求解日志</li>
+<li>[ ] 遇到”Infeasible”知道如何排查</li>
 </ul>
 <hr>
-<h2 id="第二阶段经典模型实战第2周">0.2. 第二阶段：经典模型实战（第2周）</h2>
-<h3 id="第4天线性规划lp深度实战">0.2.1. 第4天：线性规划（LP）深度实战</h3>
-<h4 id="上午3小时线性规划理论体系">0.2.1.1. 上午（3小时）：线性规划理论体系</h4>
-<p><strong>4.1 线性规划标准形式与转换</strong></p>
+<h2 id="第二阶段：经典模型实战（第2周）">0.2. 第二阶段：经典模型实战（第2周）</h2><h3 id="第4天：线性规划（LP）深度实战">0.2.1. 第4天：线性规划（LP）深度实战</h3><h4 id="上午（3小时）：线性规划理论体系">0.2.1.1. 上午（3小时）：线性规划理论体系</h4><p><strong>4.1 线性规划标准形式与转换</strong></p>
 <pre class="line-numbers language-wolfram" data-language="wolfram"><code class="language-wolfram">标准形式：
 minimize    cᵀx
 subject to  Ax &#x3D; b
@@ -1237,8 +1190,7 @@ if result.problem &#x3D;&#x3D; 0
     % 影子价格&gt;0表示该原材料是瓶颈资源
 end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <hr>
-<h4 id="下午3小时运输问题与指派问题">0.2.1.2. 下午（3小时）：运输问题与指派问题</h4>
-<p><strong>4.4 运输问题（Transportation Problem）</strong></p>
+<h4 id="下午（3小时）：运输问题与指派问题">0.2.1.2. 下午（3小时）：运输问题与指派问题</h4><p><strong>4.4 运输问题（Transportation Problem）</strong></p>
 <pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">% 问题：3个工厂 → 4个仓库，最小化运输成本
 
 % 数据
@@ -1311,9 +1263,7 @@ for i &#x3D; 1:n
     end
 end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <hr>
-<h3 id="第5天混合整数线性规划milpgurobi最擅长的领域">0.2.2. 第5天：混合整数线性规划（MILP）——Gurobi最擅长的领域</h3>
-<h4 id="上午3小时milp核心理论与建模技巧">0.2.2.1. 上午（3小时）：MILP核心理论与建模技巧</h4>
-<p><strong>5.1 为什么MILP这么难？（NP-hard问题）</strong></p>
+<h3 id="第5天：混合整数线性规划（MILP）——Gurobi最擅长的领域">0.2.2. 第5天：混合整数线性规划（MILP）——Gurobi最擅长的领域</h3><h4 id="上午（3小时）：MILP核心理论与建模技巧">0.2.2.1. 上午（3小时）：MILP核心理论与建模技巧</h4><p><strong>5.1 为什么MILP这么难？（NP-hard问题）</strong></p>
 <pre class="line-numbers language-none"><code class="language-none">MILP的求解复杂度：
 - 若有n个二元变量，理论上需要检查2ⁿ种组合
 - 当n&#x3D;100时，2¹⁰⁰ ≈ 1.27×10³⁰，比宇宙中原子总数还多
@@ -1381,8 +1331,7 @@ Objective &#x3D; build_cost&#39;*y + sum(sum(transport_cost.*x));
 
 % 求解（Gurobi会自动处理大M法）
 optimize(Constraints, Objective, sdpsettings(&#39;solver&#39;,&#39;gurobi&#39;));<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="下午3小时milp高级建模技巧">0.2.2.2. 下午（3小时）：MILP高级建模技巧</h4>
-<p><strong>5.4 逻辑约束建模（Indicator Constraints）</strong></p>
+<h4 id="下午（3小时）：MILP高级建模技巧">0.2.2.2. 下午（3小时）：MILP高级建模技巧</h4><p><strong>5.4 逻辑约束建模（Indicator Constraints）</strong></p>
 <pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">% 场景：如果工厂开启(y&#x3D;1)，则产量x≥100；否则x&#x3D;0
 
 y &#x3D; binvar(1);  % 开关变量
@@ -1421,9 +1370,7 @@ Constraints &#x3D; [
 % 方法2：使用YALMIP的pwlf函数（推荐）
 cost &#x3D; pwlf(x, [0 100 200], [0 50 130]); % 断点[0,100,200]，累计成本[0,50,130]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <hr>
-<h3 id="第6天二次规划qp与投资组合优化">0.2.3. 第6天：二次规划（QP）与投资组合优化</h3>
-<h4 id="上午3小时qp理论与凸性判断">0.2.3.1. 上午（3小时）：QP理论与凸性判断</h4>
-<p><strong>6.1 二次规划的数学本质</strong></p>
+<h3 id="第6天：二次规划（QP）与投资组合优化">0.2.3. 第6天：二次规划（QP）与投资组合优化</h3><h4 id="上午（3小时）：QP理论与凸性判断">0.2.3.1. 上午（3小时）：QP理论与凸性判断</h4><p><strong>6.1 二次规划的数学本质</strong></p>
 <pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">% 标准形式：
 % minimize  0.5*x&#39;*Q*x + c&#39;*x
 % subject to Ax &lt;&#x3D; b
@@ -1476,8 +1423,7 @@ for i &#x3D; 1:10
 end
 fprintf(&#39;预期收益: %.2f%%\n&#39;, return_opt*100);
 fprintf(&#39;组合风险: %.4f\n&#39;, risk_opt);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="下午3小时二次约束规划qcp与鲁棒优化">0.2.3.2. 下午（3小时）：二次约束规划（QCP）与鲁棒优化</h4>
-<p><strong>6.3 带二次约束的问题</strong></p>
+<h4 id="下午（3小时）：二次约束规划（QCP）与鲁棒优化">0.2.3.2. 下午（3小时）：二次约束规划（QCP）与鲁棒优化</h4><p><strong>6.3 带二次约束的问题</strong></p>
 <pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">% 场景：投资组合中，要求90%的置信水平下风险不超过15%
 
 % 数据同上
@@ -1512,9 +1458,7 @@ Robust_Constraints &#x3D; [
 % YALMIP会自动将鲁棒约束转化为确定性等价形式
 optimize(Robust_Constraints, -min((returns+delta)&#39;*x), ops);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <hr>
-<h3 id="第7天第二阶段综合实战与复盘">0.2.4. 第7天：第二阶段综合实战与复盘</h3>
-<h4 id="全天6小时完整项目微电网调度">0.2.4.1. 全天（6小时）：完整项目——微电网调度</h4>
-<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">%% 微电网经济调度问题（MILP+QP混合）
+<h3 id="第7天：第二阶段综合实战与复盘">0.2.4. 第7天：第二阶段综合实战与复盘</h3><h4 id="全天（6小时）：完整项目——微电网调度">0.2.4.1. 全天（6小时）：完整项目——微电网调度</h4><pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">%% 微电网经济调度问题（MILP+QP混合）
 
 % 系统组成：
 % - 柴油发电机：成本函数 0.1P² + 5P + 100（二次成本）
@@ -1633,10 +1577,7 @@ if result.problem &#x3D;&#x3D; 0
     fprintf(&#39;电网交互成本: %.2f 元\n&#39;, value(grid_cost));
 end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <hr>
-<h2 id="第三阶段进阶技巧与参数调优第3周">0.3. 第三阶段：进阶技巧与参数调优（第3周）</h2>
-<h3 id="第8天大规模问题处理技巧">0.3.1. 第8天：大规模问题处理技巧</h3>
-<h4 id="上午3小时稀疏矩阵与向量化编程">0.3.1.1. 上午（3小时）：稀疏矩阵与向量化编程</h4>
-<p><strong>8.1 为什么不能用for循环？（性能对比）</strong></p>
+<h2 id="第三阶段：进阶技巧与参数调优（第3周）">0.3. 第三阶段：进阶技巧与参数调优（第3周）</h2><h3 id="第8天：大规模问题处理技巧">0.3.1. 第8天：大规模问题处理技巧</h3><h4 id="上午（3小时）：稀疏矩阵与向量化编程">0.3.1.1. 上午（3小时）：稀疏矩阵与向量化编程</h4><p><strong>8.1 为什么不能用for循环？（性能对比）</strong></p>
 <pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">% 场景：创建1000个发电机的出力约束
 n &#x3D; 1000;
 P &#x3D; sdpvar(n,1);
@@ -1713,8 +1654,7 @@ for s &#x3D; 1:n_scenarios
 end
 Constraints &#x3D; [constraint_cell&#123;:&#125;];<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <hr>
-<h4 id="下午3小时求解器日志解读与性能调优">0.3.1.2. 下午（3小时）：求解器日志解读与性能调优</h4>
-<p><strong>8.4 Gurobi日志深度解读</strong></p>
+<h4 id="下午（3小时）：求解器日志解读与性能调优">0.3.1.2. 下午（3小时）：求解器日志解读与性能调优</h4><p><strong>8.4 Gurobi日志深度解读</strong></p>
 <pre class="line-numbers language-none"><code class="language-none">典型日志输出分析：
 
 Optimize a model with 100 rows, 200 columns and 500 nonzeros
@@ -1777,9 +1717,7 @@ ops_fast &#x3D; sdpsettings(...
 % 4. Cuts增加：收紧松弛问题，更接近整数解
 % 5. 并行加速：12线程 vs 4线程，理论加速3倍（实际约2.5倍）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <hr>
-<h3 id="第9天不可行性诊断与模型修复">0.3.2. 第9天：不可行性诊断与模型修复</h3>
-<h4 id="上午3小时冲突约束检测">0.3.2.1. 上午（3小时）：冲突约束检测</h4>
-<p><strong>9.1 使用conflict函数定位矛盾</strong></p>
+<h3 id="第9天：不可行性诊断与模型修复">0.3.2. 第9天：不可行性诊断与模型修复</h3><h4 id="上午（3小时）：冲突约束检测">0.3.2.1. 上午（3小时）：冲突约束检测</h4><p><strong>9.1 使用conflict函数定位矛盾</strong></p>
 <pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">%% 场景：模型无可行解，但不知道哪个约束冲突
 
 % 构造一个故意矛盾的模型
@@ -1835,8 +1773,7 @@ Objective &#x3D; Base_Cost + Penalty_Cost;
 
 % 求解后会优先满足硬约束，软约束尽量满足
 optimize(Constraints, Objective, sdpsettings(&#39;solver&#39;,&#39;gurobi&#39;));<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="下午3小时数值稳定性处理">0.3.2.2. 下午（3小时）：数值稳定性处理</h4>
-<p><strong>9.3 数据缩放（Scaling）</strong></p>
+<h4 id="下午（3小时）：数值稳定性处理">0.3.2.2. 下午（3小时）：数值稳定性处理</h4><p><strong>9.3 数据缩放（Scaling）</strong></p>
 <pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">%% 场景：模型系数范围太大导致数值问题
 
 % 原始数据（极差巨大）
@@ -1871,9 +1808,7 @@ Constraints_good &#x3D; [x &lt;&#x3D; x_max*y];
 Constraints_best &#x3D; [implies(y&#x3D;&#x3D;0, x&#x3D;&#x3D;0), implies(y&#x3D;&#x3D;1, x&gt;&#x3D;0)];
 % YALMIP会生成Gurobi的indicator约束，无需手动大M<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <hr>
-<h3 id="第10天结果后处理与可视化">0.3.3. 第10天：结果后处理与可视化</h3>
-<h4 id="上午2小时提取对偶变量与灵敏度分析">0.3.3.1. 上午（2小时）：提取对偶变量与灵敏度分析</h4>
-<p><strong>10.1 对偶变量（Shadow Price）的经济学意义</strong></p>
+<h3 id="第10天：结果后处理与可视化">0.3.3. 第10天：结果后处理与可视化</h3><h4 id="上午（2小时）：提取对偶变量与灵敏度分析">0.3.3.1. 上午（2小时）：提取对偶变量与灵敏度分析</h4><p><strong>10.1 对偶变量（Shadow Price）的经济学意义</strong></p>
 <pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">%% 场景：电力系统节点电价计算
 
 % 节点功率平衡约束
@@ -1924,8 +1859,7 @@ xlabel(&#39;天然气价格 ($&#x2F;MMBtu)&#39;);
 ylabel(&#39;总运行成本 ($)&#39;);
 title(&#39;价格灵敏度分析&#39;);
 grid on;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="下午2小时结果可视化高级技巧">0.3.3.2. 下午（2小时）：结果可视化高级技巧</h4>
-<p><strong>10.3 Gantt图（调度问题必备）</strong></p>
+<h4 id="下午（2小时）：结果可视化高级技巧">0.3.3.2. 下午（2小时）：结果可视化高级技巧</h4><p><strong>10.3 Gantt图（调度问题必备）</strong></p>
 <pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">%% 场景：5台机组24小时启停计划
 
 % 求解后得到u_on矩阵（5台×24小时）
@@ -1989,12 +1923,7 @@ title(&#39;容量配置优化分析&#39;);
 colorbar;
 shading interp;  % 平滑着色<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <hr>
-<h2 id="第四阶段综合项目实战第4周">0.4. 第四阶段：综合项目实战（第4周）</h2>
-<h3 id="第11天电力系统机组组合问题unit-commitment">0.4.1. 第11天：电力系统——机组组合问题（Unit
-Commitment）</h3>
-<h4 id="全天6小时ieee-30节点系统uc问题">0.4.1.1. 全天（6小时）：IEEE
-30节点系统UC问题</h4>
-<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">%% IEEE 30节点系统机组组合问题（完整工业级代码）
+<h2 id="第四阶段：综合项目实战（第4周）">0.4. 第四阶段：综合项目实战（第4周）</h2><h3 id="第11天：电力系统——机组组合问题（Unit-Commitment）">0.4.1. 第11天：电力系统——机组组合问题（Unit Commitment）</h3><h4 id="全天（6小时）：IEEE-30节点系统UC问题">0.4.1.1. 全天（6小时）：IEEE 30节点系统UC问题</h4><pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">%% IEEE 30节点系统机组组合问题（完整工业级代码）
 
 clear; clc; close all;
 
@@ -2173,9 +2102,7 @@ else
     error(&#39;机组组合求解失败，错误代码: %d&#39;, result.problem);
 end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <hr>
-<h3 id="第12天控制工程模型预测控制mpc">0.4.2. 第12天：控制工程——模型预测控制（MPC）</h3>
-<h4 id="全天6小时mpc完整实现">0.4.2.1. 全天（6小时）：MPC完整实现</h4>
-<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">%% 线性MPC控制器设计（以双积分系统为例）
+<h3 id="第12天：控制工程——模型预测控制（MPC）">0.4.2. 第12天：控制工程——模型预测控制（MPC）</h3><h4 id="全天（6小时）：MPC完整实现">0.4.2.1. 全天（6小时）：MPC完整实现</h4><pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">%% 线性MPC控制器设计（以双积分系统为例）
 
 % 系统模型：x(k+1) &#x3D; A*x(k) + B*u(k)
 % 状态：x &#x3D; [位置;速度]
@@ -2293,9 +2220,7 @@ title(&#39;控制输入时序&#39;);
 xlabel(&#39;步数&#39;); ylabel(&#39;加速度&#39;);
 grid on;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <hr>
-<h3 id="第13天路径规划与旅行商问题tsp">0.4.3. 第13天：路径规划与旅行商问题（TSP）</h3>
-<h4 id="全天6小时tsp建模与求解">0.4.3.1. 全天（6小时）：TSP建模与求解</h4>
-<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">%% 旅行商问题（TSP）—— 经典组合优化
+<h3 id="第13天：路径规划与旅行商问题（TSP）">0.4.3. 第13天：路径规划与旅行商问题（TSP）</h3><h4 id="全天（6小时）：TSP建模与求解">0.4.3.1. 全天（6小时）：TSP建模与求解</h4><pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">%% 旅行商问题（TSP）—— 经典组合优化
 
 % 问题：访问10个城市，每个城市一次，返回起点，路程最短
 
@@ -2422,9 +2347,7 @@ fprintf(&#39;原求解时间: %.2f秒\n&#39;, result.solverinfo.solvetime);
 fprintf(&#39;预热后时间: %.2f秒\n&#39;, time_warm);
 fprintf(&#39;加速比: %.2f%%\n&#39;, (1-time_warm&#x2F;result.solverinfo.solvetime)*100);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <hr>
-<h3 id="第14天考试与项目答辩">0.4.4. 第14天：考试与项目答辩</h3>
-<h4 id="全天6小时模拟项目答辩">0.4.4.1. 全天（6小时）：模拟项目答辩</h4>
-<p><strong>14.1 答辩题目（随机抽取）</strong></p>
+<h3 id="第14天：考试与项目答辩">0.4.4. 第14天：考试与项目答辩</h3><h4 id="全天（6小时）：模拟项目答辩">0.4.4.1. 全天（6小时）：模拟项目答辩</h4><p><strong>14.1 答辩题目（随机抽取）</strong></p>
 <pre class="line-numbers language-none"><code class="language-none">题目1：微电网调度优化
 - 需求：设计一个含5台柴油发电机、2个储能、光伏和负荷的微电网日前调度模型
 - 约束：功率平衡、机组爬坡、储能动力学、旋转备用
@@ -2443,37 +2366,39 @@ fprintf(&#39;加速比: %.2f%%\n&#39;, (1-time_warm&#x2F;result.solverinfo.solve
 - 目标：最小化延迟交付惩罚
 - 要求：Gantt图，机器利用率分析<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>14.2 评分标准</strong></p>
+<div class="table-container">
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th>维度</th>
 <th>权重</th>
 <th>评分细则</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td><strong>模型正确性</strong></td>
 <td>40%</td>
 <td>约束完整、逻辑正确、变量定义合理</td>
 </tr>
-<tr class="even">
+<tr>
 <td><strong>代码质量</strong></td>
 <td>30%</td>
 <td>结构化、注释清晰、矩阵化（无for循环）</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><strong>结果分析</strong></td>
 <td>20%</td>
 <td>可视化专业、灵敏度分析、经济性评估</td>
 </tr>
-<tr class="even">
+<tr>
 <td><strong>创新性</strong></td>
 <td>10%</td>
 <td>额外功能（如鲁棒性、多目标）</td>
 </tr>
 </tbody>
 </table>
+</div>
 <p><strong>14.3 项目报告模板</strong></p>
 <pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">%% 项目报告生成脚本（自动生成Word&#x2F;PDF）
 
@@ -2518,11 +2443,7 @@ add(rpt, chapter4);
 close(rpt);
 rptview(rpt);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <hr>
-<h2 id="第五阶段避坑指南与进阶学习第4周补充">0.5. 第五阶段：避坑指南与进阶学习（第4周补充）</h2>
-<h3 id="第15天新手必踩的100个坑精选top-20">0.5.1. 第15天：新手必踩的100个坑（精选TOP
-20）</h3>
-<h4 id="上午3小时代码级错误">0.5.1.1. 上午（3小时）：代码级错误</h4>
-<p><strong>TOP 1-5：变量类型混淆</strong> <pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">% ❌ 错误1：数值变量和sdpvar混用
+<h2 id="第五阶段：避坑指南与进阶学习（第4周补充）">0.5. 第五阶段：避坑指南与进阶学习（第4周补充）</h2><h3 id="第15天：新手必踩的100个坑（精选TOP-20）">0.5.1. 第15天：新手必踩的100个坑（精选TOP 20）</h3><h4 id="上午（3小时）：代码级错误">0.5.1.1. 上午（3小时）：代码级错误</h4><p><strong>TOP 1-5：变量类型混淆</strong><br><pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">% ❌ 错误1：数值变量和sdpvar混用
 x &#x3D; sdpvar(1);
 if x &gt; 0  % 错误！x是符号变量，不能用于逻辑判断
     y &#x3D; 1;
@@ -2562,7 +2483,7 @@ for i &#x3D; 1:10
     Constraints &#x3D; [Constraints, x(i) &lt;&#x3D; i];  % 逐个添加
 end
 % 如果忘记初始化：Constraints未定义，报错<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></p>
-<p><strong>TOP 6-10：求解器设置错误</strong> <pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">% ❌ 错误6：求解器名称拼写错误
+<p><strong>TOP 6-10：求解器设置错误</strong><br><pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">% ❌ 错误6：求解器名称拼写错误
 ops &#x3D; sdpsettings(&#39;solver&#39;,&#39;gurobi&#39;);  % 正确
 ops &#x3D; sdpsettings(&#39;solver&#39;,&#39;Gurobi&#39;);  % 错误！大小写敏感
 
@@ -2583,8 +2504,7 @@ ops &#x3D; sdpsettings(&#39;solver&#39;,&#39;gurobi&#39;,&#39;gurobi.TimeLimit&#
 sdpsettings(&#39;verbose&#39;,0)  % 抑制YALMIP输出
 sdpsettings(&#39;gurobi.OutputFlag&#39;,0)  % 抑制Gurobi输出
 % 两者都要设才能完全静默<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></p>
-<h4 id="下午3小时建模级错误">0.5.1.2. 下午（3小时）：建模级错误</h4>
-<p><strong>TOP 11-15：约束建模错误</strong> <pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">% ❌ 错误11：严格不等式
+<h4 id="下午（3小时）：建模级错误">0.5.1.2. 下午（3小时）：建模级错误</h4><p><strong>TOP 11-15：约束建模错误</strong><br><pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">% ❌ 错误11：严格不等式
 Constraints &#x3D; [x &gt; 0];  % 错误！MILP不支持严格不等式
 % ✅ 正确：
 epsilon &#x3D; 1e-6;
@@ -2619,7 +2539,7 @@ obj &#x3D; abs(x);  % 这不是线性！
 y &#x3D; sdpvar(1);
 Constraints &#x3D; [y &gt;&#x3D; x, y &gt;&#x3D; -x];
 obj &#x3D; y;  % 最小化y等价于最小化|x|<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></p>
-<p><strong>TOP 16-20：算法与理论错误</strong> <pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">% ❌ 错误16：QP问题Q矩阵非正定
+<p><strong>TOP 16-20：算法与理论错误</strong><br><pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">% ❌ 错误16：QP问题Q矩阵非正定
 Q &#x3D; [1 2; 2 1];  % 特征值&#x3D;-1,3，非正定
 x &#x3D; sdpvar(2,1);
 obj &#x3D; x&#39;*Q*x;  % Gurobi警告&quot;Q matrix is not positive semi-definite&quot;
@@ -2663,9 +2583,7 @@ for k &#x3D; 1:100
     x_previous &#x3D; value(x);  % 保存当前解
 end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></p>
 <hr>
-<h3 id="第16天进阶主题与前沿技术">0.5.2. 第16天：进阶主题与前沿技术</h3>
-<h4 id="上午3小时鲁棒优化与分布鲁棒">0.5.2.1. 上午（3小时）：鲁棒优化与分布鲁棒</h4>
-<p><strong>16.1 经典鲁棒优化（Box Uncertainty）</strong></p>
+<h3 id="第16天：进阶主题与前沿技术">0.5.2. 第16天：进阶主题与前沿技术</h3><h4 id="上午（3小时）：鲁棒优化与分布鲁棒">0.5.2.1. 上午（3小时）：鲁棒优化与分布鲁棒</h4><p><strong>16.1 经典鲁棒优化（Box Uncertainty）</strong></p>
 <pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">%% 场景：需求不确定，在±10%范围内波动
 
 P_load_nominal &#x3D; 100;  % 标称负荷
@@ -2702,8 +2620,7 @@ Constraints &#x3D; [
 % 构造分布鲁棒约束（较复杂，需对偶转换）
 % YALMIP的distribute函数可简化
 % 此处为概念性代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="下午3小时多目标优化与帕累托前沿">0.5.2.2. 下午（3小时）：多目标优化与帕累托前沿</h4>
-<p><strong>16.3 加权和方法</strong></p>
+<h4 id="下午（3小时）：多目标优化与帕累托前沿">0.5.2.2. 下午（3小时）：多目标优化与帕累托前沿</h4><p><strong>16.3 加权和方法</strong></p>
 <pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">%% 场景：成本 vs 排放 双目标
 
 Cost &#x3D; ...;   % 经济性目标
@@ -2744,9 +2661,7 @@ xlabel(&#39;成本上限&#39;);
 ylabel(&#39;最小排放&#39;);
 title(&#39;epsilon约束法帕累托前沿&#39;);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <hr>
-<h3 id="第17天工业界最佳实践">0.5.3. 第17天：工业界最佳实践</h3>
-<h4 id="上午3小时代码工程化">0.5.3.1. 上午（3小时）：代码工程化</h4>
-<p><strong>17.1 函数封装与模块化</strong></p>
+<h3 id="第17天：工业界最佳实践">0.5.3. 第17天：工业界最佳实践</h3><h4 id="上午（3小时）：代码工程化">0.5.3.1. 上午（3小时）：代码工程化</h4><p><strong>17.1 函数封装与模块化</strong></p>
 <pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">%% 规范的优化项目结构
 
 % 项目文件夹结构：
@@ -2849,8 +2764,7 @@ for i &#x3D; 1:length(fields)
     end
 end
 end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="下午3小时性能优化与并行计算">0.5.3.2. 下午（3小时）：性能优化与并行计算</h4>
-<p><strong>17.3 YALMIP + Parallel Computing Toolbox</strong></p>
+<h4 id="下午（3小时）：性能优化与并行计算">0.5.3.2. 下午（3小时）：性能优化与并行计算</h4><p><strong>17.3 YALMIP + Parallel Computing Toolbox</strong></p>
 <pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">%% 场景：多场景并行优化（场景间独立）
 
 % 创建并行池
@@ -2893,9 +2807,7 @@ system(&#39;gurobi_cl TuneTimeLimit&#x3D;3600 TuneCriterion&#x3D;2 model.mps&#39
 % 调参后生成.prm文件，加载使用
 ops &#x3D; sdpsettings(&#39;solver&#39;,&#39;gurobi&#39;,&#39;gurobi.Params&#39;,&#39;tuned.prm&#39;);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <hr>
-<h2 id="附录学习资源与工具链">0.6. 附录：学习资源与工具链</h2>
-<h3 id="a-1-必备资源清单">0.6.1. A-1 必备资源清单</h3>
-<pre class="line-numbers language-none"><code class="language-none">【软件安装】
+<h2 id="附录：学习资源与工具链">0.6. 附录：学习资源与工具链</h2><h3 id="A-1-必备资源清单">0.6.1. A-1 必备资源清单</h3><pre class="line-numbers language-none"><code class="language-none">【软件安装】
 - MATLAB R2024b（官网：mathworks.com）
 - Gurobi 11.0（官网：gurobi.com，学术许可证免费）
 - YALMIP（GitHub：yalmip&#x2F;yalmip）
@@ -2924,8 +2836,7 @@ ops &#x3D; sdpsettings(&#39;solver&#39;,&#39;gurobi&#39;,&#39;gurobi.Params&#39;
 - Stack Overflow: 标签[yalmip], [gurobi]
 - YALMIP Google Groups: 提问和查看历史问题
 - GitHub Issues: 报告bug和请求功能<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="a-2-自测题与答案">0.6.2. A-2 自测题与答案</h3>
-<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">%% 自测题1：判断模型类型
+<h3 id="A-2-自测题与答案">0.6.2. A-2 自测题与答案</h3><pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">%% 自测题1：判断模型类型
 % 根据以下目标函数和约束，判断问题类型（LP&#x2F;MILP&#x2F;QP&#x2F;QCP）
 
 % (1) 
@@ -3015,35 +2926,30 @@ Objective &#x3D; Build_Cost + Transport_Cost;
 optimize(C, Objective, sdpsettings(&#39;solver&#39;,&#39;gurobi&#39;));
 disp(value(Objective));<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <hr>
-<h2 id="结语从入门到精通">0.7. 结语：从入门到精通</h2>
-<p>恭喜你完成了这个万字学习路线图！回顾四周的学习：</p>
+<h2 id="结语：从入门到精通">0.7. 结语：从入门到精通</h2><p>恭喜你完成了这个万字学习路线图！回顾四周的学习：</p>
 <ul>
-<li><strong>第1周</strong>：环境搭建 + LP/MILP/QP基础 →
-<strong>掌握YALMIP语法</strong></li>
-<li><strong>第2周</strong>：经典模型实战 →
-<strong>理解建模思维</strong></li>
-<li><strong>第3周</strong>：参数调优 + 调试技巧 →
-<strong>解决实际问题</strong></li>
-<li><strong>第4周</strong>：综合项目 + 避坑指南 →
-<strong>具备独立项目能力</strong></li>
+<li><strong>第1周</strong>：环境搭建 + LP/MILP/QP基础 → <strong>掌握YALMIP语法</strong></li>
+<li><strong>第2周</strong>：经典模型实战 → <strong>理解建模思维</strong></li>
+<li><strong>第3周</strong>：参数调优 + 调试技巧 → <strong>解决实际问题</strong></li>
+<li><strong>第4周</strong>：综合项目 + 避坑指南 → <strong>具备独立项目能力</strong></li>
 </ul>
 <p><strong>下一步建议：</strong></p>
-<ol type="1">
+<ol>
 <li><strong>立即行动</strong>：明天就开始第1天的环境安装，不要拖延</li>
 <li><strong>项目驱动</strong>：结合你的研究方向，1个月内完成一个真实项目</li>
 <li><strong>代码复用</strong>：保存所有写过的代码，建立个人函数库</li>
-<li><strong>持续学习</strong>：关注YALMIP
-GitHub更新，每年Gurobi新版本都有性能提升</li>
-<li><strong>社区贡献</strong>：在Stack
-Overflow回答YALMIP问题，教学相长</li>
+<li><strong>持续学习</strong>：关注YALMIP GitHub更新，每年Gurobi新版本都有性能提升</li>
+<li><strong>社区贡献</strong>：在Stack Overflow回答YALMIP问题，教学相长</li>
 </ol>
-<p><strong>记住：优化建模是艺术 +
-科学的结合。多练习、多调试、多总结，你很快就能成为团队中的”优化专家”！</strong></p>
+<p><strong>记住：优化建模是艺术 + 科学的结合。多练习、多调试、多总结，你很快就能成为团队中的”优化专家”！</strong></p>
 <p>祝学习顺利！</p>
 <hr>
-<p><strong>文档信息：</strong> - 版本：v2.5（2025年12月更新） -
-作者：基于YALMIP官方文档与工业实践整理 - 许可证：CC BY-NC-SA
-4.0（非商业用途可自由分享）</p>
+<p><strong>文档信息：</strong></p>
+<ul>
+<li>版本：v2.5（2025年12月更新）</li>
+<li>作者：基于YALMIP官方文档与工业实践整理</li>
+<li>许可证：CC BY-NC-SA 4.0（非商业用途可自由分享）</li>
+</ul>
 
                 
             </div>
@@ -3733,7 +3639,7 @@ Overflow回答YALMIP问题，教学相长</li>
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">76.9k</span>
+                        class="white-color">76.5k</span>
             
             
             

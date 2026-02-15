@@ -5,14 +5,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="lagranre relation, 汤汁小白菜">
-    <meta name="description" content="1. 拉格朗日松弛
-原理： 约束难以求解，通过乘子，将约束转换到目标函数中，再转换为dual
-问题，将问题重构
+    <meta name="description" content="1. 拉格朗日松弛原理： 约束难以求解，通过乘子，将约束转换到目标函数中，再转换为dual 问题，将问题重构
 方法：
 
 加入惩罚因子，确定惩罚因子的正负范围
-寻找最紧的松弛，例如primal min 问题，
-g(P)是其下界">
+
+寻找最紧的松弛，例如primal min 问题， g(P)是其下界限，寻找最优g">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -435,7 +433,7 @@ g(P)是其下界">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    357
+                    343
                 </div>
                 
 
@@ -465,61 +463,33 @@ g(P)是其下界">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="拉格朗日松弛">1. 拉格朗日松弛</h1>
-<p>原理： 约束难以求解，通过乘子，将约束转换到目标函数中，再转换为dual
-问题，将问题重构</p>
+                <h1 id="拉格朗日松弛">1. 拉格朗日松弛</h1><p>原理： 约束难以求解，通过乘子，将约束转换到目标函数中，再转换为dual 问题，将问题重构</p>
 <p>方法：</p>
-<ol type="1">
-<li><p>加入惩罚因子，确定惩罚因子的正负范围</p></li>
-<li><p>寻找最紧的松弛，例如primal min 问题，
-g(P)是其下界限，寻找最优g(p)， 即max(g(p))</p>
-<p>写出对应的obj，与sb,</p>
+<ol>
+<li><p>加入惩罚因子，确定惩罚因子的正负范围</p>
+</li>
+<li><p>寻找最紧的松弛，例如primal min 问题， g(P)是其下界限，寻找最优g(p)， 即max(g(p))</p>
+<p>写出对应的obj，与sb, </p>
 <blockquote>
 <p>obj 是最近松弛，sb 是最近松弛时候的约束条件</p>
-</blockquote></li>
-<li><p>转换LP 形式</p></li>
+</blockquote>
+</li>
+<li><p>转换LP 形式</p>
+</li>
 </ol>
-<p>由于LP问题，满足对偶松弛性，所以满足，对偶问题最优值 =
-原问题最优值</p>
-<p>对于IP 问题，
-由于非凸优化，不满足强约束，所以在之后满足后续条件时候，才成立</p>
-<figure>
-<img src="/2026/02/10/%E7%A0%940/operation/lagranre-relation/image-20260210121557002.png" alt="image-20260210121557002">
-<figcaption aria-hidden="true">image-20260210121557002</figcaption>
-</figure>
-<h2 id="转换流程">1.1. 转换流程</h2>
-<figure>
-<img src="/2026/02/10/%E7%A0%940/operation/lagranre-relation/image-20260210121551898.png" alt="image-20260210121551898">
-<figcaption aria-hidden="true">image-20260210121551898</figcaption>
-</figure>
-<figure>
-<img src="/2026/02/10/%E7%A0%940/operation/lagranre-relation/image-20260210121546143.png" alt="image-20260210121546143">
-<figcaption aria-hidden="true">image-20260210121546143</figcaption>
-</figure>
-<h2 id="搜索方法">1.2. 搜索方法</h2>
-<p>如果不能写成对偶问题的形式，需要采用搜索方法对解进行搜索</p>
-<figure>
-<img src="/2026/02/10/%E7%A0%940/operation/lagranre-relation/image-20260210121759660.png" alt="image-20260210121759660">
-<figcaption aria-hidden="true">image-20260210121759660</figcaption>
-</figure>
-<figure>
-<img src="/2026/02/10/%E7%A0%940/operation/lagranre-relation/image-20260210121814228.png" alt="image-20260210121814228">
-<figcaption aria-hidden="true">image-20260210121814228</figcaption>
-</figure>
+<p>由于LP问题，满足对偶松弛性，所以满足，对偶问题最优值 = 原问题最优值</p>
+<p>对于IP 问题， 由于非凸优化，不满足强约束，所以在之后满足后续条件时候，才成立</p>
+<p><img src="/2026/02/10/%E7%A0%940/operation/lagranre-relation/image-20260210121557002.png" alt="image-20260210121557002"></p>
+<h2 id="转换流程">1.1. 转换流程</h2><p><img src="/2026/02/10/%E7%A0%940/operation/lagranre-relation/image-20260210121551898.png" alt="image-20260210121551898"></p>
+<p><img src="/2026/02/10/%E7%A0%940/operation/lagranre-relation/image-20260210121546143.png" alt="image-20260210121546143"></p>
+<h2 id="搜索方法">1.2. 搜索方法</h2><p>如果不能写成对偶问题的形式，需要采用搜索方法对解进行搜索</p>
+<p><img src="/2026/02/10/%E7%A0%940/operation/lagranre-relation/image-20260210121759660.png" alt="image-20260210121759660"></p>
+<p><img src="/2026/02/10/%E7%A0%940/operation/lagranre-relation/image-20260210121814228.png" alt="image-20260210121814228"></p>
 <p>z(p)， 相当于许多关于 x 的一元函数的组合</p>
-<figure>
-<img src="/2026/02/10/%E7%A0%940/operation/lagranre-relation/image-20260210121926098.png" alt="image-20260210121926098">
-<figcaption aria-hidden="true">image-20260210121926098</figcaption>
-</figure>
-<p>每一个 x 得到的值，相当于 max z(p) 的约束，可以逐个加入x
-的约束，求解P，直到最后不再改变为止，到达约束</p>
-<figure>
-<img src="/2026/02/10/%E7%A0%940/operation/lagranre-relation/image-20260210121951014.png" alt="image-20260210121951014">
-<figcaption aria-hidden="true">image-20260210121951014</figcaption>
-</figure>
-<h2 id="lagranre-分解">1.3. lagranre 分解</h2>
-<p>原问题的约束中，<span class="math inline"><em>x</em><sub>1</sub>, <em>x</em><sub>2</sub></span>
-互相耦合，采用lagranre的乘子，将约束转换到，消除约束，使得问题可以分解，或者变成一个具有特殊结构的问题</p>
+<p><img src="/2026/02/10/%E7%A0%940/operation/lagranre-relation/image-20260210121926098.png" alt="image-20260210121926098"></p>
+<p>每一个 x 得到的值，相当于 max z(p) 的约束，可以逐个加入x 的约束，求解P，直到最后不再改变为止，到达约束</p>
+<p><img src="/2026/02/10/%E7%A0%940/operation/lagranre-relation/image-20260210121951014.png" alt="image-20260210121951014"></p>
+<h2 id="lagranre-分解">1.3. lagranre 分解</h2><p>原问题的约束中，$x_1, x_2$ 互相耦合，采用lagranre的乘子，将约束转换到，消除约束，使得问题可以分解，或者变成一个具有特殊结构的问题</p>
 
                 
             </div>
@@ -1208,7 +1178,7 @@ g(P)是其下界限，寻找最优g(p)， 即max(g(p))</p>
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">76.9k</span>
+                        class="white-color">76.5k</span>
             
             
             

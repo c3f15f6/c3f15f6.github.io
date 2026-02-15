@@ -430,20 +430,20 @@
                 </a>
                 
                 
-                <a href="/categories/java/" title="java: 3">
+                <a href="/categories/%E6%95%B0%E6%A8%A1/" title="数模: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F5EEF8;">java
-                        <span class="tag-length">3</span>
+                            style="background-color: #F5EEF8;">数模
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/%E6%95%B0%E6%A8%A1/" title="数模: 1">
+                <a href="/categories/java/" title="java: 3">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #D5F5E3;">数模
-                        <span class="tag-length">1</span>
+                            style="background-color: #D5F5E3;">java
+                        <span class="tag-length">3</span>
                     </span>
                 </a>
                 
@@ -484,28 +484,10 @@
                 </a>
                 
                 
-                <a href="/categories/%E7%BC%96%E7%A8%8B/" title="编程: 9">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #D7BDE2;">编程
-                        <span class="tag-length">9</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/categories/%E7%88%AC%E8%99%AB/" title="爬虫: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #A3E4D7;">爬虫
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/" title="服务器: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #85C1E9;">服务器
+                            style="background-color: #D7BDE2;">爬虫
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -514,8 +496,26 @@
                 <a href="/categories/optimization/" title="optimization: 10">
                     <span class="chip center-align waves-effect waves-light
                              chip-active "
-                            style="background-color: #F8C471;">optimization
+                            style="background-color: #A3E4D7;">optimization
                         <span class="tag-length">10</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/%E7%BC%96%E7%A8%8B/" title="编程: 9">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #85C1E9;">编程
+                        <span class="tag-length">9</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/" title="服务器: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F8C471;">服务器
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
@@ -563,21 +563,22 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1. 网络流问题
-最小网络流问题：
-
-
-决策变量
+                                1. 网络流问题最小网络流问题：
 
 约束：
 
 流平衡约束
 
 
-image-20260210230333268
-
 弧的可承担约束
-总供给 &gt; 总需求时候，新增一个节点，节点需求 = 总供给 -
+
+总供给 &gt; 总需求时候，新增一个节点，节点需求 = 总供给 - 总需求
+
+
+
+1.1. 网路问题求解方法
+1.1.1. 初始化可行流
+1.1.2. 好的方
                             
                         </div>
                         <div class="publish-info">
@@ -615,14 +616,12 @@ image-20260210230333268
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1. 拉格朗日松弛
-原理： 约束难以求解，通过乘子，将约束转换到目标函数中，再转换为dual
-问题，将问题重构
+                                1. 拉格朗日松弛原理： 约束难以求解，通过乘子，将约束转换到目标函数中，再转换为dual 问题，将问题重构
 方法：
 
 加入惩罚因子，确定惩罚因子的正负范围
-寻找最紧的松弛，例如primal min 问题，
-g(P)是其下界
+
+寻找最紧的松弛，例如primal min 问题， g(P)是其下界限，寻找最优g
                             
                         </div>
                         <div class="publish-info">
@@ -660,15 +659,10 @@ g(P)是其下界
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1. Bender cutting
-核心思想：并不是所有的割平面都有效。 将问题分解，减少约束，
-然后逐步增加约束割平面，实现求解
+                                1. Bender cutting核心思想：并不是所有的割平面都有效。 将问题分解，减少约束， 然后逐步增加约束割平面，实现求解
 
-
-主问题与子问题联系
-
-主问题从子问题中获得information ,
-然后创建割，求解问
+主问题从子问题中获得information , 然后创建割，求解问题，求解后的结果再传入子问题中
+1.1. 
                             
                         </div>
                         <div class="publish-info">
@@ -706,8 +700,7 @@ g(P)是其下界
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1. 割平面
-目标： 切割松弛问题的可行域，加快搜索
+                                1. 割平面目标： 切割松弛问题的可行域，加快搜索
 要求：
 
 不能将原问题的可行域切掉
@@ -715,9 +708,10 @@ g(P)是其下界
 
 
 1.1. 分割的步骤
+在分支前采用有效的不等式进行切割可行域
 
 
-仅有batch bound的
+1.2. 两
                             
                         </div>
                         <div class="publish-info">
@@ -755,14 +749,12 @@ g(P)是其下界
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1. 松弛+分支定界
-1.1. 松弛
-方式：
+                                1. 松弛+分支定界1.1. 松弛方式：
 
 削弱目标函数
 削弱约束（多为削弱约束）
-
 线性松弛，将整数变量约束，削弱为连续变量约束
+
 
 
 要求：
@@ -770,7 +762,8 @@ g(P)是其下界
 原问题所有可行解必须保留
 新的问题比原问题更好解
 
-1.1.
+1.1.1. 作用
+松弛模型证明元模型的可
                             
                         </div>
                         <div class="publish-info">
@@ -808,15 +801,8 @@ g(P)是其下界
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1. 启发式算法
-1.1. 构造方法
-​ x = [x1,x2,x3,…xn]
-， 逐步修改xn
-的数据，选择xn
-时候，可以采用一定的优化策略进行选择，实现优化
-1.2. 搜索方法
-$ x = x + x$, 在x
-相近的
+                                1. 启发式算法1.1. 构造方法​    $x = [x_1 , x_2, x_3 , \dots x_n]$ ， 逐步修改$x_n$ 的数据，选择$x_n$ 时候，可以采用一定的优化策略进行选择，实现优化
+1.2. 搜索方法$ x = 
                             
                         </div>
                         <div class="publish-info">
@@ -854,13 +840,13 @@ $ x = x + x$, 在x
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1. MLApp 登录系统使用说明
-1.1. 文件说明
-
+                                1. MLApp 登录系统使用说明1.1. 文件说明
 LoginApp.m - 登录界面主程序
 registerUser.m - 用户注册函数
 setup.m - 初始化设置脚本
-createLoginApp.m - 启动登
+createLoginApp.m - 启动登录界面
+
+1.2
                             
                         </div>
                         <div class="publish-info">
@@ -899,7 +885,6 @@ createLoginApp.m - 启动登
                         <div class="summary block-with-text">
                             
                                 1. matlab 面向对象
-
 每个类定义在单独的.m 文件中， 文件名与类名相同
 
 
@@ -907,7 +892,7 @@ classdef test_class
 
     % 定义属性
     properties(Access &#x3D; private)
- 
+      
                             
                         </div>
                         <div class="publish-info">
@@ -945,12 +930,10 @@ classdef test_class
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1. matlab
-1.1. 匿名函数
-首先传入两个变量后，另一个变量自动绑定
+                                1. matlab1.1. 匿名函数首先传入两个变量后，另一个变量自动绑定
 a &#x3D; 2;
 b &#x3D; 5;
-g &#x3D; @(x) myfun(x, a, b);  % 快捷方式：自动带 a&#x3D;2, b
+g &#x3D; @(x) myfun(x, a, b);  % 快捷方式：自动带 a&#x3D;2, b&#x3D
                             
                         </div>
                         <div class="publish-info">
@@ -988,13 +971,11 @@ g &#x3D; @(x) myfun(x, a, b);  % 快捷方式：自动带 a&#x3D;2, b
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1. intruction
-问题 - 》模型 - 》 算法
+                                1. intruction问题 - 》模型 - 》 算法
 1.1. 原理 ARRD
-
 A - approximation ， 近似求解
-R - reformulation , 对问题进行重构
-R - relaxation , 
+R - reformulation ,  对问题进行重构
+R - relaxation , 对复杂约束进行
                             
                         </div>
                         <div class="publish-info">
@@ -1104,7 +1085,7 @@ R - relaxation ,
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">76.9k</span>
+                        class="white-color">76.5k</span>
             
             
             
