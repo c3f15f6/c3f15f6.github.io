@@ -5,15 +5,15 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="yalmip使用, 汤汁小白菜">
-    <meta name="description" content="1. yalmip1.1. 常用流程
+    <meta name="description" content="1. yalmip
+1.1. 常用流程
+
 创建变量
 x &amp;#x3D; sdpvar(1, 2, 3, &amp;#39;full&amp;#39;) % 这里全部使用&amp;#39;
 
 ? 为什么maltab 中’’ 与 “” 不同呢？
 
-
-优化
-d &amp;#x3D; ">
+优化">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -457,65 +457,62 @@ d &amp;#x3D; ">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="yalmip">1. yalmip</h1><h2 id="常用流程">1.1. 常用流程</h2><ol>
+                <h1 id="yalmip">1. yalmip</h1>
+<h2 id="常用流程">1.1. 常用流程</h2>
+<ol type="1">
 <li><p>创建变量</p>
 <pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">x &#x3D; sdpvar(1, 2, 3, &#39;full&#39;) % 这里全部使用&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <blockquote>
 <p>? 为什么maltab 中’’ 与 “” 不同呢？</p>
-</blockquote>
-</li>
+</blockquote></li>
 <li><p>优化</p>
-<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">d &#x3D; optimize(Constraints, Objective, options)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
+<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">d &#x3D; optimize(Constraints, Objective, options)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 <li><p>提取求解值</p>
 <pre class="line-numbers language-y" data-language="y"><code class="language-y">xopt &#x3D; value(x);
-yopt &#x3D; value(y);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-</li>
+yopt &#x3D; value(y);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
 <li><p>创建options</p>
 <pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">ops &#x3D; sdpsettings(&#39;solver&#39;, &#39;gurobi&#39;);
-ops &#x3D; sdpsettings(ops, &#39;verbose&#39;, 0) ;% 追加设置<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-</li>
+ops &#x3D; sdpsettings(ops, &#39;verbose&#39;, 0) ;% 追加设置<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
 </ol>
-<h2 id="创建变量">1.2. 创建变量</h2><ol>
-<li>sdpvar </li>
+<h2 id="创建变量">1.2. 创建变量</h2>
+<ol type="1">
+<li>sdpvar</li>
 <li>binvar</li>
 <li>intvar</li>
 </ol>
-<h2 id="优化">1.3. 优化</h2><pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">diagnostics &#x3D; optimize(Constraints, Objective, options)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h3 id="优化器">1.3.1. 优化器</h3><p>提供参数，用于调参</p>
+<h2 id="优化">1.3. 优化</h2>
+<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">diagnostics &#x3D; optimize(Constraints, Objective, options)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="优化器">1.3.1. 优化器</h3>
+<p>提供参数，用于调参</p>
 <pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">P &#x3D; optimizer(Con, Obj, Options, Parameters, WantedVariables)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="Constraints">1.4. Constraints</h2><ol>
-<li><p>单个约束</p>
-</li>
-<li><p>多个约束组合,使用<code>[]</code>包括</p>
-</li>
-<li><p>矩阵约束，使用矩阵的方式</p>
-</li>
+<h2 id="constraints">1.4. Constraints</h2>
+<ol type="1">
+<li><p>单个约束</p></li>
+<li><p>多个约束组合,使用<code>[]</code>包括</p></li>
+<li><p>矩阵约束，使用矩阵的方式</p></li>
 <li><p>逻辑约束</p>
-<ol>
+<ol type="1">
 <li><p>指示约束</p>
-<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">&#96;c &#x3D; implies(x &gt;0 , y&#x3D;&#x3D;1)&#96;, 如果x &gt;0 ， y 必须等于1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>互斥约束</p>
-</li>
+<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">&#96;c &#x3D; implies(x &gt;0 , y&#x3D;&#x3D;1)&#96;, 如果x &gt;0 ， y 必须等于1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><p>互斥约束</p></li>
 </ol>
 <pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">c_mutual &#x3D; xor(x_A &gt; 0 , x_B &gt; 0);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ol>
+<ol type="1">
 <li><p>整数约束</p>
 <pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">x_int &#x3D; intvar(1, 1);
-c_mod &#x3D; mod(x_int , 2) &#x3D;&#x3D; 0; % x 必须是整数<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-</li>
+c_mod &#x3D; mod(x_int , 2) &#x3D;&#x3D; 0; % x 必须是整数<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+</ol></li>
 </ol>
-</li>
-</ol>
-<h2 id="求解options">1.5. 求解options</h2><pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">options &#x3D; sdpsettings(&#39;solver&#39;, &#39;gurobi&#39;); % 指定求解器
+<h2 id="求解options">1.5. 求解options</h2>
+<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">options &#x3D; sdpsettings(&#39;solver&#39;, &#39;gurobi&#39;); % 指定求解器
 options &#x3D; sdpsettings(options, &#39;verbose&#39;, 1)% 0 静默，1 详细， 2 更详细
 options &#x3D; sdpsettings(options, &#39;timeout&#39;, 60) % 用s 计算
 
 optiosn &#x3D; sdpsettings(options, &#39;FeasibilityTol&#39;, 1e-6); % 可行性容忍度
 options &#x3D; sdpsettings(&#39;gurobi.OptimalityTol&#39;,1e-6);   % 最优性容忍度
 options &#x3D; sdpsettings(&#39;gurobi.MIPGap&#39;,0.01);          % MIP间隙（1%）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="求解状态">1.6. 求解状态</h2><pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">sol &#x3D; optimize(Constraits, Objective, options);
+<h2 id="求解状态">1.6. 求解状态</h2>
+<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">sol &#x3D; optimize(Constraits, Objective, options);
 
 xOpt &#x3D; value(x); % 提取x 
 optimal_value &#x3D; value(objective); % 目标函数
@@ -523,7 +520,7 @@ optimal_value &#x3D; value(objective); % 目标函数
 sol.problem % 状态
 sol.info % 错误信息<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>求解状态：</p>
-<ol>
+<ol type="1">
 <li>0 ：最优</li>
 <li>1： 不可行</li>
 <li>2 ： 问题无解</li>
@@ -532,56 +529,58 @@ sol.info % 错误信息<span aria-hidden="true" class="line-numbers-rows"><span>
 <li>5： 用户中断</li>
 <li>10-100：求解器错误</li>
 </ol>
-<h1 id="examples">2. examples</h1><h2 id="工厂排班">2.1. 工厂排班</h2><p><strong>问题描述：</strong><br>某工厂生产两种产品A和B。生产每单位A需要2小时机器时间，3小时人工时间，利润为40元；生产每单位B需要4小时机器时间，2小时人工时间，利润为50元。工厂每天最多有100小时机器时间和80小时人工时间。问如何安排生产计划使利润最大？</p>
-<ol>
+<h1 id="examples">2. examples</h1>
+<h2 id="工厂排班">2.1. 工厂排班</h2>
+<p><strong>问题描述：</strong>
+某工厂生产两种产品A和B。生产每单位A需要2小时机器时间，3小时人工时间，利润为40元；生产每单位B需要4小时机器时间，2小时人工时间，利润为50元。工厂每天最多有100小时机器时间和80小时人工时间。问如何安排生产计划使利润最大？</p>
+<ol type="1">
 <li>变量： A, B 生成量</li>
 <li>目标函数：最大化利润</li>
-<li>约束条件： <ol>
+<li>约束条件：
+<ol type="1">
 <li>机器用时</li>
 <li>人工用时</li>
+</ol></li>
 </ol>
-</li>
-</ol>
-<script type="math/tex; mode=display">
-max \space 40x_A + 50x_b\\
-s.b \space \begin{array} 2x_A + 4x_A  \leq 100 ;机器时间\\
-3x_A + 2 x_B \leq 80
-
-\end{array}</script><p><a href="base_learn\factory_produce.m">factory_produce</a></p>
-<h2 id="背包问题">2.2. 背包问题</h2><p>你有一个容量为15kg的背包，有5件物品可选，每件物品有重量和价值。问如何选择物品使总价值最大，且总重量不超过15kg？</p>
+$$ max 40x_A + 50x_b\ s.b
+<p>$$</p>
+<p><a href="base_learn\factory_produce.m">factory_produce</a></p>
+<h2 id="背包问题">2.2. 背包问题</h2>
+<p>你有一个容量为15kg的背包，有5件物品可选，每件物品有重量和价值。问如何选择物品使总价值最大，且总重量不超过15kg？</p>
 <p>物品信息：</p>
 <ul>
 <li>物品1：重量2kg，价值3元，有1个</li>
-<li>物品2：重量3kg，价值4元  ，有2个</li>
+<li>物品2：重量3kg，价值4元 ，有2个</li>
 <li>物品3：重量4kg，价值5元， 3个</li>
 <li>物品4：重量5kg，价值8元， 1个</li>
 <li>物品5：重量9kg，价值10元， 1个</li>
 </ul>
-<ol>
-<li><p>决策变量： $y_I$ 表示选择个数</p>
-</li>
+<ol type="1">
+<li><p>决策变量： <span class="math inline"><em>y</em><sub><em>I</em></sub></span>
+表示选择个数</p></li>
 <li><p>目标函数：最大价值v</p>
-<p>$max \space v*y$</p>
-</li>
+<p><span class="math inline">$max \space v*y$</span></p></li>
 <li><p>约束条件：</p>
-<ol>
+<ol type="1">
 <li>重量约束</li>
 <li>个数约束</li>
-</ol>
-</li>
+</ol></li>
 </ol>
 <p>代码路径：</p>
 <p><a href="base_learn\bag_weight.md">weight_bag</a></p>
-<h2 id="二次规划-QP">2.3. 二次规划(QP)</h2><p><a href="base_learn\QP.m">QP matlab</a></p>
-<h1 id="gurobi">3. gurobi</h1><h2 id="求解参数策略">3.1. 求解参数策略</h2><blockquote>
+<h2 id="二次规划qp">2.3. 二次规划(QP)</h2>
+<p><a href="base_learn\QP.m">QP matlab</a></p>
+<h1 id="gurobi">3. gurobi</h1>
+<h2 id="求解参数策略">3.1. 求解参数策略</h2>
+<blockquote>
 <p>该章节记住有这些方法即可，使用时再进行查阅，详见<a href="Qcode.md">Qcode</a></p>
 </blockquote>
-<ol>
+<ol type="1">
 <li>MIPFocus， 求解策略， 2= 可行解， 3= 最优性</li>
 <li>NodeMethod， 节点松弛方法</li>
 <li>Heuristics， 启发式搜索强度， 0-1</li>
 <li>Threads 使用多个线程求解</li>
-<li>ConcurrentMIP,  并发求解MIP 问题</li>
+<li>ConcurrentMIP, 并发求解MIP 问题</li>
 </ol>
 <pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">% MIP策略
 options &#x3D; sdpsettings(&#39;gurobi.MIPFocus&#39;,2);  % 1&#x3D;侧重找到可行解，2&#x3D;侧重证明最优性
@@ -615,46 +614,50 @@ options &#x3D; sdpsettings(&#39;gurobi.Presolve&#39;,2); % 2&#x3D;激进预处�
 % 切割平面
 options &#x3D; sdpsettings(&#39;gurobi.Cuts&#39;,2); % 2&#x3D;激进切割
 options &#x3D; sdpsettings(&#39;gurobi.GomoryPasses&#39;,2); % Gomory切割强度<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="根据参数规模调优">3.2. 根据参数规模调优</h2><ol>
+<h2 id="根据参数规模调优">3.2. 根据参数规模调优</h2>
+<ol type="1">
 <li><p>小规模问题： 1. 精确解</p>
 <pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">MIPGap &#x3D; 1e-4;
-TimeLimit &#x3D; 60<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-</li>
+TimeLimit &#x3D; 60<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
 <li><p>中等规模问题： 1. 解适度精确；2. 时间放宽</p>
 <pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">MIPGap &#x3D; 1e-2;
-TimeLimite &#x3D; 300;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-</li>
-<li><p>大规模问题： 1. 优先找到可行解; 2. 使用启发算法； 3. 增大解经读 ； 4. 增大求解时间</p>
+TimeLimite &#x3D; 300;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<li><p>大规模问题： 1. 优先找到可行解; 2. 使用启发算法； 3. 增大解经读
+； 4. 增大求解时间</p>
 <pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">MIPFocus &#x3D; 1;
 Heuristics &#x3D; 0.5;
 MIPGap &#x3D; 0.05;
-TimeLimit &#x3D; 1200;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
+TimeLimit &#x3D; 1200;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></li>
 <li><p>约束密度调整</p>
 <p>约束数量 超过 变量 一定程度</p>
 <pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">density &#x3D; n_constraits&#x2F;(n_vars^2);
 if density &gt; 0.1
 	Presolve &#x3D; 2 ; % 使用激进预处理
 end
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></li>
 <li><p>MIP 问题：1. 增加线程数量 2. 使用ConcurrentMIP 优化</p>
 <pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">threads &#x3D; min(16, max(1, floor(nCores * 0.8)));
-ConcurrentMIP &#x3D; 2; % 2 中求解方案并行<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-</li>
+ConcurrentMIP &#x3D; 2; % 2 中求解方案并行<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
 </ol>
-<h1 id="debug">4. debug</h1><h2 id="infeasible">4.1. infeasible</h2><p><code>sol == 1</code></p>
-<h3 id="deBug-步骤">4.1.1. deBug 步骤</h3><ol>
+<h1 id="debug">4. debug</h1>
+<h2 id="infeasible">4.1. infeasible</h2>
+<p><code>sol == 1</code></p>
+<h3 id="debug-步骤">4.1.1. deBug 步骤</h3>
+<ol type="1">
 <li>无目标函数，求解一次，查看是否依旧是不可行的</li>
 <li>使用方法检测不可行的约束</li>
 <li>适当减少部分约束</li>
 </ol>
-<h3 id="debug-工具">4.1.2. debug 工具</h3><h2 id="unbounded">4.2. unbounded</h2><p><code>sol == 2</code></p>
-<ol>
+<h3 id="debug-工具">4.1.2. debug 工具</h3>
+<h2 id="unbounded">4.2. unbounded</h2>
+<p><code>sol == 2</code></p>
+<ol type="1">
 <li>查看目标函数</li>
 <li>人为 增加一个约束，添加合理的上界和下届</li>
 </ol>
-<h1 id="编程技巧">5. 编程技巧</h1><h2 id="矩阵">5.1. 矩阵</h2><p>使用循环表示矩阵相乘，替换为矩阵，对于0-1变量时，非常有效</p>
+<h1 id="编程技巧">5. 编程技巧</h1>
+<h2 id="矩阵">5.1. 矩阵</h2>
+<p>使用循环表示矩阵相乘，替换为矩阵，对于0-1变量时，非常有效</p>
 <p>eg : 变量两两互斥，非0 即 1</p>
 <pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">% 低效：使用嵌套循环
 n &#x3D; 1000;
@@ -668,11 +671,11 @@ for i &#x3D; 1:n
         end
     end
 end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>$o(n^2)$个约束</p>
+<p><span class="math inline"><em>o</em>(<em>n</em><sup>2</sup>)</span>个约束</p>
 <p>使用矩阵</p>
 <pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">sum(x) &lt;&#x3D; 1;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>$O(1)$ 约束， 简单有效</p>
-<ol>
+<p><span class="math inline"><em>O</em>(1)</span> 约束， 简单有效</p>
+<ol type="1">
 <li><p>使用Yalmip 的check 工具</p>
 <pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">[infeasible_constraints, ~] &#x3D; check(Constraints)
 for i &#x3D; 1: length(infeasible_constraints):
@@ -680,9 +683,8 @@ for i &#x3D; 1: length(infeasible_constraints):
 		 fprintf(&quot;约束 %d 不可行 \n&quot;)
 		 fprintf(&quot;输入约束&quot;)
 	end
-end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li><p>使用Gurobi中IIS </p>
+end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>使用Gurobi中IIS</p>
 <pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">% 重新求解并要求IIS
 options_iis &#x3D; sdpsettings(&#39;solver&#39;,&#39;gurobi&#39;,&#39;gurobi.IISMethod&#39;,1);
 sol_iis &#x3D; optimize(Constraints, Objective, options_iis);
@@ -696,8 +698,7 @@ if isfield(sol_iis.info, &#39;IIS&#39;)
             fprintf(&#39;  约束 %d 属于IIS\n&#39;, i);
         end
     end
-end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
+end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 <li><p>引入松弛变量</p>
 <blockquote>
 <p>? 方法原理不懂</p>
@@ -716,8 +717,7 @@ if sol_relaxed.problem &#x3D;&#x3D; 0
             fprintf(&#39;  约束 %d 需要松弛 %.4f\n&#39;, i, slack_values(i));
         end
     end
-end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
+end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 
                 
@@ -1400,7 +1400,7 @@ end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">76.5k</span>
+                        class="white-color">76.9k</span>
             
             
             
