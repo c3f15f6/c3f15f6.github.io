@@ -5,19 +5,18 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="栈-队列, 汤汁小白菜">
-    <meta name="description" content="1. 栈
-感谢代码随想录
-1.1. 栈模拟队列
-模拟队列
-
-
-232.用栈实现队列版本2
+    <meta name="description" content="1. 栈感谢代码随想录
+1.1. 栈模拟队列模拟队列
 
 使用两个栈模拟队列
 
 入队时， 直接入队
 出队时， 将输入栈的数据放入输出栈中，将顺序倒置为先入先出
-判空时，需要判断两个栈">
+判空时，需要判断两个栈是否为空
+
+1.2. 栈队列排除元素含有退格的字符串
+
+题目">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -452,7 +451,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    950
+                    929
                 </div>
                 
 
@@ -482,46 +481,32 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="栈">1. 栈</h1>
-<p><strong>感谢<a target="_blank" rel="noopener" href="https://programmercarl.com/0101.对称二叉树.html#思路">代码随想录</a></strong></p>
-<h2 id="栈模拟队列">1.1. 栈模拟队列</h2>
-<p><a target="_blank" rel="noopener" href="https://programmercarl.com/0232.用栈实现队列.html#算法公开课">模拟队列</a></p>
-<figure>
-<img src="https://file1.kamacoder.com/i/algo/232.%E7%94%A8%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97%E7%89%88%E6%9C%AC2.gif" alt="232.用栈实现队列版本2">
-<figcaption aria-hidden="true">232.用栈实现队列版本2</figcaption>
-</figure>
+                <h1 id="栈">1. 栈</h1><p><strong>感谢<a target="_blank" rel="noopener" href="https://programmercarl.com/0101.对称二叉树.html#思路">代码随想录</a></strong></p>
+<h2 id="栈模拟队列">1.1. 栈模拟队列</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0232.用栈实现队列.html#算法公开课">模拟队列</a></p>
+<p><img src="https://file1.kamacoder.com/i/algo/232.%E7%94%A8%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97%E7%89%88%E6%9C%AC2.gif" alt="232.用栈实现队列版本2"></p>
 <p>使用两个栈模拟队列</p>
-<ol type="1">
+<ol>
 <li>入队时， 直接入队</li>
 <li>出队时， 将输入栈的数据放入输出栈中，将顺序倒置为先入先出</li>
 <li>判空时，需要判断两个栈是否为空</li>
 </ol>
-<h2 id="栈队列排除元素">1.2. 栈队列排除元素</h2>
-<p><a target="_blank" rel="noopener" href="https://programmercarl.com/0844.比较含退格的字符串.html#思路">含有退格的字符串</a></p>
+<h2 id="栈队列排除元素">1.2. 栈队列排除元素</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0844.比较含退格的字符串.html#思路">含有退格的字符串</a></p>
 <blockquote>
-<p>题目中遇到<code>i</code>元素，
-需要退回<code>i-1</code>的元素时，可以使用栈弹出<code>i-1</code>元素</p>
+<p>题目中遇到<code>i</code>元素， 需要退回<code>i-1</code>的元素时，可以使用栈弹出<code>i-1</code>元素</p>
 </blockquote>
-<h3 id="双指针法">1.2.1. 双指针法</h3>
-<p>slow , fast 从后向前比较</p>
-<ol type="1">
+<h3 id="双指针法">1.2.1. 双指针法</h3><p>slow , fast 从后向前比较</p>
+<ol>
 <li>元素相同，同时向前</li>
 <li>遇到<code>#</code> ，slow / fast 向前</li>
 <li>否则， 返回false</li>
 </ol>
-<h1 id="队列">2. 队列</h1>
-<h2 id="队列模拟栈">2.1. 队列模拟栈</h2>
-<figure>
-<img src="/2025/08/22/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E6%A0%88-%E9%98%9F%E5%88%97/225.%E7%94%A8%E9%98%9F%E5%88%97%E5%AE%9E%E7%8E%B0%E6%A0%88.gif" alt="225.用队列实现栈">
-<figcaption aria-hidden="true">225.用队列实现栈</figcaption>
-</figure>
+<h1 id="队列">2. 队列</h1><h2 id="队列模拟栈">2.1. 队列模拟栈</h2><p><img src="/2025/08/22/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E6%A0%88-%E9%98%9F%E5%88%97/225.%E7%94%A8%E9%98%9F%E5%88%97%E5%AE%9E%E7%8E%B0%E6%A0%88.gif" alt="225.用队列实现栈"></p>
 <p>可以使用一个队列实现栈的模拟</p>
-<ol type="1">
+<ol>
 <li>入栈时，直接入队</li>
 <li>出栈时，需要将前置数据依次排出，并放置在队首，<strong>出队时需要保留最后一个元素出队</strong></li>
 </ol>
-<h2 id="滑动窗口最大值">2.2. 滑动窗口最大值</h2>
-<p><a target="_blank" rel="noopener" href="https://programmercarl.com/0347.前K个高频元素.html#思路">滑动窗口最大值</a></p>
+<h2 id="滑动窗口最大值">2.2. 滑动窗口最大值</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0347.前K个高频元素.html#思路">滑动窗口最大值</a></p>
 <p><code>deque</code> 用法</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;deque&gt;
 deque&lt;int&gt; d;
@@ -529,17 +514,15 @@ d.front(), d.back();
 d.push_back(), d.pop_back();
 d.push_front(), d.pop_front();<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>构建排序队列，将可能的最大值放入队列中，定义新的队列弹出方法</p>
-<ol type="1">
+<ol>
 <li>入队，入队值如果大于栈顶值，将栈顶出栈，直到入队值小于栈顶值</li>
 <li>出队，队首值如果等于移除的数据，将输出出栈</li>
 <li>保持第一个值是最大值a，且比a小的值是在a之后入栈的，所以出队时a之前的数据已经弹出完毕</li>
 </ol>
-<h2 id="优先队列">2.3. 优先队列</h2>
-<p><a target="_blank" rel="noopener" href="https://programmercarl.com/0347.前K个高频元素.html#思路">前k个高频词汇</a></p>
+<h2 id="优先队列">2.3. 优先队列</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0347.前K个高频元素.html#思路">前k个高频词汇</a></p>
 <p><code>priority_queue</code>需要自定义排序类型</p>
-<ol type="1">
-<li>使用` bool operator()(const int&amp; a, const int&amp;
-b)自定义比较类型</li>
+<ol>
+<li>使用` bool operator()(const int&amp; a, const int&amp; b)自定义比较类型</li>
 <li>快排中left&gt; right，从大到小，优先队列反过来</li>
 </ol>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class mycomparison&#123;
@@ -551,60 +534,45 @@ b)自定义比较类型</li>
 priority_queue&lt; pair&lt;int, int&gt;, vector&lt;pair&lt;int, int&gt;&gt; , mycomparison&gt; q;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>使用小顶堆，优先排除较小元素，将较大元素保留在优先队列中。</p>
-<h1 id="单调栈">3. 单调栈</h1>
-<h2 id="右侧最高气温">3.1. 右侧最高气温</h2>
-<p><a target="_blank" rel="noopener" href="https://programmercarl.com/0739.每日温度.html">最高气温</a></p>
+<h1 id="单调栈">3. 单调栈</h1><h2 id="右侧最高气温">3.1. 右侧最高气温</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0739.每日温度.html">最高气温</a></p>
 <p>查找右边 比 当前元素更小的元素</p>
-<ol type="1">
+<ol>
 <li>右边比自身大，找到了，当前元素出栈</li>
 <li>右边比自身小，没找到，入栈</li>
 </ol>
 <p>栈中元素为待查找的元素，找到了就出栈</p>
-<h2 id="nums1元素在nums2中下一个最大元素">3.2. nums1元素在nums2中下一个最大元素</h2>
-<p><a target="_blank" rel="noopener" href="https://programmercarl.com/0496.下一个更大元素I.html">nums1元素在nums2中下一个最大元素</a></p>
-<ol type="1">
+<h2 id="nums1元素在nums2中下一个最大元素">3.2. nums1元素在nums2中下一个最大元素</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0496.下一个更大元素I.html">nums1元素在nums2中下一个最大元素</a></p>
+<ol>
 <li>先计算<code>num2</code>中下一个更大元素的结果，保存在<code>map</code>中</li>
 <li><code>num1</code>从<code>map</code>中取得结果</li>
 </ol>
-<h2 id="循环数组的下一最大元素">3.3. 循环数组的下一最大元素</h2>
-<p><a target="_blank" rel="noopener" href="https://programmercarl.com/0503.下一个更大元素II.html#算法公开课">循环数组的下一最大元素</a></p>
+<h2 id="循环数组的下一最大元素">3.3. 循环数组的下一最大元素</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0503.下一个更大元素II.html#算法公开课">循环数组的下一最大元素</a></p>
 <p><code>nums</code>是一个循环数组，最后一个元素接在第一个元素</p>
 <blockquote>
-<ol type="1">
-<li>对数组循环时， 使用 <strong><code>% nums.size()</code></strong>
-对数组循环遍历</li>
+<ol>
+<li>对数组循环时， 使用 <strong><code>% nums.size()</code></strong> 对数组循环遍历</li>
 <li>遍历次数增加一倍，从<code>1</code>遍历到 <code>2*n</code></li>
 </ol>
 </blockquote>
-<h2 id="接雨水">3.4. 接雨水</h2>
-<p><a target="_blank" rel="noopener" href="https://programmercarl.com/0042.接雨水.html#思路">接雨水</a></p>
+<h2 id="接雨水">3.4. 接雨水</h2><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0042.接雨水.html#思路">接雨水</a></p>
 <p>左边和右边高度高于中间时，中间出现凹槽， 可以接到雨水</p>
-<h3 id="暴力求解">3.4.1. 暴力求解</h3>
-<p>当前节点<code>j</code></p>
-<ol type="1">
-<li><p>左边<code>[0,j-1]</code>最大高度<code>lheight</code>,右边<code>[j+1 , end]</code>最大高度<code>rheight</code>，每次暴力求解这两个指针</p></li>
+<h3 id="暴力求解">3.4.1. 暴力求解</h3><p>当前节点<code>j</code></p>
+<ol>
+<li><p>左边<code>[0,j-1]</code>最大高度<code>lheight</code>,右边<code>[j+1 , end]</code>最大高度<code>rheight</code>，每次暴力求解这两个指针</p>
+</li>
 <li><p>计算高度差，使用列方向计算求和</p>
-<p><img src="/2025/08/22/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E6%A0%88-%E9%98%9F%E5%88%97/20210402091208445.png" alt="列方向求和" style="zoom:75%;"></p></li>
+<p><img src="/2025/08/22/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E6%A0%88-%E9%98%9F%E5%88%97/20210402091208445.png" alt="列方向求和" style="zoom:75%;"></p>
+</li>
 </ol>
-<h3 id="动态规划">3.4.2. 动态规划</h3>
-<ol type="1">
-<li><code>j</code>左边最大高度 =
-<code>j-1</code>左边最高高度，或者<code>height[j-1]</code></li>
-<li>右边计算公式为
-<code>rheight[j] =  max(rheight[j+1] , height[j+1])</code></li>
+<h3 id="动态规划">3.4.2. 动态规划</h3><ol>
+<li><code>j</code>左边最大高度 = <code>j-1</code>左边最高高度，或者<code>height[j-1]</code></li>
+<li>右边计算公式为 <code>rheight[j] =  max(rheight[j+1] , height[j+1])</code></li>
 </ol>
-<p>先计算出<code>dp</code>， 代替<a href="#暴力求解">暴力求解</a>
-中的双指针</p>
-<h3 id="单调栈-1">3.4.3. 单调栈</h3>
-<p>单调递增栈中，栈底 &gt; 栈头</p>
-<p>如果出栈<code>j</code>， 栈头元素&gt; <code>j</code>, 即将入栈元素
-&gt; <code>j</code>， 出现凹槽，计算这个凹槽</p>
-<p>宽 = <code>入栈元素 - 栈顶元素</code>， 高度 =
-<code>min(入栈， 栈顶) - 出栈元素(凹槽)</code></p>
-<figure>
-<img src="/2025/08/22/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E6%A0%88-%E9%98%9F%E5%88%97/20210223092629946.png" alt="行计算">
-<figcaption aria-hidden="true">行计算</figcaption>
-</figure>
+<p>先计算出<code>dp</code>， 代替<a href="#暴力求解">暴力求解</a> 中的双指针</p>
+<h3 id="单调栈-1">3.4.3. 单调栈</h3><p>单调递增栈中，栈底 &gt; 栈头</p>
+<p>如果出栈<code>j</code>， 栈头元素&gt; <code>j</code>, 即将入栈元素 &gt; <code>j</code>， 出现凹槽，计算这个凹槽</p>
+<p>宽 = <code>入栈元素 - 栈顶元素</code>， 高度 = <code>min(入栈， 栈顶) - 出栈元素(凹槽)</code></p>
+<p><img src="/2025/08/22/c/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/%E6%A0%88-%E9%98%9F%E5%88%97/20210223092629946.png" alt="行计算"></p>
 
                 
             </div>
@@ -1330,7 +1298,7 @@ priority_queue&lt; pair&lt;int, int&gt;, vector&lt;pair&lt;int, int&gt;&gt; , my
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">76.9k</span>
+                        class="white-color">76.5k</span>
             
             
             
