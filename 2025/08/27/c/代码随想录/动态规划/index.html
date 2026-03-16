@@ -446,14 +446,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2026-03-14
+                    2026-03-15
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    6.6k
+                    6.7k
                 </div>
                 
 
@@ -734,22 +734,23 @@ n个1的最大子集元素个数</p>
 </blockquote>
 <h3 id="使用一维dp数组">3.1.1. 使用一维dp数组</h3>
 <ol type="1">
-<li>使用滚动数组 <code>dp[j] = dp[j] + dp[j- weight[i]]</code>
+<li><p>使用滚动数组 <code>dp[j] = dp[j] + dp[j- weight[i]]</code></p>
 <ol type="1">
 <li>不选择时<code>nochoose = dp[j]</code></li>
 <li>选择时 <code>choose = dp[j-weight[i]]</code></li>
 </ol></li>
-<li>初始化
+<li><p>初始化</p>
 <ol type="1">
 <li>dp[0] 只有一种组合方式，初始化为1</li>
 </ol></li>
-<li>遍历顺序
+<li><p>==遍历顺序==</p>
 <ol type="1">
-<li>先遍历物品，在遍历质量，是组合
-<ol type="1">
-<li>且遍历质量时，需<strong>顺序遍历</strong>，此时可以放置多个同一物品，需使用到之前的数据，</li>
-</ol></li>
-<li>先遍历质量，再遍历物品，是排列数量</li>
+<li><p>先遍历物品，再 遍历重量， 得到的是，使用物品[0, i]的情况下，重量j
+的组合数量</p>
+<p>后续在此基础上，进一步增加物体，组合数量增加</p></li>
+<li><p>先遍历重量，再遍历物体，表示当前重量 j
+下，使用所有物品，实现的所有组合数量</p>
+<p>没有顺序约束，成为了排序 数量的总和</p></li>
 </ol></li>
 </ol>
 <table>
@@ -1862,12 +1863,12 @@ a,b的最后一个，或者两个都删除</p></li>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/c/">
-                        <span class="chip bg-color">c++</span>
-                    </a>
-                    
                     <a href="/tags/%E5%9F%BA%E7%A1%80/">
                         <span class="chip bg-color">基础</span>
+                    </a>
+                    
+                    <a href="/tags/c/">
+                        <span class="chip bg-color">c++</span>
                     </a>
                     
                 </div>
